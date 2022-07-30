@@ -13,3 +13,13 @@ ion-button{
     width: 240px; height: 50px;
     margin: auto;
 }
+
+ion-modal {
+    --ion-background-color: white;
+  }
+
+.test{
+    display: block;
+    height: 40px; width: 40px;
+    border: 1px solid black;
+}

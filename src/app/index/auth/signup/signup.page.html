@@ -1,9 +1,44 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Sign Up</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content color="medium">
+  <form action="">
+    <ion-card color="medium">
+      <!--first input-->
+      <ion-label>Username or Email</ion-label>
+      <ion-item color="medium">
+        <ion-input type="text" placeholder="Set a username"></ion-input>
+      </ion-item>
+      <br><!--break line-->
+      <!--second input-->
+      <ion-label>Email</ion-label>
+      <ion-item color="medium">
+        <ion-input type="email" placeholder="Set an email"></ion-input>
+      </ion-item>
+      <br><!--break line-->
+      <!--third input-->
+      <ion-label>Password</ion-label>
+      <ion-item color="medium">
+        <ion-input type="passowrd" placeholder="Set a password"></ion-input>
+      </ion-item>
+      <br><!--break line-->
+      <!--fourth input-->
+      <ion-label>Phone</ion-label>
+      <ion-item color="medium">
+        <ion-input type="text" placeholder="BN +673" value="BN +673 "></ion-input>
+      </ion-item>
+    </ion-card>
+    <!--for blank space-->
+    <div id="spaces"></div>
+    <!--submit button here-->
+    <p>By signing up, you agree to out <b>Terms &</b></p>
+    <p><b>Conditions</b> and <b>Privacy Policy</b></p>
+    <ion-button color="tertiary" shape="round">Continue</ion-button>
+  </form>
 </ion-content>
