@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Log In</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <form action="">
+  <ion-card color="medium">
+      <!--for username-->
+      <ion-label>Username or email</ion-label>
+      <ion-item color="medium">
+        <ion-input color="light" placeholder="Username" type="text"></ion-input>
+      </ion-item>
+
+      <!--break line-->
+      <br>
+
+      <!--for password-->
+      <ion-label>Password</ion-label>
+      <ion-item color="medium">
+        <ion-input color="light" placeholder="Password" type="password"></ion-input>
+      </ion-item>
+
+      <br>
+      <ion-label color="primary" id="forgot">Forgot your password?</ion-label>
+    
+  </ion-card>
+
+  <ion-button shape="round">Log In</ion-button>
+  </form>
+</ion-content>
