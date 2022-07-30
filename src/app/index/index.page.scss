@@ -1,10 +1,6 @@
-.bgColor{
-    height: 100%; width: 100%;
-    background-color: #FAECDF;
-}
-
-#logo{
+img{
     display: block;
-    position: absolute; top: 25%;
     max-width: 360px;
+    margin: auto;
+    position: relative; top: 25%;
 }

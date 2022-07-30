@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="medium">
     <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center">Log In</ion-title>
   </ion-toolbar>
@@ -9,27 +9,19 @@
 
 <ion-content color="medium">
   <form action="">
-  <ion-card color="medium">
-      <!--for username-->
-      <ion-label>Username or email</ion-label>
+    <ion-card color="medium">
+      <!--first input-->
+      <ion-label>Username or Email</ion-label>
       <ion-item color="medium">
-        <ion-input color="light" placeholder="Username" type="text"></ion-input>
+        <ion-input type="text" placeholder="Username"></ion-input>
       </ion-item>
-
-      <!--break line-->
-      <br>
-
-      <!--for password-->
+      <br><!--break line-->
+      <!--second input-->
       <ion-label>Password</ion-label>
       <ion-item color="medium">
-        <ion-input color="light" placeholder="Password" type="password"></ion-input>
+        <ion-input type="passowrd" placeholder="Username"></ion-input>
       </ion-item>
-
-      <br>
-      <ion-label color="primary" id="forgot">Forgot your password?</ion-label>
-    
-  </ion-card>
-
-  <ion-button shape="round">Log In</ion-button>
+      <a href="#">Forgot your password?</a>
+    </ion-card>
   </form>
 </ion-content>
