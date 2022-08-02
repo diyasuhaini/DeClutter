@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ForgotPasswordPage
+  },
+  {
+    path: 'verified',
+    loadChildren: () => import('./verified/verified.module').then( m => m.VerifiedPageModule)
   }
 ];
 
