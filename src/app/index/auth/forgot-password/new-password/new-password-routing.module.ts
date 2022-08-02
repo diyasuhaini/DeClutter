@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: NewPasswordPage
+  },
+  {
+    path: 'pass-set',
+    loadChildren: () => import('./pass-set/pass-set.module').then( m => m.PassSetPageModule)
   }
 ];
 
