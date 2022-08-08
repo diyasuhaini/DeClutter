@@ -10,6 +10,7 @@ export class ShoppingBagPage implements OnInit {
   bagcount: number = 0;
   savedcount: number = 0;
   selectedcount: number = 0;
+  totalpayment: number = 0;
 
   constructor() { }
 

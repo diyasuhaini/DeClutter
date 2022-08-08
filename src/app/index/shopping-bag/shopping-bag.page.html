@@ -25,7 +25,7 @@
         <ion-row>
           <ion-col>
             <span>{{selectedcount}}  items</span> <br>
-            <span>B${{totalpayment}}</span>
+            <span class="totalcost">B${{totalpayment | currency}}</span>
           </ion-col>
           <ion-col>
             <ion-button color="tertiary" shape="round">Go to checkout</ion-button>
@@ -35,3 +35,4 @@
     </form>
   </ion-toolbar>
 </ion-footer>
+ 
