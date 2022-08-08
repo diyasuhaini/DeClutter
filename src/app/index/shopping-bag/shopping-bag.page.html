@@ -9,16 +9,24 @@
 
 <ion-content>
   <!-- <ion-segment (ionChange)="onFilterUpdate($event)"> -->
-  <ion-segment id="topsegment"> <!--event will be as object-->
+  <ion-segment id="topsegment" (ionChange)="segmentChanged($event)"> <!--event will be as object-->
     <!--first button-->
-   <ion-segment-button value="bag">In My Bag ({{bagcount}})</ion-segment-button> 
+   <ion-segment-button value="bag">
+    <ion-label>
+      In My Bag ({{bagcount}})
+    </ion-label>
+  </ion-segment-button> 
    <!--second button-->
-   <ion-segment-button value="saved">Saved ({{savedcount}})</ion-segment-button>
+  <ion-segment-button value="saved">
+    <ion-label>
+      Saved ({{savedcount}})
+    </ion-label>
+  </ion-segment-button>
  </ion-segment>
 
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="segmentValue == 'bag'">
   <ion-toolbar>
     <form action="">
       <ion-grid>

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SavedPage } from './saved.page';
+import { ShoppingBagPage } from './shopping-bag.page';
 
-describe('SavedPage', () => {
-  let component: SavedPage;
-  let fixture: ComponentFixture<SavedPage>;
+describe('ShoppingBagPage', () => {
+  let component: ShoppingBagPage;
+  let fixture: ComponentFixture<ShoppingBagPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SavedPage ],
+      declarations: [ ShoppingBagPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SavedPage);
+    fixture = TestBed.createComponent(ShoppingBagPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

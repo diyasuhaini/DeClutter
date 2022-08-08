@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'saved',
     loadChildren: () => import('./saved/saved.module').then( m => m.SavedPageModule)
+  },
+  {
+    path: 'shopping-bag',
+    loadChildren: () => import('./shopping-bag/shopping-bag.module').then( m => m.ShoppingBagPageModule)
   }
 ];
 
