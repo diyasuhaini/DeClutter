@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Shopping Bag</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-segment (ionChange)="onFilterUpdate($event)"> -->
+  <ion-segment id="topsegment"> <!--event will be as object-->
+    <!--first button-->
+   <ion-segment-button value="bag">In My Bag ({{bagcount}})</ion-segment-button> 
+   <!--second button-->
+   <ion-segment-button value="saved">Saved ({{savedcount}})</ion-segment-button>
+ </ion-segment>
+
+</ion-content>
+ 

@@ -13,8 +13,12 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
   },
   {
-    path: 'shopping-bag',
-    loadChildren: () => import('./shopping-bag/shopping-bag.module').then( m => m.ShoppingBagPageModule)
+    path: 'bag',
+    loadChildren: () => import('./bag/bag.module').then( m => m.BagPageModule)
+  },
+  {
+    path: 'saved',
+    loadChildren: () => import('./saved/saved.module').then( m => m.SavedPageModule)
   }
 ];
 

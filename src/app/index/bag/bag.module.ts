@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ShoppingBagPageRoutingModule } from './shopping-bag-routing.module';
+import { BagPageRoutingModule } from './bag-routing.module';
 
-import { ShoppingBagPage } from './shopping-bag.page';
+import { BagPage } from './bag.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ShoppingBagPageRoutingModule
+    BagPageRoutingModule
   ],
-  declarations: [ShoppingBagPage]
+  declarations: [BagPage]
 })
-export class ShoppingBagPageModule {}
+export class BagPageModule {}
