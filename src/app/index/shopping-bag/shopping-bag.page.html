@@ -19,7 +19,7 @@
    <!--second button-->
   <ion-segment-button value="saved">
     <ion-label>
-      Saved ({{savedcount}})
+      Saved ({{mysaved.length}})
     </ion-label>
   </ion-segment-button>
  </ion-segment>
@@ -46,6 +46,29 @@
       
     </ion-row>
  </ion-grid>
+
+ <ion-grid *ngIf="segmentValue == 'saved'">
+  <ion-row *ngFor="let save of mysaved" class="rows">
+    <ion-col class="colleft" size="auto">
+        <ion-img [src]="save.imageUrl"></ion-img>
+      
+    </ion-col>
+    <ion-col class="colmid">
+      <div class="highter">
+        <span>{{save.title}}</span><br>
+        <span>{{save.brand}}</span>
+      </div>
+      <span>move to wishlist</span>
+    </ion-col>
+    <ion-col class="colright">
+      <div class="highter">
+        <span>{{save.price| currency}}</span>
+      </div>
+      <span>remove</span> 
+    </ion-col>
+    
+  </ion-row>
+</ion-grid>
 <!-- 
  <div *ngIf="segmentValue == 'bag'">
   <ion-item *ngFor="let bag of inthebag">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Bag } from './shopping-bag.model';
+import { Bag, Saved } from './shopping-bag.model';
 import { ShoppingBagService } from './shopping-bag.service';
 
 @Component({
@@ -11,8 +11,10 @@ import { ShoppingBagService } from './shopping-bag.service';
 export class ShoppingBagPage implements OnInit {
 
   private bagSub: Subscription;
+  private savedSub: Subscription;
 
   inthebag: Bag[];
+  mysaved: Saved[];
   segmentValue: String = "bag";
   totalcost: number = 0;
 
@@ -30,11 +32,15 @@ export class ShoppingBagPage implements OnInit {
       this.inthebag = bag;
     });
 
-    this.inthebag.forEach(bag => {
-      this.totalcost = this.totalcost + bag.price
+    this.savedSub = this.shoppingBagService.$saved.subscribe(saved => {
+      this.mysaved = saved;
     });
-    
-    console.log(this.inthebag.length);
+
+    // this.inthebag.forEach(bag => {
+    //   this.totalcost = this.totalcost + bag.price
+    // });
+
+    // console.log(this.inthebag.length);
   }
 
 }
