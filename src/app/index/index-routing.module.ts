@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'shopping-bag',
     loadChildren: () => import('./shopping-bag/shopping-bag.module').then( m => m.ShoppingBagPageModule)
+  },
+  {
+    path: 'mepage',
+    loadChildren: () => import('./mepage/mepage.module').then( m => m.MepagePageModule)
   }
 ];
 
