@@ -8,30 +8,31 @@
 </ion-header>
 
 <ion-content color="medium">
-  <form class="form" [formGroup]="addUsers" (ngSubmit)="signup(users.value)"> <!-- account created when submit-->
+  <!--[formGroup]="addUsers" (ngSubmit)="signup(users.value) formControlName="email""-->
+  <form class="form"> <!-- account created when submit-->
     <ion-card color="medium">
       <!--first input-->
       <ion-label>Username or Email</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="Set a username" formControlName="username"></ion-input> <!--include formcontrolname-->
+        <ion-input type="text" placeholder="Set a username"></ion-input> <!--include formcontrolname-->
       </ion-item>
       <br><!--break line-->
       <!--second input-->
       <ion-label>Email</ion-label>
       <ion-item color="medium">
-        <ion-input type="email" placeholder="Set an email" formControlName="email"></ion-input>
+        <ion-input type="email" placeholder="Set an email"></ion-input>
       </ion-item>
       <br><!--break line-->
       <!--third input-->
       <ion-label>Password</ion-label>
       <ion-item color="medium">
-        <ion-input type="passowrd" placeholder="Set a password" formControlName="password" required></ion-input>
+        <ion-input type="passowrd" placeholder="Set a password"></ion-input>
       </ion-item>
       <br><!--break line-->
       <!--fourth input-->
       <ion-label>Phone</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="BN +673" value="BN +673 " formControlName="contact"></ion-input>
+        <ion-input type="text" placeholder="BN +673" value="BN +673 "></ion-input>
       </ion-item>
     </ion-card>
     <!--for blank space-->
