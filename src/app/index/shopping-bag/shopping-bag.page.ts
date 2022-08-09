@@ -36,11 +36,11 @@ export class ShoppingBagPage implements OnInit {
       this.mysaved = saved;
     });
 
-    // this.inthebag.forEach(bag => {
-    //   this.totalcost = this.totalcost + bag.price
-    // });
+    this.inthebag.forEach(bag => {
+      this.totalcost = this.totalcost + bag.price
+    });
 
-    // console.log(this.inthebag.length);
+    console.log(this.inthebag.length);
   }
 
 }
