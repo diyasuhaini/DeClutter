@@ -7,7 +7,9 @@ import { Bag, Saved } from './shopping-bag.model';
 })
 export class ShoppingBagService {
 
+  // bag variables - from model
   private bag = new BehaviorSubject<Bag[]>([
+    // create new dummy data
     new Bag(
       'B1',
       'Amongus T-Shirt',
@@ -27,7 +29,7 @@ export class ShoppingBagService {
       'Duck Meister'
     )
   ]);
-
+  // saved variable - from model
   private saved = new BehaviorSubject<Saved[]>([
     new Saved(
       'S1',
@@ -49,6 +51,7 @@ export class ShoppingBagService {
     )
   ]);
 
+  // function to call data
   get $bag(){
     return this.bag.asObservable();
   }
