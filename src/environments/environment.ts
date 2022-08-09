@@ -5,14 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyAODdZREv-LD3MmM-AmXbUiG9NvDCiDAIY",
-    authDomain: "twitdown-b4140.firebaseapp.com",
-    databaseURL: "https://twitdown-b4140-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "twitdown-b4140",
-    storageBucket: "twitdown-b4140.appspot.com",
-    messagingSenderId: "951695233719",
-    appId: "1:951695233719:web:cb8b3b145083605b2ef332",
-    measurementId: "G-NXYYQ7KKR8"
+    apiKey: "AIzaSyAb-9ru7Dorn_3EVgveY1FJjdxcrv6hGxw",
+    authDomain: "declutter-1172d.firebaseapp.com",
+    databaseURL: "https://declutter-1172d-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "declutter-1172d",
+    storageBucket: "declutter-1172d.appspot.com",
+    messagingSenderId: "277410757124",
+    appId: "1:277410757124:web:a59407213e9438289a1351"
   }
 };
 
