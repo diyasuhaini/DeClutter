@@ -1,20 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Payment Details </ion-title>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Payment Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-progress-bar color="primary" value="0.5"></ion-progress-bar>  
+<ion-progress-bar color="tertiary" value="0.5"></ion-progress-bar>  
 
-<ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label>Cash On Delivery</ion-label> 
-    </ion-item>
-    <ion-item>
-      <ion-label>PayPal</ion-label>
-    </ion-item>
-    </ion-list>
+<ion-content color="medium">
+  <ion-accordion-group color="medium">
+    <!--for cash-->
+    <ion-accordion value="first" color="medium">
+      <ion-item slot="header" color="medium">
+        <ion-label>Cash on delivery</ion-label>
+        <ion-checkbox slot="start" color="medium"></ion-checkbox>
+      </ion-item>
+      <div class="ion-padding" slot="content" color="medium">Content here</div>
+    </ion-accordion>
+    <!--for paypal-->
+    <ion-accordion value="second">
+      <ion-item slot="header" color="medium">
+        <ion-label>Paypal</ion-label>
+        <ion-checkbox slot="start" color="medium"></ion-checkbox>
+      </ion-item>
+      <div class="ion-padding" slot="content" color="medium">Content here</div>
+    </ion-accordion>
+  </ion-accordion-group>
+  <ion-button shape="round" color="tertiary">Continue</ion-button>
 </ion-content>
-
-<ion-button>Continue</ion-button>
