@@ -7,7 +7,10 @@ ion-card{
 }
 
 ion-label{
-    margin: auto;
+    display: block;
+    height: 20px; width: 100px; margin: auto;
+    margin-top: 20px;
+    text-align: center;
 }
 
 a{  
