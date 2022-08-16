@@ -5,6 +5,9 @@
     border: solid 1px black;
     padding-top: 0px;
     border-radius: 20px;
+    background: #FCF9F1;
+    border: 1px solid #EFD4BA;
+    border-radius: 15px;
 }
 
 .ffrtab ion-col {
@@ -13,4 +16,20 @@
 
 .ffrtab h1 {
     padding-top: 0px;
+}
+
+ion-segment {
+    margin: auto;
+    box-sizing: border-box;
+    width: 90%;
+    background: #FCF9F1;
+    border: 1px solid #EFD4BA;
+    border-radius: 15px;
+}
+
+.segment-button-checked {
+    color: black;
+    font-weight: bold;
+    background: #EFD4BA;
+    border-radius: 15px;
 }
