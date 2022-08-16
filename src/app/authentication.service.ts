@@ -8,8 +8,7 @@ import { take, map, tap, switchMap} from 'rxjs/operators';
 //interface here
 interface accountData{
   username: string;
-  potrait: string;
-  name: string;
+  contact: string;
   email: string;
 }
 
@@ -91,9 +90,8 @@ export class AuthenticationService {
         if(resData.hasOwnProperty(key)){
           users.push(new User(key,
             resData[key].username,
-            resData[key].potrait,
-            resData[key].name,
-            resData[key].email
+            resData[key].email,
+            resData[key].contact
             ));
         }
       }
@@ -106,18 +104,16 @@ export class AuthenticationService {
   //add comment
   addUser(
     username: string,
-    potrait: string,
-    name: string,
-    email: string){
+    email: string,
+    contact: string){
     
     //generate id
     let generateId: string;
     const newUser = new User(
       Math.random().toString(),
       username,
-      potrait,
-      name,
-      email
+      email,
+      contact
     );
     return this.http.post<{name: string}>('https://declutter-1172d-default-rtdb.asia-southeast1.firebasedatabase.app/user.json', {...newUser, id: null}).pipe(switchMap(resData => {
       generateId = resData.name;
@@ -131,7 +127,6 @@ export class AuthenticationService {
   //update/edit profile data
   updateUser(id: string,
     username: string,
-    name: string
     ){
       let updateUser: User[];
       return this.$users.pipe(take(1), switchMap(users => {
@@ -141,9 +136,8 @@ export class AuthenticationService {
         updateUser[updateUserIndex] = new User(
           oldUser.id, //reuse old data
           username, //new data
-          name, //new data
-          oldUser.potrait, //old data
-          oldUser.email,
+          oldUser.email, //old data
+          oldUser.contact //old data
         ); 
           return this.http.put(`https://declutter-1172d-default-rtdb.asia-southeast1.firebasedatabase.app/user/${id}.json`, {...updateUser[updateUserIndex], id: null});
       }), tap(resData => {

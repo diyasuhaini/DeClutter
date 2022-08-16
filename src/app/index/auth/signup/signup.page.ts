@@ -26,16 +26,10 @@ export class SignupPage implements OnInit {
         message: 'Provide unique username.' 
       }
     ],
-    'Contact': [
-      { 
-        type: 'required', 
-        message: 'Provide Contact number.' 
-      }
-    ],
     'email': [
       { 
         type: 'required', 
-        message: 'Provide email.' 
+        message: 'Provide unique username.' 
       },
       { 
         type: 'pattern', 
@@ -49,7 +43,17 @@ export class SignupPage implements OnInit {
       },
       { 
         type: 'minlength', 
-        message: 'Password length should be 6 characters long.' 
+        message: 'Password length should be 8 characters long.' 
+      }
+    ],
+    'contact': [
+      { 
+        type: 'required', 
+        message: 'Contact number is required.' 
+      },
+      { 
+        type: 'minlength', 
+        message: 'Contact number is not valid' 
       }
     ]
   };
@@ -66,6 +70,7 @@ export class SignupPage implements OnInit {
         Validators.required
       ])),
       contact: new FormControl('', Validators.compose([
+        Validators.minLength(13),
         Validators.required
       ])),
       email: new FormControl('', Validators.compose([
@@ -73,7 +78,7 @@ export class SignupPage implements OnInit {
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
       password: new FormControl('', Validators.compose([
-        Validators.minLength(6),
+        Validators.minLength(8),
         Validators.required
       ])),
     });
@@ -96,14 +101,13 @@ export class SignupPage implements OnInit {
       }
       //access
       this.loadCtrl.create({
-        message: 'Adding comment...'
+        message: 'Please wait for a moment...'
       }).then(loadingEl => {
         loadingEl.present(); //present the loader
         this.authenticationService.addUser(
           this.addUsers.value.username,
-          this.addUsers.value.potrait,
-          this.addUsers.value.fullname,
           this.addUsers.value.email,
+          this.addUsers.value.contact,
         ).subscribe(() => {
           loadingEl.dismiss();
           this.addUsers.reset();

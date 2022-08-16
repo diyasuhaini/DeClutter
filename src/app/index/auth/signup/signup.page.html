@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content color="medium">
-  <form class="form" [formGroup]="addUsers"> <!-- account created when submit-->
+  <form class="form" [formGroup]="addUsers" (ngSubmit)="signUp(addUsers.value)"> <!-- account created when submit-->
     <ion-card color="medium">
       <!--first input-->
       <ion-label>Username</ion-label>
@@ -16,10 +16,10 @@
         <ion-input type="text" placeholder="Set a username" formControlName="username"></ion-input> <!--include formcontrolname-->
       </ion-item>
       <!--validator message-->
-      <ng-container>
-        <div ngIf="addUsers.get('username').hasError(error.type) && addUsers.get('username').dirty || addUsers.get('username').touched)">
+      <ng-container *ngFor="let error of error_msg.username">
+        <div *ngIf="addUsers.get('username').hasError(error.type) && (addUsers.get('username').dirty || addUsers.get('username').touched)">
           {{ error.message }}
-        </div> 
+        </div>
       </ng-container>
       <br><!--break line-->
 
@@ -29,8 +29,8 @@
         <ion-input type="email" placeholder="Set an email" formControlName="email"></ion-input>
       </ion-item>
       <!--validator message-->
-      <ng-container>
-        <div ngIf="addUsers.get('email').hasError(error.type) && addUsers.get('email').dirty || addUsers.get('email').touched)">
+      <ng-container *ngFor="let error of error_msg.email">
+        <div *ngIf="addUsers.get('email').hasError(error.type) && (addUsers.get('email').dirty || addUsers.get('email').touched)">
           {{ error.message }}
         </div>
       </ng-container>
@@ -42,8 +42,8 @@
         <ion-input type="password" placeholder="Set a password" formControlName="password" required></ion-input>
       </ion-item>
       <!--validator message-->
-      <ng-container>
-        <div ngIf="addUsers.get('password').hasError(error.type) && addUsers.get('password').dirty || addUsers.get('password').touched)">
+      <ng-container *ngFor="let error of error_msg.password">
+        <div *ngIf="addUsers.get('password').hasError(error.type) && (addUsers.get('password').dirty || addUsers.get('password').touched)">
           {{ error.message }}
         </div>
       </ng-container>
@@ -55,8 +55,8 @@
         <ion-input type="text" placeholder="BN +673" value="BN +673 " formControlName="contact"></ion-input>
       </ion-item>
       <!--validator message-->
-      <ng-container>
-        <div ngIf="addUsers.get('contact').hasError(error.type) && addUsers.get('contact').dirty || addUsers.get('contact').touched)">
+      <ng-container *ngFor="let error of error_msg.contact">
+        <div *ngIf="addUsers.get('contact').hasError(error.type) && (addUsers.get('contact').dirty || addUsers.get('contact').touched)">
           {{ error.message }}
         </div>
       </ng-container>
@@ -66,6 +66,9 @@
     <!--submit button here-->
     <p>By signing up, you agree to out <b>Terms &</b></p>
     <p><b>Conditions</b> and <b>Privacy Policy</b></p>
-    <ion-button type="submit" color="tertiary" shape="round" [disabled]="!userForm.valid">Continue</ion-button>
+    <ion-button type="submit" color="tertiary" shape="round" [disabled]="!addUsers.valid">Continue</ion-button>
+    <!-- error or success message -->
+    <ion-label class="ion-text-center" color="danger">{{errorMsg}}</ion-label>
+    <ion-label class="ion-text-center" color="success">{{successMsg}}</ion-label>
   </form>
 </ion-content>
