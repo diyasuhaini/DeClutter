@@ -8,24 +8,24 @@
 </ion-header>
 
 <ion-content color="medium">
-  <form action="">
+  <form class="form" [formGroup]="userForm" (ngSubmit)="signIn(userForm.value)">
     <ion-card color="medium">
       <!--first input-->
       <ion-label>Username or Email</ion-label>
       <ion-item color="medium">
-        <ion-input type ="text" placeholder="Username"></ion-input>
+        <ion-input type ="text" placeholder="Enter your email" formControlName="email"></ion-input>
       </ion-item>
       <br><!--break line-->
       <!--second input-->
       <ion-label>Password</ion-label>
       <ion-item color="medium">
-        <ion-input type="password" placeholder="Username"></ion-input>
+        <ion-input type="password" placeholder="Enter your password" formControlName="password"></ion-input>
       </ion-item>
       <a routerLink="../forgot-password">Forgot your password?</a>
     </ion-card>
     <!--for blank space-->
     <div id="spaces"></div>
     <!--submit button here-->
-    <ion-button color="tertiary" shape="round">Log In</ion-button>
+    <ion-button color="tertiary" shape="round" [disabled]="!userForm.valid">Log In</ion-button>
   </form>
 </ion-content>

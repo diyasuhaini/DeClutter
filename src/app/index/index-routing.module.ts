@@ -31,7 +31,11 @@ const routes: Routes = [
   {
     path: 'mod-home',
     loadChildren: () => import('./mod-home/mod-home.module').then( m => m.ModHomePageModule)
+  },  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   }
+
 
 ];
 
