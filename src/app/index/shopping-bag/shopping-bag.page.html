@@ -8,10 +8,9 @@
 </ion-header>
 
 <ion-content color="medium">
-  <!-- <ion-segment (ionChange)="onFilterUpdate($event)"> -->
-  <ion-segment id="topsegment" (ionChange)="segmentChanged($event)" color="light"> <!--event will be as object-->
+  <ion-segment id="topsegment" (ionChange)="segmentChanged($event)" color="light" value="bag"> <!--event will be as object-->
     <!--first button-->
-   <ion-segment-button value="bag" checked>
+   <ion-segment-button value="bag">
     <ion-label>
       In My Bag ({{inthebag.length}})
     </ion-label>
@@ -69,19 +68,6 @@
     
   </ion-row>
 </ion-grid>
-<!-- 
- <div *ngIf="segmentValue == 'bag'">
-  <ion-item *ngFor="let bag of inthebag">
-    <ion-thumbnail>
-      <ion-img [src]="bag.imageUrl"></ion-img>
-    </ion-thumbnail>
-    
-    <span>{{bag.title}}</span><br>
-    <span>{{bag.brand}}</span>
-    <span>{{bag.price| currency}}</span>  
-  
-  </ion-item>
-</div> -->
 </ion-content>
 
 <ion-footer *ngIf="segmentValue == 'bag'" class="bgColor">
