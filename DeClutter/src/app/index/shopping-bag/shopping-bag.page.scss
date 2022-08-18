@@ -1,0 +1,54 @@
+ion-buttons{
+    width: 10px;
+}
+
+
+
+#spaces {
+    display: block;
+    height: 240px;
+}
+
+ion-button{
+    display: block;
+    width: 200px;
+    margin: auto;
+}
+
+//#topsegment ion-segment-button {
+
+//}
+
+#topsegment {
+    border-bottom: solid black 2px;
+}
+
+ion-footer {
+    height: 13%;
+    margin: auto;
+    padding: 5%;
+}
+
+.totalcost {
+    font-weight: bold;
+}
+
+.colright {
+    text-align: right;
+}
+
+ion-img {
+    width: 80px;
+}
+
+.highter {
+    height: 40px;
+}
+
+.bgColor{
+    background-color: white;
+}
+
+ion-segment{
+    color: black;
+}

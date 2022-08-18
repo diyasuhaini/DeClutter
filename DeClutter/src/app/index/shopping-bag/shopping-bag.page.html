@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Shopping Bag</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <ion-segment id="topsegment" (ionChange)="segmentChanged($event)" color="light" value="bag"> <!--event will be as object-->
+    <!--first button-->
+   <ion-segment-button value="bag">
+    <ion-label>
+      In My Bag ({{inthebag.length}})
+    </ion-label>
+  </ion-segment-button> 
+   <!--second button-->
+  <ion-segment-button value="saved">
+    <ion-label>
+      Saved ({{mysaved.length}})
+    </ion-label>
+  </ion-segment-button>
+ </ion-segment>
+
+ <ion-grid *ngIf="segmentValue == 'bag'">
+    <ion-row *ngFor="let bag of inthebag" class="rows">
+      <ion-col class="colleft" size="auto">
+          <ion-img [src]="bag.imageUrl"></ion-img>
+        
+      </ion-col>
+      <ion-col class="colmid">
+        <div class="highter">
+          <span>{{bag.title}}</span><br>
+          <span>{{bag.brand}}</span>
+        </div>
+        <span>move to wishlist</span>
+      </ion-col>
+      <ion-col class="colright">
+        <div class="highter">
+          <span>{{bag.price| currency}}</span>
+        </div>
+        <span>remove</span> 
+      </ion-col>
+      
+    </ion-row>
+ </ion-grid>
+
+ <ion-grid *ngIf="segmentValue == 'saved'">
+  <ion-row *ngFor="let save of mysaved" class="rows">
+    <ion-col class="colleft" size="auto">
+        <ion-img [src]="save.imageUrl"></ion-img>
+      
+    </ion-col>
+    <ion-col class="colmid">
+      <div class="highter">
+        <span>{{save.title}}</span><br>
+        <span>{{save.brand}}</span>
+      </div>
+      <span>move to wishlist</span>
+    </ion-col>
+    <ion-col class="colright">
+      <div class="highter">
+        <span>{{save.price| currency}}</span>
+      </div>
+      <span>remove</span> 
+    </ion-col>
+    
+  </ion-row>
+</ion-grid>
+</ion-content>
+
+<ion-footer *ngIf="segmentValue == 'bag'" class="bgColor">
+  <ion-toolbar color="medium">
+    <form action="">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <span>{{inthebag.length}}  items</span> <br>
+            <span class="totalcost">B${{totalcost | currency}}</span>
+          </ion-col>
+          <ion-col>
+            <ion-button color="tertiary" shape="round">Go to checkout</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-toolbar>
+</ion-footer>
+ 
