@@ -6,10 +6,12 @@ const routes: Routes = [
     path: '',
     redirectTo: 'index',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'index',
     loadChildren: () => import('./index/index.module').then( m => m.IndexPageModule)
   },
+  
 
 ];
 
