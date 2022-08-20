@@ -23,6 +23,7 @@
   </ion-segment-button>
  </ion-segment>
 
+ <!-- Bag Side of things 00000000000000000000000000000000000000000000 -->
  <ion-grid *ngIf="segmentValue == 'bag'">
     <ion-row *ngFor="let bag of inthebag" class="rows">
       <ion-col class="colleft" size="auto">
@@ -31,21 +32,24 @@
       </ion-col>
       <ion-col class="colmid">
         <div class="highter">
-          <span>{{bag.title}}</span><br>
-          <span>{{bag.brand}}</span>
+          <span class="item-label">{{bag.title}}</span><br>
+          <span class="item-brand">{{bag.brand}}</span>
         </div>
-        <span>move to wishlist</span>
+        <span class="item-action">move to wishlist</span>
       </ion-col>
       <ion-col class="colright">
         <div class="highter">
-          <span>{{bag.price| currency}}</span>
+          <span class="item-label">{{bag.price| currency}}</span>
         </div>
-        <span>remove</span> 
+        <span class="item-action">remove</span> 
       </ion-col>
       
     </ion-row>
  </ion-grid>
 
+ <!-- end of bag 00000000000000000000000000000000000000000000 -->
+
+ <!-- saved side of things 0000000000000000000000000000000000 -->
  <ion-grid *ngIf="segmentValue == 'saved'">
   <ion-row *ngFor="let save of mysaved" class="rows">
     <ion-col class="colleft" size="auto">
@@ -70,6 +74,9 @@
 </ion-grid>
 </ion-content>
 
+<!-- end of saved 000000000000000000000000000000000000000000 -->
+
+<!-- bag footer 00000000000000000000000000000000000000000000 -->
 <ion-footer *ngIf="segmentValue == 'bag'" class="bgColor">
   <ion-toolbar color="medium">
     <form action="">
@@ -77,7 +84,7 @@
         <ion-row>
           <ion-col>
             <span>{{inthebag.length}}  items</span> <br>
-            <span class="totalcost">B${{totalcost | currency}}</span>
+            <span class="totalcost">{{totalcost | currency:"B$"}}</span>
           </ion-col>
           <ion-col>
             <ion-button color="tertiary" shape="round">Go to checkout</ion-button>
@@ -87,4 +94,6 @@
     </form>
   </ion-toolbar>
 </ion-footer>
+<!-- end of bag footer 000000000000000000000000000000000000000 -->
+
  
