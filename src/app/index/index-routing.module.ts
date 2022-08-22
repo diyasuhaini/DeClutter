@@ -51,7 +51,11 @@ const routes: Routes = [
   {
     path: 'mod-profile',
     loadChildren: () => import('./mod-profile/mod-profile.module').then( m => m.ModProfilePageModule)
+  },  {
+    path: 'sell',
+    loadChildren: () => import('./sell/sell.module').then( m => m.SellPageModule)
   }
+
 
 
 ];

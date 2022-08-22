@@ -1,10 +1,17 @@
+ion-searchbar{
+    display: block;
+    width: 95%; height: 10%;
+    margin-left: 5px; margin-top: 15px;
+}
+
 ion-header, ion-toolbar{
     height: 9vh;
 }
 
 ion-title{
-    text-align: center;
-    font-weight: bold;
+    font-size: 16px; font-weight: bold;
+    margin-left: 5px; margin-top: 5px;
+    padding-top: 15px;
 }
 
 ion-icon{
@@ -38,28 +45,8 @@ ion-label{
     margin: auto;
 }
 
-.wrap{
-    display: flex;
-    flex: wrap;
-    margin-top: 20px;
-}
 
-.pic{
-    flex: 30%;
-    height: 10vh;
-}
-
-.texts{
-    flex: 70%;
-    height: 10vh;
-}
-
-.mainText{
-    font-size: 16px;
-    margin-left: 10px;
-}
-
-.smallText{
-    font-size: 12px;
-    margin-left: 10px;
+h3{
+    font-weight: bold; margin-left: 35px;
+    font-size: 17px; margin-top: 20px;
 }
