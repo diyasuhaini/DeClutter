@@ -11,7 +11,31 @@ import { AuthenticationService } from 'src/app/authentication.service';
 export class LoginPage implements OnInit {
 
   userForm: FormGroup;
+  successMsg: string = '';
+  errorMsg: string = '';
   
+  error_msg = {
+    'email': [
+      { 
+        type: 'required', 
+        message: 'Provide email.' 
+      },
+      { 
+        type: 'pattern', 
+        message: 'Email is not valid.' 
+      }
+    ],
+    'password': [
+      { 
+        type: 'required', 
+        message: 'Password is required.' 
+      },
+      { 
+        type: 'minlength', 
+        message: 'Password length should be 8 characters long.' 
+      }
+    ]
+  };
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
@@ -28,6 +52,22 @@ export class LoginPage implements OnInit {
         Validators.required
       ])),
     });
+  }
+
+  signIn(value) {
+    this.authenticationService.signinUser(value)
+      .then((response) => {
+        console.log(response)
+        this.errorMsg = "";
+        this.router.navigateByUrl('index/explore');
+      }, error => {
+        this.errorMsg = error.message;
+        this.successMsg = "";
+      })
+  }
+
+  goToSignup() {
+    this.router.navigateByUrl('index/register');
   }
 
 }
