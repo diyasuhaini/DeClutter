@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
       .then((response) => {
         console.log(response)
         this.errorMsg = "";
-        this.router.navigateByUrl('index/explore');
+        this.router.navigateByUrl('index/home');
       }, error => {
         this.errorMsg = error.message;
         this.successMsg = "";
