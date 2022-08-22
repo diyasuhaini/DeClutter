@@ -31,7 +31,8 @@ const routes: Routes = [
   {
     path: 'mod-home',
     loadChildren: () => import('./mod-home/mod-home.module').then( m => m.ModHomePageModule)
-  },  {
+  },
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -42,6 +43,14 @@ const routes: Routes = [
   {
     path: 'alerts',
     loadChildren: () => import('./alerts/alerts.module').then( m => m.AlertsPageModule)
+  },
+  {
+    path: 'mod-inbox',
+    loadChildren: () => import('./mod-inbox/mod-inbox.module').then( m => m.ModInboxPageModule)
+  },
+  {
+    path: 'mod-profile',
+    loadChildren: () => import('./mod-profile/mod-profile.module').then( m => m.ModProfilePageModule)
   }
 
 
