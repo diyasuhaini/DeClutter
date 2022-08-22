@@ -1,12 +1,31 @@
 <ion-header>
-  <ion-toolbar color="medium">
-    <ion-title>discover</ion-title>
+  <ion-toolbar color="medium" class="toolbarHeader">
+    <ion-title>Discover</ion-title> <!--title-->
+    <!--horizontal button-->
+    <ion-segment>
+      <ion-segment-button value="women">
+        <ion-label class="segmentLabel">Women</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="men">
+        <ion-label>Men</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="kids">
+        <ion-label>Kids</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="users">
+        <ion-label>Users</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
-
-</ion-content>
+  <!--button to select-->
+  <div class="categories">Clothing</div> <!--button 1-->
+  <div class="categories">Shoes</div> <!--button 2-->
+  <div class="categories">Bag & Wallet</div> <!--button 3-->
+  <div class="categories">Accessories</div> <!--button 4-->
+</ion-content>  
 
 <ion-footer>
   <ion-toolbar color="medium">

@@ -1,5 +1,15 @@
-ion-header, ion-toolbar{
+ion-toolbar{
     height: 9vh;
+}
+
+.toolbarHeader{
+    height: 10vh;
+}
+
+ion-title{
+    font-size: 16px; font-weight: bold;
+    margin-left: 5px; margin-top: 5px;
+    padding-top: 15px;
 }
 
 ion-icon{
@@ -31,4 +41,26 @@ ion-label{
     display: block;
     width: 90%; height: 100%;
     margin: auto;
+}
+
+ion-segment-button{
+    margin-bottom: 10px;
+    --color: #383a3e;
+    --color-checked: #000000;
+    font-weight: bold; font-size: 12px;
+}
+
+
+//content
+.categories{
+    display: block;
+    background-color: #FAECDF;
+    width: 80%; height: 15%;
+    border-radius: 20px;
+    margin: auto; margin-top: 15px;
+    text-align: center; line-height: 90px;
+}
+
+.categories:nth-child(1){
+    margin-top: 80px;
 }
