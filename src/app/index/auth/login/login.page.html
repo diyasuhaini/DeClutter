@@ -15,19 +15,27 @@
       <ion-item color="medium">
         <ion-input type ="text" placeholder="Enter your email" formControlName="email"></ion-input>
       </ion-item>
-      
+      <ng-container *ngFor="let error of error_msg.email">
+        <div *ngIf="userForm.get('email').hasError(error.type) && (userForm.get('email').dirty || userForm.get('email').touched)">
+          {{ error.message }}
+        </div>
+      </ng-container>
       <br><!--break line-->
       <!--second input-->
       <ion-label>Password</ion-label>
       <ion-item color="medium">
         <ion-input type="password" placeholder="Enter your password" formControlName="password"></ion-input>
       </ion-item>
-      
+      <ng-container *ngFor="let error of error_msg.password">
+        <div *ngIf="userForm.get('password').hasError(error.type) && (userForm.get('password').dirty || userForm.get('password').touched)">
+          {{ error.message }}
+        </div>
+      </ng-container>
       <a routerLink="../forgot-password">Forgot your password?</a>
     </ion-card>
     <!--for blank space-->
     <div id="spaces"></div>
     <!--submit button here-->
-    <ion-button color="tertiary" shape="round" [disabled]="!userForm.valid">Log In</ion-button>
+    <ion-button type="submit" color="tertiary" shape="round" [disabled]="!userForm.valid">Log In</ion-button>
   </form>
 </ion-content>
