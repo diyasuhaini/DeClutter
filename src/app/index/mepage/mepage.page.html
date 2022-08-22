@@ -31,31 +31,75 @@
       </ion-row>
     </ion-grid>
   </div>
-  <ion-segment value="listing">
-    
-    <ion-segment-button value="listing">
-      <ion-label>
-        Listings 
-      </ion-label>
-    </ion-segment-button>
 
-    <ion-segment-button value="sold">
-      <ion-label>
-        Sold 
-      </ion-label>
-    </ion-segment-button>
+  <div class="ctrcont">
   
-    <ion-segment-button value="bought">
-      <ion-label>
-        Bought
-      </ion-label>
-    </ion-segment-button>
+    <ion-segment value="listing" class="segments">
+      
+      <ion-segment-button value="listing">
+        <ion-label>
+          Listings 
+        </ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="sold">
+        <ion-label>
+          Sold 
+        </ion-label>
+      </ion-segment-button>
     
-    <ion-segment-button value="earn">
-      <ion-label>
-        Earns 
-      </ion-label>
-    </ion-segment-button>
-  
-  </ion-segment>
+      <ion-segment-button value="bought">
+        <ion-label>
+          Bought
+        </ion-label>
+      </ion-segment-button>
+      
+      <ion-segment-button value="earn">
+        <ion-label>
+          Earns 
+        </ion-label>
+      </ion-segment-button>
+    
+    </ion-segment>
+    
+  </div>
+
+  <div class="btmcont-listing">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="cols">
+          0 Views, 0 Favs
+        </ion-col>
+        <ion-col class="ion-text-end cols">
+          hide sold item <ion-toggle></ion-toggle>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="medium">
+  <div id="footerBox">
+    <ion-button color="medium">
+      <ion-label class="btmlabel"><ion-icon name="home-outline" class="iconFooter"></ion-icon>Home</ion-label>
+    </ion-button>
+
+    <ion-button color="medium" routerLink="../discover">
+      <ion-label class="btmlabel"><ion-icon name="search-outline" class="iconFooter"></ion-icon>Discover</ion-label>
+    </ion-button>
+
+    <ion-button color="medium" routerLink="../sell">
+      <ion-label class="btmlabel"><ion-icon name="camera-outline" class="iconFooter"></ion-icon>Sell</ion-label>
+    </ion-button>
+
+    <ion-button color="medium" routerLink="../alerts">
+      <ion-label class="btmlabel"><ion-icon name="notifications-outline" class="iconFooter"></ion-icon>Alerts</ion-label>
+    </ion-button>
+
+    <ion-button color="medium" routerLink="../mepage">
+      <ion-label class="btmlabel"><ion-icon name="person-outline" class="iconFooter"></ion-icon>Me</ion-label>
+    </ion-button>
+  </div>
+  </ion-toolbar>
+</ion-footer>
