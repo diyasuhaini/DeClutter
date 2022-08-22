@@ -62,6 +62,7 @@ export class AuthenticationService {
     return this.angularFireAuth.user
   }
 
+
   //add data to realtime database (firebase)
 
   //step 1 - variable
