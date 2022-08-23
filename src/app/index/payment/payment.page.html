@@ -14,19 +14,19 @@
     <!--for cash-->
     <ion-accordion value="first" color="medium">
       <ion-item slot="header" color="medium">
-        <ion-label>Cash on delivery</ion-label>
+        <ion-label>Paypal</ion-label>
         <ion-checkbox slot="start" color="medium"></ion-checkbox>
       </ion-item>
-      <div class="ion-padding" slot="content" color="medium">Content here</div>
+      <div class="ion-padding" slot="content" color="medium">You will be directed to the secure Paypal system after your order has been confirmed. To make a payment, sign in with your PayPal credentials.</div>
     </ion-accordion>
     <!--for paypal-->
     <ion-accordion value="second">
       <ion-item slot="header" color="medium">
-        <ion-label>Paypal</ion-label>
+        <ion-label>Cash on delivery</ion-label>
         <ion-checkbox slot="start" color="medium"></ion-checkbox>
       </ion-item>
-      <div class="ion-padding" slot="content" color="medium">Content here</div>
+      <div class="ion-padding" slot="content" color="medium">When the delivery person brings your order to your door, pay in cash. Or use the BIBD quickpay to go "Contactless." For terms and conditions, kindly refer to FAQ.</div>
     </ion-accordion>
   </ion-accordion-group>
-  <ion-button shape="round" color="tertiary">Continue</ion-button>
+  <ion-button shape="round" color="tertiary" routerLink="../checkout">Continue</ion-button>
 </ion-content>
