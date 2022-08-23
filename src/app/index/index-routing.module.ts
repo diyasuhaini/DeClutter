@@ -29,10 +29,6 @@ const routes: Routes = [
     loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
   },
   {
-    path: 'mod-home',
-    loadChildren: () => import('./mod-home/mod-home.module').then( m => m.ModHomePageModule)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -45,15 +41,12 @@ const routes: Routes = [
     loadChildren: () => import('./alerts/alerts.module').then( m => m.AlertsPageModule)
   },
   {
-    path: 'mod-inbox',
-    loadChildren: () => import('./mod-inbox/mod-inbox.module').then( m => m.ModInboxPageModule)
-  },
-  {
-    path: 'mod-profile',
-    loadChildren: () => import('./mod-profile/mod-profile.module').then( m => m.ModProfilePageModule)
-  },  {
     path: 'sell',
     loadChildren: () => import('./sell/sell.module').then( m => m.SellPageModule)
+  },
+  {
+    path: 'mod',
+    loadChildren: () => import('./mod/mod.module').then( m => m.ModPageModule)
   }
 
 

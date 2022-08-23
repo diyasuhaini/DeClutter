@@ -1,11 +1,11 @@
-<ion-content>
+<ion-content color="medium">
   <ion-grid>
     <ion-row>
       <ion-col>
       </ion-col>
-      <ion-col>
-        <ion-img src="..\..\..\src\assets\profile-defaults\default-pic.png"></ion-img>
-        <h2 class="ion-text-center">John Doe</h2>
+      <ion-col *ngFor="let account of people | slice:0:1">
+        <img src="assets/img/user.png" alt="Profile image">
+        <h2 class="ion-text-center">{{ account.username }}</h2>
       </ion-col>
       <ion-col>
         
