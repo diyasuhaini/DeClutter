@@ -5,8 +5,8 @@ import { ModPage } from './mod.page';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ModPage
+    path: 'tab',
+    loadChildren: () => import('./tab/tab.module').then( m => m.TabPageModule)
   },
   {
     path: 'home',
@@ -19,7 +19,12 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
   }
+  
 ];
 
 @NgModule({
