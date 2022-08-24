@@ -57,13 +57,14 @@ export class LoginPage implements OnInit {
     this.authenticationService.signinUser(value)
       .then((response) => {
         console.log(response)
-        this.errorMsg = "";
         console.log(value); //show the value current user
         this.router.navigateByUrl('index/home');
       }, error => {
         // this.errorMsg = error.message;
         if(error.message == "Firebase: The password is invalid or the user does not have a password. (auth/wrong-password)."){
           this.errorMsg = "Your email or password is incorrect, please try again.";
+        }else{
+          this.errorMsg = "Too many fail attempt, please try again later!";
         }
       })
   }
