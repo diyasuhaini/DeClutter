@@ -18,6 +18,8 @@ export class MepagePage implements OnInit {
   ngOnInit() {
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
+
+      //users find
     });
   }
 

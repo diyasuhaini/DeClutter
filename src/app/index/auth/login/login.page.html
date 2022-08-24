@@ -34,6 +34,11 @@
       <a routerLink="../forgot-password">Forgot your password?</a>
     </ion-card>
     <!--for blank space-->
+
+    <!--error message when login-->
+    <p>{{ errorMsg }}</p>
+
+
     <div id="spaces"></div>
     <!--submit button here-->
     <ion-button type="submit" color="tertiary" shape="round" [disabled]="!userForm.valid">Log In</ion-button>

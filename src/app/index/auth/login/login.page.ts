@@ -11,7 +11,6 @@ import { AuthenticationService } from 'src/app/authentication.service';
 export class LoginPage implements OnInit {
 
   userForm: FormGroup;
-  successMsg: string = '';
   errorMsg: string = '';
   
   error_msg = {
@@ -59,11 +58,10 @@ export class LoginPage implements OnInit {
       .then((response) => {
         console.log(response)
         this.errorMsg = "";
-        console.log(value);
+        console.log(value); //show the value current user
         this.router.navigateByUrl('index/home');
       }, error => {
         this.errorMsg = error.message;
-        this.successMsg = "";
       })
   }
 
