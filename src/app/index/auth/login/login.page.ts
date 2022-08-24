@@ -58,7 +58,7 @@ export class LoginPage implements OnInit {
       .then((response) => {
         console.log(response)
         console.log(value); //show the value current user
-        localStorage.setItem('testing',value.email);
+        localStorage.setItem('currentemail',value.email);
         this.router.navigateByUrl('index/home');
       }, error => {
         // this.errorMsg = error.message;

@@ -59,7 +59,7 @@ export class AuthenticationService {
 
   //get user details
   userDetails() {
-    return this.angularFireAuth.user
+    return this.angularFireAuth.currentUser
   }
 
 

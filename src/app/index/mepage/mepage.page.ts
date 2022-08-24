@@ -11,6 +11,7 @@ import { User } from '../auth/auth.model';
 export class MepagePage implements OnInit {
 
   private people: User[];
+  private currentusername: String;
   private userSub: Subscription;
 
   constructor(private authenticationService: AuthenticationService) { }
@@ -18,8 +19,16 @@ export class MepagePage implements OnInit {
   ngOnInit() {
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
+    });
 
-      //users find
+     this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+      // console.log(this.people);
+      this.people.forEach((user) => {
+        if (user.email == localStorage.getItem('currentemail')){
+          this.currentusername = user.username;
+        }
+      });
     });
   }
 

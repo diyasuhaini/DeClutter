@@ -5,7 +5,8 @@
       </ion-col>
       <ion-col *ngFor="let account of people | slice:0:1">
         <img src="assets/img/user.png" alt="Profile image">
-        <h2 class="ion-text-center">{{ account.username }}</h2>
+        <!-- <h2 class="ion-text-center">{{ account.username }}</h2> -->
+        <h2 class="ion-text-center">{{ currentusername }}</h2>
       </ion-col>
       <ion-col class="ion-text-end">
         <ion-icon name="settings-outline" class="cart" routerLink="../settings"></ion-icon>
