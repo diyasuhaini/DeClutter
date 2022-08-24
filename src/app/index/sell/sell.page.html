@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="medium">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -12,12 +12,30 @@
     <form>
     <h3>Your Item</h3>
     <p>Provide a minimum 3 photos. Please provide details of defects, if applicable</p>
-    </form>
+
+    <h3>Title</h3>
+    <ion-input placeholder="Required"></ion-input>      
+    <h3>Item Description</h3>
+    <ion-textarea placeholder="Tell us more about your item. Don’t forget to describe any flaws too!"></ion-textarea>   
+      
+  </form>
   </div>
-    
+  <h2>Details</h2>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="medium">
+  <ion-toolbar class="ion-text-center">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-start" id="brand">
+          Brand
+        </ion-col>
+        <ion-col>
+          <ion-input placeholder="Required" class="ion-text-start"></ion-input>   
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button type="submit" color="tertiary" shape="round" class="listbtn">List this item</ion-button>
   </ion-toolbar>
 </ion-footer>
+ 

@@ -10,13 +10,28 @@ ion-buttons{
 }
 
 h3{
-    padding-top: 20px; padding-left: 15px;
     color: black;
     font-size: 18px;
 }
 
 p{
-    padding-left: 15px; padding-right: 15px;
     font-size: 14px;
     color: black;
+}
+
+.listbtn {
+    width: 60%;
+}
+
+form {
+    width: 90%;
+    margin: auto;
+}
+
+h2, #brand  {
+    padding-left: 20px;
+}
+
+#brand  {
+    padding-top: 12px;
 }
