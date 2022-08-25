@@ -14,6 +14,17 @@
   <!--whitebox 1 start-->
   <ion-card color="medium">
     <!--upload picture here-->
+    <ion-label>Item Photo</ion-label>
+    <p id="myText">Provide a minimum 3 photos. Please provide details of defects, if applicable</p>
+    <div class="uploadFile">
+      <ion-input type="file" style="color: transparent;"></ion-input>
+    </div>
+    <div class="uploadFile">
+      <ion-input type="file" style="color: transparent;"></ion-input>
+    </div>
+    <div class="uploadFile">
+      <ion-input type="file" style="color: transparent;"></ion-input>
+    </div>
     <!--item title here-->
     <ion-label>Title</ion-label>
     <ion-item color="medium">
@@ -31,7 +42,7 @@
   <h2>Details</h2> <!--subtitle-->
 
   <!--whitebox 2 start-->
-  <ion-card color="medium">
+  <ion-card color="medium" class="box2">
     <!--brand-->
     <ion-item color="medium">
       <p>Brand</p>
@@ -40,9 +51,12 @@
     <!--item type-->
     <ion-item color="medium">
       <ion-select interface="popover" placeholder="Select type" color="medium">
-        <ion-select-option value="">Accessories</ion-select-option>
-        <ion-select-option value="">Clothing</ion-select-option>
-        <ion-select-option value="">Shoes</ion-select-option>
+        <ion-select-option value="">Socks</ion-select-option>
+        <ion-select-option value="">Tops & T-Shirts</ion-select-option>
+        <ion-select-option value="">Dresses</ion-select-option>
+        <ion-select-option value="">Skirts</ion-select-option>
+        <ion-select-option value="">Pants</ion-select-option>
+        <ion-select-option value="">Sweaters</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-button type="submit" color="tertiary" shape="round" class="listbtn">List this item</ion-button>
