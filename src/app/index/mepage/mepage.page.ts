@@ -12,6 +12,7 @@ export class MepagePage implements OnInit {
 
   private people: User[];
   private currentusername: String;
+  private currentid: String;
   private userSub: Subscription;
 
   constructor(private authenticationService: AuthenticationService) { }
