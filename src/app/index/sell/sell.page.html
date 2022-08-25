@@ -8,53 +8,46 @@
 </ion-header>
 
 <ion-content color="light">
-  <div color="medium">
-    <h2>Your Item</h2>
-  </div>
-  <div class="whiteBox">
-    <form>
-    <h3>Item Photo</h3>
-    <p>Provide a minimum 3 photos. Please provide details of defects, if applicable</p>
+  <form> <!--form start-->
+  <h2>Your Item</h2> <!--subtitle-->
 
-    <h3>Title</h3>
-    <ion-input placeholder="Required"></ion-input>      
-    <h3>Item Description</h3>
-    <ion-textarea placeholder="Tell us more about your item. Don’t forget to describe any flaws too!"></ion-textarea>   
-      
-  </form>
-  </div>
-  <h2>Details</h2>
-  <div class="whiteBox">
-    <ion-grid>
-      <ion-row>
-        <ion-col class="ion-text-start" id="brand">
-          Brand
-        </ion-col>
-        <ion-col>
-          <ion-input placeholder="Required" class="ion-text-start"></ion-input>   
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="ion-text-start" id="brand">
-          <ion-label>Item Type</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-select interface="action-sheet" placeholder="Select Type" cancelText="Cancel Choice">
-              <ion-select-option value=""></ion-select-option>
-              <ion-select-option value=""></ion-select-option>
-              <ion-select-option value=""></ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-</ion-content>
+  <!--whitebox 1 start-->
+  <ion-card color="medium">
+    <!--upload picture here-->
+    <!--item title here-->
+    <ion-label>Title</ion-label>
+    <ion-item color="medium">
+      <ion-input type="text" placeholder="Required"></ion-input>
+    </ion-item>
+    <br>
+    <!--item description here-->
+    <ion-label>Item Description</ion-label>
+    <ion-item color="medium">
+      <ion-textarea placeholder="Tell us more about your item. Don’t forget to describe any flaws too!"></ion-textarea>
+    </ion-item>
+  </ion-card>
+  <!--whitebox 1 end-->
 
-<ion-footer>
-  <ion-toolbar class="ion-text-center" color="medium">
+  <h2>Details</h2> <!--subtitle-->
+
+  <!--whitebox 2 start-->
+  <ion-card color="medium">
+    <!--brand-->
+    <ion-item color="medium">
+      <p>Brand</p>
+      <ion-input type="text" placeholder="Required"></ion-input>
+    </ion-item>
+    <!--item type-->
+    <ion-item color="medium">
+      <ion-select interface="popover" placeholder="Select type" color="medium">
+        <ion-select-option value="">Accessories</ion-select-option>
+        <ion-select-option value="">Clothing</ion-select-option>
+        <ion-select-option value="">Shoes</ion-select-option>
+      </ion-select>
+    </ion-item>
     <ion-button type="submit" color="tertiary" shape="round" class="listbtn">List this item</ion-button>
-  </ion-toolbar>
-</ion-footer>
+  </ion-card>
+  <!--whitebox 2 end-->
+  </form> <!--form end-->
+</ion-content>
  
