@@ -50,6 +50,10 @@ const routes: Routes = [
   },  {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'item-sold',
+    loadChildren: () => import('./item-sold/item-sold.module').then( m => m.ItemSoldPageModule)
   }
 
 

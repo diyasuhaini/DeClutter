@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">CHECKOUT</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <ion-card color="medium">
+    <p>1 Item</p> <!--item Value {{ }}-->
+    <p>Sold By Thirefter</p> <!--user who sold same item {{ }}-->
+    <div class="wrap">
+      <!--picture here-->
+      <div class="img">
+        <img src="assets/img/jeans.jpg" alt="sold item"> <!--image from user [src]-->
+      </div>
+
+      <!--description here-->
+      <div class="desc">
+        <!--item name-->
+        <div class="textWrap">
+          <div class="left">Blue Jeans cuba try test another one</div>
+          <div class="right">$12.00</div> <!--price of an item-->
+        </div>
+        <!--item brand-->
+        <div class="grey">Levi's</div>
+      </div>
+    </div>
+    <br>
+    <!--line break-->
+    <p>1 Item</p> <!--item Value {{ }}-->
+    <p>Sold By Thirefter</p> <!--user who sold same item {{ }}-->
+    <div class="wrap">
+      <!--picture here-->
+      <div class="img">
+        <img src="assets/img/jeans.jpg" alt="sold item"> <!--image from user [src]-->
+      </div>
+
+      <!--description here-->
+      <div class="desc">
+        <!--item name-->
+        <div class="textWrap">
+          <div class="left">Blue Jeans cuba try test another one</div>
+          <div class="right">$12.00</div> <!--price of an item-->
+        </div>
+        <!--item brand-->
+        <div class="grey">Levi's</div>
+      </div>
+    </div>
+    <br>
+  </ion-card>
+
+  <!--calculation-->
+  <div class="calculationBox">
+    <!--for subtotal-->
+    <div class="subtotal">
+      <div class="lft">Subtotal</div>
+      <div class="rgt">$00.00</div>
+    </div> 
+
+    <!--for shipping-->
+    <div class="shipping">
+      <div class="lft">Shipping</div>
+      <div class="rgt">$00.00</div>
+    </div> 
+
+    <!--for discount-->
+    <div class="discount">
+      <div class="lft">Discount</div>
+      <div class="rgt">$00.00</div>
+    </div> 
+
+    <!--for total-->
+    <div class="total">
+      <div class="lft" style="font-weight: bold;">Total</div>
+      <div class="rgt">$00.00</div>
+    </div> 
+  </div>
+
+  <ion-button shape="round" color="tertiary" routerLink="../checkout">Proceed</ion-button>
+</ion-content>
