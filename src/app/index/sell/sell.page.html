@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content color="light">
-  <form > <!--form start-->
+  <form [formGroup]="sellForm"> <!--form start-->
   <h2>Your Item</h2> <!--subtitle-->
 
   <!--whitebox 1 start-->
@@ -17,24 +17,24 @@
     <ion-label>Item Photo</ion-label>
     <p id="myText">Provide a minimum 3 photos. Please provide details of defects, if applicable</p>
     <div class="uploadFile">
-      <ion-input type="file" style="color: transparent;"></ion-input>
+      <ion-input type="file" style="color: transparent;" formControlName="ïmg1"></ion-input>
     </div>
     <div class="uploadFile">
-      <ion-input type="file" style="color: transparent;"></ion-input>
+      <ion-input type="file" style="color: transparent;" formControlName="ïmg2"></ion-input>
     </div>
     <div class="uploadFile">
-      <ion-input type="file" style="color: transparent;"></ion-input>
+      <ion-input type="file" style="color: transparent;" formControlName="ïmg3"></ion-input>
     </div>
     <!--item title here-->
     <ion-label>Title</ion-label>
     <ion-item color="medium">
-      <ion-input type="text" placeholder="Required"></ion-input>
+      <ion-input type="text" placeholder="Required" formControlName="title"></ion-input>
     </ion-item>
     <br>
     <!--item description here-->
     <ion-label>Item Description</ion-label>
     <ion-item color="medium">
-      <ion-textarea placeholder="Tell us more about your item. Don’t forget to describe any flaws too!"></ion-textarea>
+      <ion-textarea placeholder="Tell us more about your item. Don’t forget to describe any flaws too!" formControlName="description"></ion-textarea>
     </ion-item>
   </ion-card>
   <!--whitebox 1 end-->
@@ -46,11 +46,11 @@
     <!--brand-->
     <ion-item color="medium">
       <p>Brand</p>
-      <ion-input type="text" placeholder="Required"></ion-input>
+      <ion-input type="text" placeholder="Required" formControlName="brand"></ion-input>
     </ion-item>
     <!--item type-->
     <ion-item color="medium">
-      <ion-select interface="popover" placeholder="Select type" color="medium">
+      <ion-select interface="popover" placeholder="Select type" color="medium" formControlName="type">
         <ion-select-option value="sock">Socks</ion-select-option>
         <ion-select-option value="top">Tops & T-Shirts</ion-select-option>
         <ion-select-option value="dress">Dresses</ion-select-option>
