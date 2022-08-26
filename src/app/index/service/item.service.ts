@@ -22,7 +22,14 @@ export class ItemService {
     type: string
   ) {
     set(ref(database, 'item/' + itemid), {
-      
+      vendor: vendor,
+      img1: img1,
+      img2: img2,
+      img3: img3,
+      title: title,
+      description: description,
+      brand: brand,
+      type: type
     });
   }
 
