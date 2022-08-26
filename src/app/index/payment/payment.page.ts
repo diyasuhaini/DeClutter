@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { render } from 'creditcardpayments/creditCardPayments';
 
 @Component({
   selector: 'app-payment',
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentPage implements OnInit {
 
-  constructor() { }
+  constructor() {
+    render({
+      id: "#myPaypalButtons",
+      currency: "SGD",
+      value: "1.00",
+      onApprove: (details) =>{
+        alert("HEHE Success");
+      }
+    });
+   }
 
   ngOnInit() {
   }
