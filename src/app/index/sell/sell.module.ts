@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { SellPageRoutingModule } from './sell-routing.module';
 
 import { SellPage } from './sell.page';
-import { FileSizePipe } from './file-size.pipe';
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import { FileSizePipe } from './file-size.pipe';
     SellPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [SellPage, FileSizePipe]
+  declarations: [SellPage]
 })
 export class SellPageModule {}
