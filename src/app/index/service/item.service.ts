@@ -1,12 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { getDatabase, ref, set } from "firebase/database";
+
+const database = getDatabase();
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  constructor(HttpClient: HttpClient) { }
+  constructor() { }
+
+  postItem(
+    itemid: string,
+    vendor: string,
+    img1: string,
+    img2: string,
+    img3: string,
+    title: string,
+    description: string,
+    brand: string,
+    type: string
+  ) {
+    set(ref(database, 'item/' + itemid), {
+      
+    });
+  }
 
 }
-
