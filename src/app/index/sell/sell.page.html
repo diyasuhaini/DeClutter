@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content color="light">
-  <form [formGroup]="sellForm"> <!--form start-->
+  <form [formGroup]="sellForm" (ngSubmit)="listItem(sellForm.value)"> <!--form start-->
   <h2>Your Item</h2> <!--subtitle-->
 
   <!--whitebox 1 start-->
@@ -17,13 +17,13 @@
     <ion-label>Item Photo</ion-label>
     <p id="myText">Provide a minimum 3 photos. Please provide details of defects, if applicable</p>
     <div class="uploadFile">
-      <ion-input type="file" style="color: transparent;" formControlName="ïmg1"></ion-input>
+      <ion-input type="file" style="color: transparent;" formControlName="img1"></ion-input>
     </div>
     <div class="uploadFile">
-      <ion-input type="file" style="color: transparent;" formControlName="ïmg2"></ion-input>
+      <ion-input type="file" style="color: transparent;" formControlName="img2"></ion-input>
     </div>
     <div class="uploadFile">
-      <ion-input type="file" style="color: transparent;" formControlName="ïmg3"></ion-input>
+      <ion-input type="file" style="color: transparent;" formControlName="img3"></ion-input>
     </div>
     <!--item title here-->
     <ion-label>Title</ion-label>
@@ -59,7 +59,7 @@
         <ion-select-option value="sweater">Sweaters</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button type="submit" color="tertiary" shape="round" class="listbtn">List this item</ion-button>
+    <ion-button type="submit" color="tertiary" shape="round" class="listbtn" [disabled]="!sellForm.valid">List this item</ion-button>
   </ion-card>
   <!--whitebox 2 end-->
   </form> <!--form end-->

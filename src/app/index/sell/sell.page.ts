@@ -54,7 +54,7 @@ export class SellPage implements OnInit {
         message: 'Item image is required' 
       }
     ],
-  }
+  };
 
   constructor(private builder: FormBuilder) { }
 
@@ -82,6 +82,10 @@ export class SellPage implements OnInit {
         Validators.required
       ])),
     })
+  }
+
+  listItem(value){
+    console.table(value);
   }
 
 }
