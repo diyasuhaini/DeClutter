@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { getApp } from '@angular/fire/app';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { ItemService } from '../service/item.service';
+import { AuthenticationService } from 'src/app/authentication.service';
+import { Subscription } from 'rxjs';
+import { User } from '../auth/auth.model';
+import { Router } from '@angular/router';
 
 // get storage from firebase bucket g://
 const storage = getStorage(); 
@@ -14,9 +18,13 @@ const storage = getStorage();
 export class SellPage implements OnInit {
 
   // 
-  img1url: String;
-  img2url: String;
-  img3url: String;
+  private people: User[];
+  private currentusername: String;
+  private cuid: string;
+  private userSub: Subscription;
+  img1url: string;
+  img2url: string;
+  img3url: string;
 
   sellForm: FormGroup;
   errorMsg: String = '';
@@ -66,9 +74,11 @@ export class SellPage implements OnInit {
     ],
   };
 
-  constructor(private builder: FormBuilder) { }
+  constructor(private builder: FormBuilder, private itemService: ItemService, private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
+
+    // Sell Form Validators
     this.sellForm = this.builder.group({
       img1: new FormControl('', Validators.compose([
         Validators.required
@@ -92,10 +102,44 @@ export class SellPage implements OnInit {
         Validators.required
       ])),
     })
+
+    // GETING THE CURRENT USER IDs! ------------------------
+    this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+      this.people.forEach((user) => {
+        if (user.email == localStorage.getItem('currentemail')){
+          this.cuid = user.id;
+        }
+      });
+    });
+    // ----------------------------------------------------
   }
 
-  listItem(value){
-    console.table(value);
+  // for item listing... allow the user to post a new item
+  listItem(item){
+    this.itemService.postItem(
+      item.title + this.cuid,
+      this.cuid,
+      this.img1url,
+      this.img2url,
+      this.img3url,
+      item.title,
+      item.description,
+      item.brand,
+      item.type
+    ).then((response) => {
+      // check if the user already setup payment method
+      // if(alreadysetup){ 
+        this.router.navigateByUrl('index/home');
+      // } else {
+        // this.router.navigateByUrl( to where ever payment method page is );
+      // }
+    }, error => {
+      // check error
+      console.log(error);
+    })
+
+    
   }
 
   uploadImg(value, value2){
@@ -125,6 +169,7 @@ export class SellPage implements OnInit {
     uploadBytes(storageRef, file, metadata).then((snapshot) => {
       console.log('Uploaded a blob or file!');
     });
+    
     // setting url to be pushed for gallery
     if(value) {
      switch(value2){
@@ -139,6 +184,11 @@ export class SellPage implements OnInit {
         break;
      } 
     }
+  }
+
+  //get the item from database
+  ionViewWillEnter(){
+    this.authenticationService.fetchUser().subscribe();
   }
 
 }

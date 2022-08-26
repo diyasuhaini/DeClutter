@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { getDatabase, ref, set } from "firebase/database";
 
+// connection to realtime
 const database = getDatabase();
 
 @Injectable({
@@ -10,7 +11,9 @@ export class ItemService {
 
   constructor() { }
 
+  // Posting item
   postItem(
+    // Data type needed 
     itemid: string,
     vendor: string,
     img1: string,
@@ -20,8 +23,10 @@ export class ItemService {
     description: string,
     brand: string,
     type: string
+    //
   ) {
-    set(ref(database, 'item/' + itemid), {
+    // set is firebase funciton for posting item
+    return set(ref(database, 'item/' + itemid), {
       vendor: vendor,
       img1: img1,
       img2: img2,
@@ -30,7 +35,7 @@ export class ItemService {
       description: description,
       brand: brand,
       type: type
-    });
+    })
   }
 
 }
