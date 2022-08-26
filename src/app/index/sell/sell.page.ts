@@ -30,6 +30,30 @@ export class SellPage implements OnInit {
         message: 'Item image is required' 
       }
     ],
+    'title': [
+      { 
+        type: 'required', 
+        message: 'Item image is required' 
+      }
+    ],
+    'description': [
+      { 
+        type: 'required', 
+        message: 'Item image is required' 
+      }
+    ],
+    'brand': [
+      { 
+        type: 'required', 
+        message: 'Item image is required' 
+      }
+    ],
+    'type': [
+      { 
+        type: 'required', 
+        message: 'Item image is required' 
+      }
+    ],
   }
 
   constructor(private builder: FormBuilder) { }
