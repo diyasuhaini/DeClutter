@@ -9,14 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class PaymentPage implements OnInit {
 
   constructor() {
-    // render({
-    //   id: "#myPaypalButtons",
-    //   currency: "SGD",
-    //   value: "1.00",
-    //   onApprove: (details) =>{
-    //     alert("HEHE Success");
-    //   }
-    // });
+    render({
+      id: "#myPaypalButtons",
+      currency: "SGD",
+      value: "1.00",
+      onApprove: (details) =>{
+        alert("HEHE Success");
+      }
+    });
    }
 
   ngOnInit() {
