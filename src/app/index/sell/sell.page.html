@@ -17,13 +17,16 @@
     <ion-label>Item Photo</ion-label>
     <p id="myText">Provide a minimum 3 photos. Please provide details of defects, if applicable</p>
     <div class="uploadFile">
-      <ion-input type="file" style="color: transparent;" formControlName="img1"></ion-input>
+      <ion-input type="file" style="color: transparent;" id="img1" formControlName="img1" (change)="uploadImg($event, 'img1')"></ion-input>
+      <div *ngIf="img1url">Uploaded</div>
     </div>
     <div class="uploadFile">
-      <ion-input type="file" style="color: transparent;" formControlName="img2"></ion-input>
+      <ion-input type="file" style="color: transparent;" id="img2"  formControlName="img2" (change)="uploadImg($event, 'img2')"></ion-input>
+      <div *ngIf="img2url">Uploaded</div>
     </div>
     <div class="uploadFile">
-      <ion-input type="file" style="color: transparent;" formControlName="img3"></ion-input>
+      <ion-input type="file" style="color: transparent;" id="img3"  formControlName="img3" (change)="uploadImg($event, 'img3')"></ion-input>
+      <div *ngIf="img3url">Uploaded</div>
     </div>
     <!--item title here-->
     <ion-label>Title</ion-label>
