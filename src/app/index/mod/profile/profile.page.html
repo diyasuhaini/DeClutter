@@ -23,7 +23,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button><ion-text color="dark">Edit Profile</ion-text></ion-button>
+          <ion-button class="edit"><ion-text color="dark"><b>Edit Profil</b>e</ion-text></ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -59,3 +59,25 @@
   </ion-grid>
 
 </ion-content>
+
+<ion-footer style="height: 8%;">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button class="tab-button" routerLink="../home">
+          <ion-img style="margin: 0 auto;" src="assets/icon/home-label.png"></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button class="tab-button" routerLink="../inbox">
+          <ion-img style="margin: 10% auto;" src="assets/icon/inbox-label.png"></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button class="tab-button" routerLink="../profile">
+          <ion-img style="margin: 0 auto;" src="assets/icon/profile-label.png"></ion-img>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

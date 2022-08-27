@@ -5,10 +5,6 @@ import { ModPage } from './mod.page';
 
 const routes: Routes = [
   {
-    path: 'tab',
-    loadChildren: () => import('./tab/tab.module').then( m => m.TabPageModule)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -23,7 +19,16 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
+  },
+  {
+    path: 'products',
+    loadChildren: () => import('./products/products.module').then( m => m.ProductsPageModule)
+  },
+  {
+    path: 'orders',
+    loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule)
   }
+
   
 ];
 
