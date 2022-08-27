@@ -15,20 +15,46 @@
 
         <ion-card color="primary" routerLink="../users">
           <ion-card-content>
-            <ion-img></ion-img>
-            <ion-text color="dark">Users</ion-text>
+            <ion-grid class="grid-center">
+              <ion-row>
+                <ion-col size="2">
+                  <ion-img style="height:30px;margin:0;" src="assets/icon/users.png"></ion-img>
+                </ion-col>
+                <ion-col>
+                  <ion-text style="font-size: 1.2em;" color="dark"><b>Users</b></ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-card-content>
         </ion-card>
 
-        <ion-card color="primary">
+        <ion-card color="primary" routerLink="../products">
           <ion-card-content>
-            <ion-text color="dark">Products</ion-text>
+            <ion-grid class="grid-center">
+              <ion-row>
+                <ion-col size="2">
+                  <ion-img style="height:30px;margin:0;" src="assets/icon/products.png"></ion-img>
+                </ion-col>
+                <ion-col>
+                  <ion-text style="font-size: 1.2em;" color="dark"><b>Products</b></ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-card-content>
         </ion-card>
 
-        <ion-card color="primary">
+        <ion-card color="primary" routerLink="../orders">
           <ion-card-content>
-            <ion-text color="dark">Orders</ion-text>
+            <ion-grid class="grid-center">
+              <ion-row>
+                <ion-col size="2">
+                  <ion-img style="height:30px;margin:0;" src="assets/icon/orders.png"></ion-img>
+                </ion-col>
+                <ion-col>
+                  <ion-text style="font-size: 1.2em;" color="dark"><b>Orders</b></ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -80,3 +106,26 @@
   </ion-fab> -->
 
 </ion-content>
+
+<ion-footer style="height: 8%;">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button routerLink="../home">
+          <ion-img style="margin: 0 auto;" src="assets/icon/home-label.png"></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button routerLink="../inbox">
+          <ion-img style="margin: 10% auto;" src="assets/icon/inbox-label.png"></ion-img>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button routerLink="../profile">
+          <ion-img style="margin: 0 auto;" src="assets/icon/profile-label.png"></ion-img>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+
