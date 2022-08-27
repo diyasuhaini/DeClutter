@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { getDatabase, ref, set } from "firebase/database";
+import { child, get, getDatabase, ref, set } from "firebase/database";
+import { environment } from 'src/environments/environment';
+import { initializeApp } from 'firebase/app';
 
+// initialize the application allow new database apit to be used
+initializeApp(environment.firebaseConfig);
 // connection to realtime
 const database = getDatabase();
 
@@ -36,6 +40,14 @@ export class ItemService {
       brand: brand,
       type: type
     })
+  }
+
+  async myItems(){
+    // choose which database bucket to be reference at
+    const dbref = ref(database, 'item/');
+    // get values
+    const snapshot = await get((dbref));
+    return snapshot.val();
   }
 
 }
