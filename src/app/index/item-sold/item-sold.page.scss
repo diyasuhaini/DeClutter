@@ -10,11 +10,11 @@ ion-label{
 
 ion-button{
     display: block; width: 40%; height: 40px;
-    margin: auto; margin-bottom: 40px; margin-top: 30px;
+    margin: auto; margin-bottom: 40px;
 }
 
 ion-card{
-    margin-top: 30px; margin-bottom: 30px;
+    margin-top: 30px;
     height: auto;
 }
 
@@ -43,6 +43,35 @@ img{
 
 .desc{
     flex: 70%; height: 100%;
+}
+
+//for discount code
+.codeWrap{
+    display: flex;
+    flex: wrap; margin: auto;
+    margin-top: 30px;
+    width: 90%; height: 6%;
+}
+
+.codeLft{
+    flex: 70%; height: 100%;
+}
+
+.codeRgt{
+    flex: 30%; height: 100%;
+}
+
+.codeInput{
+    width: 80%; margin: auto;
+    border-radius: 20px;
+    border: 1px solid rgb(209, 126, 57);
+    margin-left: 0px;
+}
+
+.codeBtn{
+    margin-top: 5px;
+    width: 90px; height: 30px;
+    font-size: 13px;
 }
 
 //for text
