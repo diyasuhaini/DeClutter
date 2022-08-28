@@ -1,9 +1,56 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>products</ion-title>
+<ion-header color="medium">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" routerLink="../home">
+      <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title color="dark"><b>Products</b></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div color="medium">
+    <ion-searchbar color="medium"></ion-searchbar>
+  </div>
 
+  <div style="display: flex; flex-wrap: wrap;margin: 12px;">
+
+    <div style="width: 45%; margin: 2.5%;">
+      <ion-grid>
+        <ion-row>
+          <ion-col style="padding: 0;">
+            <div style="border: 1px solid black;border-radius: 15px;overflow: hidden;">
+              <ion-img src="assets/img/jeans.jpg"></ion-img>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="padding: 3px 0;"><ion-text style="font-size: 1.2rem;"><b>B$12.00</b></ion-text></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="padding: 0;"><ion-text color="light">Levi’s . UK 6</ion-text></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    
+    <div style="width: 45%; margin: 2.5%;">
+      <ion-grid>
+        <ion-row>
+          <ion-col style="padding: 0;">
+            <div style="border: 1px solid black;border-radius: 15px;overflow: hidden;">
+              <ion-img src="assets/img/shoes.png"></ion-img>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="padding: 3px 0;"><ion-text style="font-size: 1.2rem;"><b>B$20.00</b></ion-text></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="padding: 0;"><ion-text color="light">Converse . US 8</ion-text></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+  
 </ion-content>
