@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Item Details</ion-title>
+    <ion-icon name="bag-outline" slot="end" routerLink="../shopping-bag"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <!--item details picture-->
+  <div class="bigPicture">
+    <ion-img src="assets/img/jeans.jpg" alt="item" class="bigPic"></ion-img>
+  </div>
+
+  <!--item details content-->
+  <div class="itemWrap">
+    <!--left-->
+    <div class="itemLeft">
+      <ion-img src="assets/img/profile-round.png" class="profilePic"></ion-img>
+    </div>
+
+    <!--right-->
+    <div class="itemRight">
+      <p>Username</p>
+    </div>
+  </div>
+
+  <!--title-->
+  <p class="titleText">Title here</p>
+  <p class="priceTag">Price tag here</p>
+
+  <!--more info-->
+  <div class="infoWrap">
+    <!--left side-->
+    <div class="infoLeft">
+      <p>Brand</p>
+      <p>Size</p>
+      <p>Condition</p>
+      <p>Colour</p>
+      <p>Description</p>
+    </div>
+    <!--right side-->
+    <div class="infoRight">
+      <p>Brand</p>
+      <p>Size</p>
+      <p>Condition</p>
+      <p>Colour</p>
+      <p>Description</p>
+    </div>
+  </div>
+</ion-content>
+
+<!--footer here-->
+<ion-footer>
+  <ion-toolbar color="medium">
+    <div class="footerWrap">
+      <div class="fLeft">
+        <ion-icon name="heart-outline" class="likeIcon"></ion-icon>
+        <ion-icon name="checkmark-outline" class="checkIcon"></ion-icon>
+      </div>
+      <div class="fRight">
+        <ion-button color="tertiary" class="buyBtn" shape="round">Buy Now</ion-button>
+      </div>
+    </div>
+
+    <!-- <div class="icons">
+      <ion-icon name="heart-outline" class="likeIcon"></ion-icon>
+      <ion-icon name="checkmark-outline" class="checkIcon"></ion-icon>
+    </div>
+    <ion-button color="tertiary" class="buyBtn" shape="round">Buy Now</ion-button> -->
+  </ion-toolbar>
+</ion-footer>

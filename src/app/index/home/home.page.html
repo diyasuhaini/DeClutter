@@ -13,6 +13,13 @@
   <h3>Picked out just for you!</h3>
 
   <!--item list-->
+  <div class="itemList" *ngFor="let item of item | slice:0:3" routerLink="../item-details">
+    <!--image here-->
+    <ion-img [src]="item.img1" class="itemPic"></ion-img>
+    <!--content here-->
+    <div class="titleText">{{ item.name }}</div>
+    <div class="priceTag">${{ item.price }} BND</div>
+  </div>
 </ion-content>
 
 <ion-footer>

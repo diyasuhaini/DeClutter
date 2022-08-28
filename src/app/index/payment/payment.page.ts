@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { render } from 'creditcardpayments/creditCardPayments';
+import { render } from 'creditcardpayments/creditCardPayments';
 
 @Component({
   selector: 'app-payment',
