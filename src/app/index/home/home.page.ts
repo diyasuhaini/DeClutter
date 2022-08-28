@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../service/item.service';
 import { Item } from '../service/item.model';
-import { User } from '../auth/auth.model';
-import { Subscription } from 'rxjs';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,19 +16,6 @@ export class HomePage implements OnInit {
   ngOnInit() {
     
   }
-
-  // itemDetail(){
-  //   const navigationExtras: NavigationExtras = {
-  //     state: {
-  //       user:{
-  //         id: 69,
-  //         name: "sigzynine",
-  //       },
-  //     },
-  //   };
-  //   this.router.navigateByUrl('../item-details', navigationExtras);
-    
-  // }
     
   ionViewWillEnter(){
     this.itemService.myItems().then((item) => {
