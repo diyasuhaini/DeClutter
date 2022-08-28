@@ -52,6 +52,7 @@ export class MepagePage implements OnInit {
           "vendor": item[key].vendor, 
           "brand": item[key].brand,
           "description": item[key].description,
+          "price": item[key].price.toFixed(2),
           "name": item[key].title});
         // }
       })

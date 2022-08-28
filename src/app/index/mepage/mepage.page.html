@@ -40,25 +40,25 @@
     <ion-segment value="listing" class="segments">
       
       <ion-segment-button value="listing">
-        <ion-label>
+        <ion-label color="dark">
           Listings 
         </ion-label>
       </ion-segment-button>
 
       <ion-segment-button value="sold">
-        <ion-label>
+        <ion-label color="dark">
           Sold 
         </ion-label>
       </ion-segment-button>
     
       <ion-segment-button value="bought">
-        <ion-label>
+        <ion-label color="dark">
           Bought
         </ion-label>
       </ion-segment-button>
       
       <ion-segment-button value="earn">
-        <ion-label>
+        <ion-label color="dark">
           Earns 
         </ion-label>
       </ion-segment-button>
@@ -85,8 +85,8 @@
           <ion-img class="image" [src]="item.img1"></ion-img>
         </div>
         <div class="postContent">
-          <div class="ion-text-center" id="vendorText">{{ item.brand }}</div>
-          <div class="ion-text-center">{{ item.name }}</div>
+          <div class="ion-text-center" id="vendorText">{{ item.name }}</div>
+          <div class="ion-text-center">${{ item.price }} BND</div>
         </div>
       </div>
       <!-- <ion-grid>
