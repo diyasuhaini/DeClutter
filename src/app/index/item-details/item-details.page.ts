@@ -12,4 +12,5 @@ export class ItemDetailsPage implements OnInit {
   ngOnInit() {
   }
 
+
 }
