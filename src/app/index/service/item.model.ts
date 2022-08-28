@@ -10,6 +10,7 @@ export class Item{
         public img3: string,
         public title: string,
         public description: string,
+        public price: string,
         public brand: string,
         public type: string
     ){}

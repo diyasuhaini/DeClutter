@@ -79,7 +79,17 @@
       </ion-row>
     </ion-grid>
     <div style="display: inline;">
-      <ion-grid>
+      <div class="post" *ngFor="let item of item">
+        <!--post-->
+        <div class="postImg">
+          <ion-img class="image" [src]="item.img1"></ion-img>
+        </div>
+        <div class="postContent">
+          <div class="ion-text-center" id="vendorText">{{ item.brand }}</div>
+          <div class="ion-text-center">{{ item.name }}</div>
+        </div>
+      </div>
+      <!-- <ion-grid>
         <ion-row no-padding>
           <ion-col *ngFor="let item of item" >
               <div class="ion-text-center item-align-center image" style="width: 90px; height: 90px;margin: auto; ">
@@ -89,10 +99,8 @@
           </ion-col>
 
         </ion-row>
-</ion-grid>
-<div class="ion-text-center">{{ currentid }}</div>
-      
-
+      </ion-grid>
+      <div class="ion-text-center">{{ currentid }}</div> -->
     </div>
   </div>
 </ion-content>

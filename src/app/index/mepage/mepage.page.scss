@@ -94,11 +94,33 @@ img{
     border-radius: 50%;
 }
 
-.image {
-    margin: auto;
+.image::part(image){
+    display: block;
+    margin: auto; margin-top: 5px;
+    max-width: 110px;
+    border: 1px solid;
 }
 
 .cart{
     display: inline-block;
     width: 25px; height: 25px;
+}
+
+.post{
+    display: flex;
+    flex: wrap;
+    width: 95%; height: 15vh;
+    margin: auto;
+}
+
+.postImg{
+    flex: 40%; height: 100%;
+}
+
+.postContent{
+    flex: 60%; height: 100%;
+}
+
+#vendorText{
+    margin-top: 40px;
 }

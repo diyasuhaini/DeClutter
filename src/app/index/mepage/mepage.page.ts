@@ -47,7 +47,12 @@ export class MepagePage implements OnInit {
         console.log(item[key].vendor + " item[key].vendor");
         console.log( this.currentid+ " this.currentid");
         // if(item[key].vendor == this.currentid){
-          pusheditem.push({"title": item[key].title, "img1": item[key].img1, "vendor": item[key].vendor});
+          pusheditem.push({"title": item[key].title, 
+          "img1": item[key].img1, 
+          "vendor": item[key].vendor, 
+          "brand": item[key].brand,
+          "description": item[key].description,
+          "name": item[key].title});
         // }
       })
       this.item = pusheditem;

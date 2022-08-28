@@ -25,6 +25,7 @@ export class ItemService {
     img3: string,
     title: string,
     description: string,
+    price: string,
     brand: string,
     type: string
     //
@@ -37,6 +38,7 @@ export class ItemService {
       img3: img3,
       title: title,
       description: description,
+      price: price,
       brand: brand,
       type: type
     })
