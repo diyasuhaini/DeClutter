@@ -19,6 +19,11 @@ export class MepagePage implements OnInit {
   private userSub: Subscription;
   private item: Item[];
   private itemlist: any[];
+  segmentValue: String = "listing";
+
+  segmentChanged(e){
+    this.segmentValue = e.detail.value;
+  }
 
   constructor(private authenticationService: AuthenticationService, private itemService: ItemService) { }
 

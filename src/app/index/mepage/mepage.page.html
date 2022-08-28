@@ -37,7 +37,7 @@
 
   <div class="ctrcont">
   
-    <ion-segment value="listing" class="segments">
+    <ion-segment value="listing" class="segments" (ionChange)="segmentChanged($event)" value="listing">
       
       <ion-segment-button value="listing">
         <ion-label color="dark">
@@ -78,7 +78,9 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <div style="display: inline;">
+
+    <!-- Listing segment -------------------------------------------- -->
+    <div style="display: inline;" *ngIf="segmentValue == 'listing'">
       <div class="post" *ngFor="let item of item">
         <!--post-->
         <div class="postImg">
@@ -89,19 +91,28 @@
           <div class="ion-text-center">${{ item.price }} BND</div>
         </div>
       </div>
-      <!-- <ion-grid>
-        <ion-row no-padding>
-          <ion-col *ngFor="let item of item" >
-              <div class="ion-text-center item-align-center image" style="width: 90px; height: 90px;margin: auto; ">
-                <ion-img class="image" [src]="item.img1" ></ion-img>
-              </div>
-              <div class="ion-text-center">{{ item.vendor }}</div>
-          </ion-col>
-
-        </ion-row>
-      </ion-grid>
-      <div class="ion-text-center">{{ currentid }}</div> -->
     </div>
+  <!-- Listing segment -------------------------------------------- -->
+
+  <!-- sold segment -------------------------------------------- -->
+  <div style="display: inline;" *ngIf="segmentValue == 'sold'">
+    
+  </div>
+
+  <!-- sold segment -------------------------------------------- -->
+
+  <!-- bought segment -------------------------------------------- -->
+  <div style="display: inline;" *ngIf="segmentValue == 'bought'">
+    
+  </div>
+
+  <!-- bought segment -------------------------------------------- -->
+
+  <!-- earn segment -------------------------------------------- -->
+  <div style="display: inline;" *ngIf="segmentValue == 'earn'">
+  
+  </div>
+  <!-- earn segment -------------------------------------------- -->
   </div>
 </ion-content>
 
