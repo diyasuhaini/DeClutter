@@ -11,7 +11,7 @@
 <ion-content color="medium">
   <!--item details picture-->
   <div class="bigPicture">
-    <ion-img src="assets/img/jeans.jpg" alt="item" class="bigPic"></ion-img>
+    <ion-img [src]="item[0].img1" alt="item" class="bigPic"></ion-img>
   </div>
 
   <!--item details content-->
@@ -28,8 +28,8 @@
   </div>
 
   <!--title-->
-  <p class="titleText">Title here</p>
-  <p class="priceTag">Price tag here</p>
+  <p class="titleText">{{ item[0].title }}</p>
+  <p class="priceTag">$ {{ item[0].price }}</p>
 
   <!--more info-->
   <div class="infoWrap">
@@ -43,11 +43,11 @@
     </div>
     <!--right side-->
     <div class="infoRight">
-      <p>Brand</p>
+      <p>{{ item[0].brand }}</p>
       <p>Size</p>
       <p>Condition</p>
       <p>Colour</p>
-      <p>Description</p>
+      <p>{{ item[0].description }}</p>
     </div>
   </div>
 </ion-content>
