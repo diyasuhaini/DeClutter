@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { child, get, getDatabase, ref, set } from "firebase/database";
+import { get, getDatabase, ref, set } from "firebase/database";
 import { environment } from 'src/environments/environment';
 import { initializeApp } from 'firebase/app';
+import { AuthenticationService } from 'src/app/authentication.service';
+import { Subscription } from 'rxjs';
+import { User } from '../auth/auth.model';
 
 // initialize the application allow new database apit to be used
 initializeApp(environment.firebaseConfig);
@@ -13,7 +16,11 @@ const database = getDatabase();
 })
 export class ItemService {
 
-  constructor() { }
+  private userSub: Subscription;
+  private people: User[];
+  private currentusername: String;
+  private currentid: String;
+  constructor(private authenticationService: AuthenticationService) { }
 
   // Posting item
   postItem(
@@ -44,12 +51,78 @@ export class ItemService {
     })
   }
 
+
+  getid(){
+    this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+      console.log("this.people");
+      this.people.forEach((user) => {
+        if (user.email == localStorage.getItem('currentemail')){
+          this.currentid = user.id;
+        }
+      });
+    });
+    return this.currentid
+  }
+
+  // getting all item except current user
   async myItems(){
+    this.getid()
     // choose which database bucket to be reference at
+    var itemcontainer = [];
     const dbref = ref(database, 'item/');
     // get values
     const snapshot = await get((dbref));
-    return snapshot.val();
+    var item = snapshot.val();
+    
+    Object.keys(item).forEach((key) => {
+      if(item[key].vendor != this.currentid){
+        
+        itemcontainer.push({
+          "title": item[key].title, 
+          "img1": item[key].img1, 
+          "vendor": item[key].vendor, 
+          "brand": item[key].brand,
+          "description": item[key].description,
+          "price": item[key].price.toFixed(2),
+          "name": item[key].title
+        });
+      }
+    });
+    return itemcontainer
+
   }
+
+  // get current user listed item
+  async getVendorItems(){
+    this.getid()
+    // choose which database bucket to be reference at
+    var itemcontainer = [];
+    const dbref = ref(database, 'item/');
+    // get values
+    const snapshot = await get((dbref));
+    var item = snapshot.val();
+    
+    Object.keys(item).forEach((key) => {
+      if(item[key].vendor == this.currentid){
+        
+        itemcontainer.push({
+          "title": item[key].title, 
+          "img1": item[key].img1, 
+          "vendor": item[key].vendor, 
+          "brand": item[key].brand,
+          "description": item[key].description,
+          "price": item[key].price.toFixed(2),
+          "name": item[key].title
+        });
+      }
+    });
+    return itemcontainer
+  }
+
+  
+
+
+  
 
 }

@@ -45,39 +45,36 @@ export class MepagePage implements OnInit {
     });
     // retriving the posts
     
-    this.itemService.myItems().then((item) => {
-      var pusheditem = [];
-      console.log(item);
-      Object.keys(item).forEach((key) => {
-        console.log(item[key].vendor + " item[key].vendor");
-        console.log( this.currentid+ " this.currentid");
-        // if(item[key].vendor == this.currentid){
-          pusheditem.push({"title": item[key].title, 
-          "img1": item[key].img1, 
-          "vendor": item[key].vendor, 
-          "brand": item[key].brand,
-          "description": item[key].description,
-          "price": item[key].price.toFixed(2),
-          "name": item[key].title});
-        // }
-      })
-      this.item = pusheditem;
-      
-      // console.table(this.item);
-    }, error => {
-      // check error
-      console.log(error);
-    });
-    }
+    // this.itemService.myItems().then((item) => {
+    //   var pusheditem = [];
+    //   console.table(item + "item");
+    //   Object.keys(item).forEach((key) => {
+    //     console.log(item[key].data + " item[key]");
+    //     console.log(item[key].vendor + " item[key].vendor");
+    //     console.log( this.currentid+ " this.currentid");
+    //     // if(item[key].vendor == this.currentid){
+    //       pusheditem.push({"title": item[key].title, 
+    //       "img1": item[key].img1, 
+    //       "vendor": item[key].vendor, 
+    //       "brand": item[key].brand,
+    //       "description": item[key].description,
+    //       "price": item[key].price.toFixed(2),
+    //       "name": item[key].title});
+    //     // }
+    //   })
+    //   this.item = pusheditem;
+    
+  }
 
 
   //get the item from database
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();
-  }
-
-  filter(value2){
-    return value2 == this.currentid;
+    this.itemService.getVendorItems().then((item) => {
+      this.item = item;
+    }, error => {
+      console.log(error);
+    });
   }
 
   
