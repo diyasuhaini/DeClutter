@@ -182,23 +182,47 @@ export class ItemService {
   }
 
   async retrieveCart(){
-    this.userSub = this.authenticationService.$users.subscribe(users => {
-      this.people = users;
-    });
+    // this.userSub = this.authenticationService.$users.subscribe(users => {
+    //   this.people = users;
+    // });
 
-     this.userSub = this.authenticationService.$users.subscribe(users => {
-      this.people = users;
-      this.people.forEach((user) => {
-        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
-          this.currentid = user.id;
-        }
-      });
-    });
-    const dbref = ref(database, 'shopping-bag/' + this.currentid);
+    //  this.userSub = this.authenticationService.$users.subscribe(users => {
+    //   this.people = users;
+    //   this.people.forEach((user) => {
+    //     if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
+    //       this.currentid = user.id;
+    //     }
+    //   });
+    // });
+    var currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'shopping-bag/');
     // get values
     const snapshot = await get((dbref));
     var item = snapshot.val();
-    console.log(item);
+    console.table(item);
+    var cont = [];
+    item[currentid].forEach((item) => {
+      cont.push(item);
+    })
+    const dbref2 = ref(database, 'item/');
+    const snapshot2 = await get((dbref2));
+    var item2 = snapshot2.val();
+
+    console.table(item2);
+    var cont3 = [];
+    Object.keys(item2).forEach((key) => {
+      cont.forEach((item) => {
+        if (key == item) {
+          cont3.push(item2[key]);
+          console.table(item2[key]);
+        }
+      })
+
+      
+    })
+    console.table(cont3);
+    return cont3;
+
   }
 
   

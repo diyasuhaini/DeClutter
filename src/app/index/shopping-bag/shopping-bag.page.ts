@@ -25,6 +25,8 @@ export class ShoppingBagPage implements OnInit {
   private people: User[];
   private currentid: string;
   private item: Item[];
+  number1: number = 0;
+  
 
   segmentChanged(e){
     console.log(e.detail.value)
@@ -62,7 +64,12 @@ export class ShoppingBagPage implements OnInit {
 
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();
-    this.itemService.retrieveCart();
+    this.itemService.retrieveCart().then((cart) => {
+      this.item = cart;
+    })
+    console.table(this.item);
+    this.number1 = this.item.length;
+    console.log(this.number1);
   }
 
 }
