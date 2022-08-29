@@ -13,6 +13,7 @@ export class Item{
         public price: string,
         public size: string,
         public color: string,
+        public categories: string,
         public brand: string,
         public type: string
     ){}

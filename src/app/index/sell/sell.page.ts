@@ -60,6 +60,24 @@ export class SellPage implements OnInit {
         message: 'Item description is required' 
       }
     ],
+    'price': [
+      { 
+        type: 'required', 
+        message: 'Item price is required' 
+      }
+    ],
+    'color': [
+      { 
+        type: 'required', 
+        message: 'Item color is required' 
+      }
+    ],
+    'categories': [
+      { 
+        type: 'required', 
+        message: 'Item categories is required' 
+      }
+    ],
     'brand': [
       { 
         type: 'required', 
@@ -104,6 +122,9 @@ export class SellPage implements OnInit {
       color: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      categories: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
       brand: new FormControl('', Validators.compose([
         Validators.required
       ])),
@@ -137,6 +158,7 @@ export class SellPage implements OnInit {
       item.price,
       item.size,
       item.color,
+      item.categories,
       item.brand,
       item.type
     ).then((response) => {
