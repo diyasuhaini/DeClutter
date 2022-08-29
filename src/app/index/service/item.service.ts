@@ -157,7 +157,7 @@ export class ItemService {
     return itemcontainer
   }
 
-   async addtoCart(currentid, title, vendor) {
+  async addtoCart(currentid, title, vendor) {
     const dbref = ref(database, 'shopping-bag/');
     // get values
     const snapshot = await get((dbref));
@@ -179,6 +179,26 @@ export class ItemService {
     }
 
   
+  }
+
+  async retrieveCart(){
+    this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+    });
+
+     this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+      this.people.forEach((user) => {
+        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
+          this.currentid = user.id;
+        }
+      });
+    });
+    const dbref = ref(database, 'shopping-bag/' + this.currentid);
+    // get values
+    const snapshot = await get((dbref));
+    var item = snapshot.val();
+    console.log(item);
   }
 
   
