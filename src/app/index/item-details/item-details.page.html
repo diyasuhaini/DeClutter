@@ -12,12 +12,17 @@
   <!--item details picture-->
   <div class="bigPicture">
     <ion-slides [options]="slideOpts">
+      <!--for picture 1-->
       <ion-slide>
         <ion-img [src]="item[0].img1" alt="item" class="bigPic"></ion-img>
       </ion-slide>
+
+      <!--for picture 2-->
       <ion-slide>
         <ion-img [src]="item[0].img2" alt="item" class="bigPic"></ion-img>
       </ion-slide>
+
+      <!--for picture 3-->
       <ion-slide>
         <ion-img [src]="item[0].img3" alt="item" class="bigPic"></ion-img>
       </ion-slide>
@@ -63,7 +68,7 @@
     <div class="footerWrap">
       <div class="fLeft">
         <ion-icon name="heart-outline" class="likeIcon"></ion-icon>
-        <ion-icon name="chatbubble-ellipses-outline" class="checkIcon"></ion-icon>
+        <ion-icon name="chatbubble-ellipses-outline" class="checkIcon" routerLink="../reviews"></ion-icon>
       </div>
       <div class="fRight">
         <ion-button color="tertiary" class="buyBtn" shape="round">Add to Cart</ion-button>

@@ -5,6 +5,7 @@ import { initializeApp } from 'firebase/app';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Subscription } from 'rxjs';
 import { User } from '../auth/auth.model';
+import { serialize } from 'v8';
 
 // initialize the application allow new database apit to be used
 initializeApp(environment.firebaseConfig);
@@ -33,6 +34,7 @@ export class ItemService {
     title: string,
     description: string,
     price: string,
+    size: string,
     brand: string,
     type: string
     //
@@ -46,6 +48,7 @@ export class ItemService {
       title: title,
       description: description,
       price: price,
+      size: size,
       brand: brand,
       type: type
     })
@@ -95,6 +98,7 @@ export class ItemService {
           "brand": item[key].brand,
           "description": item[key].description,
           "price": item[key].price.toFixed(2),
+          "size": item[key].size,
           "name": item[key].title
         });
       }
@@ -125,6 +129,7 @@ export class ItemService {
           "brand": item[key].brand,
           "description": item[key].description,
           "price": item[key].price.toFixed(2),
+          "size": item[key].size,
           "name": item[key].title
         });
       }

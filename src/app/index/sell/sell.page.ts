@@ -98,6 +98,9 @@ export class SellPage implements OnInit {
       price: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      size: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
       brand: new FormControl('', Validators.compose([
         Validators.required
       ])),
@@ -129,6 +132,7 @@ export class SellPage implements OnInit {
       item.title,
       item.description,
       item.price,
+      item.size,
       item.brand,
       item.type
     ).then((response) => {
