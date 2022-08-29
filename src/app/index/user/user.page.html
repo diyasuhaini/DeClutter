@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-icon slot="end" name="settings-outline"></ion-icon>
+    <ion-icon slot="end" name="bag-outline" routerLink="../shopping-bag"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <!--user profile pic-->
+  <div class="profilePic">
+    <ion-img src="assets/img/user.png" alt="profile picture of user"></ion-img>
+  </div>
+  <!--username-->
+  <div class="bigName">Username</div>
+  <!--button follow and message here-->
+  <div class="btnWrap">
+    <div class="follow">
+      <ion-button class="followBtn" color="tertiary" shape="round">Follow</ion-button>
+    </div>
+    <div class="message">
+      <ion-button class="messageBtn" color="medium">Message</ion-button>
+    </div>
+  </div>
+</ion-content>

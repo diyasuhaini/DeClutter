@@ -101,6 +101,9 @@ export class SellPage implements OnInit {
       size: new FormControl('', Validators.compose([
         Validators.required
       ])),
+      color: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
       brand: new FormControl('', Validators.compose([
         Validators.required
       ])),
@@ -133,6 +136,7 @@ export class SellPage implements OnInit {
       item.description,
       item.price,
       item.size,
+      item.color,
       item.brand,
       item.type
     ).then((response) => {

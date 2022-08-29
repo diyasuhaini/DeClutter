@@ -30,6 +30,7 @@ export class ItemDetailsPage implements OnInit {
       description: routerState.description,
       price: routerState.price,
       size: routerState.size,
+      color: routerState.color,
       brand: routerState.brand,
       type: routerState.type
     }];

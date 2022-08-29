@@ -35,6 +35,7 @@ export class ItemService {
     description: string,
     price: string,
     size: string,
+    color: string,
     brand: string,
     type: string
     //
@@ -49,6 +50,7 @@ export class ItemService {
       description: description,
       price: price,
       size: size,
+      color: size,
       brand: brand,
       type: type
     })
@@ -99,6 +101,7 @@ export class ItemService {
           "description": item[key].description,
           "price": item[key].price.toFixed(2),
           "size": item[key].size,
+          "color": item[key].color,
           "name": item[key].title
         });
       }
@@ -130,6 +133,7 @@ export class ItemService {
           "description": item[key].description,
           "price": item[key].price.toFixed(2),
           "size": item[key].size,
+          "color": item[key].color,
           "name": item[key].title
         });
       }
