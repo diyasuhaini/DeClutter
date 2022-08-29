@@ -19,7 +19,7 @@ export class SellPage implements OnInit {
 
   // 
   private people: User[];
-  private currentusername: String;
+  private currentusername: string;
   private cuid: string;
   private userSub: Subscription;
   img1url: string;
@@ -137,8 +137,9 @@ export class SellPage implements OnInit {
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
       this.people.forEach((user) => {
-        if (user.email == localStorage.getItem('currentemail')){
+        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
           this.cuid = user.id;
+          this.currentusername = user.username;
         }
       });
     });
@@ -150,6 +151,7 @@ export class SellPage implements OnInit {
     this.itemService.postItem(
       item.title + this.cuid,
       this.cuid,
+      this.currentusername,
       this.img1url,
       this.img2url,
       this.img3url,

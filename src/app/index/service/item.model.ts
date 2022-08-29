@@ -5,6 +5,7 @@ export class Item{
     constructor(
         public itemid: string,
         public vendor: string,
+        public username: string,
         public img1: string,
         public img2: string,
         public img3: string,

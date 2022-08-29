@@ -35,36 +35,19 @@ export class MepagePage implements OnInit {
 
      this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
-      console.log("this.people");
       this.people.forEach((user) => {
-        if (user.email == localStorage.getItem('currentemail')){
+        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
           this.currentusername = user.username;
           this.currentid = user.id;
         }
       });
     });
-    // retriving the posts
-    
-    // this.itemService.myItems().then((item) => {
-    //   var pusheditem = [];
-    //   console.table(item + "item");
-    //   Object.keys(item).forEach((key) => {
-    //     console.log(item[key].data + " item[key]");
-    //     console.log(item[key].vendor + " item[key].vendor");
-    //     console.log( this.currentid+ " this.currentid");
-    //     // if(item[key].vendor == this.currentid){
-    //       pusheditem.push({"title": item[key].title, 
-    //       "img1": item[key].img1, 
-    //       "vendor": item[key].vendor, 
-    //       "brand": item[key].brand,
-    //       "description": item[key].description,
-    //       "price": item[key].price.toFixed(2),
-    //       "name": item[key].title});
-    //     // }
-    //   })
-    //   this.item = pusheditem;
     
   }
+
+  
+
+  
 
 
   //get the item from database

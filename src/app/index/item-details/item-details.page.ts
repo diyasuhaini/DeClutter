@@ -23,6 +23,7 @@ export class ItemDetailsPage implements OnInit {
     this.item = [{
       itemid: "",
       vendor: routerState.vendor,
+      username: routerState.username,
       img1: routerState.img1,
       img2: routerState.img2,
       img3: routerState.img3,

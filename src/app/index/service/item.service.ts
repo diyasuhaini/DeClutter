@@ -28,6 +28,7 @@ export class ItemService {
     // Data type needed 
     itemid: string,
     vendor: string,
+    username: string,
     img1: string,
     img2: string,
     img3: string,
@@ -44,6 +45,7 @@ export class ItemService {
     // set is firebase funciton for posting item
     return set(ref(database, 'item/' + itemid), {
       vendor: vendor,
+      username: username,
       img1: img1,
       img2: img2,
       img3: img3,
@@ -62,10 +64,10 @@ export class ItemService {
   getid(){
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
-      console.log("this.people");
       this.people.forEach((user) => {
-        if (user.email == localStorage.getItem('currentemail')){
+        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
           this.currentid = user.id;
+          this.currentusername = user.username;
         }
       });
     });
@@ -76,10 +78,10 @@ export class ItemService {
   async myItems(){
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
-      console.log("this.people");
       this.people.forEach((user) => {
-        if (user.email == localStorage.getItem('currentemail')){
+        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
           this.currentid = user.id;
+          this.currentusername = user.username;
         }
       });
     });
@@ -98,7 +100,8 @@ export class ItemService {
           "img1": item[key].img1,
           "img2": item[key].img2,
           "img3": item[key].img3, 
-          "vendor": item[key].vendor, 
+          "vendor": item[key].vendor,
+          "username": item[key].username, 
           "brand": item[key].brand,
           "description": item[key].description,
           "price": item[key].price.toFixed(2),
@@ -131,7 +134,8 @@ export class ItemService {
           "img1": item[key].img1,
           "img2": item[key].img2,
           "img3": item[key].img3, 
-          "vendor": item[key].vendor, 
+          "vendor": item[key].vendor,
+          "username": item[key].username, 
           "brand": item[key].brand,
           "description": item[key].description,
           "price": item[key].price.toFixed(2),
