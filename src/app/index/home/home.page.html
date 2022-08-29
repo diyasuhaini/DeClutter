@@ -13,7 +13,7 @@
   <h3>Picked out just for you!</h3>
 
   <!--item list-->
-  <div class="itemList" *ngFor="let item of item | slice:0:3" routerLink="../item-details" [state]="item"> <!-- routerLink="../item-details"  (click)="itemDetail()-->
+  <div class="itemList" *ngFor="let item of item | slice:0:5" routerLink="../item-details" [state]="item"> <!-- routerLink="../item-details"  (click)="itemDetail()-->
     <!--image here-->
     <ion-img [src]="item.img1" class="itemPic"></ion-img>
     <!--content here-->

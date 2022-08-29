@@ -9,6 +9,12 @@ import { Item } from '../service/item.model';
 })
 export class ItemDetailsPage implements OnInit {
 
+  //for slider
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400
+  };
+
   private item: Item[];
   constructor(private router: Router) { }
 
@@ -18,8 +24,8 @@ export class ItemDetailsPage implements OnInit {
       itemid: "",
       vendor: routerState.vendor,
       img1: routerState.img1,
-      img2: "",
-      img3: "",
+      img2: routerState.img2,
+      img3: routerState.img3,
       title: routerState.title,
       description: routerState.description,
       price: routerState.price,

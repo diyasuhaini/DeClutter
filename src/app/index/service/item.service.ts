@@ -88,7 +88,9 @@ export class ItemService {
         
         itemcontainer.push({
           "title": item[key].title, 
-          "img1": item[key].img1, 
+          "img1": item[key].img1,
+          "img2": item[key].img2,
+          "img3": item[key].img3, 
           "vendor": item[key].vendor, 
           "brand": item[key].brand,
           "description": item[key].description,
@@ -116,7 +118,9 @@ export class ItemService {
         
         itemcontainer.push({
           "title": item[key].title, 
-          "img1": item[key].img1, 
+          "img1": item[key].img1,
+          "img2": item[key].img2,
+          "img3": item[key].img3, 
           "vendor": item[key].vendor, 
           "brand": item[key].brand,
           "description": item[key].description,

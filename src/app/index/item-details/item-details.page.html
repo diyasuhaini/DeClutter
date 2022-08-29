@@ -11,7 +11,18 @@
 <ion-content color="medium">
   <!--item details picture-->
   <div class="bigPicture">
-    <ion-img [src]="item[0].img1" alt="item" class="bigPic"></ion-img>
+    <ion-slides [options]="slideOpts">
+      <ion-slide>
+        <ion-img [src]="item[0].img1" alt="item" class="bigPic"></ion-img>
+      </ion-slide>
+      <ion-slide>
+        <ion-img [src]="item[0].img2" alt="item" class="bigPic"></ion-img>
+      </ion-slide>
+      <ion-slide>
+        <ion-img [src]="item[0].img3" alt="item" class="bigPic"></ion-img>
+      </ion-slide>
+    </ion-slides>
+    
   </div>
 
   <!--item details content-->
@@ -36,17 +47,11 @@
     <!--left side-->
     <div class="infoLeft">
       <p>Brand</p>
-      <p>Size</p>
-      <p>Condition</p>
-      <p>Colour</p>
       <p>Description</p>
     </div>
     <!--right side-->
     <div class="infoRight">
       <p>{{ item[0].brand }}</p>
-      <p>Size</p>
-      <p>Condition</p>
-      <p>Colour</p>
       <p>{{ item[0].description }}</p>
     </div>
   </div>
@@ -58,17 +63,11 @@
     <div class="footerWrap">
       <div class="fLeft">
         <ion-icon name="heart-outline" class="likeIcon"></ion-icon>
-        <ion-icon name="checkmark-outline" class="checkIcon"></ion-icon>
+        <ion-icon name="chatbubble-ellipses-outline" class="checkIcon"></ion-icon>
       </div>
       <div class="fRight">
-        <ion-button color="tertiary" class="buyBtn" shape="round">Buy Now</ion-button>
+        <ion-button color="tertiary" class="buyBtn" shape="round">Add to Cart</ion-button>
       </div>
     </div>
-
-    <!-- <div class="icons">
-      <ion-icon name="heart-outline" class="likeIcon"></ion-icon>
-      <ion-icon name="checkmark-outline" class="checkIcon"></ion-icon>
-    </div>
-    <ion-button color="tertiary" class="buyBtn" shape="round">Buy Now</ion-button> -->
   </ion-toolbar>
 </ion-footer>
