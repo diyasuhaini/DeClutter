@@ -38,3 +38,45 @@ ion-icon{
     --box-shadow: none;
 }
 
+//for follower
+.userWrap{
+    display: flex; flex: wrap;
+    width: 85%; height: 9vh;
+    margin: auto; margin-top: 10px;
+    text-align: center;
+}
+
+.left, .middle, .right{
+    flex: 50%;
+}
+
+p{  
+    font-size: 18px;
+    line-height: 10px;
+}
+
+ion-searchbar{
+    display: block;
+    width: 85%; height: 10%;
+    margin: auto; margin-top: 15px;
+}
+
+//for item list
+.itemList{
+    display: inline-block;
+    width: 155px; height: 180px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.pic{
+    display: block;
+    width: 150px; height: 120px;
+    margin: auto; border: 1px solid;
+}
+
+.itemContent{
+    font-size: 16px;
+    line-height: 10px; padding-left: 10px;
+}
+
