@@ -162,10 +162,18 @@ export class ItemService {
     // get values
     const snapshot = await get((dbref));
     var item = snapshot.val();
-    
+    var lock = false;
     if(item){
-      item[currentid].push((title + vendor));
-      return set(ref(database, 'shopping-bag/'), item);
+      item[currentid].forEach((item1)  => {
+        if (item1 == (title + vendor)){
+          lock = true;
+        }
+
+        if(lock == false){
+          item[currentid].push((title + vendor));
+          return set(ref(database, 'shopping-bag/'), item);
+        }
+      });
     } else {
       return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
     }
