@@ -2,6 +2,16 @@ ion-toolbar{
     height: 9vh;
 }
 
+ion-searchbar{
+    display: block;
+    width: 95%; height: 10%;
+    margin-left: 5px; margin-top: 15px;
+}
+
+ion-modal{
+    --ion-background-color: white;
+}
+
 .toolbarHeader{
     height: 10vh;
 }
@@ -14,7 +24,7 @@ ion-title{
 
 ion-icon{
     display: block;
-    width: 40px; height: 40px;
+    width: 30px; height: 30px;
     margin-right: 15px; margin-top: 15px;
 }
 
@@ -43,13 +53,6 @@ ion-label{
     margin: auto;
 }
 
-ion-segment-button{
-    margin-bottom: 10px;
-    --color: #383a3e;
-    --color-checked: #000000;
-    font-weight: bold; font-size: 12px;
-}
-
 
 //content
 .categories{
@@ -63,4 +66,56 @@ ion-segment-button{
 
 .categories:nth-child(1){
     margin-top: 80px;
+}
+
+//for modal box
+.myIcon{
+    margin-left: 20px; margin-right: 0px;
+    color: black;
+}
+
+.myTitle{
+    color: black; font-size: 24px;
+}
+
+.filterBtn{
+    display: block;
+    width: 140px; height: 5vh;
+    margin: auto; margin-top: 15px;
+}
+
+
+//for segment
+.segmentLabel{
+    font-size: 14px; line-height: 30px; padding-top: 35px;
+}
+
+ion-segment{
+    height: 7vh;
+}
+
+ion-segment-button{
+    color: black;
+    --background-checked: #FAECDF;
+    --indicator-color-checked: 0;
+    --indicator-box-shadow: none;
+}
+
+//for item list
+.itemList{
+    display: inline-block;
+    width: 155px; height: 180px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.pic{
+    display: block;
+    width: 150px; height: 120px;
+    margin: auto; border: 1px solid;
+}
+
+.itemContent{
+    font-size: 16px; font-weight: bold;
+    line-height: 10px; padding-left: 10px;
 }

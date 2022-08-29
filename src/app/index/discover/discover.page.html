@@ -1,30 +1,104 @@
 <ion-header>
   <ion-toolbar color="medium" class="toolbarHeader">
-    <ion-title>Discover</ion-title> <!--title-->
-    <!--horizontal button-->
-    <ion-segment>
-      <ion-segment-button value="women">
-        <ion-label class="segmentLabel">Women</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="men">
-        <ion-label>Men</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="kids">
-        <ion-label>Kids</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="users">
-        <ion-label>Users</ion-label>
-      </ion-segment-button>
-    </ion-segment>
+    <!--ion searchbar here-->
+    <ion-searchbar color="medium" placeholder="Search Item"></ion-searchbar>
+    <ion-icon name="options-outline" slot="end" id="open-modal"></ion-icon>
+    <ion-modal trigger="open-modal" [initialBreakpoint]="0.40" color="medium">
+      <ng-template>
+        <ion-content color="medium">
+          <form>
+          <!--header here-->
+          <ion-toolbar color="primary">
+            <ion-icon name="options-outline" slot="start" class="myIcon"></ion-icon>
+            <ion-title slot="start" class="myTitle">Filter</ion-title>
+          </ion-toolbar>
+
+          <!--content here-->
+
+          <!--for modalbox price here-->
+          <ion-item color="medium">
+            <P class="ion-text-center">Highest Price</P>
+            <ion-toggle color="tertiary"></ion-toggle>
+          </ion-item>
+          
+
+          <!--for modalbox size here-->
+          <ion-item color="medium">
+            <ion-select [multiple]="true" placeholder="Select size" color="medium">
+              <ion-select-option value="Free Size">Free Size</ion-select-option>
+              <ion-select-option value="XS">XS</ion-select-option>
+              <ion-select-option value="S">S</ion-select-option>
+              <ion-select-option value="M">M</ion-select-option>
+              <ion-select-option value="L">L</ion-select-option>
+              <ion-select-option value="XL">XL</ion-select-option>
+              <ion-select-option value="2XL">2XL</ion-select-option>
+              <ion-select-option value="3XL">3XL</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <!--item categories-->
+          <ion-item color="medium">
+            <ion-select interface="pop-over" placeholder="Select categories" color="medium">
+              <ion-select-option value="unisex">Unisex</ion-select-option>
+              <ion-select-option value="kids">Kids</ion-select-option>
+              <ion-select-option value="men">Men</ion-select-option>
+              <ion-select-option value="women">Women</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <!--for button-->
+          <ion-button class="filterBtn" shape="round" color="tertiary">Save filter</ion-button>
+          </form>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+    <ion-icon name="bag-outline" slot="end" routerLink="../shopping-bag"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
-  <!--button to select-->
-  <div class="categories">Clothing</div> <!--button 1-->
-  <div class="categories">Shoes</div> <!--button 2-->
-  <div class="categories">Bag & Wallet</div> <!--button 3-->
-  <div class="categories">Accessories</div> <!--button 4-->
+  <!--for ion segment-->
+  <ion-segment (ionChange)="segmentChanged($event)" scrollable>
+    <ion-segment-button value="all">
+      <ion-label class="segmentLabel">All</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="socks">
+      <ion-label class="segmentLabel">socks</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="top">
+      <ion-label class="segmentLabel">Tops & T-Shirts</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="dress">
+      <ion-label class="segmentLabel">Dresses</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="skirt">
+      <ion-label class="segmentLabel">Skirts</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="bottoms">
+      <ion-label class="segmentLabel">Bottoms</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="sweater">
+      <ion-label class="segmentLabel">Sweaters</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="shoes">
+      <ion-label class="segmentLabel">Shoes</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="accessories">
+      <ion-label class="segmentLabel">Accessories</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <!--for item list-->
+  <div class="itemList">
+    <div class="itemPic">
+      <ion-img src="assets/img/jeans.jpg" class="pic"></ion-img>
+    </div>
+    <div class="itemContent">
+      <p>B$0.00</p>
+      <p>Brand</p>
+    </div>
+  </div>
 </ion-content>  
 
 <ion-footer>
