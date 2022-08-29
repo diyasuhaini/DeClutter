@@ -34,9 +34,13 @@ export class HomePage implements OnInit {
         if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
           this.currentusername = user.username;
           this.currentid = user.id;
+          console.log(user.id);
+          localStorage.setItem('currentid', user.id);
         }
       });
     });
+    
+    
   }
     
   ionViewWillEnter(){
