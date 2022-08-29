@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterState } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthenticationService } from 'src/app/authentication.service';
+import { User } from '../auth/auth.model';
 import { Item } from '../service/item.model';
+import { ItemService } from '../service/item.service';
 
 @Component({
   selector: 'app-item-details',
@@ -16,7 +20,11 @@ export class ItemDetailsPage implements OnInit {
   };
 
   private item: Item[];
-  constructor(private router: Router) { }
+  private userSub: Subscription;
+  private people: User[];
+  private currentid: string;
+
+  constructor(private router: Router, private itemService: ItemService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     const routerState = this.router.getCurrentNavigation().extras.state;
@@ -38,8 +46,27 @@ export class ItemDetailsPage implements OnInit {
     }];
   }
 
+  addcart(){
+    this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+    });
+
+     this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+      this.people.forEach((user) => {
+        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
+          this.currentid = user.id;
+        }
+      });
+    });
+    var title = this.item[0].title;
+    var vendor = this.item[0].vendor;
+    this.itemService.addtoCart(this.currentid, title, vendor);
+    console.log(this.currentid);
+  }
+
   ionViewWillEnter(){
-    
+    this.authenticationService.fetchUser().subscribe();
   }
 
 

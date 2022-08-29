@@ -118,7 +118,15 @@ export class ItemService {
 
   // get current user listed item
   async getVendorItems(){
-    this.getid()
+    this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+      this.people.forEach((user) => {
+        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
+          this.currentid = user.id;
+          this.currentusername = user.username;
+        }
+      });
+    });
     // choose which database bucket to be reference at
     var itemcontainer = [];
     const dbref = ref(database, 'item/');
@@ -147,6 +155,22 @@ export class ItemService {
       }
     });
     return itemcontainer
+  }
+
+   async addtoCart(currentid, title, vendor) {
+    const dbref = ref(database, 'shopping-bag/');
+    // get values
+    const snapshot = await get((dbref));
+    var item = snapshot.val();
+    
+    if(item){
+      item[currentid].push((title + vendor));
+      return set(ref(database, 'shopping-bag/'), item);
+    } else {
+      return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+    }
+
+  
   }
 
   
