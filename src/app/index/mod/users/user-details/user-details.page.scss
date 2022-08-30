@@ -10,3 +10,12 @@ ion-label {
 ion-text {
     font-weight: bold;
 }
+.check-profile{
+    height: 8%;
+    background-color: white;
+}
+.check-profile .email {
+    --box-shadow: none;
+    --background: none;
+    margin: auto;
+}
