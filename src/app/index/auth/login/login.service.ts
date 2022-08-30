@@ -7,7 +7,7 @@ export class LoginService {
   
   //add validity
   authenticatedUser = true;
-  private userId = 'jumong';
+  private userId = 'Squall';
 
   constructor() { }
 

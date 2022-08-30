@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../service/item.service';
 import { Item } from '../service/item.model';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { User } from '../auth/auth.model';
+import { AuthenticationService } from 'src/app/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -10,30 +14,39 @@ import { Item } from '../service/item.model';
 export class HomePage implements OnInit {
 
   private item: Item[];
+  private userSub: Subscription;
+  private people: User[];
+  private currentusername: string;
+  private currentid: string;
 
-  constructor(private itemService: ItemService) { }
+
+  constructor(private itemService: ItemService, private router: Router, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.item = [];
-    // retriving the posts
+    this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+    });
+
+     this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+      this.people.forEach((user) => {
+        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
+          this.currentusername = user.username;
+          this.currentid = user.id;
+          console.log(user.id);
+          localStorage.setItem('currentid', user.id);
+        }
+      });
+    });
+    
+    
+  }
+    
+  ionViewWillEnter(){
     this.itemService.myItems().then((item) => {
-      var pusheditem = [];
-      console.log(item);
-      Object.keys(item).forEach((key) => {
-        console.log(item[key].vendor + " item[key].vendor");
-        pusheditem.push({"title": item[key].title, 
-        "img1": item[key].img1, 
-        "vendor": item[key].vendor, 
-        "brand": item[key].brand,
-        "description": item[key].description,
-        "price": item[key].price.toFixed(2),
-        "name": item[key].title});
-      })
-      this.item = pusheditem;
-      
-      // console.table(this.item);
+      this.item = item;
     }, error => {
-      // check error
       console.log(error);
     });
   }

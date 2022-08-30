@@ -15,7 +15,7 @@
   <ion-card color="medium">
     <!--upload picture here-->
     <ion-label>Item Photo</ion-label>
-    <p id="myText">Provide a minimum 3 photos. Please provide details of defects, if applicable</p>
+    <p id="myText">Provide a minimum 3 photos. Please provide details of defects in the description, if applicable</p>
     <div class="uploadFile">
       <ion-input type="file" style="color: transparent;" id="img1" formControlName="img1" (change)="uploadImg($event, 'img1')"></ion-input>
       <div *ngIf="img1url">Uploaded</div>
@@ -45,6 +45,8 @@
     <ion-item color="medium">
       <ion-input type="number" placeholder="Price of your item" formControlName="price"></ion-input>
     </ion-item>
+    <br>
+    
   </ion-card>
   <!--whitebox 1 end-->
 
@@ -64,8 +66,37 @@
         <ion-select-option value="top">Tops & T-Shirts</ion-select-option>
         <ion-select-option value="dress">Dresses</ion-select-option>
         <ion-select-option value="skirt">Skirts</ion-select-option>
-        <ion-select-option value="pant">Pants</ion-select-option>
+        <ion-select-option value="bottoms">Bottoms</ion-select-option>
         <ion-select-option value="sweater">Sweaters</ion-select-option>
+        <ion-select-option value="shoes">Shoes</ion-select-option>
+        <ion-select-option value="accessories">Accessories</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!--Item Color-->
+    <ion-item color="medium">
+      <p>Color</p>
+      <ion-input type="text" placeholder="Color of your item" formControlName="color"></ion-input>
+    </ion-item>
+    <!--item size-->
+    <ion-item color="medium">
+      <ion-select interface="popover" placeholder="Select size" color="medium" formControlName="size">
+        <ion-select-option value="Free Size">Free Size</ion-select-option>
+        <ion-select-option value="XS">XS</ion-select-option>
+        <ion-select-option value="S">S</ion-select-option>
+        <ion-select-option value="M">M</ion-select-option>
+        <ion-select-option value="L">L</ion-select-option>
+        <ion-select-option value="XL">XL</ion-select-option>
+        <ion-select-option value="2XL">2XL</ion-select-option>
+        <ion-select-option value="3XL">3XL</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!--item categories-->
+    <ion-item color="medium">
+      <ion-select interface="popover" placeholder="Select categories" color="medium" formControlName="categories">
+        <ion-select-option value="unisex">Unisex</ion-select-option>
+        <ion-select-option value="kids">Kids</ion-select-option>
+        <ion-select-option value="men">Men</ion-select-option>
+        <ion-select-option value="women">Women</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-button type="submit" color="tertiary" shape="round" class="listbtn" [disabled]="!sellForm.valid">List this item</ion-button>

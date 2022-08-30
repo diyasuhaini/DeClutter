@@ -11,11 +11,27 @@
 <ion-content color="medium">
   <!--item details picture-->
   <div class="bigPicture">
-    <ion-img src="assets/img/jeans.jpg" alt="item" class="bigPic"></ion-img>
+    <ion-slides [options]="slideOpts">
+      <!--for picture 1-->
+      <ion-slide>
+        <ion-img [src]="item[0].img1" alt="item" class="bigPic"></ion-img>
+      </ion-slide>
+
+      <!--for picture 2-->
+      <ion-slide>
+        <ion-img [src]="item[0].img2" alt="item" class="bigPic"></ion-img>
+      </ion-slide>
+
+      <!--for picture 3-->
+      <ion-slide>
+        <ion-img [src]="item[0].img3" alt="item" class="bigPic"></ion-img>
+      </ion-slide>
+    </ion-slides>
+    
   </div>
 
   <!--item details content-->
-  <div class="itemWrap">
+  <div class="itemWrap" routerLink="../user">
     <!--left-->
     <div class="itemLeft">
       <ion-img src="assets/img/profile-round.png" class="profilePic"></ion-img>
@@ -23,31 +39,25 @@
 
     <!--right-->
     <div class="itemRight">
-      <p>Username</p>
+      <p>{{ item[0].username }}</p>
     </div>
   </div>
 
   <!--title-->
-  <p class="titleText">Title here</p>
-  <p class="priceTag">Price tag here</p>
+  <p class="titleText">{{ item[0].title }}</p>
+  <p class="priceTag">$ {{ item[0].price }}</p>
 
   <!--more info-->
   <div class="infoWrap">
     <!--left side-->
     <div class="infoLeft">
       <p>Brand</p>
-      <p>Size</p>
-      <p>Condition</p>
-      <p>Colour</p>
       <p>Description</p>
     </div>
     <!--right side-->
     <div class="infoRight">
-      <p>Brand</p>
-      <p>Size</p>
-      <p>Condition</p>
-      <p>Colour</p>
-      <p>Description</p>
+      <p>{{ item[0].brand }}</p>
+      <p>{{ item[0].description }}</p>
     </div>
   </div>
 </ion-content>
@@ -58,17 +68,11 @@
     <div class="footerWrap">
       <div class="fLeft">
         <ion-icon name="heart-outline" class="likeIcon"></ion-icon>
-        <ion-icon name="checkmark-outline" class="checkIcon"></ion-icon>
+        <ion-icon name="chatbubble-ellipses-outline" class="checkIcon" routerLink="../reviews"></ion-icon>
       </div>
       <div class="fRight">
-        <ion-button color="tertiary" class="buyBtn" shape="round">Buy Now</ion-button>
+        <ion-button color="tertiary" class="buyBtn" shape="round" (click)="addcart()">Add to Cart</ion-button>
       </div>
     </div>
-
-    <!-- <div class="icons">
-      <ion-icon name="heart-outline" class="likeIcon"></ion-icon>
-      <ion-icon name="checkmark-outline" class="checkIcon"></ion-icon>
-    </div>
-    <ion-button color="tertiary" class="buyBtn" shape="round">Buy Now</ion-button> -->
   </ion-toolbar>
 </ion-footer>
