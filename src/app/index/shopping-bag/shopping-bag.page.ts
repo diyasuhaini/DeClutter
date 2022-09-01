@@ -25,7 +25,7 @@ export class ShoppingBagPage implements OnInit {
   private people: User[];
   private currentid: string;
   private item: Item[];
-  number1: number = 0;
+  private number1: number = 0;
   
 
   segmentChanged(e){
@@ -66,9 +66,14 @@ export class ShoppingBagPage implements OnInit {
     this.authenticationService.fetchUser().subscribe();
     this.itemService.retrieveCart().then((cart) => {
       this.item = cart;
+      // this.number1 = this.number1 + this.item[this.currentid].length;
+      // console.log(this.currentid + " test");
+      this.item.forEach((item) => {
+        this.number1 += 1
+      });
     })
-    console.table(this.item);
-    this.number1 = this.item.length;
+    // console.table(this.item);
+    // this.number1 = this.item.length;
     console.log(this.number1);
   }
 
