@@ -59,6 +59,7 @@ export class ItemDetailsPage implements OnInit {
         }
       });
     });
+    console.log(this.currentid + " 1");
     var title = this.item[0].title;
     var vendor = this.item[0].vendor;
     this.itemService.addtoCart(this.currentid, title, vendor);

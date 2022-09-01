@@ -163,7 +163,7 @@ export class ItemService {
     const snapshot = await get((dbref));
     var item = snapshot.val();
     var lock = false;
-    if(item){
+    if(item[currentid]){
       item[currentid].forEach((item1)  => {
         if (item1 == (title + vendor)){
           lock = true;
