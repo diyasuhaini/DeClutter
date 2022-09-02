@@ -65,3 +65,54 @@ ion-segment{
     font-weight: bold;
 }
 
+//for saved in bag box
+.bagWrap{
+    display: flex; flex: wrap;
+    width: 100%; height: 13vh;
+}
+
+.bagLeft{
+    flex: 20%;
+}
+
+.bagCenter{
+    flex: 50%;
+}
+
+.bagRight{
+    flex: 20%;
+}
+
+//for picture
+.itemPic{
+    width: 80px; height: 80px;
+}
+
+.itemPic::part(image){
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+//for text
+.textBold{
+    font-weight: bold;
+    font-size: 16px;
+    padding-left: 5px; padding-right: 5px;
+    line-height: 10px;
+}
+
+.subtitle{
+    font-size: 14px;
+    padding-left: 5px; line-height: 10px;
+}
+
+.smallBold{
+    font-size: 14px; font-weight: bold;
+    padding-left: 5px;
+}
+
+//icon trash
+.trashIcon{
+    width: 35px; height: 35px;
+    color: red;
+}

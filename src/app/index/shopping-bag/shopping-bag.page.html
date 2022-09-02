@@ -25,56 +25,50 @@
 
  <!-- Bag Side of things 00000000000000000000000000000000000000000000 -->
  <ion-grid *ngIf="segmentValue == 'bag'">
-    <ion-row *ngFor="let item of item" class="rows">
-      <ion-col class="colleft" size="auto">
-          <ion-img [src]="item.img1"></ion-img>
-        
-      </ion-col>
-      <ion-col class="colmid">
-        <div class="highter">
-          <span class="item-label">{{item.title}}</span><br>
-          <span class="item-brand">{{item.brand}}</span>
-        </div>
-        <span class="item-action">move to wishlist</span>
-      </ion-col>
-      <!-- //////////////////////////////////////////////////////////////// -->
-      <ion-col class="colright">
-        <div class="highter">
-          <span class="item-label">{{item.price| currency}}</span>
-        </div>
-        <span class="item-action">remove</span> 
-      </ion-col>
-      
-    </ion-row>
+    <div class="bagWrap" *ngFor="let item of item">
+      <!--picture here-->
+      <div class="bagLeft">
+        <ion-img [src]="item.img1" class="itemPic"></ion-img>
+      </div>
+
+      <!--content here-->
+      <div class="bagCenter">
+        <p class="textBold">{{item.title}}</p>
+        <p class="subtitle">{{item.brand}}</p>
+        <p class="smallBold">Move to wishlist</p>
+      </div>
+
+      <!--price here-->
+      <div class="bagRight">
+        <p class="textBold">{{item.price| currency}}</p>
+        <ion-icon name="trash-outline" class="trashIcon"></ion-icon>
+      </div>
+    </div>
  </ion-grid>
 
  <!-- end of bag 00000000000000000000000000000000000000000000 -->
 
  <!-- saved side of things 0000000000000000000000000000000000 -->
  <ion-grid *ngIf="segmentValue == 'saved'">
-  <ion-row *ngFor="let save of " class="rows">
-    <ion-col class="colleft" size="auto">
-        <ion-img [src]="save.imageUrl"></ion-img>
-      
-    </ion-col>
-    <ion-col class="colmid">
-      <div class="highter">
-        <span  class="item-label"></span><br>
-        <span class="item-brand"></span>
-      </div>
-      <span class="item-action">move to bag</span>
-    </ion-col>
+  <div class="bagWrap" *ngFor="let save of ">
+    <!--picture here-->
+    <div class="bagLeft">
+      <ion-img [src]="save.imageUrl" class="itemPic"></ion-img>
+    </div>
 
-    <!-- //////////////////////////////////////////////////////////////// -->
+    <!--content here-->
+    <div class="bagCenter">
+      <p class="textBold"></p> <!--for title-->
+      <p class="subtitle"></p> <!--for brand-->
+      <p class="smallBold">Move to bag</p>
+    </div>
 
-    <ion-col class="colright">
-      <div class="highter">
-        <span class="item-label"></span>
-      </div>
-      <span class="item-action">remove</span> 
-    </ion-col>
-    
-  </ion-row>
+    <!--price here-->
+    <div class="bagRight">
+      <p class="textBold"></p>
+      <ion-icon name="trash-bin-outline" class="trashIcon"></ion-icon>
+    </div>
+  </div>
 </ion-grid>
 </ion-content>
 
