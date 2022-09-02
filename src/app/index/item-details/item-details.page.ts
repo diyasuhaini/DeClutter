@@ -47,6 +47,7 @@ export class ItemDetailsPage implements OnInit {
   }
 
   addcart(){
+    // ask the auth service for all the user
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
     });
@@ -59,14 +60,15 @@ export class ItemDetailsPage implements OnInit {
         }
       });
     });
-    console.log(this.currentid + " 1");
+    
+    // tell the item handling service to add the specific item to the cart
     var title = this.item[0].title;
     var vendor = this.item[0].vendor;
     this.itemService.addtoCart(this.currentid, title, vendor);
-    console.log(this.currentid);
   }
 
   ionViewWillEnter(){
+    // make sure the user is fetched before the page is rendered
     this.authenticationService.fetchUser().subscribe();
   }
 
