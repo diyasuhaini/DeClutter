@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterState } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { User } from '../auth/auth.model';
@@ -24,7 +25,10 @@ export class ItemDetailsPage implements OnInit {
   private people: User[];
   private currentid: string;
 
-  constructor(private router: Router, private itemService: ItemService, private authenticationService: AuthenticationService) { }
+  constructor(private router: Router,
+              private itemService: ItemService, 
+              private authenticationService: AuthenticationService,
+              private alertController: AlertController) { }
 
   ngOnInit() {
     const routerState = this.router.getCurrentNavigation().extras.state;
@@ -46,7 +50,9 @@ export class ItemDetailsPage implements OnInit {
     }];
   }
 
-  addcart(){
+
+  // add item to the Shopping Bag
+  async addcart(){
     // ask the auth service for all the user
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
@@ -64,7 +70,26 @@ export class ItemDetailsPage implements OnInit {
     // tell the item handling service to add the specific item to the cart
     var title = this.item[0].title;
     var vendor = this.item[0].vendor;
-    this.itemService.addtoCart(this.currentid, title, vendor);
+    this.itemService.addtoCart(this.currentid, title, vendor).then(async () => {
+      const alert = await this.alertController.create({
+        subHeader: 'Added to Shopping Bag'
+      });
+
+      await alert.present();
+  
+    });
+  }
+
+  // Saved
+  async wishlist(){
+
+    // alert the user the item is saved
+    const alert = await this.alertController.create({
+      subHeader: 'Item is Saved'
+    });
+
+    await alert.present();
+
   }
 
   ionViewWillEnter(){
