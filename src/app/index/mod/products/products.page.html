@@ -4,6 +4,9 @@
       <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title color="dark"><b>Products</b></ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark"><ion-icon name="options" size="large"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +17,7 @@
 
   <div style="display: flex; flex-wrap: wrap;margin: 12px;">
 
-    <div style="width: 45%; margin: 2.5%;">
+    <div style="width: 45%; margin: 2.5%;" routerLink="../products/product-details">
       <ion-grid>
         <ion-row>
           <ion-col style="padding: 0;">
