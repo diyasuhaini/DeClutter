@@ -67,11 +67,11 @@
   <ion-toolbar color="medium">
     <div class="footerWrap">
       <div class="fLeft">
-        <ion-icon name="heart-outline" class="likeIcon"></ion-icon>
+        <ion-icon name="heart-outline" class="likeIcon" (click)="wishlist()"></ion-icon>
         <ion-icon name="chatbubble-ellipses-outline" class="checkIcon" routerLink="../reviews"></ion-icon>
       </div>
       <div class="fRight">
-        <ion-button color="tertiary" class="buyBtn" shape="round" (click)="addcart()">Add to Cart</ion-button>
+        <ion-button color="tertiary" class="buyBtn" shape="round" (click)="addcart()">Add to Bag</ion-button>
       </div>
     </div>
   </ion-toolbar>

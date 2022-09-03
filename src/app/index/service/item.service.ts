@@ -5,7 +5,6 @@ import { initializeApp } from 'firebase/app';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Subscription } from 'rxjs';
 import { User } from '../auth/auth.model';
-import { serialize } from 'v8';
 
 // initialize the application allow new database apit to be used
 initializeApp(environment.firebaseConfig);
@@ -163,7 +162,7 @@ export class ItemService {
     const snapshot = await get((dbref));
     var item = snapshot.val();
     var lock = false;
-    if(item){
+    if(item[currentid]){
       item[currentid].forEach((item1)  => {
         if (item1 == (title + vendor)){
           lock = true;
@@ -182,24 +181,11 @@ export class ItemService {
   }
 
   async retrieveCart(){
-    // this.userSub = this.authenticationService.$users.subscribe(users => {
-    //   this.people = users;
-    // });
-
-    //  this.userSub = this.authenticationService.$users.subscribe(users => {
-    //   this.people = users;
-    //   this.people.forEach((user) => {
-    //     if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
-    //       this.currentid = user.id;
-    //     }
-    //   });
-    // });
     var currentid = localStorage.getItem('currentid');
     const dbref = ref(database, 'shopping-bag/');
     // get values
     const snapshot = await get((dbref));
     var item = snapshot.val();
-    console.table(item);
     var cont = [];
     item[currentid].forEach((item) => {
       cont.push(item);
@@ -208,19 +194,16 @@ export class ItemService {
     const snapshot2 = await get((dbref2));
     var item2 = snapshot2.val();
 
-    console.table(item2);
     var cont3 = [];
     Object.keys(item2).forEach((key) => {
       cont.forEach((item) => {
         if (key == item) {
           cont3.push(item2[key]);
-          console.table(item2[key]);
         }
       })
 
       
     })
-    console.table(cont3);
     return cont3;
 
   }

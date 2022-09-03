@@ -25,7 +25,8 @@ export class ShoppingBagPage implements OnInit {
   private people: User[];
   private currentid: string;
   private item: Item[];
-  number1: number = 0;
+  private number1: number = 0;
+  private totalcost: number = 0;
   
 
   segmentChanged(e){
@@ -49,27 +50,19 @@ export class ShoppingBagPage implements OnInit {
         }
       });
     });
-    console.log(this.currentid);
-
-    // this.savedSub = this.shoppingBagService.$saved.subscribe(saved => {
-    //   this.mysaved = saved;
-    // });
-
-    // this.inthebag.forEach(bag => {
-    //   this.totalcost = this.totalcost + bag.price
-    // });
-
-    // console.log(this.inthebag.length);
   }
 
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();
     this.itemService.retrieveCart().then((cart) => {
       this.item = cart;
+      this.number1 = 0;
+      this.totalcost = 0;
+      this.item.forEach((item) => {
+        this.number1 += 1;
+        this.totalcost += parseInt(item.price);
+      });
     })
-    console.table(this.item);
-    this.number1 = this.item.length;
-    console.log(this.number1);
   }
 
 }
