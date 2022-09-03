@@ -4,6 +4,9 @@
       <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title color="dark"><b>Orders</b></ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="dark"><ion-icon name="options" size="large"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +17,7 @@
 
   <ion-list style="background-color:#ffffff;">
 
-    <ion-item color="medium">
+    <ion-item color="medium" routerLink="../orders/order-details">
       <ion-grid>
         <ion-row>
           <ion-col style="padding: 0;" size="3">

@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: InboxPage
+  },  {
+    path: 'email',
+    loadChildren: () => import('./email/email.module').then( m => m.EmailPageModule)
   }
+
 ];
 
 @NgModule({
