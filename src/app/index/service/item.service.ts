@@ -5,7 +5,6 @@ import { initializeApp } from 'firebase/app';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Subscription } from 'rxjs';
 import { User } from '../auth/auth.model';
-import { serialize } from 'v8';
 
 // initialize the application allow new database apit to be used
 initializeApp(environment.firebaseConfig);
