@@ -126,3 +126,13 @@ img{
     font-size: 18px; padding-left: 10px;
     font-weight: bold;
 }
+
+//for picture
+.itemPic{
+    width: 80px; height: 80px;
+}
+
+.itemPic::part(image){
+    object-fit: cover;
+    margin-top: 10px;
+}

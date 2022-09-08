@@ -8,24 +8,24 @@
 </ion-header>
 
 <ion-content color="medium">
-  <ion-card color="medium">
-    <p>1 Item</p> <!--item Value {{ }}-->
+  <ion-card color="medium" *ngFor="let item of item">
+    <p>{{number1}} Item</p> <!--item Value {{ }}-->
     <p>Sold By Thirefter</p> <!--user who sold same item {{ }}-->
     <div class="wrap">
       <!--picture here-->
       <div class="img">
-        <img src="assets/img/jeans.jpg" alt="sold item"> <!--image from user [src]-->
+        <ion-img [src]="item.img1" alt="sold item" class="itemPic"></ion-img>
       </div>
 
       <!--description here-->
       <div class="desc">
         <!--item name-->
         <div class="textWrap">
-          <div class="left">Blue Jeans cuba try test another one</div>
-          <div class="right">$12.00</div> <!--price of an item-->
+          <div class="left">{{item.title}}</div>
+          <div class="right">{{item.price| currency}}</div> <!--price of an item-->
         </div>
         <!--item brand-->
-        <div class="grey">Levi's</div>
+        <div class="grey">{{item.brand}}</div>
       </div>
     </div>
     <br>
@@ -51,25 +51,25 @@
     <!--for subtotal-->
     <div class="subtotal">
       <div class="lft">Subtotal</div>
-      <div class="rgt">$00.00</div>
+      <div class="rgt">{{totalcost | currency:"B$"}}</div>
     </div> 
 
     <!--for shipping-->
     <div class="shipping">
       <div class="lft">Shipping</div>
-      <div class="rgt">$00.00</div>
+      <div class="rgt">{{shipping | currency:"B$"}}</div>
     </div> 
 
     <!--for discount-->
     <div class="discount">
       <div class="lft">Discount</div>
-      <div class="rgt">$00.00</div>
+      <div class="rgt">{{discountprice | currency:"B$"}}</div>
     </div> 
 
     <!--for total-->
     <div class="total">
       <div class="lft" style="font-weight: bold;">Total</div>
-      <div class="rgt">$00.00</div>
+      <div class="rgt">{{finaltotal | currency:"B$"}}</div>
     </div> 
   </div>
 
