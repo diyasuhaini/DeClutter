@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Item } from '../service/item.model';
+import { ItemService } from '../service/item.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPage implements OnInit {
 
-  constructor() { }
+  private user = [];
 
+  constructor(private router: Router,
+              private itemService: ItemService  
+    ) { }
+  
   ngOnInit() {
+    const routerState = this.router.getCurrentNavigation().extras.state;
+    this.user = [
+      {
+        vendor: routerState[0].vendor,
+        username: routerState[0].username
+    }
+    ];
+    console.log(this.user);
+  }
+
+  ionViewWillEnter(){
   }
 
 }

@@ -24,6 +24,7 @@ export class ItemDetailsPage implements OnInit {
   private userSub: Subscription;
   private people: User[];
   private currentid: string;
+  private user = [];
 
   constructor(private router: Router,
               private itemService: ItemService, 
@@ -92,9 +93,17 @@ export class ItemDetailsPage implements OnInit {
 
   }
 
+  test(item){
+    console.table(item);
+  }
+
   ionViewWillEnter(){
     // make sure the user is fetched before the page is rendered
     this.authenticationService.fetchUser().subscribe();
+    this.user = [{
+      vendor: this.item[0].vendor,
+      username: this.item[0].username,
+    }];
   }
 
 

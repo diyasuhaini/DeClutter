@@ -42,6 +42,11 @@ export class HomePage implements OnInit {
     
     
   }
+
+  test(item){
+    console.table(item);
+  }
+
     
   ionViewWillEnter(){
     this.itemService.myItems().then((item) => {
