@@ -2,9 +2,108 @@
     height: 8%;
     background-color: white;
 }
-.change-category .email {
-    --box-shadow: none;
-    --background: none;
+
+// ion-buttons{
+//     width: 30px;
+// }
+
+// ion-icon{
+//     display: block;
+//     width: 30px; height: 30px;
+//     margin-right: 10px;
+// }
+
+//for picture
+
+.bigPicture{
+    display: block;
+    width: 100%; height: 35vh;
+    box-shadow: 0px 0px 2px 0px;
+}
+
+.bigPic{
+    width: fit-content; height: 34.5vh;
     margin: auto;
 }
 
+//for content
+// .itemWrap{
+//     display: flex; flex: wrap;
+//     width: 100%; height: 6vh;
+//     margin-top: 20px;
+// }
+
+// .itemLeft{
+//     flex: 20%;
+// }
+
+// .itemRight{
+//     flex: 80%;
+// }
+
+// .profilePic{
+//     max-width: 40px; margin: auto;
+// }
+
+//title
+// .titleText, .priceTag{
+//     padding-left: 20px;
+//     font-weight: bold;
+// }
+
+// //price
+// .priceTag{
+//     line-height: 10px;
+// }
+
+//info
+// .infoWrap{
+//     display: flex; flex: wrap;
+//     width: 100%; height: 30vh;
+// }
+
+// .infoLeft{
+//     flex: 40%; height: 100%;
+//     padding-left: 20px;
+// }
+
+// .infoRight{
+//     flex: 60%; height: 100%;
+//     font-weight: bold;
+//     padding-right: 10px;
+// }
+
+// //footer
+// .footerWrap{
+//     display: flex; flex: wrap;
+//     width: 100%; height: 50px;
+// }
+
+// .fLeft{
+//     flex: 30%;
+// }
+
+// .fRight{
+//     flex: 70%;
+// }
+
+// .icons{
+//     display: inline-block;
+// }
+
+// .likeIcon{
+//     display: inline-block;
+//     margin-left: 25px; margin-top: 10px;
+// }
+
+// .checkIcon{
+//     display: inline-block;
+//     margin-top: 10px;
+// }
+
+// .buyBtn{
+//     display: inline-block;
+//     width: 180px; height: 30px; 
+//     margin-left: 30px; margin-top: 10px;
+//     border-radius: 20px;
+// }
