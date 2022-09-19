@@ -12,6 +12,9 @@ export class UserPage implements OnInit {
 
   private user = [];
   private item: Item[];
+  private follower = 0;
+  private following = 0;
+  private reviews = 0;
 
   constructor(private router: Router,
               private itemService: ItemService  
