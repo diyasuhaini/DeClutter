@@ -9,9 +9,30 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content color="medium">
+  <!--item details picture-->
+  <div class="bigPicture">
+    <ion-slides [options]="slideOpts">
+      <!--for picture 1-->
+      <ion-slide>
+        <ion-img [src]="item[0].img1" alt="item" class="bigPic"></ion-img>
+      </ion-slide>
+
+      <!--for picture 2-->
+      <ion-slide>
+        <ion-img [src]="item[0].img2" alt="item" class="bigPic"></ion-img>
+      </ion-slide>
+
+      <!--for picture 3-->
+      <ion-slide>
+        <ion-img [src]="item[0].img3" alt="item" class="bigPic"></ion-img>
+      </ion-slide>
+    </ion-slides>
+    
+  </div>
   <div>
-    <ion-img src="assets/img/jeans.jpg"></ion-img>
+    <!-- <ion-img src="assets/img/jeans.jpg"></ion-img> -->
   </div>
   <div>
     <ion-grid>
