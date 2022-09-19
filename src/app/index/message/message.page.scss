@@ -1,0 +1,44 @@
+.chatBox{
+    display: flex;
+    flex: wrap;
+    width: 95%; height: 14vh;
+    margin: auto; margin-top: 10px;
+}
+ion-img{
+    width: 40px; height: 40px; 
+    margin: auto; margin-top: 10px;
+}
+.pic{
+    flex: 20%;
+}
+.chat{
+    flex: 80%;
+}
+//for other user
+.box{
+    width: 95%; height: 70px;
+    border: 1px solid; border-radius: 0px 10px 10px 10px;
+    margin-top: 10px;
+}
+//for current user
+.uBox{
+    width: 95%; height: 70px;
+    border: 1px solid; border-radius: 10px 10px 0px 10px;
+    margin-top: 10px; margin-left: 15px;
+}
+
+//input here
+.textBox{
+    display: flex; flex: wrap;
+    position: absolute;
+    bottom: 10px; left: 15px;
+    width: 90%; height: 50px;
+}
+ion-textarea{
+    flex: 80%; height: 40px;
+    margin-right: 5px;
+    border: 1px solid; border-radius: 10px;
+}
+ion-button{
+    flex: 20%; margin-top: 10px;
+}

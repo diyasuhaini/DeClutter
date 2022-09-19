@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Direct Message</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <!--chat box for other user here-->
+  <div class="chatBox">
+    <div class="pic">
+      <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
+    </div>
+    <div class="chat">
+      <div class="box"></div>
+    </div>
+  </div>
+
+
+  <!--chat box for current user here-->
+  <div class="chatBox">
+    <div class="chat">
+      <div class="uBox"></div>
+    </div>
+    <div class="pic">
+      <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
+    </div>
+  </div>
+
+
+  <!--textarea-->
+  <div class="textBox">
+    <ion-textarea placeholder="Message..."></ion-textarea>
+    <ion-button type="submit" color="tertiary">Send</ion-button>
+  </div>
+
+</ion-content>
