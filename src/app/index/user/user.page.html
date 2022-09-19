@@ -42,13 +42,13 @@
   <!--searchbar here-->
   <ion-searchbar color="medium" placeholder="Search product"></ion-searchbar>
   <!--for item list-->
-  <div class="itemList">
+  <div class="itemList" *ngFor="let item of item | slice:0:3">
     <div class="itemPic">
-      <ion-img src="assets/img/jeans.jpg" class="pic"></ion-img>
+      <ion-img [src]="item.img1" class="pic"></ion-img>
     </div>
     <div class="itemContent">
-      <p style="font-weight: bold; font-size: 22px;">Item Title</p>
-      <p>Item Brand</p>
+      <p style="font-weight: bold; font-size: 22px;">{{ item.title }}</p>
+      <p>{{ item.brand }}</p>
     </div>
   </div>
 </ion-content>

@@ -93,10 +93,6 @@ export class ItemDetailsPage implements OnInit {
 
   }
 
-  test(item){
-    console.table(item);
-  }
-
   ionViewWillEnter(){
     // make sure the user is fetched before the page is rendered
     this.authenticationService.fetchUser().subscribe();

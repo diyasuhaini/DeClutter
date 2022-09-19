@@ -11,12 +11,14 @@ import { ItemService } from '../service/item.service';
 export class UserPage implements OnInit {
 
   private user = [];
+  private item: Item[];
 
   constructor(private router: Router,
               private itemService: ItemService  
     ) { }
   
   ngOnInit() {
+    this.item = [];
     const routerState = this.router.getCurrentNavigation().extras.state;
     this.user = [
       {
@@ -28,6 +30,12 @@ export class UserPage implements OnInit {
   }
 
   ionViewWillEnter(){
+    this.itemService.getUserItems(this.user[0].vendor).then((item) => {
+      this.item = item;
+      console.log(item);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
