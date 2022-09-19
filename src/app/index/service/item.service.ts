@@ -156,6 +156,37 @@ export class ItemService {
     return itemcontainer
   }
 
+  async getUserItems(currentuser){
+    // choose which database bucket to be reference at
+    var itemcontainer = [];
+    const dbref = ref(database, 'item/');
+    // get values
+    const snapshot = await get((dbref));
+    var item = snapshot.val();
+    
+    Object.keys(item).forEach((key) => {
+      if(item[key].vendor == currentuser){
+        
+        itemcontainer.push({
+          "title": item[key].title, 
+          "img1": item[key].img1,
+          "img2": item[key].img2,
+          "img3": item[key].img3, 
+          "vendor": item[key].vendor,
+          "username": item[key].username, 
+          "brand": item[key].brand,
+          "description": item[key].description,
+          "price": item[key].price.toFixed(2),
+          "size": item[key].size,
+          "color": item[key].color,
+          "categories": item[key].categories,
+          "name": item[key].title
+        });
+      }
+    });
+    return itemcontainer
+  }
+
   async addtoCart(currentid, title, vendor) {
     const dbref = ref(database, 'shopping-bag/');
     // get values
