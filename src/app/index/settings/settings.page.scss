@@ -11,3 +11,19 @@ ion-buttons {
 #log-out {
     font-weight: bold;
 }
+
+.ion-text-center ion-button {
+    height: 100%;
+    margin: 0;
+    --background: none;
+    --box-shadow:none;
+}
+.grid-center{
+    height: 100%;
+}
+ion-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
