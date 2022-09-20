@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="medium" class="ion-text-center">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+    <ion-buttons slot="start" routerLink="../mepage">
+      <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title><b>Settings</b></ion-title>
   </ion-toolbar>
@@ -88,7 +88,7 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item color="medium">
+    <ion-item color="medium" routerLink="../settings/customer-support">
       <ion-grid class="grid-center">
         <ion-row>
           <ion-col size="2">
@@ -101,14 +101,14 @@
       </ion-grid>
     </ion-item>
 
-    <ion-item color="medium">
+    <ion-item color="medium" routerLink="../auth">
       <ion-grid class="grid-center">
         <ion-row>
           <ion-col size="2">
             <ion-img style="width:30px;margin:20% 10%;" src="assets/icon/logout-space.png"></ion-img>
           </ion-col>
           <ion-col>
-            <ion-label style="font-size: 1.2em;">Log Out</ion-label>
+            <ion-label style="font-size: 1.2em;color:red;">Log Out</ion-label>
           </ion-col>
         </ion-row>
       </ion-grid>
