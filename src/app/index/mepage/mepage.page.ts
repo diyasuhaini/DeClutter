@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { User } from '../auth/auth.model';
 import { ItemService } from '../service/item.service';
 import { Item } from '../service/item.model';
+import { FollowService } from '../service/follow.service';
 
 
 @Component({
@@ -19,13 +20,14 @@ export class MepagePage implements OnInit {
   private userSub: Subscription;
   private item: Item[];
   private itemlist: any[];
+  private follower = 0;
   segmentValue: String = "listing";
 
   segmentChanged(e){
     this.segmentValue = e.detail.value;
   }
 
-  constructor(private authenticationService: AuthenticationService, private itemService: ItemService) { }
+  constructor(private authenticationService: AuthenticationService, private itemService: ItemService, private followService: FollowService) { }
 
   ngOnInit() {
     this.item = [];
@@ -58,6 +60,12 @@ export class MepagePage implements OnInit {
     }, error => {
       console.log(error);
     });
+    this.followService.checkFollowers().then((number) => {
+      this.follower = Object.keys(number).length;
+      console.log(this.follower);
+    }, error => {
+      console.log(error);
+    })
   }
 
   
