@@ -21,21 +21,21 @@
       <ion-button class="followBtn" color="tertiary" shape="round">Follow</ion-button>
     </div>
     <div class="message">
-      <ion-button class="messageBtn" color="medium">Message</ion-button>
+      <ion-button class="messageBtn" color="medium" routerLink="../message">Message</ion-button>
     </div>
   </div>
   <!--follower/following/review-->
   <div class="userWrap">
     <div class="left">
-      <p>0</p>
+      <p>{{ follower }}</p>
       <p>Follower</p>
     </div>
     <div class="middle">
-      <p>0</p>
+      <p>{{ following }}</p>
       <p>Following</p>
     </div>
     <div class="right">
-      <p>0</p>
+      <p>{{ reviews }}</p>
       <p>Reviews</p>
     </div>
   </div>
@@ -47,7 +47,7 @@
       <ion-img [src]="item.img1" class="pic"></ion-img>
     </div>
     <div class="itemContent">
-      <p style="font-weight: bold; font-size: 22px;">{{ item.title }}</p>
+      <p style="font-weight: bold; font-size: 18px;">{{ item.title }}</p>
       <p>{{ item.brand }}</p>
     </div>
   </div>
