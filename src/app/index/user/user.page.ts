@@ -82,6 +82,12 @@ export class UserPage implements OnInit {
     }, error => {
       console.log(error);
     })
+    this.followService.checkUserFollowing(this.user[0].vendor).then((number) => {
+      this.following = Object.keys(number).length;
+      console.log(this.following);
+    }, error => {
+      console.log(error);
+    })
     
   }
 

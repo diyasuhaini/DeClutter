@@ -21,6 +21,7 @@ export class MepagePage implements OnInit {
   private item: Item[];
   private itemlist: any[];
   private follower = 0;
+  private following = 0;
   segmentValue: String = "listing";
 
   segmentChanged(e){
@@ -63,6 +64,13 @@ export class MepagePage implements OnInit {
     this.followService.checkFollowers().then((number) => {
       this.follower = Object.keys(number).length;
       console.log(this.follower);
+    }, error => {
+      console.log(error);
+    })
+
+    this.followService.checkFollowing().then((number) => {
+      this.following = Object.keys(number).length;
+      console.log(this.following);
     }, error => {
       console.log(error);
     })

@@ -71,5 +71,29 @@ export class FollowService {
     var item = snapshot.val();
     return item
   }
+  
+  async checkUserFollowing(
+    following
+  ){
+    // choose which database bucket to be reference at
+    var counter = 0;
+    const dbref = ref(database, 'useractions/' + following + "/following");
+    // get values
+    const snapshot = await get((dbref));
+    var item = snapshot.val();
+    console.log(Object.keys(item).length);
+    return item
+  }
+
+  async checkFollowing(
+  ){
+    // choose which database bucket to be reference at
+    var counter = 0;
+    const dbref = ref(database, 'useractions/' + localStorage.getItem('currentid') + "/following");
+    // get values
+    const snapshot = await get((dbref));
+    var item = snapshot.val();
+    return item
+  }
 
 }
