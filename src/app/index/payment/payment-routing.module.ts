@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: PaymentPage
+  },  {
+    path: 'success-payment',
+    loadChildren: () => import('./success-payment/success-payment.module').then( m => m.SuccessPaymentPageModule)
   }
+
 ];
 
 @NgModule({

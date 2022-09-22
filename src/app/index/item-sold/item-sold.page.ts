@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { stringify } from 'querystring';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { User } from '../auth/auth.model';
@@ -51,10 +52,12 @@ export class ItemSoldPage implements OnInit {
       this.item.forEach((item) => {
         this.number1 += 1;
         this.totalcost += parseFloat(item.price);
-        //total item send to localstorage
-        localStorage.setItem("totalPrice", item.price);
       });
       this.finaltotal = (this.totalcost + this.shipping)/ this.discount;
+      var mytotal;
+      mytotal = this.finaltotal;
+      //total item send to localstorage
+      localStorage.setItem("totalPrice", mytotal);
     })
   }
 
