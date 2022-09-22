@@ -25,6 +25,8 @@ export class ItemDetailsPage implements OnInit {
   private people: User[];
   private currentid: string;
   private user = [];
+  private added = false;
+  private itemtitle: string;
 
   constructor(private router: Router,
               private itemService: ItemService, 
@@ -50,6 +52,7 @@ export class ItemDetailsPage implements OnInit {
       brand: routerState.brand,
       type: routerState.type
     }];
+    this.itemtitle = routerState.title + routerState.vendor;
   }
 
 
@@ -78,7 +81,7 @@ export class ItemDetailsPage implements OnInit {
       });
 
       await alert.present();
-  
+      this.added = true;
     });
   }
 
@@ -94,6 +97,10 @@ export class ItemDetailsPage implements OnInit {
 
   }
 
+  proceed(){
+    this.router.navigateByUrl("/index/shopping-bag");
+  }
+
   ionViewWillEnter(){
     // make sure the user is fetched before the page is rendered
     this.authenticationService.fetchUser().subscribe();
@@ -101,6 +108,9 @@ export class ItemDetailsPage implements OnInit {
       vendor: this.item[0].vendor,
       username: this.item[0].username,
     }];
+    this.itemService.antiDuplicate(this.itemtitle).then((item) => 
+      this.added = item
+    );
   }
 
 
