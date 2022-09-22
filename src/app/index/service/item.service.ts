@@ -75,15 +75,7 @@ export class ItemService {
 
   // getting all item except current user
   async myItems(){
-    this.userSub = this.authenticationService.$users.subscribe(users => {
-      this.people = users;
-      this.people.forEach((user) => {
-        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
-          this.currentid = user.id;
-          this.currentusername = user.username;
-        }
-      });
-    });
+    this.currentid = localStorage.getItem('currentid');
     // choose which database bucket to be reference at
     var itemcontainer = [];
     const dbref = ref(database, 'item/');
