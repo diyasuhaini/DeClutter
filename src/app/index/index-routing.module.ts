@@ -70,6 +70,18 @@ const routes: Routes = [
   {
     path: 'message',
     loadChildren: () => import('./message/message.module').then( m => m.MessagePageModule)
+  },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+  {
+    path: 'inbox',
+    loadChildren: () => import('./inbox/inbox.module').then( m => m.InboxPageModule)
+  },
+  {
+    path: 'item-tracking',
+    loadChildren: () => import('./item-tracking/item-tracking.module').then( m => m.ItemTrackingPageModule)
   }
 
 

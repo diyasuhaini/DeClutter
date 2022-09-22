@@ -37,6 +37,7 @@ export class ItemService {
     size: string,
     color: string,
     categories: string,
+    quantity: string,
     brand: string,
     type: string
     //
@@ -54,6 +55,7 @@ export class ItemService {
       size: size,
       color: color,
       categories: categories,
+      quantity: quantity,
       brand: brand,
       type: type
     })
@@ -99,6 +101,7 @@ export class ItemService {
           "size": item[key].size,
           "color": item[key].color,
           "categories": item[key].categories,
+          "quantity": item[key].quantity,
           "name": item[key].title
         });
       }
@@ -141,6 +144,7 @@ export class ItemService {
           "size": item[key].size,
           "color": item[key].color,
           "categories": item[key].categories,
+          "quantity": item[key].quantity,
           "name": item[key].title
         });
       }
@@ -172,6 +176,7 @@ export class ItemService {
           "size": item[key].size,
           "color": item[key].color,
           "categories": item[key].categories,
+          "quantity": item[key].quantity,
           "name": item[key].title
         });
       }
