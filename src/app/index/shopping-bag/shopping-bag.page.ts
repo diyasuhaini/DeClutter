@@ -60,7 +60,9 @@ export class ShoppingBagPage implements OnInit {
       this.totalcost = 0;
       this.item.forEach((item) => {
         this.number1 += 1;
-        this.totalcost += parseInt(item.price);
+        this.totalcost += parseFloat(item.price);
+        console.log(item.price);
+        console.log(item.price);
       });
     })
   }
