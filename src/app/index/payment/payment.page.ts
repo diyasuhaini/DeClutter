@@ -7,19 +7,21 @@ import { render } from 'creditcardpayments/creditCardPayments';
   styleUrls: ['./payment.page.scss'],
 })
 export class PaymentPage implements OnInit {
+  
+  ngOnInit() {
+    
+  }
 
-  constructor() {
+  ionViewWillEnter(){
+    
     render({
       id: "#myPaypalButtons",
       currency: "SGD",
-      value: "1.00",
+      value: localStorage.getItem("totalPrice"), //transfer total value of item from previous page
       onApprove: (details) =>{
         alert("HEHE Success");
       }
     });
-   }
-
-  ngOnInit() {
   }
 
 }

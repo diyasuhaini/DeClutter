@@ -51,6 +51,8 @@ export class ItemSoldPage implements OnInit {
       this.item.forEach((item) => {
         this.number1 += 1;
         this.totalcost += parseInt(item.price);
+        //total item send to localstorage
+        localStorage.setItem("totalPrice", item.price);
       });
       this.finaltotal = (this.totalcost + this.shipping)/ this.discount;
     })
