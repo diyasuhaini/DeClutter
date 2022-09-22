@@ -70,8 +70,11 @@
         <ion-icon name="heart-outline" class="likeIcon" (click)="wishlist()"></ion-icon>
         <ion-icon name="chatbubble-ellipses-outline" class="checkIcon" routerLink="../reviews"></ion-icon>
       </div>
-      <div class="fRight">
+      <div class="fRight" *ngIf="!added"> 
         <ion-button color="tertiary" class="buyBtn" shape="round" (click)="addcart()">Add to Bag</ion-button>
+      </div>
+      <div class="fRight"*ngIf="added">
+        <ion-button color="tertiary" class="buyBtn" shape="round" (click)="proceed()">Proceed</ion-button>
       </div>
     </div>
   </ion-toolbar>

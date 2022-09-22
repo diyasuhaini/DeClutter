@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { initializeApp } from 'firebase/app';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Subscription } from 'rxjs';
-import { User } from '../auth/auth.model';
+import { User } from '../auth/auth.model'
 
 // initialize the application allow new database apit to be used
 initializeApp(environment.firebaseConfig);
@@ -229,6 +229,22 @@ export class ItemService {
     })
     return cont3;
 
+  }
+
+  async antiDuplicate(item){
+    var trigger = false;
+    var currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'shopping-bag/' + currentid);
+    const snapshot = await get((dbref));
+
+    var items = snapshot.val();
+    items.forEach((item2) => {
+      console.log(item2);
+      if (item2 == (item)) { 
+        trigger = true;
+      }
+    });
+    return trigger
   }
 
   
