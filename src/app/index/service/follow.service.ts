@@ -96,4 +96,22 @@ export class FollowService {
     return item
   }
 
+  async antiDuplicate(item){
+    var trigger = false;
+    var currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'useractions/' + currentid + "/following");
+    const snapshot = await get((dbref));
+
+    var items = snapshot.val();
+    console.log(items + "items");
+    Object.keys(items).forEach((key) => {
+      console.log(items[key]);
+      console.log(item);
+      if (items[key].user == (item)) { 
+        trigger = true;
+      }
+    })
+    return trigger
+  }
+
 }

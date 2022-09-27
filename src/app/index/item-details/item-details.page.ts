@@ -111,6 +111,7 @@ export class ItemDetailsPage implements OnInit {
     this.itemService.antiDuplicate(this.itemtitle).then((item) => 
       this.added = item
     );
+    
   }
 
 

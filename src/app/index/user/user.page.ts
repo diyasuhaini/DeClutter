@@ -22,6 +22,8 @@ export class UserPage implements OnInit {
   private people: User[];
   private userSub: Subscription;
   private cuid: string;
+  private vendor: string;
+  private isfollowing = false;
 
   constructor(private router: Router,
               private itemService: ItemService,
@@ -47,6 +49,7 @@ export class UserPage implements OnInit {
         }
       });
     });
+    this.vendor = routerState[0].vendor;
 
     
   }
@@ -88,6 +91,9 @@ export class UserPage implements OnInit {
     }, error => {
       console.log(error);
     })
+    this.followService.antiDuplicate(this.vendor).then((item) => 
+      this.isfollowing = item
+    );
     
   }
 
