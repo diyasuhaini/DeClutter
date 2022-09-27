@@ -82,6 +82,10 @@ const routes: Routes = [
   {
     path: 'item-tracking',
     loadChildren: () => import('./item-tracking/item-tracking.module').then( m => m.ItemTrackingPageModule)
+  },
+  {
+    path: 'donation',
+    loadChildren: () => import('./donation/donation.module').then( m => m.DonationPageModule)
   }
 
 
