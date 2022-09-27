@@ -58,7 +58,7 @@
 
 <ion-content color="medium">
   <!--for ion segment-->
-  <ion-segment (ionChange)="segmentChanged($event)" scrollable value="all" >
+  <ion-segment (ionChange)="segmentChanged($event)" scrollable [(ngModel)]="itemtype" value="all">
     <ion-segment-button value="all">
       <ion-label class="segmentLabel">All</ion-label>
     </ion-segment-button>
@@ -90,7 +90,7 @@
 
 
   <!--for item list-->
-  <div class="itemList" *ngFor="let item of item | slice:0:3">
+  <div class="itemList" *ngFor="let item of (item|filterType:segmentValue) | slice:0:3">
     <div class="itemPic">
       <ion-img [src]="item.img1" class="itemPic"></ion-img>
     </div>

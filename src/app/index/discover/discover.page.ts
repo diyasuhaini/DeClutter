@@ -11,8 +11,13 @@ export class DiscoverPage implements OnInit {
 
   private item: Item[];
   private currentid: string;
+  private segmentValue: String = "all";
 
   constructor(private itemService: ItemService) { }
+
+  segmentChanged(e){
+    this.segmentValue = e.detail.value;
+  }
 
   ngOnInit() {
     this.item = [];

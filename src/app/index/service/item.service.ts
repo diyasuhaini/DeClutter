@@ -102,7 +102,8 @@ export class ItemService {
           "color": item[key].color,
           "categories": item[key].categories,
           "quantity": item[key].quantity,
-          "name": item[key].title
+          "name": item[key].title,
+          "type": item[key].type
         });
       }
     });
