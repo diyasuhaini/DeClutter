@@ -8,7 +8,7 @@ import { DiscoverPageRoutingModule } from './discover-routing.module';
 
 import { DiscoverPage } from './discover.page';
 import { FilterTypePipe } from './filter-type.pipe';
-
+import { FilterNamePipe } from './filter-name.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +16,6 @@ import { FilterTypePipe } from './filter-type.pipe';
     IonicModule,
     DiscoverPageRoutingModule
   ],
-  declarations: [DiscoverPage, FilterTypePipe]
+  declarations: [DiscoverPage, FilterTypePipe, FilterNamePipe]
 })
 export class DiscoverPageModule {}

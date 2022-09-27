@@ -6,8 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterTypePipe implements PipeTransform {
 
   transform(value: Array<any>, ...args: any): any {
-    console.log("value",value);
-    console.log("args",args);
     if(args[0] == "all"){
       return value;
     }else{
@@ -15,7 +13,6 @@ export class FilterTypePipe implements PipeTransform {
         return item.type == args[0];
       })
     }
-    // return null;
   }
 
 }
