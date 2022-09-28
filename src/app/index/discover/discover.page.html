@@ -6,7 +6,7 @@
     <ion-modal trigger="open-modal" [initialBreakpoint]="0.40" color="medium">
       <ng-template>
         <ion-content color="medium">
-          <form>
+          <form [formGroup]="filterForm" (ngSubmit)="FilterForm()">
           <!--header here-->
           <ion-toolbar color="primary">
             <ion-icon name="options-outline" slot="start" class="myIcon"></ion-icon>
@@ -38,7 +38,7 @@
 
           <!--item categories-->
           <ion-item color="medium">
-            <ion-select interface="pop-over" placeholder="Select categories" color="medium">
+            <ion-select interface="pop-over" placeholder="Select categories" color="medium" formControlName="cat">
               <ion-select-option value="unisex">Unisex</ion-select-option>
               <ion-select-option value="kids">Kids</ion-select-option>
               <ion-select-option value="men">Men</ion-select-option>
@@ -47,7 +47,7 @@
           </ion-item>
 
           <!--for button-->
-          <ion-button class="filterBtn" shape="round" color="tertiary">Save filter</ion-button>
+          <ion-button type="submit" class="filterBtn" shape="round" color="tertiary">Save filter</ion-button>
           </form>
         </ion-content>
       </ng-template>
@@ -90,7 +90,7 @@
 
 
   <!--for item list-->
-  <div class="itemList" *ngFor="let item of ((item|filterType:segmentValue)|filterName:searchitem) | slice:0:3">
+  <div class="itemList" *ngFor="let item of (((item|filterType:segmentValue)|filterCategories:categories)|filterName:searchitem) | slice:0:3">
     <div class="itemPic">
       <ion-img [src]="item.img1" class="itemPic"></ion-img>
     </div>
