@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="medium">
+  <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -11,7 +11,7 @@
 <ion-content color="medium">
   <!--item details picture-->
   <div class="bigPicture">
-    <ion-slides [options]="slideOpts">
+    <ion-slides [options]="slideOpts" pager="true">
       <!--for picture 1-->
       <ion-slide>
         <ion-img [src]="item[0].img1" alt="item" class="bigPic"></ion-img>
@@ -45,7 +45,7 @@
 
   <!--title-->
   <p class="titleText">{{ item[0].title }}</p>
-  <p class="priceTag">$ {{ item[0].price }}</p>
+  <p class="priceTag">${{ item[0].price }} BND</p>
 
   <!--more info-->
   <div class="infoWrap">
