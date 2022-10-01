@@ -19,6 +19,12 @@ export class HomePage implements OnInit {
   private currentusername: string;
   private currentid: string;
 
+  //auto scroll
+  slideOptsOne = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    autoplay:true
+   };
 
   constructor(private itemService: ItemService, private router: Router, private authenticationService: AuthenticationService) { }
 
@@ -39,7 +45,6 @@ export class HomePage implements OnInit {
         }
       });
     });
-    
     
   }
 

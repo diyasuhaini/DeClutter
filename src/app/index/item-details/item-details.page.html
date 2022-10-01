@@ -82,7 +82,7 @@
         <ion-button color="tertiary" class="buyBtn" shape="round" (click)="addcart()">Add to Bag</ion-button>
       </div>
       <div class="fRight"*ngIf="added">
-        <ion-button color="tertiary" class="buyBtn" shape="round" (click)="proceed()">Proceed</ion-button>
+        <ion-button color="tertiary" class="buyBtn" shape="round" (click)="proceed()" disabled>Already added!</ion-button>
       </div>
     </div>
   </ion-toolbar>

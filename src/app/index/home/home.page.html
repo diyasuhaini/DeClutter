@@ -9,12 +9,22 @@
   <h2>Welcome!</h2>
   <!--big picture-->
   <div class="pictureBox">
-    <img src="assets/img/pic1.jpg" alt="Main Picture" class="bigImg">
+    <ion-slides [options]="slideOptsOne"> <!--options is for autoplay-->
+      <ion-slide>
+        <img src="assets/img/sale1.png" alt="Main Picture" class="bigImg">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/img/sale1.jpg" alt="Main Picture" class="bigImg">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/img/sale2.jpg" alt="Main Picture" class="bigImg">
+      </ion-slide>
+    </ion-slides>
   </div>
-  <h3>Picked out just for you!</h3>
 
   <!--item list-->
-  <div class="itemList" *ngFor="let item of item | slice:0:3" routerLink="../item-details" [state]="item" (click)="test(item)"> <!-- routerLink="../item-details"  (click)="itemDetail()-->
+  <h3>Picked out just for you!</h3>
+  <div class="itemList" *ngFor="let item of item | slice:0:4" routerLink="../item-details" [state]="item" (click)="test(item)" scorllable> <!-- routerLink="../item-details"  (click)="itemDetail()-->
     <!--image here-->
     <ion-img [src]="item.img1" class="itemPic"></ion-img>
     <!--content here-->
