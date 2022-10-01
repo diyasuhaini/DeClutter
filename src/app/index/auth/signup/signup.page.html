@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="medium">
+  <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,12 +8,18 @@
 </ion-header>
 
 <ion-content color="medium">
+  <ion-card color="primary" class="myWelcome">
+    <ion-img src="assets/img/start.jpg"></ion-img>
+    <h2>Let's get started!</h2>
+    Create your account to continue!
+  </ion-card>
+
   <form class="form" [formGroup]="addUsers" (ngSubmit)="signUp(addUsers.value)"> <!-- account created when submit-->
     <ion-card color="medium">
       <!--first input-->
       <ion-label>Username</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="Set a username" formControlName="username"></ion-input> <!--include formcontrolname-->
+        <ion-input type="text" placeholder="Set a username" formControlName="username"><ion-icon name="person-outline"></ion-icon> &nbsp;</ion-input> <!--include formcontrolname-->
       </ion-item>
       <!--validator message-->
       <ng-container *ngFor="let error of error_msg.username">
@@ -26,7 +32,7 @@
       <!--second input-->
       <ion-label>Email</ion-label>
       <ion-item color="medium">
-        <ion-input type="email" placeholder="Set an email" formControlName="email"></ion-input>
+        <ion-input type="email" placeholder="Set an email" formControlName="email"><ion-icon name="mail-outline"></ion-icon> &nbsp;</ion-input>
       </ion-item>
       <!--validator message-->
       <ng-container *ngFor="let error of error_msg.email">
@@ -39,7 +45,7 @@
       <!--third input-->
       <ion-label>Password</ion-label>
       <ion-item color="medium">
-        <ion-input type="password" placeholder="Set a password" formControlName="password" required></ion-input>
+        <ion-input type="password" placeholder="Set a password" formControlName="password" required><ion-icon name="key-outline"></ion-icon> &nbsp;</ion-input>
       </ion-item>
       <!--validator message-->
       <ng-container *ngFor="let error of error_msg.password">
@@ -52,7 +58,7 @@
       <!--fourth input-->
       <ion-label>Phone</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="BN +673" value="BN +673 " formControlName="contact"></ion-input>
+        <ion-input type="text" placeholder="BN +673" value="BN +673 " formControlName="contact"><ion-icon name="phone-portrait-outline"></ion-icon> &nbsp;</ion-input>
       </ion-item>
       <!--validator message-->
       <ng-container *ngFor="let error of error_msg.contact">

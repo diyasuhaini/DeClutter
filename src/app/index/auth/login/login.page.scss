@@ -14,8 +14,7 @@ a{
 }
 
 #spaces{
-    display: block;
-    height: 300px; width: 100%;
+    display: block; width: 100%;
 }
 
 ion-button{
@@ -28,4 +27,15 @@ p{
     color: red;
     padding: 20px;
     font-size: 14px;
+}
+
+//for welcome
+.myWelcome{
+    color: black; text-align: center;
+    margin-bottom: 20px;
+}
+
+//error message
+.errorMsg{
+    color: red;
 }
