@@ -103,19 +103,19 @@
 
   <!-- bought segment -------------------------------------------- -->
   <div style="display: inline;" *ngIf="segmentValue == 'bought'">
-    <div class="boughtPost" *ngFor="let item of item">
+    <div class="boughtPost">
       <!--left(image)-->
       <div class="boughtLeft">
-        <ion-img class="image" [src]="item.img1"></ion-img>
+        <ion-img class="boughtImg" src="assets/img/box.png"></ion-img> <!--just local image here-->
       </div>
       <!--center(info)-->
       <div class="boughtCenter">
-        <div class="ion-text-center" class="boughtName">{{ item.name }}</div>
-        <div class="ion-text-center" class="boughtBrand">{{ item.brand }}</div>
+        <div class="ion-text-center" class="boughtName">Tracking ID</div> <!--for track ID-->
+        <div class="ion-text-center" class="boughtBrand">Status</div> <!--status of delivery-->
       </div>
       <!--right(price & button)-->
       <div class="boughtRight">
-        <div class="ion-text-center" class="tagPrice">${{ item.price }}</div>
+        <div class="ion-text-center" class="tagPrice">Total Price</div> <!--here will be total price-->
         <ion-button color="tertiary" class="trackBtn" routerLink="../item-tracking">Track</ion-button>
       </div>
     </div>

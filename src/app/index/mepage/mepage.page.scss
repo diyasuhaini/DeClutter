@@ -129,17 +129,17 @@ ion-toggle {
 //for bought item
 .boughtPost{
     display: flex; flex: wrap;
-    width: 95%; height: 15vh;
+    width: 90%; height: 15vh;
     margin: auto; 
     margin-top: 10px; margin-bottom: 10px;
 }
 
 .boughtLeft{
-    flex: 30%; height: auto;
+    flex: 25%; height: auto;
 }
 
 .boughtCenter{
-    flex: 55%; height: auto;
+    flex: 50%; height: auto;
 }
 
 .boughtRight{
@@ -155,21 +155,22 @@ ion-toggle {
     display: block; margin: auto;
     font-size: 12px;
     width: 55px; height: 20px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .boughtImg{
-    width: 90px; height: 80px;
+    width: 80px; height: 70px;
     border: 1px solid #FAECDF; border-radius: 10px;
+    margin-top: 10px;
 }
 
 .boughtName{
     font-weight: bold; font-size: 18px;
-    margin-top: 20px; margin-left: 10px;
+    margin-top: 20px; margin-left: 15px;
 }
 
 .boughtBrand{
     color: #9e9d9d;
     font-size: 16px;
-    margin-left: 10px;
+    margin-left: 15px;
 }

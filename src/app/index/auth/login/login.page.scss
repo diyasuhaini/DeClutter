@@ -20,13 +20,13 @@ a{
 ion-button{
     display: block;
     width: 130px;
-    margin: auto;
+    margin: auto; margin-bottom: 20px;
 }
 
 p{
     color: red;
-    padding: 20px;
-    font-size: 14px;
+    padding: 5px;
+    font-size: 14px; text-align: center;
 }
 
 //for welcome
