@@ -15,7 +15,7 @@
   <ion-accordion-group color="medium">
     <ion-accordion color="medium"> <!--loop here-->
       <ion-item slot="header" color="medium">
-        Item 1 <!--this will be the name of item-->
+        Item title <!--this will be the name of item-->
       </ion-item>
       <!--some small detail such as vendor, type, price-->
       <div class="myItem" slot="content">
@@ -32,4 +32,17 @@
       </div>
     </ion-accordion>
   </ion-accordion-group>
+
+  <!--here is the address to deliver-->
+  <div class="addressBox">
+    <!--address logo-->
+    <div class="addressLogo">
+      <img src="assets/img/address.png" class="addressImage">
+    </div> 
+    <!--address details-->
+    <div class="addressDetails">
+      <p class="addressTitle">Delivery Address</p><!--just title-->
+      <p class="address">Address here</p><!--address here-->
+    </div>
+  </div>
 </ion-content>
