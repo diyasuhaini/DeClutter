@@ -24,7 +24,7 @@
 
   <!--item list-->
   <h3>Picked out just for you!</h3>
-  <div class="itemList" *ngFor="let item of item | slice:0:4" routerLink="../item-details" [state]="item" (click)="test(item)" scorllable> <!-- routerLink="../item-details"  (click)="itemDetail()-->
+  <div class="itemList" *ngFor="let item of item | slice:0:4" routerLink="../item-details" [state]="item">
     <!--image here-->
     <ion-img [src]="item.img1" class="itemPic"></ion-img>
     <!--content here-->

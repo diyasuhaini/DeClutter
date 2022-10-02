@@ -90,7 +90,7 @@
 
 
   <!--for item list-->
-  <div class="itemList" *ngFor="let item of (((((item|filterType:segmentValue)|filterCategories:categories)|filterPrice:priceValue)|filterSizes:sizes)|filterName:searchitem) | slice:0:3">
+  <div class="itemList" *ngFor="let item of (((((item|filterType:segmentValue)|filterCategories:categories)|filterPrice:priceValue)|filterSizes:sizes)|filterName:searchitem) | slice:0:3" routerLink="../item-details" [state]="item">
     <div class="itemPic">
       <ion-img [src]="item.img1" class="itemPic"></ion-img>
     </div>
