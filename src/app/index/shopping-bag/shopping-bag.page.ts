@@ -52,6 +52,14 @@ export class ShoppingBagPage implements OnInit {
     });
   }
 
+  remove(item, vendor){
+    console.log(item);
+    console.log(vendor);
+    console.log(this.currentid);
+    this.itemService.removeCart(item + vendor).then( () => location.reload() );
+
+  }
+
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();
     this.itemService.retrieveCart().then((cart) => {

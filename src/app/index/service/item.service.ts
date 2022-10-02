@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { get, getDatabase, ref, set } from "firebase/database";
+import { get, getDatabase, ref, remove, set, update } from "firebase/database";
 import { environment } from 'src/environments/environment';
 import { initializeApp } from 'firebase/app';
 import { AuthenticationService } from 'src/app/authentication.service';
@@ -251,6 +251,22 @@ export class ItemService {
       }
     });
     return trigger
+  }
+
+  async removeCart(itemid){
+    var currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'shopping-bag/' + currentid);
+    const snapshot = await get((dbref));
+    console.log(snapshot.val());
+    var cont = [];
+    snapshot.val().forEach((item) => {
+      console.log("amongus", item.title + item.vendor)
+      if(item != itemid){
+        cont.push(item);
+      }
+    })
+    return set(dbref, cont);
+
   }
 
   
