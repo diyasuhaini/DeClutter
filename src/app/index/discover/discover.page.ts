@@ -14,6 +14,8 @@ export class DiscoverPage implements OnInit {
   private currentid: string;
   private segmentValue: String = "all";
   private categories: String = "unisex";
+  private priceValue: boolean = false;
+  private sizes: Array<String>;
 
   private filterForm: FormGroup;
 
@@ -27,6 +29,8 @@ export class DiscoverPage implements OnInit {
     this.item = [];
     this.currentid = localStorage.getItem('currentid');
     this.filterForm = new FormGroup({
+      pricetoggle: new FormControl(),
+      sizecheck: new FormControl(),
       cat: new FormControl()
     });
   }
@@ -44,6 +48,8 @@ export class DiscoverPage implements OnInit {
 
   FilterForm(){
     this.categories = this.filterForm.value.cat;
+    this.priceValue = this.filterForm.value.pricetoggle;
+    this.sizes = this.filterForm.value.sizecheck;
   }
 
   

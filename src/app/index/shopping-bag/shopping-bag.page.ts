@@ -26,6 +26,7 @@ export class ShoppingBagPage implements OnInit {
   private currentid: string;
   private item: Item[];
   private number1: number = 0;
+  private number2: number = 0;
   private totalcost: number = 0;
   
 
@@ -50,6 +51,14 @@ export class ShoppingBagPage implements OnInit {
         }
       });
     });
+  }
+
+  remove(item, vendor){
+    console.log(item);
+    console.log(vendor);
+    console.log(this.currentid);
+    this.itemService.removeCart(item + vendor).then( () => location.reload() );
+
   }
 
   ionViewWillEnter(){

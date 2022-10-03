@@ -10,6 +10,8 @@ import { DiscoverPage } from './discover.page';
 import { FilterTypePipe } from './filter-type.pipe';
 import { FilterNamePipe } from './filter-name.pipe';
 import { FilterCategoriesPipe } from './filter-categories.pipe';
+import { FilterPricePipe } from './filter-price.pipe';
+import { FilterSizesPipe } from './filter-sizes.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +20,6 @@ import { FilterCategoriesPipe } from './filter-categories.pipe';
     IonicModule,
     DiscoverPageRoutingModule
   ],
-  declarations: [DiscoverPage, FilterTypePipe, FilterNamePipe, FilterCategoriesPipe]
+  declarations: [DiscoverPage, FilterTypePipe, FilterNamePipe, FilterCategoriesPipe, FilterPricePipe, FilterSizesPipe]
 })
 export class DiscoverPageModule {}

@@ -18,7 +18,7 @@
    <!--second button-->
   <ion-segment-button value="saved">
     <ion-label>
-      Saved 
+      Saved ({{number2}})
     </ion-label>
   </ion-segment-button>
  </ion-segment>
@@ -52,7 +52,7 @@
       <!--price here-->
       <div class="bagRight">
         <p class="textBold">{{item.price| currency}}</p>
-        <ion-icon name="trash-outline" class="trashIcon"></ion-icon>
+        <ion-icon name="trash-outline" class="trashIcon" (click)="remove(item.title, item.vendor)"></ion-icon>
       </div>
     </div>
  </ion-grid>

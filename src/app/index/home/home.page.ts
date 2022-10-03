@@ -51,6 +51,7 @@ export class HomePage implements OnInit {
 
     
   ionViewWillEnter(){
+    this.authenticationService.fetchUser().subscribe();
     this.itemService.myItems().then((item) => {
       this.item = item;
     }, error => {
