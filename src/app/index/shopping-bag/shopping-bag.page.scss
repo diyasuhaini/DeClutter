@@ -116,3 +116,21 @@ ion-segment{
     width: 35px; height: 35px;
     color: red;
 }
+
+//for whitebox
+.scrollBox{
+    display: block;
+    width: 95%; height: 32vh;
+    overflow-x: auto; margin: auto;
+    white-space: nowrap;
+    border: 1px solid;
+}
+
+.whiteBox{
+    display: inline-flex;
+    width: 50%; height: 30vh;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-left: 10px; margin-right: 10px;
+    margin-top: 5px;
+}
