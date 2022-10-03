@@ -25,6 +25,17 @@
 
  <!-- Bag Side of things 00000000000000000000000000000000000000000000 -->
  <ion-grid *ngIf="segmentValue == 'bag'">
+    <ion-list *ngFor="let item of item" color="medium">
+      <ion-item-sliding color="medium">
+        <ion-item color="medium">
+          <ion-img [src]="item.img1" class="itemPic"></ion-img>
+        </ion-item>
+        <ion-item-options color="medium">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
     <div class="bagWrap" *ngFor="let item of item">
       <!--picture here-->
       <div class="bagLeft">

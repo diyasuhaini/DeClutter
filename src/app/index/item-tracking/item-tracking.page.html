@@ -8,14 +8,36 @@
 </ion-header>
 
 <ion-content color="medium">
-  <!--here for tracking details-->
+  <!--here for header-->
+  <h2>Thank you for shopping with <b>DeClutter</b></h2>
+
+  <!--here for tracking details 1-->
+  <div class="boxOrder">
+    <!--for tracking ID-->
+    <div class="myId">
+      <p class="detailTitle">Tracking ID</p>
+      <p class="detailSub">#id here</p> <!--value here-->
+    </div>
+    <!--for estimated time-->
+    <div class="myTime">
+      <p class="detailTitle">Estimated Time</p>
+      <p class="detailSub">Time here</p> <!--time here-->
+    </div>
+  </div>
+
+  <!--here for tracking details 2-->
+  <h3>Order detail</h3>
+  <ion-card color="primary" class="header" id="myText">
+    <ion-img [src]="myImage" class="headerImg"></ion-img>
+    Your order has been placed!
+  </ion-card>
 
   <!--here for item to deliver-->
-  <h3>List of items to deliver</h3>
+  <h3>Item ordered</h3>
   <ion-accordion-group color="medium">
     <ion-accordion color="medium"> <!--loop here-->
       <ion-item slot="header" color="medium">
-        Item title <!--this will be the name of item-->
+        Item title (Quantity here)<!--this will be the name of item include quantity of item-->
       </ion-item>
       <!--some small detail such as vendor, type, price-->
       <div class="myItem" slot="content">
@@ -45,4 +67,5 @@
       <p class="address">Address here</p><!--address here-->
     </div>
   </div>
+
 </ion-content>

@@ -3,7 +3,11 @@ ion-buttons{
 }
 
 h3{
-    margin-left: 10px;
+    margin-left: 10px; font-size: 20px;
+}
+
+h2{
+    text-align: center;
 }
 
 //item list
@@ -43,6 +47,7 @@ p{
     width: 95%; height: 13vh;
     margin: auto; border-radius: 10px;
     background-color: #FAECDF;
+    margin-bottom: 30px;
 }
 
 .addressLogo{
@@ -65,4 +70,36 @@ p{
 
 .address{
     font-size: 12px; color: rgb(148, 147, 147);
+}
+
+//header
+.header{
+    text-align: center; font-size: 16px;
+    color: black; padding: 5%;
+}
+
+.headerImg{
+    margin-bottom: 20px;
+}
+
+//order details
+.boxOrder{
+    display: flex; flex: wrap;
+    width: 95%; height: 13vh;
+    border-radius: 10px; margin: auto; 
+    background-color: rgb(233, 232, 232);
+}
+
+.myId, .myTime{
+    flex: 50%; height: auto;
+    text-align: center;
+}
+
+.detailTitle{
+    font-weight: bold;
+    margin-left: 0px; margin-top: 20px;
+}
+
+.detailSub{
+    margin-left: 0px;
 }
