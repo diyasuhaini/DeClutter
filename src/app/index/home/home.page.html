@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="tertiary">
-    <h2>{{ currentusername }}</h2>
+    <h2>Hi {{ currentusername }}</h2>
     <ion-icon name="bag-outline" slot="end" routerLink="../shopping-bag"></ion-icon>
   </ion-toolbar>
 </ion-header>
@@ -24,14 +24,21 @@
 
   <!--item list-->
   <h3>Picked out just for you!</h3>
-  <div class="itemList" *ngFor="let item of item | slice:0:4" routerLink="../item-details" [state]="item">
-    <!--image here-->
-    <ion-img [src]="item.img1" class="itemPic"></ion-img>
-    <!--content here-->
-    <div class="titleText">{{ item.name }}</div>
-    <div class="priceTag">${{ item.price }} BND</div>
+  <!--box-->
+  <div class="pickBox">
+    <!--scrollable box-->
+    <div class="theBox" *ngFor="let item of item | slice:0:4">
+      <div class="imageBox">
+        <ion-img [src]="item.img1" class="itemPic"></ion-img> <!--image here-->
+      </div>
+      <!--item details-->
+      <div class="titleText">{{ item.name }}</div>
+      <div class="priceTag">${{ item.price }} BND</div>
+      <div class="myBtn">
+        <ion-button routerLink="../item-details" [state]="item" class="btnGo" color="secondary">See more</ion-button>
+      </div>
+    </div>
   </div>
-
 
   <!--donation button-->
   <div class="banner">
