@@ -71,12 +71,18 @@ ion-searchbar{
 
 .pic{
     display: block;
-    width: 150px; height: 120px;
+    width: 150px; height: 110px;
     margin: auto; border: 1px solid;
+}
+
+.pic::part(image){
+    object-fit: cover;
 }
 
 .itemContent{
     font-size: 16px;
-    line-height: 10px; padding-left: 10px;
+    padding-left: 10px;
+    //for text too long
+    overflow: hidden; white-space: nowrap; 
+    text-overflow: ellipsis;
 }
-

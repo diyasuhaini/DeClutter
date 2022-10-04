@@ -99,6 +99,10 @@
         <ion-select-option value="women">Women</ion-select-option>
       </ion-select>
     </ion-item>
+    <!--item quantity-->
+    <ion-item color="medium">
+      <ion-input type="number" placeholder="Insert quantity" formControlName="quantity"></ion-input>
+    </ion-item>
     <ion-button type="submit" color="tertiary" shape="round" class="listbtn" [disabled]="!sellForm.valid">List this item</ion-button>
   </ion-card>
   <!--whitebox 2 end-->

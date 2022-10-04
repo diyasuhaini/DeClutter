@@ -17,8 +17,11 @@
   <div class="bigName">{{ user[0].username }}</div>
   <!--button follow and message here-->
   <div class="btnWrap">
-    <div class="follow">
-      <ion-button class="followBtn" color="tertiary" shape="round">Follow</ion-button>
+    <div class="follow" *ngIf="!isfollowing">
+      <ion-button class="followBtn" color="tertiary" shape="round" (click)="followuser()">Follow</ion-button>
+    </div>
+    <div class="follow" *ngIf="isfollowing">
+      <ion-button class="followBtn" color="tertiary" shape="round">Followed</ion-button>
     </div>
     <div class="message">
       <ion-button class="messageBtn" color="medium" routerLink="../message">Message</ion-button>

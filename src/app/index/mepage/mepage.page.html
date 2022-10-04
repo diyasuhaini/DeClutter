@@ -20,11 +20,11 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <h3>0</h3>
+          <h3>{{ follower }}</h3>
           <div>Follower</div>
         </ion-col>
         <ion-col>
-          <h3>0</h3>
+          <h3>{{ following }}</h3>
           <div>Following</div>
         </ion-col>
         <ion-col>
@@ -103,7 +103,22 @@
 
   <!-- bought segment -------------------------------------------- -->
   <div style="display: inline;" *ngIf="segmentValue == 'bought'">
-    
+    <div class="boughtPost">
+      <!--left(image)-->
+      <div class="boughtLeft">
+        <ion-img class="boughtImg" src="assets/img/box.png"></ion-img> <!--just local image here-->
+      </div>
+      <!--center(info)-->
+      <div class="boughtCenter">
+        <div class="ion-text-center" class="boughtName">Tracking ID</div> <!--for track ID-->
+        <div class="ion-text-center" class="boughtBrand">Status</div> <!--status of delivery-->
+      </div>
+      <!--right(price & button)-->
+      <div class="boughtRight">
+        <div class="ion-text-center" class="tagPrice">Total Price</div> <!--here will be total price-->
+        <ion-button color="tertiary" class="trackBtn" routerLink="../item-tracking">Track</ion-button>
+      </div>
+    </div>
   </div>
 
   <!-- bought segment -------------------------------------------- -->

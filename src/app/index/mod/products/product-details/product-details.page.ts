@@ -80,6 +80,7 @@ export class ProductDetailsPage implements OnInit {
       size: routerState.size,
       color: routerState.color,
       categories: routerState.categories,
+      quantity: routerState.quantity,
       brand: routerState.brand,
       type: routerState.type
     }];

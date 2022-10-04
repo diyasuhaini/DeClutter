@@ -26,6 +26,7 @@ export class ShoppingBagPage implements OnInit {
   private currentid: string;
   private item: Item[];
   private number1: number = 0;
+  private number2: number = 0;
   private totalcost: number = 0;
   
 
@@ -52,6 +53,14 @@ export class ShoppingBagPage implements OnInit {
     });
   }
 
+  remove(item, vendor){
+    console.log(item);
+    console.log(vendor);
+    console.log(this.currentid);
+    this.itemService.removeCart(item + vendor).then( () => location.reload() );
+
+  }
+
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();
     this.itemService.retrieveCart().then((cart) => {
@@ -60,7 +69,9 @@ export class ShoppingBagPage implements OnInit {
       this.totalcost = 0;
       this.item.forEach((item) => {
         this.number1 += 1;
-        this.totalcost += parseInt(item.price);
+        this.totalcost += parseFloat(item.price);
+        console.log(item.price);
+        console.log(item.price);
       });
     })
   }

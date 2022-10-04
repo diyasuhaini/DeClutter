@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Donate with DeClutter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <!--terms and condition text-->
+  <div class="termsBox">
+    <b>Important!!</b>
+    Please read before donating.
+    <a routerLink="./terms">Click here To terms and conditions</a> 
+  </div>
+
+  <!--picture here-->
+  <div class="picture">
+    <ion-slides [options]="slideOptsOne" pager="true">
+      <ion-slide>
+        <img src="assets/img/bantuan.PNG" alt="Main Picture" class="bigImg">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/img/bantuan1.PNG" alt="Main Picture" class="bigImg">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/img/bantuan2.PNG" alt="Main Picture" class="bigImg">
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <!--donateBox-->
+  <div class="donateBox">
+    <p>In a <b>mission</b> to help a helpless person, any donation will be deeply appreciated and is much needed</p>
+    <div class="quantityBox">
+      <h4>Total donated item :</h4>
+      <h3>0</h3> <!--total quantity item here-->
+    </div>
+    <ion-button class="myBtn" color="tertiary">Donate now!</ion-button>
+  </div>
+</ion-content>

@@ -109,10 +109,14 @@ ion-segment-button{
     margin-left: 15px;
 }
 
-.pic{
+.itemPic{
     display: block;
-    width: 150px; height: 120px;
-    margin: auto; border: 1px solid;
+    width: 150px; height: 140px;
+    margin: auto; border: 1px solid #FAECDF;
+}
+
+.itemPic::part(image){
+    object-fit: cover;
 }
 
 .itemContent{

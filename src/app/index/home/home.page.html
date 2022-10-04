@@ -1,24 +1,54 @@
 <ion-header>
-  <ion-toolbar color="medium">
-    <ion-searchbar color="medium" placeholder="search your wardrobe"></ion-searchbar>
+  <ion-toolbar color="tertiary">
+    <h2>Hi {{ currentusername }}</h2>
     <ion-icon name="bag-outline" slot="end" routerLink="../shopping-bag"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
+  <h2>Welcome!</h2>
   <!--big picture-->
   <div class="pictureBox">
-    <img src="assets/img/pic1.jpg" alt="Main Picture" class="bigImg">
+    <ion-slides [options]="slideOptsOne"> <!--options is for autoplay-->
+      <ion-slide>
+        <img src="assets/img/sale1.png" alt="Main Picture" class="bigImg">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/img/sale1.jpg" alt="Main Picture" class="bigImg">
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/img/sale2.jpg" alt="Main Picture" class="bigImg">
+      </ion-slide>
+    </ion-slides>
   </div>
-  <h3>Picked out just for you!</h3>
 
   <!--item list-->
-  <div class="itemList" *ngFor="let item of item | slice:0:3" routerLink="../item-details" [state]="item" (click)="test(item)"> <!-- routerLink="../item-details"  (click)="itemDetail()-->
-    <!--image here-->
-    <ion-img [src]="item.img1" class="itemPic"></ion-img>
-    <!--content here-->
-    <div class="titleText">{{ item.name }}</div>
-    <div class="priceTag">${{ item.price }} BND</div>
+  <h3>Picked out just for you!</h3>
+  <!--box-->
+  <div class="pickBox">
+    <!--scrollable box-->
+    <div class="theBox" *ngFor="let item of item | slice:0:4">
+      <div class="imageBox">
+        <ion-img [src]="item.img1" class="itemPic"></ion-img> <!--image here-->
+      </div>
+      <!--item details-->
+      <div class="titleText">{{ item.name }}</div>
+      <div class="priceTag">${{ item.price }} BND</div>
+      <div class="myBtn">
+        <ion-button routerLink="../item-details" [state]="item" class="btnGo" color="secondary">See more</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!--donation button-->
+  <div class="banner">
+    <div class="banRight">
+      <img src="assets/img/volunteer.png" alt="donate logo" class="iconSize">
+    </div> <!--for icon-->
+    <div class="banLeft"> 
+      <p class="donateTxt">Donate with DeClutter</p>
+      <ion-button class="donateBtn" color="tertiary" shape="round" routerLink="../donation">To Donation Page</ion-button>
+    </div> <!--for button-->
   </div>
 </ion-content>
 
