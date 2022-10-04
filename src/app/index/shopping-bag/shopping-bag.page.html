@@ -25,23 +25,38 @@
 
  <!-- Bag Side of things 00000000000000000000000000000000000000000000 -->
  <ion-grid *ngIf="segmentValue == 'bag'">
-    <div class="bagWrap" *ngFor="let item of item">
-      <!--picture here-->
-      <div class="bagLeft">
-        <ion-img [src]="item.img1" class="itemPic"></ion-img>
-      </div>
-
-      <!--content here-->
-      <div class="bagCenter">
-        <p class="textBold">{{item.title}}</p>
-        <p class="subtitle">{{item.brand}}</p>
-        <p class="smallBold">Move to wishlist</p>
-      </div>
-
-      <!--price here-->
-      <div class="bagRight">
-        <p class="textBold">{{item.price| currency}}</p>
-        <ion-icon name="trash-outline" class="trashIcon" (click)="remove(item.title, item.vendor)"></ion-icon>
+    <div class="scrollBox">
+      <div class="whiteBox" *ngFor="let item of item">
+        <!--item image-->
+        <div class="imageBox">
+          <ion-img [src]="item.img1" class="myImg"></ion-img>
+        </div>
+        <!--item details-->
+        <div class="textBox">
+          <div class="textBold">{{item.title}}</div>
+          <p class="smallBold">{{item.price| currency}} BND</p>
+          <p class="subtitle">{{item.brand}}</p>
+          <p class="smallBold">Move to wishlist</p>
+        </div>
+        <!--item quantity-->
+        <div class="quantityBox">
+          <!--button minus-->
+          <div class="minusBtn">
+            <button class="myButton">-</button>
+          </div>
+          <!--number here-->
+          <div class="numberBtn">
+            <input type="number" value="1" class="myInputNumber"><!--quantity-->
+          </div>
+          <!--button add-->
+          <div class="addBtn">
+            <button class="myButton">+</button>
+          </div>
+        </div>
+        <!--remove here-->
+        <div class="myRemove">
+          <button class="myRemoveBtn">Remove</button>
+        </div>
       </div>
     </div>
  </ion-grid>

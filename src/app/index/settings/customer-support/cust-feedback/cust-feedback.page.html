@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" routerLink="../">
+      <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form style="margin:15px;">
+    <ion-list>
+      <ion-label>From:</ion-label>
+      <ion-item color="medium">
+        <ion-input type="text" placeholder="Enter your email"></ion-input>
+      </ion-item>
+      <br>
+
+      <ion-label>To:</ion-label>
+      <ion-item color="medium">
+        <ion-text>Moderator</ion-text>
+      </ion-item>
+      <br>
+            
+      <ion-label>Description:</ion-label>
+      <ion-item color="medium">
+        <ion-input type="text" placeholder="Describe your feedback"></ion-input>
+      </ion-item>
+      <br>
+    </ion-list>
+    <ion-button expand="block" type="submit" color="tertiary"><b>Submit feedback</b></ion-button>
+  </form>
+
+</ion-content>

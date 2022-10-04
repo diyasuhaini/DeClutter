@@ -26,6 +26,7 @@ export class ShoppingBagPage implements OnInit {
   private currentid: string;
   private item: Item[];
   private number1: number = 0;
+  private number2: number = 0;
   private totalcost: number = 0;
   
 

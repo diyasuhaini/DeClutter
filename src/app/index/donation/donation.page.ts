@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonationPage implements OnInit {
 
+  //auto scroll
+  slideOptsOne = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    autoplay:true
+   };
+
   constructor() { }
 
   ngOnInit() {

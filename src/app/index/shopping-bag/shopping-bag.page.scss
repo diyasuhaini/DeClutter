@@ -95,24 +95,115 @@ ion-segment{
 
 //for text
 .textBold{
+    display: block;
+    width: 100%; height: 30px;
     font-weight: bold;
-    font-size: 16px;
-    padding-left: 5px; padding-right: 5px;
-    line-height: 10px;
+    font-size: 16px; text-align: center;
+    padding: 10px;
+    overflow: hidden; white-space: nowrap; 
+    text-overflow: ellipsis;
 }
 
 .subtitle{
     font-size: 14px;
-    padding-left: 5px; line-height: 10px;
+    text-align: center;
 }
 
 .smallBold{
     font-size: 14px; font-weight: bold;
-    padding-left: 5px;
+    text-align: center;
 }
 
 //icon trash
 .trashIcon{
     width: 35px; height: 35px;
     color: red;
+}
+
+//for whitebox
+.scrollBox{
+    display: block;
+    width: 100%; height: 48vh;
+    overflow-x: auto; margin: auto;
+    white-space: nowrap;
+}
+
+.whiteBox{
+    display: inline-block;
+    width: 45%; height: 45vh;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-left: 10px; margin-right: 10px;
+    margin-top: 5px;
+}
+
+//imageBox
+.imageBox{
+    display: block;
+    width: 100%; height: 18vh;
+    border-radius: 10px 10px 0px 0px;
+    border: 1px solid;
+}
+
+.myImg{
+    display: block;
+    width: 100%; height: 100%;
+    border-radius: 10px 10px 0px 0px;
+    border: none;
+}
+
+.myImg::part(image){
+    object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
+}
+
+//text box
+.textBox{
+    display: block;
+    width: 100%; height: 16vh;
+}
+
+//quantity Button
+.quantityBox{
+    display: flex;
+    width: 100%; height: 6vh;
+    margin-top: 5px;
+}
+
+.minusBtn, .addBtn{
+    flex: 25%;
+}
+
+.numberBtn{
+    flex: 50%;
+}
+
+.myButton{
+    display: block;
+    width: 20px; height: 20px;
+    margin: auto; margin-top: 10px;
+    border-radius: 50%;
+}
+
+.myInputNumber{
+    display: block;
+    width: 60px; height: 25px;
+    margin: auto; margin-top: 8px;
+    border: 1px solid; border-radius: 10px;
+    text-align: center;
+    background-color: white;
+}
+
+//my remove button
+.myRemove{
+    display: block;
+    width: 100%; height: 3vh;
+}
+
+.myRemoveBtn{
+    display: block;
+    width: 70%; height: 20px;
+    background-color: red;
+    border-radius: 10px;
+    margin: auto;
 }
