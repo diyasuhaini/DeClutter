@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: CustomerSupportPage
+  },
+  {
+    path: 'cust-report',
+    loadChildren: () => import('./cust-report/cust-report.module').then( m => m.CustReportPageModule)
+  },
+  {
+    path: 'cust-feedback',
+    loadChildren: () => import('./cust-feedback/cust-feedback.module').then( m => m.CustFeedbackPageModule)
   }
 ];
 

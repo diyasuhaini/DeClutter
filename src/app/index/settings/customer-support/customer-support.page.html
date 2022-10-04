@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>customer-support</ion-title>
+    <ion-buttons slot="start" routerLink="../">
+      <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Customer Support</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card>
+    <ion-card-content style="color: black;">
+      <h1><b>Report</b></h1>
+      <ion-text style="font-size:1.2em;">There are 3 types of errors that customers can report:<br>
+        - <b>Bug</b> (eg. button malfunction, glitches)<br>
+        - <b>Order error</b> (eg. incorrect receipt)<br>
+        - <b>Payment error</b> (eg. transaction error)
+      </ion-text><br>
+      <ion-button color="tertiary" expand="block" style="margin: 10px 0;" routerLink="../customer-support/cust-report"><b>Report an error</b></ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content style="color: black;">
+      <h1><b>Feedback</b></h1>
+      <ion-text style="font-size:1.2em;">Don't hesitate to send your suggestions to improve DeClutter App!</ion-text><br>
+      <ion-button color="tertiary" expand="block" style="margin: 10px 0;" routerLink="../customer-support/cust-feedback"><b>Send a Feedback</b></ion-button>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
