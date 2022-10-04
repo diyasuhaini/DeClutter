@@ -55,9 +55,10 @@ export class ItemSoldPage implements OnInit {
       });
       this.finaltotal = (this.totalcost + this.shipping)/ this.discount;
       var mytotal;
-      mytotal = this.finaltotal;
+      mytotal = this.finaltotal * 0.71699;
+      var convertTotal = parseFloat(mytotal).toFixed(2);
       //total item send to localstorage
-      localStorage.setItem("totalPrice", mytotal);
+      localStorage.setItem("totalPrice", convertTotal);
     })
   }
 

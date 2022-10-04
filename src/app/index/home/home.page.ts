@@ -19,6 +19,9 @@ export class HomePage implements OnInit {
   private currentusername: string;
   private currentid: string;
 
+  private convert: number = 0.70;
+  private myTotal: number = 0;
+
   //auto scroll
   slideOptsOne = {
     initialSlide: 0,
@@ -57,6 +60,7 @@ export class HomePage implements OnInit {
     }, error => {
       console.log(error);
     });
+    
   }
 
   
