@@ -56,7 +56,7 @@ export class ShoppingBagPage implements OnInit {
     console.log(item);
     console.log(vendor);
     console.log(this.currentid);
-    this.itemService.removeCart(item + vendor).then( () => location.reload() );
+    this.itemService.removeCart(item + vendor).then( () => location.reload());
 
   }
 

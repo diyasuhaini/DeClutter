@@ -211,28 +211,29 @@ export class ItemService {
 
   async retrieveCart(){
     var currentid = localStorage.getItem('currentid');
-    const dbref = ref(database, 'shopping-bag/');
+    const dbref = ref(database, 'shopping-bag/' + currentid);
     // get values
     const snapshot = await get((dbref));
     var item = snapshot.val();
     var cont = [];
-    item[currentid].forEach((item) => {
-      cont.push(item);
-    })
-    const dbref2 = ref(database, 'item/');
-    const snapshot2 = await get((dbref2));
-    var item2 = snapshot2.val();
-
-    var cont3 = [];
-    Object.keys(item2).forEach((key) => {
-      cont.forEach((item) => {
-        if (key == item) {
-          cont3.push(item2[key]);
-        }
+    if (item != null){
+      item.forEach((item) => {
+        cont.push(item);
       })
-
-      
-    })
+      const dbref2 = ref(database, 'item/');
+      const snapshot2 = await get((dbref2));
+      var item2 = snapshot2.val();
+  
+      var cont3 = [];
+      Object.keys(item2).forEach((key) => {
+        cont.forEach((item) => {
+          if (key == item) {
+            cont3.push(item2[key]);
+          }
+        })
+      })
+    }
+    
     return cont3;
 
   }
