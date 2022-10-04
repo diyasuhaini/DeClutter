@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" routerLink="../">
+      <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form style="margin:15px;">
+    <ion-list>
+      <ion-label>From:</ion-label>
+      <ion-item color="medium">
+        <ion-input type="text" placeholder="Enter your email"></ion-input>
+      </ion-item>
+      <br>
+
+      <ion-label>To:</ion-label>
+      <ion-item color="medium">
+        <ion-text>Moderator</ion-text>
+      </ion-item>
+      <br>
+
+      <ion-label>Error:</ion-label>
+      <ion-item>
+        <ion-select interface="popover" placeholder="Select error" color="medium" required><!--formControlName="error"-->
+          <ion-select-option value="bug">Bug</ion-select-option>
+          <ion-select-option value="order">Order error</ion-select-option>
+          <ion-select-option value="payment">Payment error</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <br>
+
+      <ion-label>Error Screenshot:</ion-label>
+      <ion-item>
+        <div class="uploadFile">
+          <ion-input type="file" style="color: transparent;" id="errorImg"></ion-input><!--(change)="uploadImg($event, 'errorImg')"-->
+          <!-- <div *ngIf="img1url">Uploaded</div> -->
+        </div>
+      </ion-item>
+      <br>
+            
+      <ion-label>Description:</ion-label>
+      <ion-item color="medium">
+        <ion-input type="text" placeholder="Describe your error"></ion-input>
+      </ion-item>
+      <br>
+    </ion-list>
+    <ion-button expand="block" type="submit" color="tertiary"><b>Submit Report</b></ion-button>
+  </form>
+
+</ion-content>
