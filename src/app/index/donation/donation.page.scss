@@ -1,3 +1,65 @@
 ion-buttons{
     width: 10px;
 }
+
+.termsBox{
+    display: block;
+    width: 100%; height: 10vh;
+    text-align: center; padding-top: 10px;
+    font-size: 18px; padding: 10px; 
+    margin-top: 20px; margin-bottom: 20px;
+}
+
+b{
+    color: red;
+}
+
+a{
+    color: blue; text-decoration: dashed;
+    font-weight: bold;
+}
+
+//for donation box
+.donateBox{
+    display: block;
+    width: 90%; height: 39vh;
+    border: 1px solid; border-radius: 0px 0px 10px 10px;
+    margin: auto;
+}
+
+.myBtn{
+    display: block;
+    width: 80%; height: 30px;
+    border-radius: 10px;
+    margin: auto; margin-top: 20px;
+}
+
+p{
+    text-align: center; font-size: 18px;
+    padding: 10px; padding-bottom: 5px;
+}
+
+.quantityBox{
+    display: block;
+    width: 90%; height: 13vh;
+    border: 1px solid; border-radius: 10px;
+    margin: auto; text-align: center;
+}
+
+.picture{
+    display: block;
+    width: 90%; height: 24vh;
+    border-radius: 10px 10px 0px 0px;
+    margin: auto; border: 1px solid;
+}
+
+.bigImg{
+    display: block;
+    width: 100%; height: 100%;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.bigImg::part(image){
+    object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
+}
