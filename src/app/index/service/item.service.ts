@@ -112,6 +112,34 @@ export class ItemService {
 
   }
 
+  //below for get all items for moderator
+  async getItems(){
+    var items = []; //creating an empty array first
+    const dbref = ref(database, 'item/'); //get item information from database
+    const snapshot = await get((dbref)); //refer from dbref
+    var allItem = snapshot.val(); //get the value
+    Object.keys(allItem).forEach((key) => {
+      items.push({
+        "title": allItem[key].title,
+        "img1": allItem[key].img1,
+        "img2": allItem[key].img2,
+        "img3": allItem[key].img3, 
+        "vendor": allItem[key].vendor,
+        "username": allItem[key].username, 
+        "brand": allItem[key].brand,
+        "description": allItem[key].description,
+        "price": allItem[key].price.toFixed(2),
+        "size": allItem[key].size,
+        "color": allItem[key].color,
+        "categories": allItem[key].categories,
+        "quantity": allItem[key].quantity,
+        "name": allItem[key].title
+      })
+    })
+    
+    return items
+  }
+
   // get current user listed item
   async getVendorItems(){
     this.userSub = this.authenticationService.$users.subscribe(users => {

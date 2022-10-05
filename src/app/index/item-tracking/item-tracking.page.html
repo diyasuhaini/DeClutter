@@ -14,14 +14,14 @@
   <!--here for tracking details 1-->
   <div class="boxOrder">
     <!--for tracking ID-->
-    <div class="myId">
+    <div class="myId" >
       <p class="detailTitle">Tracking ID</p>
-      <p class="detailSub">#id here</p> <!--value here-->
+      <p class="detailSub">{{ track[0].orderid }}</p> <!--value here-->
     </div>
     <!--for estimated time-->
     <div class="myTime">
       <p class="detailTitle">Estimated Time</p>
-      <p class="detailSub">Time here</p> <!--time here-->
+      <p class="detailSub">{{ track[0].eta }}</p> <!--time here-->
     </div>
   </div>
 
@@ -47,7 +47,7 @@
         </div>
         <!--content-->
         <div class="contentBox">
-          <p class="title">Vendor</p> <!--vendor here-->
+          <p class="title">{{ track[0].items }}</p> <!--vendor here-->
           <p class="items">Item type</p> <!--item type here-->
           <p class="items">Price</p> <!--item price here-->
         </div>

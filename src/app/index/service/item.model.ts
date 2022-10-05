@@ -45,5 +45,6 @@ export class Tracks{
         public totalprice: string,
         public status: string,
         public quantity: string,
+        public items: string
     ){}
-}
+}   
