@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../../service/item.model';
+import { ItemService } from '../../service/item.service';
 
 @Component({
   selector: 'app-products',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsPage implements OnInit {
 
-  constructor() { }
+  private item: Item[];
+
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
+    this.item = [];
+  }
+
+  ionViewWillEnter() {
+    this.itemService.getVendorItems().then((item) => {
+      this.item = item;
+      console.log(item);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
