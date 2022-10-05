@@ -110,12 +110,12 @@
       </div>
       <!--center(info)-->
       <div class="boughtCenter">
-        <div class="ion-text-center" class="boughtName">Tracking ID</div> <!--for track ID-->
-        <div class="ion-text-center" class="boughtBrand">Status</div> <!--status of delivery-->
+        <div class="ion-text-center" class="boughtName">{{ track.orderid }}</div> <!--for track ID-->
+        <div class="ion-text-center" class="boughtBrand">{{ track.status }}</div> <!--status of delivery-->
       </div>
       <!--right(price & button)-->
       <div class="boughtRight">
-        <div class="ion-text-center" class="tagPrice">Total Price</div> <!--here will be total price-->
+        <div class="ion-text-center" class="tagPrice">{{ track.totalprice | currency }}</div> <!--here will be total price-->
         <ion-button color="tertiary" class="trackBtn" routerLink="../item-tracking" [state]="track">Track</ion-button>
       </div>
     </div>

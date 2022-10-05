@@ -63,9 +63,12 @@ export class MepagePage implements OnInit {
     this.authenticationService.fetchUser().subscribe();
     this.itemService.getVendorItems().then((item) => {
       this.item = item;
+      console.log(item);
     }, error => {
       console.log(error);
     });
+
+    //for follower
     this.followService.checkFollowers().then((number) => {
       this.follower = Object.keys(number).length;
       console.log(this.follower);
@@ -73,6 +76,7 @@ export class MepagePage implements OnInit {
       console.log(error);
     })
 
+    //for following
     this.followService.checkFollowing().then((number) => {
       this.following = Object.keys(number).length;
       console.log(this.following);
@@ -82,10 +86,11 @@ export class MepagePage implements OnInit {
 
 
     //get from tracks database
-    this.itemService.getItemTracking().then((tracks) => {
-      this.tracks = tracks;
+    this.itemService.getItemTracking().then((tracks) => { //refer from item.service getItemTracking
+      this.tracks = tracks; //get the value
+      console.log(tracks);  //no error from item.service getItemTracking
     },error => {
-      console.log(error);
+      console.log(error); //there is an error item.service getItemTracking
     })
   }
 

@@ -287,8 +287,7 @@ export class ItemService {
     if(getLength.val() == null){ //if no value
       trackid = 101; //add value (start with 101)
     }else{ //if value existed
-      //trackid = getLength.val() + 1; //increment by 1
-      Object.keys(getLength.val()).forEach(key => cont.push(getLength.val()[key])); // for each by getting its index then pushing
+      Object.keys(getLength.val()).forEach(index => cont.push(getLength.val()[index])); // for each by getting its index then pushing
       trackid = cont.length + 101; // container length plus 101 aka the starting point
     }
     
@@ -326,7 +325,7 @@ export class ItemService {
       //push to database
       var trackBox = []; //new box for track
       trackBox['orderid'] = '#' + randomNumber;
-      trackBox['payment'] = payMethod; //[key] = value
+      trackBox['payment'] = payMethod; //[name] = value
       trackBox['status'] = 'pending';
       trackBox['eta'] = '6 days';
       trackBox['items'] = item;
@@ -343,10 +342,10 @@ export class ItemService {
     var item = snapshot.val(); //get the value
     var box = []; //assume there is no data
     if (item != null){ //if there is an item
-      item.forEach((newItem) => { //match the item
+      Object.keys(item).forEach((newItem) => { //match the item
         box.push(newItem); //convert 2d array into normal array
       })
-      const dbref2 = ref(database, 'item/'); //refer back from item
+      const dbref2 = ref(database, 'item-tracking/' + currentid); //refer back from item
       const snapshot2 = await get((dbref2)); //refer from user
       var itemDetails = snapshot2.val(); //get the value
   

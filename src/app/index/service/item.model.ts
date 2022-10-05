@@ -39,13 +39,11 @@ export class sold{
 export class Tracks{
     constructor(
         public trackid: string,
-        public date: string,
-        public vendor: string,
-        public username: string,
-        public type: string,
-        public price: string,
-        public title: string,
+        public orderid: string,
+        public eta: string,
+        public payment: string,
+        public totalprice: string,
+        public status: string,
         public quantity: string,
-        public img1: string
     ){}
 }
