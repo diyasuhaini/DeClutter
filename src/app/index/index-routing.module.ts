@@ -47,7 +47,8 @@ const routes: Routes = [
   {
     path: 'mod',
     loadChildren: () => import('./mod/mod.module').then( m => m.ModPageModule)
-  },  {
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
@@ -70,10 +71,6 @@ const routes: Routes = [
   {
     path: 'message',
     loadChildren: () => import('./message/message.module').then( m => m.MessagePageModule)
-  },
-  {
-    path: 'edit-profile',
-    loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
   },
   {
     path: 'inbox',
