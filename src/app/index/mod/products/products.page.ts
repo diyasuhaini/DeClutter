@@ -18,7 +18,7 @@ export class ProductsPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.itemService.getVendorItems().then((item) => {
+    this.itemService.getItems().then((item) => {
       this.item = item;
       console.log(item);
     }, error => {
