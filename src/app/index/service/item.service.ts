@@ -280,14 +280,16 @@ export class ItemService {
     //get the referrence from created database
     var currentid = localStorage.getItem('currentid'); //only you can see
     
-    const dbrefTrack = ref(database, 'item-tracking' + currentid); //get the referrence
+    const dbrefTrack = ref(database, 'item-tracking/' + currentid); //get the referrence
     const getLength = await get((dbrefTrack)); //refer back from user
     var trackid; //for initial
     if(getLength.val() == null){ //if no value
       trackid = 101; //add value (start with 101)
     }else{ //if value existed
-      trackid = getLength.val().length + 101; //increment by 1
+      //trackid = getLength.val() + 1; //increment by 1
     }
+
+    console.log(getLength.val());
 
     //payment method
     var payMethod = localStorage.getItem('method'); //retrieve from localstorage
@@ -314,12 +316,18 @@ export class ItemService {
       }else{
         randomNumber = Math.floor(1000 + Math.random() * 9000); //make new randomnumber
       }
+
+      //get total price
+      var myTotal = parseFloat(localStorage.getItem('totalPrice')) / 0.717;
+
+      //push to database
       var trackBox = []; //new box for track
       trackBox['orderid'] = '#' + randomNumber;
       trackBox['payment'] = payMethod; //[key] = value
       trackBox['status'] = 'pending';
       trackBox['eta'] = '6 days';
       trackBox['items'] = item;
+      trackBox['totalprice'] = myTotal.toFixed(2);
       console.log(trackBox);
       return set(dbref, trackBox); //for transfer 
   }
@@ -348,6 +356,7 @@ export class ItemService {
         })
       })
     }
+    console.log(newBox);
     //its confirmed
     return newBox;
   }
