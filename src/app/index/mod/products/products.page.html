@@ -17,25 +17,25 @@
 
   <div style="display: flex; flex-wrap: wrap;margin: 12px;">
 
-    <div style="width: 45%; margin: 2.5%;" routerLink="../products/product-details">
+    <div style="width: 45%; margin: 2.5%;" routerLink="../products/product-details" *ngFor="let item of item">
       <ion-grid>
         <ion-row>
           <ion-col style="padding: 0;">
             <div style="border: 1px solid black;border-radius: 15px;overflow: hidden;">
-              <ion-img src="assets/img/jeans.jpg"></ion-img>
+              <ion-img [src]="item.img1"></ion-img>
             </div>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col style="padding: 3px 0;"><ion-text style="font-size: 1.2rem;"><b>B$12.00</b></ion-text></ion-col>
+          <ion-col style="padding: 3px 0;"><ion-text style="font-size: 1.2rem;"><b>B${{ item.price }}</b></ion-text></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col style="padding: 0;"><ion-text color="light">Levi’s . UK 6</ion-text></ion-col>
+          <ion-col style="padding: 0;"><ion-text color="light">{{ item.name }}</ion-text></ion-col>
         </ion-row>
       </ion-grid>
     </div>
     
-    <div style="width: 45%; margin: 2.5%;">
+    <!-- <div style="width: 45%; margin: 2.5%;">
       <ion-grid>
         <ion-row>
           <ion-col style="padding: 0;">
@@ -51,7 +51,7 @@
           <ion-col style="padding: 0;"><ion-text color="light">Converse . US 8</ion-text></ion-col>
         </ion-row>
       </ion-grid>
-    </div>
+    </div> -->
 
   </div>
 
