@@ -33,3 +33,18 @@ export class sold{
         public img1: string,
     ){}
 }
+
+
+//for tracking item
+export class item{
+    constructor(
+        public trackid: string,
+        public date: string,
+        public vendor: string,
+        public username: string,
+        public type: string,
+        public price: string,
+        public title: string,
+        public quantity: string
+    ){}
+}

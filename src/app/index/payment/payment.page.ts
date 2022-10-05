@@ -26,6 +26,7 @@ export class PaymentPage implements OnInit {
       currency: "SGD",
       value: localStorage.getItem("totalPrice"), //transfer total value of item from previous page
       onApprove: async (details) =>{
+        localStorage.setItem('method', 'paypal');
         const alert = await this.alertController.create({
           //below is for database
 
@@ -43,6 +44,11 @@ export class PaymentPage implements OnInit {
         await alert.present();
       }
     });
+  }
+
+  //for cash
+  cashBtn(){
+    localStorage.setItem('method', 'cash');
   }
 
 }

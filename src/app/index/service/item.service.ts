@@ -5,6 +5,7 @@ import { initializeApp } from 'firebase/app';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Subscription } from 'rxjs';
 import { User } from '../auth/auth.model'
+import { strict } from 'assert';
 
 // initialize the application allow new database apit to be used
 initializeApp(environment.firebaseConfig);
@@ -188,27 +189,29 @@ export class ItemService {
   async addtoCart(currentid, title, vendor) {
     const dbref = ref(database, 'shopping-bag/');
     // get values
-    const snapshot = await get((dbref));
-    var item = snapshot.val();
-    var lock = false;
-    if(item[currentid]){
-      item[currentid].forEach((item1)  => {
-        if (item1 == (title + vendor)){
-          lock = true;
+    const snapshot = await get((dbref)); //get all data from ref
+    var item = snapshot.val(); //retrieve value
+    var lock = false; //no user
+    if(item[currentid]){ //if user
+      item[currentid].forEach((item1)  => { //every item from user
+        if (item1 == (title + vendor)){  //combine title with vendor
+          lock = true; //item is correct
         }
 
-        if(lock == false){
-          item[currentid].push((title + vendor));
-          return set(ref(database, 'shopping-bag/'), item);
+        if(lock == false){ //else incorrect
+          item[currentid].push((title + vendor)); //push to shopping-bag
+          return set(ref(database, 'shopping-bag/'), item); //then its confirmed
         }
       });
-    } else {
+    } else { 
       return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
     }
 
   
   }
 
+
+  //for display
   async retrieveCart(){
     var currentid = localStorage.getItem('currentid');
     const dbref = ref(database, 'shopping-bag/' + currentid);
@@ -220,7 +223,7 @@ export class ItemService {
       item.forEach((item) => {
         cont.push(item);
       })
-      const dbref2 = ref(database, 'item/');
+      const dbref2 = ref(database, 'item/'); 
       const snapshot2 = await get((dbref2));
       var item2 = snapshot2.val();
   
@@ -270,6 +273,91 @@ export class ItemService {
 
   }
 
+  //item tracking part below
+
+  //below for add tracking item
+  async addItemTracking(){
+    //get the referrence from created database
+    var currentid = localStorage.getItem('currentid'); //only you can see
+    
+    const dbrefTrack = ref(database, 'item-tracking' + currentid); //get the referrence
+    const getLength = await get((dbrefTrack)); //refer back from user
+    var trackid; //for initial
+    if(getLength.val() == null){ //if no value
+      trackid = 101; //add value (start with 101)
+    }else{ //if value existed
+      trackid = getLength.val().length + 101; //increment by 1
+    }
+
+    //payment method
+    var payMethod = localStorage.getItem('method'); //retrieve from localstorage
+    const dbref = ref(database, 'item-tracking/' + currentid + '/' + currentid + '&' + trackid); //get the referrence (new)
+    //add date, payment method, status
+    
+    var payMethod = localStorage.getItem('method'); //retrieve value from localstorage
+    const snapshot = await get((dbref)); //refer back from user
+    var item = snapshot.val(); //get the value
+      const dbref2 = ref(database, 'shopping-bag/' + currentid); //refer back from item
+      const snapshot2 = await get((dbref2)); //refer from user
+      var item = snapshot2.val(); //get the value
+
+      //create orderid with random number
+      var randomNumber; //empty randomNumber
+      var storeNumber;
+      var randomValue = Math.floor(1000 + Math.random() * 2000); //get random value
+      storeNumber = randomValue;
+      localStorage.setItem('orderid', storeNumber); //insert into localstorage
+      randomNumber =  localStorage.getItem('orderid');//get previous number from localstorage
+      if(randomNumber != randomValue){ //check if the number is not equal to previous number
+        randomNumber.push(randomValue); //if not equal then push
+        return randomValue; //confirmed
+      }else{
+        randomNumber = Math.floor(1000 + Math.random() * 9000); //make new randomnumber
+      }
+      var trackBox = []; //new box for track
+      trackBox['orderid'] = '#' + randomNumber;
+      trackBox['payment'] = payMethod; //[key] = value
+      trackBox['status'] = 'pending';
+      trackBox['eta'] = '6 days';
+      trackBox['items'] = item;
+      console.log(trackBox);
+      return set(dbref, trackBox); //for transfer 
+  }
+
+  //below is for retrieve item tracking
+  async getItemTracking(){
+    var currentid = localStorage.getItem('currentid'); //only you can see
+    const dbref = ref(database, 'item-tracking/' + currentid); //get the referrence from item tracking table (current user only)
+    const snapshot = await get((dbref)); //refer back from user
+    var item = snapshot.val(); //get the value
+    var box = []; //assume there is no data
+    if (item != null){ //if there is an item
+      item.forEach((newItem) => { //match the item
+        box.push(newItem); //convert 2d array into normal array
+      })
+      const dbref2 = ref(database, 'item/'); //refer back from item
+      const snapshot2 = await get((dbref2)); //refer from user
+      var itemDetails = snapshot2.val(); //get the value
+  
+      var newBox = []; //new box appear
+      Object.keys(itemDetails).forEach((key) => { //insert into 2d array (converted array)
+        box.forEach((newItem) => { //match the item
+          if (key == newItem) { //if the item is matched
+            newBox.push(itemDetails[key]); //insert current index of converted array data into new container (newBox)
+          }
+        })
+      })
+    }
+    //its confirmed
+    return newBox;
+  }
+
+  //below is for when itemTracking succesfully added, clear shopping bag (current user)
+  async clearCart(){
+    var currentid = localStorage.getItem('currentid'); //get currentid from localstorage
+    const dbref = ref(database, 'shopping-bag/' + currentid); //get the referrence from item tracking table (current user only)
+    return set(dbref, null);
+  }
   
 
 
