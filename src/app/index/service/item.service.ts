@@ -283,12 +283,15 @@ export class ItemService {
     const dbrefTrack = ref(database, 'item-tracking/' + currentid); //get the referrence
     const getLength = await get((dbrefTrack)); //refer back from user
     var trackid; //for initial
+    var cont = [];
     if(getLength.val() == null){ //if no value
       trackid = 101; //add value (start with 101)
     }else{ //if value existed
       //trackid = getLength.val() + 1; //increment by 1
+      Object.keys(getLength.val()).forEach(key => cont.push(getLength.val()[key])); // for each by getting its index then pushing
+      trackid = cont.length + 101; // container length plus 101 aka the starting point
     }
-
+    
     console.log(getLength.val());
 
     //payment method
