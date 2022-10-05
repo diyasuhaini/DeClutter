@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { User } from '../auth/auth.model';
 import { ItemService } from '../service/item.service';
 import { Item } from '../service/item.model';
+import { Tracks } from '../service/item.model'; //new
 import { FollowService } from '../service/follow.service';
 
 
@@ -19,11 +20,13 @@ export class MepagePage implements OnInit {
   private currentid: String;
   private userSub: Subscription;
   private item: Item[];
+  private tracks: Tracks[]; //new
   private itemlist: any[];
   private follower = 0;
   private following = 0;
   segmentValue: String = "listing";
 
+  //for segment change value
   segmentChanged(e){
     this.segmentValue = e.detail.value;
   }
@@ -31,7 +34,7 @@ export class MepagePage implements OnInit {
   constructor(private authenticationService: AuthenticationService, private itemService: ItemService, private followService: FollowService) { }
 
   ngOnInit() {
-    this.item = [];
+    this.item = []; //
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
     });
@@ -55,6 +58,8 @@ export class MepagePage implements OnInit {
 
   //get the item from database
   ionViewWillEnter(){
+
+    //get from item database
     this.authenticationService.fetchUser().subscribe();
     this.itemService.getVendorItems().then((item) => {
       this.item = item;
@@ -72,6 +77,14 @@ export class MepagePage implements OnInit {
       this.following = Object.keys(number).length;
       console.log(this.following);
     }, error => {
+      console.log(error);
+    })
+
+
+    //get from tracks database
+    this.itemService.getItemTracking().then((tracks) => {
+      this.tracks = tracks;
+    },error => {
       console.log(error);
     })
   }

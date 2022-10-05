@@ -36,7 +36,7 @@ export class sold{
 
 
 //for tracking item
-export class item{
+export class Tracks{
     constructor(
         public trackid: string,
         public date: string,
@@ -45,6 +45,7 @@ export class item{
         public type: string,
         public price: string,
         public title: string,
-        public quantity: string
+        public quantity: string,
+        public img1: string
     ){}
 }
