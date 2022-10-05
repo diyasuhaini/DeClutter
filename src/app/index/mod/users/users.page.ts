@@ -22,17 +22,6 @@ export class UsersPage implements OnInit {
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
     });
-    this.userSub = this.authenticationService.$users.subscribe(users => {
-      this.people = users;
-      this.people.forEach((user) => {
-        if (user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){
-          this.currentusername = user.username;
-          this.currentid = user.id;
-          console.log(user.id);
-          localStorage.setItem('currentid', user.id);
-        }
-      });
-    });
   }
 
   ionViewWillEnter(){

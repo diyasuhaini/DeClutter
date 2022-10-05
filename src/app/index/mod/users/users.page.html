@@ -15,19 +15,11 @@
   
   <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
 
-    <ion-item color="medium" routerLink="../users/user-details">
+    <ion-item color="medium" routerLink="../users/user-details" *ngFor="let accounts of people">
       <ion-avatar style="margin:15px; height: 50px;width:50px;"><ion-img src="assets/img/profile-round.png"></ion-img></ion-avatar>
       <ion-label>
-        <ion-text color="light">U67834</ion-text><br>
-        <ion-text><b>Best Thrift Shop</b></ion-text>
-      </ion-label>
-    </ion-item>
-
-    <ion-item color="medium">
-      <ion-avatar style="margin:15px; height: 50px;width:50px;"><ion-img src="assets/img/profile-round.png"></ion-img></ion-avatar>
-      <ion-label>
-        <ion-text color="light">U44873</ion-text><br>
-        <ion-text><b>{{ currentusername }}</b></ion-text>
+        <ion-text color="light">{{ accounts.email }}</ion-text><br>
+        <ion-text><b>{{ accounts.username }}</b></ion-text>
       </ion-label>
     </ion-item>
 
