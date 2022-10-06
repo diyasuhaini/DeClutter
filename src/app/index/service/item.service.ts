@@ -266,7 +266,6 @@ export class ItemService {
     }
     
     return cont3;
-
   }
 
   async antiDuplicate(item){
@@ -318,8 +317,6 @@ export class ItemService {
       Object.keys(getLength.val()).forEach(index => cont.push(getLength.val()[index])); // for each by getting its index then pushing
       trackid = cont.length + 101; // container length plus 101 aka the starting point
     }
-    
-    console.log(getLength.val());
 
     //payment method
     var payMethod = localStorage.getItem('method'); //retrieve from localstorage
@@ -385,8 +382,8 @@ export class ItemService {
           }
         })
       })
+      
     }
-    console.log(newBox);
     //its confirmed
     return newBox;
   }
@@ -397,9 +394,28 @@ export class ItemService {
     const dbref = ref(database, 'shopping-bag/' + currentid); //get the referrence from item tracking table (current user only)
     return set(dbref, null);
   }
-  
 
 
-  
+  async retrieveItemTracking(items){
+    var currentid = localStorage.getItem('currentid'); //only you can see
+    const itemdref = ref(database, "item/"); //refer from database item
+    const snapshot = await get((itemdref)); //refer from itemdref
+    const itemdetails = snapshot.val(); //get the value
+    console.log("itemdetails", itemdetails); //checking itemdetails
+    console.log("items", items); //checking items
+    var container = []; //empty container
+
+    Object.keys(itemdetails).forEach((key) => { //match each item from itemdetails
+      items.forEach((trackeditem) => { //match each item form items
+        if(trackeditem == (itemdetails[key].title+itemdetails[key].vendor)){ //check if itemdetails matched with trackeditem
+          container.push(itemdetails[key]); //push to empty container
+        }
+      })     
+    })
+    
+    // its confirmed
+    console.log("container", container); //check value
+    return container; //confirmed
+  }
 
 }

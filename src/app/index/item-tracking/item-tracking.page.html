@@ -11,6 +11,14 @@
   <!--here for header-->
   <h2>Thank you for shopping with <b>DeClutter</b></h2>
 
+  <!--status-->
+  <ion-card color="primary" class="header" id="myText">
+    <ion-img [src]="myImage" class="headerImg"></ion-img>
+    Your order has been placed!
+  </ion-card>
+
+  <!--here for tracking details 2-->
+  <h3>Order detail</h3>
   <!--here for tracking details 1-->
   <div class="boxOrder">
     <!--for tracking ID-->
@@ -25,31 +33,38 @@
     </div>
   </div>
 
-  <!--here for tracking details 2-->
-  <h3>Order detail</h3>
-  <ion-card color="primary" class="header" id="myText">
-    <ion-img [src]="myImage" class="headerImg"></ion-img>
-    Your order has been placed!
-  </ion-card>
+  <br><!--breakline-->
+  <div class="boxOrder">
+    <!--for tracking ID-->
+    <div class="myId" >
+      <p class="detailTitle">Payment method</p>
+      <p class="detailSub">{{ track[0].payment }}</p> <!--value here-->
+    </div>
+    <!--for estimated time-->
+    <div class="myTime">
+      <p class="detailTitle">Status</p>
+      <p class="detailSub">{{ track[0].status }}</p> <!--time here-->
+    </div>
+  </div>
 
   <!--here for item to deliver-->
   <h3>Item ordered</h3>
   <ion-accordion-group color="medium">
-    <ion-accordion color="medium"> <!--loop here-->
+    <ion-accordion color="medium" *ngFor="let items of item"> <!--loop here-->
       <ion-item slot="header" color="medium">
-        Item title (Quantity here)<!--this will be the name of item include quantity of item-->
+        {{ items.title }} &nbsp; (1)<!--this will be the name of item include quantity of item-->
       </ion-item>
       <!--some small detail such as vendor, type, price-->
       <div class="myItem" slot="content">
         <!--image-->
         <div class="imgBox">
-          <ion-img src="assets/img/jeans.jpg"></ion-img> <!--image here-->
+          <ion-img [src]="items.img1"></ion-img> <!--image here-->
         </div>
         <!--content-->
-        <div class="contentBox">
-          <p class="title">{{ track[0].items }}</p> <!--vendor here-->
-          <p class="items">Item type</p> <!--item type here-->
-          <p class="items">Price</p> <!--item price here-->
+        <div class="contentBox" >
+          <p class="title">{{ items.username }}</p> <!--vendor here-->
+          <p class="items">{{ items.type }}</p> <!--item type here-->
+          <p class="items">{{ items.price | currency }}BND</p> <!--item price here-->
         </div>
       </div>
     </ion-accordion>

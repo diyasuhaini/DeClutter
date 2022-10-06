@@ -103,13 +103,3 @@ p{
 .detailSub{
     margin-left: 0px;
 }
-
-ion-content {
-    // overwrite inline styles
-    --offset-bottom: auto!important;
-    --overflow: hidden;
-    overflow: auto;
-}
-ion-content::-webkit-scrollbar{
-    display: none;
-}

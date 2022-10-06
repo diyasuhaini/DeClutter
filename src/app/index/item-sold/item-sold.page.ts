@@ -59,6 +59,7 @@ export class ItemSoldPage implements OnInit {
       var convertTotal = parseFloat(mytotal).toFixed(2);
       //total item send to localstorage
       localStorage.setItem("totalPrice", convertTotal);
+      console.log(this.item);
     })
   }
 
