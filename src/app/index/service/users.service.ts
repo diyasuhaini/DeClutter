@@ -26,38 +26,36 @@ export class UsersService {
     console.log(accountDetails);
 
     var accounts = []; //new box appear
-    Object.keys(accountDetails).forEach(() => {
-      accounts.push(accountDetails);
-    })
+    accounts.push(accountDetails);
 
     return accounts; //completed
   }
 
 
   //below is for updating user account
-  async updateAccount(){
+  async updateAccount(value){
     //below is for retrieving current data
     var currentid = localStorage.getItem('currentid'); //only you can see
     const accountref = ref(database, "user/" + currentid); //refer from database for user
     const snapshot = await get((accountref)); //refer accountref
     const accountDetails = snapshot.val(); //get the value for account
-    console.log(accountDetails);
+    console.log("test", accountDetails);
 
     //below is for pushing new to current data
     var accountBox = []; //created an empty array
-    Object.keys(accountDetails).forEach(() => {
-      accountBox.push({
-        username: accountDetails.username,
-        fullname: localStorage.getItem('currentid'),
-        email: accountDetails.email,
-        contact: accountDetails.contact,
-        address1: 'testing',
-        address2: 'testing'
-      })
+    accountBox.push({
+      username: value.username,
+      fullname: value.fullname,
+      email: value.email,
+      contact: value.contact,
+      address1: value.address1,
+      address2: value.address2
     })
 
+    console.log("accountBox", accountBox[0]);
+
     //completed
-    return accountBox;
+    return set(ref(database, 'user/' + currentid), accountBox[0]);
   }
 
 }
