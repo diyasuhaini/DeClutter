@@ -66,22 +66,22 @@
  <!-- saved side of things 0000000000000000000000000000000000 -->
  <ion-grid *ngIf="segmentValue == 'saved'">
   <div class="scrollBox">
-      <div class="whiteBox" *ngFor="let saved of "> <!--here for loop-->
+      <div class="whiteBox" *ngFor="let saved of saveditem"> <!--here for loop-->
         <!--item image-->
         <div class="imageBox">
-          <ion-img [src]="item.img1" class="myImg"></ion-img>
+          <ion-img [src]="saved.img1" class="myImg"></ion-img>
         </div>
         <!--item details-->
         <div class="textBox">
-          <div class="textBold"></div> <!--this is for title-->
-          <p class="smallBold"></p> <!--this is for price-->
-          <p class="subtitle"></p> <!--this is for brand-->
-          <p class="smallBold" (click)="saved(item.title, item.vendor)">Move to bag</p>
+          <div class="textBold">{{ saved.title }}</div> <!--this is for title-->
+          <p class="smallBold">{{ saved.price| currency }} BND</p> <!--this is for price-->
+          <p class="subtitle">{{ saved.brand }}</p> <!--this is for brand-->
+          <p class="smallBold" (click)="saved(saved.title, saved.vendor)">Move to bag</p>
         </div>
         <br>
         <!--remove here-->
         <div class="myRemove">
-          <button class="myRemoveBtn" (click)="remove(item.title, item.vendor)">Remove</button>
+          <button class="myRemoveBtn" (click)="remove(saved.title, saved.vendor)">Remove</button>
         </div>
       </div>
     </div>

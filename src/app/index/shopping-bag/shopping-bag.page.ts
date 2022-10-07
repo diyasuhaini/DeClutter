@@ -25,6 +25,7 @@ export class ShoppingBagPage implements OnInit {
   private people: User[];
   private currentid: string;
   private item: Item[];
+  private saveditem: Item[];
   private number1: number = 0;
   private number2: number = 0;
   private totalcost: number = 0;
@@ -76,18 +77,15 @@ export class ShoppingBagPage implements OnInit {
     await this.itemService.addtoSaved(title, vendor).then( () => {
       this.itemService.retrieveCart().then((cart) => {
         if(cart){
-          this.item = cart;
+          this.saveditem = cart;
         } else {
-          this.item = [];
+          this.saveditem = [];
         }
         
-        this.number1 = 0;
+        this.number2 = 0;
         this.totalcost = 0;
-        this.item.forEach((item) => {
-          this.number1 += 1;
-          this.totalcost += parseFloat(item.price);
-          console.log(item.price);
-          console.log(item.price);
+        this.saveditem.forEach((item) => {
+          this.number2 += 1;
         });
       })
     });
@@ -110,7 +108,22 @@ export class ShoppingBagPage implements OnInit {
         console.log(item.price);
         console.log(item.price);
       });
+    });
+    this.itemService.retrieveSaved().then((cart) => {
+      if(cart){
+        console.log("savewd", cart);
+        this.saveditem = cart;
+      } else {
+        this.saveditem = [];
+      }
+      
+      this.number2 = 0;
+      this.saveditem.forEach((item) => {
+        this.number2 += 1;
+      });
     })
   }
+
+  
 
 }

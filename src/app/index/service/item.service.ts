@@ -219,7 +219,7 @@ export class ItemService {
     const snapshot = await get((dbref)); //get all data from ref
     var item = snapshot.val(); //retrieve value
     var lock = false; //no user
-    if(!item){
+    if(item){
       if(item[currentid]){ //if user
         item[currentid].forEach((item1)  => { //every item from user
           if (item1 == (title + vendor)){  //combine title with vendor
@@ -280,6 +280,34 @@ export class ItemService {
   async retrieveCart(){
     var currentid = localStorage.getItem('currentid');
     const dbref = ref(database, 'shopping-bag/' + currentid);
+    // get values
+    const snapshot = await get((dbref));
+    var item = snapshot.val();
+    var cont = [];
+    if (item != null){
+      item.forEach((item) => {
+        cont.push(item);
+      })
+      const dbref2 = ref(database, 'item/'); 
+      const snapshot2 = await get((dbref2));
+      var item2 = snapshot2.val();
+  
+      var cont3 = [];
+      Object.keys(item2).forEach((key) => {
+        cont.forEach((item) => {
+          if (key == item) {
+            cont3.push(item2[key]);
+          }
+        })
+      })
+    }
+    
+    return cont3;
+  }
+
+  async retrieveSaved(){
+    var currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'saved/' + currentid);
     // get values
     const snapshot = await get((dbref));
     var item = snapshot.val();
