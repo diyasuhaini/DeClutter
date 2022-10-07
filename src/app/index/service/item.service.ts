@@ -228,14 +228,20 @@ export class ItemService {
   
           if(lock == false){ //else incorrect
             item[currentid].push((title + vendor)); //push to shopping-bag
-            return set(ref(database, 'shopping-bag/'), item); //then its confirmed
+            this.removeSaved(title + vendor).then(() => {
+              return set(ref(database, 'shopping-bag/'), item); //then its confirmed
+            })
           }
         });
       } else { 
-        return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+        this.removeSaved(title + vendor).then(() => {
+          return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+        })
       }
     }
-    return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+    this.removeSaved(title + vendor).then(() => {
+      return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+    })
 
   
   }
@@ -370,13 +376,14 @@ export class ItemService {
     var currentid = localStorage.getItem('currentid');
     const dbref = ref(database, 'Saved/' + currentid);
     const snapshot = await get((dbref));
-    console.log(snapshot.val());
     var cont = [];
-    snapshot.val().forEach((item) => {
-      if(item != itemid){
-        cont.push(item);
-      }
-    })
+    if(snapshot.val()){
+      snapshot.val().forEach((item) => {
+        if(item != itemid){
+          cont.push(item);
+        }
+      })
+    } 
     return set(dbref, cont);
   }
 

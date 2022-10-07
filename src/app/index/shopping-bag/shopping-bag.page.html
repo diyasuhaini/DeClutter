@@ -76,12 +76,12 @@
           <div class="textBold">{{ saved.title }}</div> <!--this is for title-->
           <p class="smallBold">{{ saved.price| currency }} BND</p> <!--this is for price-->
           <p class="subtitle">{{ saved.brand }}</p> <!--this is for brand-->
-          <p class="smallBold" (click)="saved(saved.title, saved.vendor)">Move to bag</p>
+          <p class="smallBold" (click)="bag(saved.title, saved.vendor)">Move to bag</p>
         </div>
         <br>
         <!--remove here-->
         <div class="myRemove">
-          <button class="myRemoveBtn" (click)="remove(saved.title, saved.vendor)">Remove</button>
+          <button class="myRemoveBtn" (click)="remove2(saved.title, saved.vendor)">Remove</button>
         </div>
       </div>
     </div>

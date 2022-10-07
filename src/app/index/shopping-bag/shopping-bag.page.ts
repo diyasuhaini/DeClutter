@@ -73,17 +73,64 @@ export class ShoppingBagPage implements OnInit {
 
   }
 
+  remove2(item, vendor){
+    console.log(item);
+    console.log(vendor);
+    this.itemService.removeSaved(item + vendor).then( () => {
+      console.log("ok 1");
+      this.itemService.retrieveSaved().then((cart) => {
+        console.log("ok 2");
+        this.saveditem = cart;
+        this.number2 = 0;
+        this.saveditem.forEach((item) => {
+          this.number2 += 1;
+        });
+      })
+    });
+
+  }
+
   async saved(title, vendor){
     await this.itemService.addtoSaved(title, vendor).then( () => {
-      this.itemService.retrieveCart().then((cart) => {
+      this.itemService.retrieveSaved().then((cart) => {
         if(cart){
+          console.log("savewd", cart);
           this.saveditem = cart;
         } else {
           this.saveditem = [];
         }
         
         this.number2 = 0;
+        this.saveditem.forEach((item) => {
+          this.number2 += 1;
+        });
+      })
+    });
+  }
+
+  async bag(title, vendor){
+    const currentid = localStorage.getItem('currentid');
+    await this.itemService.addtoCart(currentid, title, vendor).then( () => {
+      this.itemService.retrieveCart().then((cart) => {
+        this.item = cart;
+        this.number1 = 0;
         this.totalcost = 0;
+        this.item.forEach((item) => {
+          this.number1 += 1;
+          this.totalcost += parseFloat(item.price);
+          console.log(item.price);
+          console.log(item.price);
+        });
+      })
+      this.itemService.retrieveSaved().then((cart) => {
+        if(cart){
+          console.log("savewd", cart);
+          this.saveditem = cart;
+        } else {
+          this.saveditem = [];
+        }
+        
+        this.number2 = 0;
         this.saveditem.forEach((item) => {
           this.number2 += 1;
         });
