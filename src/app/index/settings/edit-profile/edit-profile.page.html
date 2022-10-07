@@ -7,8 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium">
-
+<ion-content color="medium" *ngFor="let account of user | slice:0:1">
+  <form [formGroup]="editProfile" (ngSubmit)="updateUser()"> <!--form for submit-->
   <ion-grid>
     <ion-row style="padding: 15px 0;">
       <ion-col style="display:flex;justify-content:center;"><img style="width: 60%;" src="assets/img/user.png" alt="Profile image"></ion-col>
@@ -23,38 +23,38 @@
     </ion-row>
   </ion-grid>
 
-  <ion-list style="background-color: #ffffff; margin: 0 15px;">
+  <ion-list style="background-color: #ffffff; margin: 0 15px;" >
     <ion-item color="medium">
       <ion-label style="font-size: 1.2em;">Username</ion-label>
-      <ion-input type="text" placeholder="current user's"></ion-input>
+      <ion-input type="text" placeholder="add your username" formControlName="username"></ion-input>
     </ion-item>
 
     <ion-item color="medium">
       <ion-label style="font-size: 1.2em;">Full Name</ion-label>
-      <ion-input type="text" placeholder="current user's"></ion-input>
+      <ion-input type="text" placeholder="add your fullname" value="{{ account.fullname }}" formControlName="fullname"></ion-input>
     </ion-item>
 
     <ion-item color="medium">
       <ion-label style="font-size: 1.2em;">Email</ion-label>
-      <ion-input type="text" placeholder="current user's"></ion-input>
+      <ion-input type="text" placeholder="add your email" value="{{ account.email }}" disabled formControlName="email"></ion-input>
     </ion-item>
 
     <ion-item color="medium">
       <ion-label style="font-size: 1.2em;">Phone Number</ion-label>
-      <ion-input type="text" placeholder="current user's"></ion-input>
+      <ion-input type="text" placeholder="add your phone number" value="{{ account.contact }}" formControlName="contact"></ion-input>
     </ion-item><br>
 
     <ion-label style="font-size: 1.2em; margin: 0 15px;">Address 1</ion-label>
     <ion-item color="medium">
-      <ion-input type="text" placeholder="current user's"></ion-input>
+      <ion-input type="text" placeholder="add your address 1" value="{{ account.address1 }}" formControlName="address1"></ion-input>
     </ion-item><br>
 
     <ion-label style="font-size: 1.2em; margin: 0 15px;">Address 2</ion-label>
     <ion-item color="medium">
-      <ion-input type="text" placeholder="current user's"></ion-input>
+      <ion-input type="text" placeholder="add your address 2" value="{{ account.address2 }}" formControlName="address2"></ion-input>
     </ion-item>
   </ion-list>
-  <ion-button expand="block" type="submit" color="tertiary" style="margin: 15px;"><b>Save Changes</b></ion-button>
-
+  <ion-button expand="block" type="submit" color="tertiary" style="margin: 15px;" (click)="updateUser()"><b>Save Changes</b></ion-button>
+  </form>
 
 </ion-content>

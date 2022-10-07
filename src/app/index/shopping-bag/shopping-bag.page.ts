@@ -25,6 +25,7 @@ export class ShoppingBagPage implements OnInit {
   private people: User[];
   private currentid: string;
   private item: Item[];
+  private saveditem: Item[];
   private number1: number = 0;
   private number2: number = 0;
   private totalcost: number = 0;
@@ -56,15 +57,96 @@ export class ShoppingBagPage implements OnInit {
   remove(item, vendor){
     console.log(item);
     console.log(vendor);
-    console.log(this.currentid);
-    this.itemService.removeCart(item + vendor).then( () => location.reload());
+    this.itemService.removeCart(item + vendor).then( () => {
+      this.itemService.retrieveCart().then((cart) => {
+        this.item = cart;
+        this.number1 = 0;
+        this.totalcost = 0;
+        this.item.forEach((item) => {
+          this.number1 += 1;
+          this.totalcost += parseFloat(item.price);
+          console.log(item.price);
+          console.log(item.price);
+        });
+      })
+    });
 
+  }
+
+  remove2(item, vendor){
+    console.log(item);
+    console.log(vendor);
+    this.itemService.removeSaved(item + vendor).then( () => {
+      console.log("ok 1");
+      this.itemService.retrieveSaved().then((cart) => {
+        console.log("ok 2");
+        this.saveditem = cart;
+        this.number2 = 0;
+        this.saveditem.forEach((item) => {
+          this.number2 += 1;
+        });
+      })
+    });
+
+  }
+
+  async saved(title, vendor){
+    await this.itemService.addtoSaved(title, vendor).then( () => {
+      this.itemService.retrieveSaved().then((cart) => {
+        if(cart){
+          console.log("savewd", cart);
+          this.saveditem = cart;
+        } else {
+          this.saveditem = [];
+        }
+        
+        this.number2 = 0;
+        this.saveditem.forEach((item) => {
+          this.number2 += 1;
+        });
+      })
+    });
+  }
+
+  async bag(title, vendor){
+    const currentid = localStorage.getItem('currentid');
+    await this.itemService.addtoCart(currentid, title, vendor).then( () => {
+      this.itemService.retrieveCart().then((cart) => {
+        this.item = cart;
+        this.number1 = 0;
+        this.totalcost = 0;
+        this.item.forEach((item) => {
+          this.number1 += 1;
+          this.totalcost += parseFloat(item.price);
+          console.log(item.price);
+          console.log(item.price);
+        });
+      })
+      this.itemService.retrieveSaved().then((cart) => {
+        if(cart){
+          console.log("savewd", cart);
+          this.saveditem = cart;
+        } else {
+          this.saveditem = [];
+        }
+        
+        this.number2 = 0;
+        this.saveditem.forEach((item) => {
+          this.number2 += 1;
+        });
+      })
+    });
   }
 
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();
     this.itemService.retrieveCart().then((cart) => {
-      this.item = cart;
+      if(cart){
+        this.item = cart;
+      } else {
+        this.item = [];
+      }
+      
       this.number1 = 0;
       this.totalcost = 0;
       this.item.forEach((item) => {
@@ -73,7 +155,22 @@ export class ShoppingBagPage implements OnInit {
         console.log(item.price);
         console.log(item.price);
       });
+    });
+    this.itemService.retrieveSaved().then((cart) => {
+      if(cart){
+        console.log("savewd", cart);
+        this.saveditem = cart;
+      } else {
+        this.saveditem = [];
+      }
+      
+      this.number2 = 0;
+      this.saveditem.forEach((item) => {
+        this.number2 += 1;
+      });
     })
   }
+
+  
 
 }

@@ -124,25 +124,4 @@ export class AuthenticationService {
       this.users.next(user.concat(newUser))
     }))
   }
-
-  //update/edit profile data
-  updateUser(id: string,
-    username: string,
-    ){
-      let updateUser: User[];
-      return this.$users.pipe(take(1), switchMap(users => {
-        const updateUserIndex = users.findIndex(p1 => p1.id === id);
-        updateUser = [...users];
-        const oldUser = updateUser[updateUserIndex];
-        updateUser[updateUserIndex] = new User(
-          oldUser.id, //reuse old data
-          username, //new data
-          oldUser.email, //old data
-          oldUser.contact //old data
-        ); 
-          return this.http.put(`https://declutter-1172d-default-rtdb.asia-southeast1.firebasedatabase.app/user/${id}.json`, {...updateUser[updateUserIndex], id: null});
-      }), tap(resData => {
-        this.users.next(updateUser);
-      }))
-    }
 }

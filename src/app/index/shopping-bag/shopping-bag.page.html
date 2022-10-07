@@ -10,15 +10,15 @@
 <ion-content color="medium">
   <ion-segment id="topsegment" (ionChange)="segmentChanged($event)" color="light" value="bag"> <!--event will be as object-->
     <!--first button-->
-   <ion-segment-button value="bag">
-    <ion-label>
+   <ion-segment-button value="bag" color="medium">
+    <ion-label color="light">
       In My Bag ({{number1}})
     </ion-label>
   </ion-segment-button> 
    <!--second button-->
-  <ion-segment-button value="saved">
-    <ion-label>
-      Saved 
+  <ion-segment-button value="saved" color="medium">
+    <ion-label color="light">
+      Saved  ({{number2}})
     </ion-label>
   </ion-segment-button>
  </ion-segment>
@@ -36,7 +36,7 @@
           <div class="textBold">{{item.title}}</div>
           <p class="smallBold">{{item.price| currency}} BND</p>
           <p class="subtitle">{{item.brand}}</p>
-          <p class="smallBold">Move to wishlist</p>
+          <p class="smallBold" (click)="saved(item.title, item.vendor)">Move to wishlist</p>
         </div>
         <!--item quantity-->
         <div class="quantityBox">
@@ -55,7 +55,7 @@
         </div>
         <!--remove here-->
         <div class="myRemove">
-          <button class="myRemoveBtn">Remove</button>
+          <button class="myRemoveBtn" (click)="remove(item.title, item.vendor)">Remove</button>
         </div>
       </div>
     </div>
@@ -65,25 +65,26 @@
 
  <!-- saved side of things 0000000000000000000000000000000000 -->
  <ion-grid *ngIf="segmentValue == 'saved'">
-  <div class="bagWrap" *ngFor="let save of ">
-    <!--picture here-->
-    <div class="bagLeft">
-      <ion-img [src]="save.imageUrl" class="itemPic"></ion-img>
+  <div class="scrollBox">
+      <div class="whiteBox" *ngFor="let saved of saveditem"> <!--here for loop-->
+        <!--item image-->
+        <div class="imageBox">
+          <ion-img [src]="saved.img1" class="myImg"></ion-img>
+        </div>
+        <!--item details-->
+        <div class="textBox">
+          <div class="textBold">{{ saved.title }}</div> <!--this is for title-->
+          <p class="smallBold">{{ saved.price| currency }} BND</p> <!--this is for price-->
+          <p class="subtitle">{{ saved.brand }}</p> <!--this is for brand-->
+          <p class="smallBold" (click)="bag(saved.title, saved.vendor)">Move to bag</p>
+        </div>
+        <br>
+        <!--remove here-->
+        <div class="myRemove">
+          <button class="myRemoveBtn" (click)="remove2(saved.title, saved.vendor)">Remove</button>
+        </div>
+      </div>
     </div>
-
-    <!--content here-->
-    <div class="bagCenter">
-      <p class="textBold"></p> <!--for title-->
-      <p class="subtitle"></p> <!--for brand-->
-      <p class="smallBold">Move to bag</p>
-    </div>
-
-    <!--price here-->
-    <div class="bagRight">
-      <p class="textBold"></p>
-      <ion-icon name="trash-bin-outline" class="trashIcon"></ion-icon>
-    </div>
-  </div>
 </ion-grid>
 </ion-content>
 

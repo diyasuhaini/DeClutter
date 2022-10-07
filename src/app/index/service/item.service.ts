@@ -4,8 +4,7 @@ import { environment } from 'src/environments/environment';
 import { initializeApp } from 'firebase/app';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Subscription } from 'rxjs';
-import { User } from '../auth/auth.model'
-import { strict } from 'assert';
+import { User } from '../auth/auth.model';
 
 // initialize the application allow new database apit to be used
 initializeApp(environment.firebaseConfig);
@@ -220,6 +219,46 @@ export class ItemService {
     const snapshot = await get((dbref)); //get all data from ref
     var item = snapshot.val(); //retrieve value
     var lock = false; //no user
+    if(item){
+      if(item[currentid]){ //if user
+        item[currentid].forEach((item1)  => { //every item from user
+          if (item1 == (title + vendor)){  //combine title with vendor
+            lock = true; //item is correct
+          }
+  
+          if(lock == false){ //else incorrect
+            item[currentid].push((title + vendor)); //push to shopping-bag
+            this.removeSaved(title + vendor).then(() => {
+              return set(ref(database, 'shopping-bag/'), item); //then its confirmed
+            })
+          }
+        });
+      } else { 
+        this.removeSaved(title + vendor).then(() => {
+          return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+        })
+      }
+    }
+    this.removeSaved(title + vendor).then(() => {
+      return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+    })
+
+  
+  }
+
+  async addtoSaved(title, vendor) {
+    const currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'saved/');
+    // get values
+    const snapshot = await get((dbref)); //get all data from ref
+    var item = snapshot.val(); //retrieve value
+    var lock = false; //no user
+    if(!item){
+      this.removeCart(title + vendor).then(() => {
+        return set(ref(database, 'saved/'+ currentid), [(title + vendor)]);
+      })
+    }
+
     if(item[currentid]){ //if user
       item[currentid].forEach((item1)  => { //every item from user
         if (item1 == (title + vendor)){  //combine title with vendor
@@ -227,12 +266,16 @@ export class ItemService {
         }
 
         if(lock == false){ //else incorrect
-          item[currentid].push((title + vendor)); //push to shopping-bag
-          return set(ref(database, 'shopping-bag/'), item); //then its confirmed
+          item[currentid].push((title + vendor)); //push to saved
+          this.removeCart(title + vendor).then(() => {
+          return set(ref(database, 'saved/'), item); //then its confirmed
+          })
         }
       });
     } else { 
-      return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+      this.removeCart(title + vendor).then(() => {
+        return set(ref(database, 'saved/'+ currentid), [(title + vendor)]);
+      })
     }
 
   
@@ -268,6 +311,34 @@ export class ItemService {
     return cont3;
   }
 
+  async retrieveSaved(){
+    var currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'saved/' + currentid);
+    // get values
+    const snapshot = await get((dbref));
+    var item = snapshot.val();
+    var cont = [];
+    if (item != null){
+      item.forEach((item) => {
+        cont.push(item);
+      })
+      const dbref2 = ref(database, 'item/'); 
+      const snapshot2 = await get((dbref2));
+      var item2 = snapshot2.val();
+  
+      var cont3 = [];
+      Object.keys(item2).forEach((key) => {
+        cont.forEach((item) => {
+          if (key == item) {
+            cont3.push(item2[key]);
+          }
+        })
+      })
+    }
+    
+    return cont3;
+  }
+
   async antiDuplicate(item){
     var trigger = false;
     var currentid = localStorage.getItem('currentid');
@@ -275,6 +346,9 @@ export class ItemService {
     const snapshot = await get((dbref));
 
     var items = snapshot.val();
+    if(!items){
+      return trigger
+    }
     items.forEach((item2) => {
       console.log(item2);
       if (item2 == (item)) { 
@@ -291,13 +365,26 @@ export class ItemService {
     console.log(snapshot.val());
     var cont = [];
     snapshot.val().forEach((item) => {
-      console.log("amongus", item.title + item.vendor)
       if(item != itemid){
         cont.push(item);
       }
     })
     return set(dbref, cont);
+  }
 
+  async removeSaved(itemid){
+    var currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'Saved/' + currentid);
+    const snapshot = await get((dbref));
+    var cont = [];
+    if(snapshot.val()){
+      snapshot.val().forEach((item) => {
+        if(item != itemid){
+          cont.push(item);
+        }
+      })
+    } 
+    return set(dbref, cont);
   }
 
   //item tracking part below
@@ -417,5 +504,7 @@ export class ItemService {
     console.log("container", container); //check value
     return container; //confirmed
   }
+
+
 
 }
