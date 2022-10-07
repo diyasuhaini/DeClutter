@@ -47,4 +47,15 @@ export class Tracks{
         public quantity: string,
         public items: string
     ){}
-}   
+}
+
+//for report
+export class report{
+    constructor(
+        public reportid: string,
+        public description: string,
+        public error: string,
+        public screenshot: string,
+        public username: string
+    ){}
+}

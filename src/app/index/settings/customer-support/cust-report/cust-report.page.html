@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content color="medium">
-  <form style="margin:15px;">
+  <form style="margin:15px;" [formGroup]="reportForm" (ngSubmit)="submitReport(reportForm.value)">
     <ion-list style="background-color:#ffffff;">
       <ion-label>From:</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="Enter your email"></ion-input>
+        <ion-text>{{ currentusername }}</ion-text>
       </ion-item>
       <br>
 
@@ -24,7 +24,7 @@
 
       <ion-label>Error:</ion-label>
       <ion-item color="medium">
-        <ion-select interface="popover" placeholder="Select error" required><!--formControlName="error"-->
+        <ion-select interface="popover" placeholder="Select error" formControlName="error" required>
           <ion-select-option value="bug">Bug</ion-select-option>
           <ion-select-option value="order">Order error</ion-select-option>
           <ion-select-option value="payment">Payment error</ion-select-option>
@@ -35,19 +35,23 @@
       <ion-label>Error Screenshot:</ion-label>
       <ion-item color="medium">
         <div class="uploadFile">
-          <ion-input type="file" style="color: transparent;" id="errorImg"></ion-input><!--(change)="uploadImg($event, 'errorImg')"-->
-          <!-- <div *ngIf="img1url">Uploaded</div> -->
+          <ion-input type="file" style="color: transparent;" id="screenshot" formControlName="screenshot" (change)="uploadSS($event)"></ion-input>
+          <!-- <div *ngIf="screenshotUrl">Uploaded</div> -->
         </div>
       </ion-item>
       <br>
             
       <ion-label>Description:</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="Describe your error"></ion-input>
+        <ion-input type="text" placeholder="Describe your error" formControlName="description"></ion-input>
       </ion-item>
       <br>
     </ion-list>
-    <ion-button expand="block" type="submit" color="tertiary"><b>Submit Report</b></ion-button>
+    <ion-button expand="block" type="submit" color="tertiary" [disabled]="!reportForm.valid"><b>Submit Report</b></ion-button>
   </form>
+  <!-- username -->
+  <!-- error -->
+  <!-- screenshot -->
+  <!-- description -->
 
 </ion-content>

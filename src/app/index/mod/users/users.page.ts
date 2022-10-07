@@ -14,7 +14,6 @@ export class UsersPage implements OnInit {
   private userSub: Subscription;
   private people: User[];
   private currentusername: string;
-  private currentid: string;
 
   constructor(private authenticationService: AuthenticationService) { }
 
