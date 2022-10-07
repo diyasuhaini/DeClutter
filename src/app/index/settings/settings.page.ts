@@ -15,6 +15,10 @@ export class SettingsPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter(){
+    
+  }
+
   //when user enter logout
   logout(){
     this.authenticationService.signoutUser()

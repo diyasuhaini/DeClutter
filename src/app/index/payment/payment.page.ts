@@ -49,6 +49,7 @@ export class PaymentPage implements OnInit {
   //for cash
   cashBtn(){
     localStorage.setItem('method', 'cash');
+    this.router.navigateByUrl('/index/payment/success-payment');
   }
 
 }

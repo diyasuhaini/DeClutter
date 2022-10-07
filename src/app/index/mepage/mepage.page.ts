@@ -88,11 +88,11 @@ export class MepagePage implements OnInit {
     //get from tracks database
     this.itemService.getItemTracking().then((tracks) => { //refer from item.service getItemTracking
       this.tracks = tracks; //get the value
+      console.log(this.tracks);
     },error => {
       console.log(error); //there is an error item.service getItemTracking
     })
-  }
 
-  
+  }
 
 }
