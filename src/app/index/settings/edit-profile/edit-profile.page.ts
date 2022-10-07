@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ItemService } from '../../service/item.service';
 import { User } from '../../auth/auth.model';
 import { FormBuilder } from '@angular/forms';
+import { UsersService } from '../../service/users.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class EditProfilePage implements OnInit {
 
   constructor(private router: Router,
               private itemService: ItemService,
+              private usersService: UsersService,
               private builder: FormBuilder) { }
 
   ngOnInit() {
@@ -27,12 +29,12 @@ export class EditProfilePage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.itemService.retrieveAccount().then((account) => {
+    this.usersService.retrieveAccount().then((account) => {
       console.log(account);
       this.user = account;
     })
 
-    this.itemService.updateAccount().then((updated) => {
+    this.usersService.updateAccount().then((updated) => {
       console.log(updated);
     })
   }
