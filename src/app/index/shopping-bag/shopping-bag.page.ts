@@ -72,6 +72,27 @@ export class ShoppingBagPage implements OnInit {
 
   }
 
+  async saved(title, vendor){
+    await this.itemService.addtoSaved(title, vendor).then( () => {
+      this.itemService.retrieveCart().then((cart) => {
+        if(cart){
+          this.item = cart;
+        } else {
+          this.item = [];
+        }
+        
+        this.number1 = 0;
+        this.totalcost = 0;
+        this.item.forEach((item) => {
+          this.number1 += 1;
+          this.totalcost += parseFloat(item.price);
+          console.log(item.price);
+          console.log(item.price);
+        });
+      })
+    });
+  }
+
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();
     this.itemService.retrieveCart().then((cart) => {

@@ -220,6 +220,40 @@ export class ItemService {
     const snapshot = await get((dbref)); //get all data from ref
     var item = snapshot.val(); //retrieve value
     var lock = false; //no user
+    if(!item){
+      if(item[currentid]){ //if user
+        item[currentid].forEach((item1)  => { //every item from user
+          if (item1 == (title + vendor)){  //combine title with vendor
+            lock = true; //item is correct
+          }
+  
+          if(lock == false){ //else incorrect
+            item[currentid].push((title + vendor)); //push to shopping-bag
+            return set(ref(database, 'shopping-bag/'), item); //then its confirmed
+          }
+        });
+      } else { 
+        return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+      }
+    }
+    return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+
+  
+  }
+
+  async addtoSaved(title, vendor) {
+    const currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'saved/');
+    // get values
+    const snapshot = await get((dbref)); //get all data from ref
+    var item = snapshot.val(); //retrieve value
+    var lock = false; //no user
+    if(!item){
+      this.removeCart(title + vendor).then(() => {
+        return set(ref(database, 'saved/'+ currentid), [(title + vendor)]);
+      })
+    }
+
     if(item[currentid]){ //if user
       item[currentid].forEach((item1)  => { //every item from user
         if (item1 == (title + vendor)){  //combine title with vendor
@@ -227,12 +261,16 @@ export class ItemService {
         }
 
         if(lock == false){ //else incorrect
-          item[currentid].push((title + vendor)); //push to shopping-bag
-          return set(ref(database, 'shopping-bag/'), item); //then its confirmed
+          item[currentid].push((title + vendor)); //push to saved
+          this.removeCart(title + vendor).then(() => {
+          return set(ref(database, 'saved/'), item); //then its confirmed
+          })
         }
       });
     } else { 
-      return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+      this.removeCart(title + vendor).then(() => {
+        return set(ref(database, 'saved/'+ currentid), [(title + vendor)]);
+      })
     }
 
   
@@ -275,6 +313,9 @@ export class ItemService {
     const snapshot = await get((dbref));
 
     var items = snapshot.val();
+    if(!items){
+      return trigger
+    }
     items.forEach((item2) => {
       console.log(item2);
       if (item2 == (item)) { 
@@ -291,13 +332,25 @@ export class ItemService {
     console.log(snapshot.val());
     var cont = [];
     snapshot.val().forEach((item) => {
-      console.log("amongus", item.title + item.vendor)
       if(item != itemid){
         cont.push(item);
       }
     })
     return set(dbref, cont);
+  }
 
+  async removeSaved(itemid){
+    var currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'Saved/' + currentid);
+    const snapshot = await get((dbref));
+    console.log(snapshot.val());
+    var cont = [];
+    snapshot.val().forEach((item) => {
+      if(item != itemid){
+        cont.push(item);
+      }
+    })
+    return set(dbref, cont);
   }
 
   //item tracking part below
@@ -461,5 +514,7 @@ export class ItemService {
     //completed
     return accountBox;
   }
+
+
 
 }

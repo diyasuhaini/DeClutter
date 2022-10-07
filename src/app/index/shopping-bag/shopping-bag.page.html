@@ -36,7 +36,7 @@
           <div class="textBold">{{item.title}}</div>
           <p class="smallBold">{{item.price| currency}} BND</p>
           <p class="subtitle">{{item.brand}}</p>
-          <p class="smallBold">Move to wishlist</p>
+          <p class="smallBold" (click)="saved(item.title, item.vendor)">Move to wishlist</p>
         </div>
         <!--item quantity-->
         <div class="quantityBox">
