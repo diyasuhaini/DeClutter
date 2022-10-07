@@ -56,15 +56,31 @@ export class ShoppingBagPage implements OnInit {
   remove(item, vendor){
     console.log(item);
     console.log(vendor);
-    console.log(this.currentid);
-    this.itemService.removeCart(item + vendor).then( () => location.reload());
+    this.itemService.removeCart(item + vendor).then( () => {
+      this.itemService.retrieveCart().then((cart) => {
+        this.item = cart;
+        this.number1 = 0;
+        this.totalcost = 0;
+        this.item.forEach((item) => {
+          this.number1 += 1;
+          this.totalcost += parseFloat(item.price);
+          console.log(item.price);
+          console.log(item.price);
+        });
+      })
+    });
 
   }
 
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();
     this.itemService.retrieveCart().then((cart) => {
-      this.item = cart;
+      if(cart){
+        this.item = cart;
+      } else {
+        this.item = [];
+      }
+      
       this.number1 = 0;
       this.totalcost = 0;
       this.item.forEach((item) => {
