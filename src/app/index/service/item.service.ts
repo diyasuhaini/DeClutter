@@ -228,20 +228,14 @@ export class ItemService {
   
           if(lock == false){ //else incorrect
             item[currentid].push((title + vendor)); //push to shopping-bag
-            this.removeSaved(title + vendor).then(() => {
               return set(ref(database, 'shopping-bag/'), item); //then its confirmed
-            })
           }
         });
       } else { 
-        this.removeSaved(title + vendor).then(() => {
           return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
-        })
       }
     }
-    this.removeSaved(title + vendor).then(() => {
       return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
-    })
 
   
   }
@@ -254,9 +248,7 @@ export class ItemService {
     var item = snapshot.val(); //retrieve value
     var lock = false; //no user
     if(!item){
-      this.removeCart(title + vendor).then(() => {
         return set(ref(database, 'saved/'+ currentid), [(title + vendor)]);
-      })
     }
 
     if(item[currentid]){ //if user
@@ -267,15 +259,11 @@ export class ItemService {
 
         if(lock == false){ //else incorrect
           item[currentid].push((title + vendor)); //push to saved
-          this.removeCart(title + vendor).then(() => {
           return set(ref(database, 'saved/'), item); //then its confirmed
-          })
         }
       });
     } else { 
-      this.removeCart(title + vendor).then(() => {
         return set(ref(database, 'saved/'+ currentid), [(title + vendor)]);
-      })
     }
 
   
@@ -374,7 +362,7 @@ export class ItemService {
 
   async removeSaved(itemid){
     var currentid = localStorage.getItem('currentid');
-    const dbref = ref(database, 'Saved/' + currentid);
+    const dbref = ref(database, 'saved/' + currentid);
     const snapshot = await get((dbref));
     var cont = [];
     if(snapshot.val()){

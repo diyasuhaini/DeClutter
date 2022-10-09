@@ -54,6 +54,8 @@ export class ShoppingBagPage implements OnInit {
     });
   }
 
+  // remove cart items
+
   remove(item, vendor){
     console.log(item);
     console.log(vendor);
@@ -73,6 +75,8 @@ export class ShoppingBagPage implements OnInit {
 
   }
 
+  // remove saved items
+
   remove2(item, vendor){
     console.log(item);
     console.log(vendor);
@@ -89,6 +93,8 @@ export class ShoppingBagPage implements OnInit {
     });
 
   }
+
+  // add to saved
 
   async saved(title, vendor){
     await this.itemService.addtoSaved(title, vendor).then( () => {
@@ -108,6 +114,7 @@ export class ShoppingBagPage implements OnInit {
     });
   }
 
+  // add to cart
   async bag(title, vendor){
     const currentid = localStorage.getItem('currentid');
     await this.itemService.addtoCart(currentid, title, vendor).then( () => {
