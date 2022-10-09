@@ -27,6 +27,7 @@ export class ItemDetailsPage implements OnInit {
   private user = [];
   private added = false;
   private itemtitle: string;
+  private savedchecked = false;
 
   constructor(private router: Router,
               private itemService: ItemService, 
@@ -73,32 +74,54 @@ export class ItemDetailsPage implements OnInit {
     });
     
     // tell the item handling service to add the specific item to the cart
-    var title = this.item[0].title;
-    var vendor = this.item[0].vendor;
+    const title = this.item[0].title;
+    const vendor = this.item[0].vendor;
     this.itemService.addtoCart(this.currentid, title, vendor).then(async () => {
-      const alert = await this.alertController.create({
-        subHeader: 'Added to Shopping Bag'
-      });
-
-      await alert.present();
-      this.added = true;
+      this.itemService.removeSaved(title + vendor).then(async () => {
+        const alert = await this.alertController.create({
+          subHeader: 'Added to Shopping Bag'
+        });
+  
+        await alert.present();
+        this.added = true;
+        this.savedchecked = false;
+      })
     });
   }
 
   // Saved
-  async wishlist(){
+  async saved(){
+    const title = this.item[0].title;
+    const vendor = this.item[0].vendor;
+    this.itemService.addtoSaved(title, vendor).then(async () => {
+      this.itemService.removeCart(title + vendor).then(async () => {
+        this.added = false;
+        this.savedchecked = true;
+        // alert the user the item is saved
+        const alert = await this.alertController.create({
+          subHeader: 'Item is Saved'
+        });
 
-    // alert the user the item is saved
-    const alert = await this.alertController.create({
-      subHeader: 'Item is Saved'
-    });
+        await alert.present();
 
-    await alert.present();
+      })
+      
+    })
 
   }
 
-  proceed(){
-    this.router.navigateByUrl("/index/shopping-bag");
+  unsaved(){
+    const title = this.item[0].title;
+    const vendor = this.item[0].vendor;
+    this.itemService.removeSaved(title + vendor).then(async () => {
+      this.savedchecked = false;
+       // alert the user the item is saved
+       const alert = await this.alertController.create({
+        subHeader: 'Item is remove from saved'
+      });
+
+      await alert.present();
+    })
   }
 
   ionViewWillEnter(){
@@ -111,7 +134,9 @@ export class ItemDetailsPage implements OnInit {
     this.itemService.antiDuplicate(this.itemtitle).then((item) => 
       this.added = item
     );
-    
+    this.itemService.antiDuplicateSaved(this.itemtitle).then((item) => 
+      this.savedchecked = item
+    );
   }
 
 

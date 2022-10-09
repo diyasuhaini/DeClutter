@@ -346,6 +346,25 @@ export class ItemService {
     return trigger
   }
 
+  async antiDuplicateSaved(item){
+    var trigger = false;
+    var currentid = localStorage.getItem('currentid');
+    const dbref = ref(database, 'saved/' + currentid);
+    const snapshot = await get((dbref));
+
+    var items = snapshot.val();
+    if(!items){
+      return trigger
+    }
+    items.forEach((item2) => {
+      console.log(item2);
+      if (item2 == (item)) { 
+        trigger = true;
+      }
+    });
+    return trigger
+  }
+
   async removeCart(itemid){
     var currentid = localStorage.getItem('currentid');
     const dbref = ref(database, 'shopping-bag/' + currentid);
