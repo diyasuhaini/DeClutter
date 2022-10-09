@@ -101,7 +101,7 @@
             <span class="totalcost">{{totalcost | currency:"B$"}}</span>
           </ion-col>
           <ion-col>
-            <ion-button color="tertiary" shape="round" routerLink="../item-sold">Go to checkout</ion-button>
+            <ion-button color="tertiary" shape="round" routerLink="../item-sold" [disabled]="number1 == 0">Go to checkout</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
