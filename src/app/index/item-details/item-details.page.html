@@ -77,7 +77,7 @@
       <div class="fLeft">
         <ion-icon name="heart-outline" class="likeIcon" (click)="saved()" *ngIf="!savedchecked"></ion-icon>
         <ion-icon name="heart" class="likeIcon" (click)="unsaved()" *ngIf="savedchecked"></ion-icon>
-        <ion-icon name="chatbubble-ellipses-outline" class="checkIcon" routerLink="../reviews"></ion-icon>
+        <ion-icon name="chatbubble-ellipses-outline" class="checkIcon" routerLink="../reviews" [state]="vendor"></ion-icon>
       </div>
       <div class="fRight" *ngIf="!added"> 
         <ion-button color="tertiary" class="buyBtn" shape="round" (click)="addcart()">Add to Bag</ion-button>
