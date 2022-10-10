@@ -44,6 +44,7 @@ export class HomePage implements OnInit {
           this.currentusername = user.username;
           this.currentid = user.id;
           console.log(user.id);
+          localStorage.setItem('currentname', user.username);
           localStorage.setItem('currentid', user.id);
         }
       });

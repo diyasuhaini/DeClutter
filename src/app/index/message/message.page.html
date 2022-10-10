@@ -9,29 +9,31 @@
 
 <ion-content color="medium">
   <!--chat box for other user here-->
-  <div class="chatBox">
-    <div class="pic">
-      <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
-    </div>
-    <div class="chat">
-      <div class="box">
-        <p style="padding-left: 10px;">Username</p>
-        <p class="left">testing</p>
+  <div *ngFor="let message of messages">
+    <div class="chatBox" *ngIf="message.user != currentid">
+      <div class="pic">
+        <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
+      </div>
+      <div class="chat">
+        <div class="box">
+          <p style="padding-left: 10px;">{{vendorname}}</p>
+          <p class="left">{{message.text}}</p>
+        </div>
       </div>
     </div>
-  </div>
 
 
-  <!--chat box for current user here-->
-  <div class="chatBox">
-    <div class="chat">
-      <div class="uBox">
-        <p style="text-align: right; padding-right: 10px;">Username</p>
-        <p class="right">testing</p>
+    <!--chat box for current user here-->
+    <div class="chatBox" *ngIf="message.user == currentid">
+      <div class="chat">
+        <div class="uBox">
+          <p style="text-align: right; padding-right: 10px;">{{currentname}}</p>
+          <p class="right">{{message.text}}</p>
+        </div>
       </div>
-    </div>
-    <div class="pic">
-      <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
+      <div class="pic">
+        <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
+      </div>
     </div>
   </div>
 

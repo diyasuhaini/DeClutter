@@ -13,14 +13,11 @@ const database = getDatabase();
   providedIn: 'root'
 })
 export class MessageService {
-  
-  private currentid = localStorage.getItem('currentid');
-
 
   constructor() { }
 
   async sendmessage(text, nduser){
-    const currentid = this.currentid;
+    const currentid = localStorage.getItem('currentid');
     const comb1 = currentid + nduser;
     const comb2 = nduser + currentid;
     var finaldist = comb1;
@@ -37,8 +34,7 @@ export class MessageService {
           finaldist = comb2;
         }
       });
-      // check.push({text: text, user: currentid});
-      console.log(finaldist);
+      console.log("finaldist", finaldist);
       const dbref2 = ref(database, 'message/' + finaldist);
       const snapshot = await get((dbref2));
       const check2 = snapshot.val();
@@ -50,6 +46,35 @@ export class MessageService {
       console.log("finaldist", finaldist);
       return set(ref(database, 'message/' + finaldist), checker);
     }
+  }
+
+  async retrieveMessage(nduser){
+    var currentid = localStorage.getItem('currentid');
+    const comb1 = currentid + nduser;
+    const comb2 = nduser + currentid;
+    var finaldist = comb1;
+    const dbref = ref(database, 'message/');
+    const snapshot = await get((dbref));
+    const check = snapshot.val();
+    console.log(check);
+    if(!check){
+      console.log("uwee1");
+      return [];
+    } else {
+      Object.keys(check).forEach(key => {
+        if (key == comb2){
+          finaldist = comb2;
+        }
+      });
+      
+      const dbref = ref(database, 'message/' + finaldist);
+      // get values
+      const snapshot = await get((dbref));
+      var item = snapshot.val();
+      
+    }
+    
+    return item;
   }
 
 }
