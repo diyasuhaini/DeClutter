@@ -4,8 +4,9 @@ ion-buttons{
 .chatBox{
     display: flex;
     flex: wrap;
-    width: 95%; height: 14vh;
-    margin: auto; margin-top: 10px;
+    width: 90%; height: auto;
+    margin: auto; 
+    margin-top: 10px; margin-bottom: 15px;
 }
 ion-img{
     width: 40px; height: 40px; 
@@ -19,15 +20,18 @@ ion-img{
 }
 //for other user
 .box{
-    width: 95%; height: 70px;
-    border: 1px solid; border-radius: 0px 10px 10px 10px;
-    margin-top: 10px;
+    width: auto; height: auto;
+    border-radius: 0px 10px 10px 10px;
+    margin-top: 10px; background-color: #FAECDF;
+    padding: 2px;
 }
 //for current user
 .uBox{
-    width: 95%; height: 70px;
-    border: 1px solid; border-radius: 10px 10px 0px 10px;
+    width: auto; height: auto;
+    border-radius: 10px 10px 0px 10px;
     margin-top: 10px; margin-left: 15px;
+    background-color: #F2BE8D;
+    padding: 2px; color: white;
 }
 
 //input here
@@ -36,7 +40,10 @@ ion-img{
     position: absolute;
     bottom: 10px; left: 15px;
     width: 90%; height: 50px;
+    padding-top: 5px;
 }
+
+
 ion-textarea{
     flex: 80%; height: 40px;
     margin-right: 5px;
@@ -55,4 +62,8 @@ ion-button{
 .right{
     padding-right: 10px;
     text-align: right;
+}
+
+.unameColor{
+    font-weight: bold; font-size: 18px;
 }
