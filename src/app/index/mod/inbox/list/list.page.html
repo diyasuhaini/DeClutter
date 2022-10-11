@@ -15,11 +15,12 @@
   
   <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
 
-    <ion-item color="medium" *ngFor="let account of reports">
+    <ion-item color="medium" routerLink="report-details" *ngFor="let account of reports">
       <ion-avatar style="margin:15px; height: 50px;width:50px;"><ion-img src="assets/img/profile-round.png"></ion-img></ion-avatar>
       <ion-label>
         <ion-text><b>{{ account.username }}</b></ion-text><br>
-        <ion-text color="light">{{ account.error }}</ion-text><br>
+        <ion-text color="light" style="text-transform: uppercase;">[ {{ account.error }} ]</ion-text><br>
+        <ion-text>{{ account.description }}</ion-text>
       </ion-label>
     </ion-item>
     

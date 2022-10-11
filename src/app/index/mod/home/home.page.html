@@ -62,37 +62,15 @@
         <h3 style="margin: 8px 8px 0 8px;">Recent Inbox</h3>
         
         <ion-list style=" background-color:#ffffff;">
-          <ion-item color="medium">
-            <ion-label>
-              <ion-text><b>Best Thrift Shop</b></ion-text><br>
-              <ion-text color="light">02:09pm, 12/04/2022</ion-text><br>
-              <p>Odio turpis quam malesuada quam massa, amet, elementum. Facilisis quis vitae sit at non vita.</p>
-            </ion-label>
-          </ion-item>
 
-          <ion-item color="medium">
+          <ion-item color="medium" *ngFor="let account of reports | slice:0:4">
             <ion-label>
-              <ion-text><b>Reilly Christal</b></ion-text><br>
-              <ion-text color="light">02:09pm, 12/04/2022</ion-text><br>
-              <p>Odio turpis quam malesuada quam massa, amet, elementum. Facilisis quis vitae sit at non vita.</p>
+              <ion-text><b>{{ account.username }}</b></ion-text><br>
+              <ion-text color="light" style="text-transform: uppercase;">[ {{ account.error }} ]</ion-text><br>
+              <ion-text>{{ account.description }}</ion-text>
             </ion-label>
           </ion-item>
-
-          <ion-item color="medium">
-            <ion-label>
-              <ion-text><b>Shawnda Maurene</b></ion-text><br>
-              <ion-text color="light">02:09pm, 12/04/2022</ion-text><br>
-              <p>Odio turpis quam malesuada quam massa, amet, elementum. Facilisis quis vitae sit at non vita.</p>
-            </ion-label>
-          </ion-item>
-
-          <ion-item color="medium">
-            <ion-label>
-              <ion-text><b>Wan Roniy</b></ion-text><br>
-              <ion-text color="light">02:09pm, 12/04/2022</ion-text><br>
-              <p>Odio turpis quam malesuada quam massa, amet, elementum. Facilisis quis vitae sit at non vita.</p>
-            </ion-label>
-          </ion-item>
+          
         </ion-list>
 
       </ion-col>
