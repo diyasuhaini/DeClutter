@@ -17,13 +17,9 @@ export class ListPage implements OnInit {
   ngOnInit() {
     this.reportService.getReport().then((list) => {
       console.log(list);
-      this.reports = list;
+      this.reports = list.reverse();
     })
 
-
-    // this.userSub = this.authenticationService.$users.subscribe(users => {
-    //   this.people = users;
-    // });
   }
 
 }

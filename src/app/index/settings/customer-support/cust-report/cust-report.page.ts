@@ -99,14 +99,12 @@ export class CustReportPage implements OnInit {
       this.screenshotUrl,
       report.description
     ).then((response) => {
-        this.router.navigateByUrl('index/home');
+        this.router.navigateByUrl('index/settings/customer-support');
     }, error => {
       // check error
       console.log(error);
     })
-
     console.log("this is report id ",this.reportId);
-
   }
 
 

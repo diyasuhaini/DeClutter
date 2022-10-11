@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content color="medium">
-  <form style="margin:15px;">
+  <form style="margin:15px;" ><!--{{ currentusername }} [formGroup]="feedbackForm"(ngSubmit)="submitFeedback(feedbackForm.value)"-->
     <ion-list style="background-color:#ffffff;">
       <ion-label>From:</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="Enter your email"></ion-input>
+        <ion-text></ion-text>
       </ion-item>
       <br>
 
@@ -24,11 +24,11 @@
             
       <ion-label>Description:</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="Describe your feedback"></ion-input>
+        <ion-input type="text" placeholder="Describe your feedback" ></ion-input>
       </ion-item>
       <br>
     </ion-list>
-    <ion-button expand="block" type="submit" color="tertiary"><b>Submit feedback</b></ion-button>
-  </form>
+    <ion-button expand="block" type="submit" color="tertiary" ><b>Submit feedback</b></ion-button>
+  </form><!--formControlName="description"[disabled]="!feedbackForm.valid"-->
 
 </ion-content>

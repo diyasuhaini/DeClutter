@@ -1,9 +1,53 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>report-details</ion-title>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start" routerLink="../">
+      <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Report</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="medium">
+  <!--<form style="margin:15px;">[formGroup]="reportForm" (ngSubmit)="submitReport(reportForm.value)"-->
+    <ion-list style="background-color:#ffffff;">
+      <ion-label>From:</ion-label>
+      <ion-item color="medium">
+        <ion-text>{{ currentusername }}</ion-text>
+      </ion-item>
+      <br>
+
+      <ion-label>To:</ion-label>
+      <ion-item color="medium">
+        <ion-text>Moderator</ion-text>
+      </ion-item>
+      <br>
+
+      <ion-label>Error:</ion-label>
+      <ion-item color="medium">
+        <ion-text></ion-text>
+      </ion-item>
+      <br>
+
+      <ion-label>Error Screenshot:</ion-label>
+      <ion-item color="medium">
+        <!-- <div class="uploadFile">
+          <ion-input type="file" style="color: transparent;" id="screenshot" formControlName="screenshot" (change)="uploadSS($event)"></ion-input>
+           <div *ngIf="screenshotUrl">Uploaded</div>
+        </div> -->
+      </ion-item>
+      <br>
+            
+      <ion-label>Description:</ion-label>
+      <ion-item color="medium">
+        <ion-text></ion-text>
+      </ion-item>
+      <br>
+    </ion-list>
+    <!-- <ion-button expand="block" type="submit" color="tertiary" [disabled]="!reportForm.valid"><b>Submit Report</b></ion-button> -->
+  
+  <!-- username -->
+  <!-- error -->
+  <!-- screenshot -->
+  <!-- description -->
 
 </ion-content>
