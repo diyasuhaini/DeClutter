@@ -10,22 +10,28 @@ import { ReportService } from 'src/app/index/service/report.service';
 })
 export class ReportDetailsPage implements OnInit {
 
-  private reports: report[];
+  private myReport: report[];
   
   constructor(private router: Router,
               private reportService: ReportService) { }
 
   ngOnInit() {
     const routerState = this.router.getCurrentNavigation().extras.state;
-    this.reports = [{
-      reportid: "",
+    this.myReport = [{
       description: routerState.description,
       error: routerState.error,
       screenshot: routerState.screenshot,
       username: routerState.username
     }];
 
-    console.log(this.reports);
+    console.log(this.myReport);
+  }
+
+  ionViewWillEnter(){
+    this.reportService.getReport().then((list) => {
+      this.myReport = list;
+      console.log(this.myReport);
+    })
   }
 
   

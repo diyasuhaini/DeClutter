@@ -15,7 +15,7 @@
   
   <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
 
-    <ion-item color="medium" routerLink="report-details" *ngFor="let account of reports">
+    <ion-item color="medium" *ngFor="let account of reports" routerLink="report-details" [state]="account">
       <ion-avatar style="margin:15px; height: 50px;width:50px;"><ion-img src="assets/img/profile-round.png"></ion-img></ion-avatar>
       <ion-label>
         <ion-text><b>{{ account.username }}</b></ion-text><br>
