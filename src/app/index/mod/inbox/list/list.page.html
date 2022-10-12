@@ -15,7 +15,11 @@
   
   <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
 
+<<<<<<< HEAD
     <ion-item color="medium" *ngFor="let account of reports" routerLink="report-details" [state]="account">
+=======
+    <ion-item color="medium" routerLink="report-details" *ngFor="let account of reports" [state]="account">
+>>>>>>> 5c377b19f159c6358b0ff8e32c9a81aa50af956b
       <ion-avatar style="margin:15px; height: 50px;width:50px;"><ion-img src="assets/img/profile-round.png"></ion-img></ion-avatar>
       <ion-label>
         <ion-text><b>{{ account.username }}</b></ion-text><br>
