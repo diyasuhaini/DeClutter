@@ -25,15 +25,6 @@ export class ReportDetailsPage implements OnInit {
     }];
 
     console.log(this.myReport);
-  }
-
-  ionViewWillEnter(){
-    this.reportService.getReport().then((list) => {
-      this.myReport = list;
-      console.log(this.myReport);
-    })
-  }
-
-  
+  } 
 
 }
