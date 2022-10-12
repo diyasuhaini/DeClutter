@@ -14,6 +14,7 @@ export class LoginService {
   authenticated(){
     //when user correct, can login now
     this.authenticatedUser = true;
+    console.log(this.authenticatedUser)
   }
 
   exitAuth(){
