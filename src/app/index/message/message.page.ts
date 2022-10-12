@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from '../service/message.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
@@ -12,6 +12,8 @@ const database = getDatabase();
   styleUrls: ['./message.page.scss'],
 })
 export class MessagePage implements OnInit {
+
+  @ViewChild("messageContainer") mContainer: ElementRef;
 
   private currentid = localStorage.getItem('currentid');
   private vendorid;
@@ -47,6 +49,12 @@ export class MessagePage implements OnInit {
 
   ionViewWillEnter(){
     this.messageService.retrieveMessage(this.vendorid).then((message) => this.messages = message);
+  }
+
+  ngAfterViewInit() {}
+
+  ngAfterViewChecked() {
+    this.mContainer.nativeElement.scrollTop = this.mContainer.nativeElement.scrollHeight;
   }
 
   

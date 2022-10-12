@@ -7,32 +7,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium">
+<ion-content color="medium" >
+  <div class="container message-container" #messageContainer>
   <!--chat box for other user here-->
-  <div *ngFor="let message of messages">
-    <div class="chatBox" *ngIf="message.user != currentid">
-      <div class="pic">
-        <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
-      </div>
-      <div class="chat">
-        <div class="box">
-          <p style="padding-left: 10px;" class="unameColor">{{vendorname}}</p>
-          <p class="left">{{message.text}}</p>
+    <div *ngFor="let message of messages">
+      <div class="chatBox" *ngIf="message.user != currentid">
+        <div class="pic">
+          <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
+        </div>
+        <div class="chat">
+          <div class="box">
+            <p style="padding-left: 10px;" class="unameColor">{{vendorname}}</p>
+            <p class="left">{{message.text}}</p>
+          </div>
         </div>
       </div>
-    </div>
 
 
-    <!--chat box for current user here-->
-    <div class="chatBox" *ngIf="message.user == currentid">
-      <div class="chat">
-        <div class="uBox">
-          <p style="text-align: right; padding-right: 10px;" class="unameColor">{{currentname}}</p>
-          <p class="right">{{message.text}}</p>
+      <!--chat box for current user here-->
+      <div class="chatBox" *ngIf="message.user == currentid">
+        <div class="chat">
+          <div class="uBox">
+            <p style="text-align: right; padding-right: 10px;" class="unameColor">{{currentname}}</p>
+            <p class="right">{{message.text}}</p>
+          </div>
         </div>
-      </div>
-      <div class="pic">
-        <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
+        <div class="pic">
+          <ion-img src="assets/img/profile-round.png" alt="profile picture"></ion-img>
+        </div>
       </div>
     </div>
   </div>
