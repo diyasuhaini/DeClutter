@@ -134,24 +134,38 @@
 <ion-footer>
   <ion-toolbar color="medium">
   <div id="footerBox">
-    <ion-button color="medium"  routerLink="../home">
-      <ion-label class="btmlabel"><ion-icon name="home-outline" class="iconFooter"></ion-icon>Home</ion-label>
+    <ion-button color="medium" routerLink="../home" class="thisFlex">
+      <div class="btnBox">
+        <ion-icon name="home-outline" class="iconFooter"></ion-icon>
+        Home
+      </div>
+    </ion-button>
+    <ion-button color="medium" routerLink="../discover" class="thisFlex">
+      <div class="btnBox">
+        <ion-icon name="search-outline" class="iconFooter"></ion-icon>
+        Discover
+      </div>
     </ion-button>
 
-    <ion-button color="medium" routerLink="../discover">
-      <ion-label class="btmlabel"><ion-icon name="search-outline" class="iconFooter"></ion-icon>Discover</ion-label>
+    <ion-button color="medium" routerLink="../sell" class="thisFlex">
+      <div class="btnBox">
+        <ion-icon name="camera-outline" class="iconFooter"></ion-icon>
+        Sell
+      </div>
     </ion-button>
 
-    <ion-button color="medium" routerLink="../sell">
-      <ion-label class="btmlabel"><ion-icon name="camera-outline" class="iconFooter"></ion-icon>Sell</ion-label>
+    <ion-button color="medium" routerLink="../alerts" class="thisFlex">
+      <div class="btnBox">
+        <ion-icon name="notifications-outline" class="iconFooter"></ion-icon>
+        Alerts
+      </div>
     </ion-button>
 
-    <ion-button color="medium" routerLink="../alerts">
-      <ion-label class="btmlabel"><ion-icon name="notifications-outline" class="iconFooter"></ion-icon>Alerts</ion-label>
-    </ion-button>
-
-    <ion-button color="medium">
-      <ion-label class="btmlabel"><ion-icon name="person-outline" class="iconFooter"></ion-icon>Me</ion-label>
+    <ion-button color="medium" class="thisFlex">
+      <div class="btnBox">
+        <ion-icon name="person-outline" class="iconFooter"></ion-icon>
+        Me
+      </div>
     </ion-button>
   </div>
   </ion-toolbar>

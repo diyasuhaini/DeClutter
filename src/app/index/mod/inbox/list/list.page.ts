@@ -15,11 +15,15 @@ export class ListPage implements OnInit {
   constructor(private reportService: ReportService) { }
 
   ngOnInit() {
+    
+
+  }
+
+  ionViewWillEnter(){
     this.reportService.getReport().then((list) => {
       console.log(list);
       this.reports = list.reverse();
     })
-
   }
 
 }

@@ -52,7 +52,6 @@ export class Tracks{
 //for report
 export class report{
     constructor(
-        public reportid: string,
         public description: string,
         public error: string,
         public screenshot: string,
