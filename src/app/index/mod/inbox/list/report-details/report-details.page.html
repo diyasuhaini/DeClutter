@@ -1,39 +1,29 @@
 <ion-header>
-  <ion-toolbar color="medium">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start" routerLink="../">
       <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
     </ion-buttons>
-    <ion-title>Report</ion-title>
+    <ion-title color="dark"><b>Report</b></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="medium">
-  <!--<form style="margin:15px;">[formGroup]="reportForm" (ngSubmit)="submitReport(reportForm.value)"-->
-    <ion-list style="background-color:#ffffff;">
-      <ion-label>From:</ion-label>
+    <ion-list style="background-color:#ffffff; margin:15px;">
       <ion-item color="medium">
-        <ion-text>{{ reports[0].username }}</ion-text>
+        <ion-text><b>From: </b>{{ reports[0].username }}</ion-text>
       </ion-item>
       <br>
 
-      <ion-label>To:</ion-label>
       <ion-item color="medium">
-        <ion-text>Moderator</ion-text>
-      </ion-item>
-      <br>
-
-      <ion-label>Error:</ion-label>
-      <ion-item color="medium">
-        <ion-text>{{ reports[0].error }}</ion-text>
+        <ion-text><b>Error: </b>{{ reports[0].error }}</ion-text>
       </ion-item>
       <br>
 
       <ion-label>Error Screenshot:</ion-label>
       <ion-item color="medium">
-        <!-- <div class="uploadFile">
-          <ion-input type="file" style="color: transparent;" id="screenshot" formControlName="screenshot" (change)="uploadSS($event)"></ion-input>
-           <div *ngIf="screenshotUrl">Uploaded</div>
-        </div> -->
+        <div style="margin: 10px;">
+          <ion-img [src]="reports[0].screenshot" alt="screenshot"></ion-img>
+        </div>
       </ion-item>
       <br>
             
@@ -43,11 +33,8 @@
       </ion-item>
       <br>
     </ion-list>
-    <!-- <ion-button expand="block" type="submit" color="tertiary" [disabled]="!reportForm.valid"><b>Submit Report</b></ion-button> -->
-  
-  <!-- username -->
-  <!-- error -->
-  <!-- screenshot -->
-  <!-- description -->
+
+    <ion-button style="margin:0 15px;" expand="block"><p style="color: black;"><b>Reply report</b></p></ion-button>
+
 
 </ion-content>
