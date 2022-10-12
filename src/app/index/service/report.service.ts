@@ -59,29 +59,37 @@ export class ReportService {
 
   //to show report in moderator
   async getReport() {
-    var currentid = localStorage.getItem('currentid'); //only you can see
-    const dbrefReport = ref(database, 'report/' + currentid); //get the referrence from report table
+    const dbrefReport = ref(database, 'report/'); //get the referrence from report table
     const snapshot = await get((dbrefReport)); //refer back from user
     var report = snapshot.val(); //get the value
-    var box = []; //assume there is no data
+    console.log("report", report);
+    var userbox = []; //assume there is no data
+    var box = [];
     if (report != null){ //if there is an report
       Object.keys(report).forEach((newReport) => { //match the report
+        userbox.push(report[newReport]); //convert 2d array into normal array
+      })
+      console.log("userbox",userbox);
+      Object.keys(userbox[0]).forEach((newReport) => { //match the report
         box.push(newReport); //convert 2d array into normal array
       })
-      const dbref2 = ref(database, 'report/' + currentid); //refer back from item
+      console.log("box", box);
+      const dbref2 = ref(database, 'report/'); //refer back from item
       const snapshot2 = await get((dbref2)); //refer from user
       var reportDetails = snapshot2.val(); //get the value
   
       var newBox = []; //new box appear
+      console.log("reportDetails", reportDetails);
       Object.keys(reportDetails).forEach((key) => { //insert into 2d array (converted array)
-        box.forEach((newReport) => { //match the report
-          if (key == newReport) { //if the report is matched
-            newBox.push(reportDetails[key]); //insert current index of converted array data into new container (newBox)
-          }
-        })
+        Object.keys(reportDetails[key]).forEach((key2) => {
+          box.forEach((newReport) => { //match the report
+            if (key2 == newReport) { //if the report is matched
+              newBox.push(reportDetails[key][newReport]); //insert current index of converted array data into new container (newBox)
+            }
+          })
+        })  
       })
     }
-    //its confirmed
     return newBox;
   }
 
