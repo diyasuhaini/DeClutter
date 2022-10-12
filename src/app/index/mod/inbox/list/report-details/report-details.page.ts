@@ -25,8 +25,12 @@ export class ReportDetailsPage implements OnInit {
     }];
 
     console.log(this.myReport);
+<<<<<<< HEAD
   }
 
   
+=======
+  } 
+>>>>>>> b44987b8ebc4b47923f901af3be9cfe89a8dde82
 
 }
