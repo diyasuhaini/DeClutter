@@ -12,7 +12,7 @@
     <ion-list style="background-color:#ffffff;">
       <ion-label>From:</ion-label>
       <ion-item color="medium">
-        <ion-text>{{ currentusername }}</ion-text>
+        <ion-text>{{ reports[0].username }}</ion-text>
       </ion-item>
       <br>
 
@@ -24,7 +24,7 @@
 
       <ion-label>Error:</ion-label>
       <ion-item color="medium">
-        <ion-text></ion-text>
+        <ion-text>{{ reports[0].error }}</ion-text>
       </ion-item>
       <br>
 
@@ -39,7 +39,7 @@
             
       <ion-label>Description:</ion-label>
       <ion-item color="medium">
-        <ion-text></ion-text>
+        <ion-text>{{ reports[0].description }}</ion-text>
       </ion-item>
       <br>
     </ion-list>
