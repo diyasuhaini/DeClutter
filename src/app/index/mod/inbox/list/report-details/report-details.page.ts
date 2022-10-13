@@ -26,4 +26,10 @@ export class ReportDetailsPage implements OnInit {
 
     console.log(this.myReport);
   }
+
+  toReply() {
+    console.log("clicked");
+    this.router.navigateByUrl('index/mod/inbox/reply');
+    
+  }
 }

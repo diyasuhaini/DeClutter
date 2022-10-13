@@ -11,7 +11,11 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+  },  {
+    path: 'reply',
+    loadChildren: () => import('./reply/reply.module').then( m => m.ReplyPageModule)
   }
+
 
 ];
 

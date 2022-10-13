@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" routerLink="../">
+      <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title color="dark"><b>Reply</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+  <form>
+    <ion-list style="background-color:#ffffff; margin:15px;">
+      <ion-item color="medium">
+        <ion-text><b>To: </b>Eiji</ion-text>
+      </ion-item>
+      <br>
+
+      <ion-item color="medium">
+        <ion-text><b>Error: </b>order</ion-text>
+      </ion-item>
+      <br>
+            
+      <ion-label>Description:</ion-label>
+      <ion-item color="medium">
+        <ion-textarea autoGrow="true" rows="200" placeholder="Enter description..."></ion-textarea>
+      </ion-item>
+      
+    </ion-list>
+    <ion-button expand="block" style="margin: 0 15px;color:black;"><b>submit</b></ion-button>
+  </form>
+</ion-content>
