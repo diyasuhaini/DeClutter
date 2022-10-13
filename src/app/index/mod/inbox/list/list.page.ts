@@ -16,13 +16,12 @@ export class ListPage implements OnInit {
 
   ngOnInit() {
     
-
   }
 
   ionViewWillEnter(){
-    this.reportService.getReport().then((list) => {
-      console.log(list);
-      this.reports = list.reverse();
+    this.reportService.getReport().then((mylist) => {
+      console.log(mylist);
+      this.reports = mylist.reverse();
     })
   }
 
