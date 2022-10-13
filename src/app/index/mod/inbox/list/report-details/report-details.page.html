@@ -31,10 +31,9 @@
       <ion-item color="medium">
         <ion-text>{{ myReport[0].description }}</ion-text>
       </ion-item>
-      <br>
     </ion-list>
 
-    <ion-button style="margin:0 15px;" expand="block"><p style="color: black;"><b>Reply report</b></p></ion-button>
+    <ion-button style="margin:15px 15px;" expand="block"><p style="color: black;" (click)="toReply()"><b>Reply report</b></p></ion-button>
 
 
 </ion-content>
