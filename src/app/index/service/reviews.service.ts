@@ -29,6 +29,7 @@ export class ReviewsService {
 
 
     return set(ref(database, 'reviews/' + vendorid + "/" + currentid), {
+      userid: currentid,
       username: localStorage.getItem('currentname'),
       comment: comment,
       imgurl: imgurl,
@@ -52,6 +53,7 @@ export class ReviewsService {
       console.log(key);
       console.log(reviews[key]);
       reviewcont.push({
+          "userid": reviews[key].userid,
           "username": reviews[key].username,
           "comment": reviews[key].comment, 
           "imgurl": reviews[key].imgurl,
