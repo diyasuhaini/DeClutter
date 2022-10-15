@@ -11,8 +11,8 @@
   <form [formGroup]="editProfile" (ngSubmit)="updateUser()"> <!--form for submit-->
   <ion-grid>
     <ion-row style="padding: 15px 0;">
-      <ion-col style="display:flex;justify-content:center;" *ngIf="!imgurl"><img style="width: 60%;" src="assets/img/user.png" alt="Profile image" *ngIf="!imgurl.imgurl"></ion-col>
-      <ion-col style="display:flex;justify-content:center;" *ngIf="imgurl"><img style="width: 60%;" [src]="imgurl.imgurl" alt="Profile image" *ngIf="imgurl.imgurl"></ion-col>
+      <ion-col style="display:flex;justify-content:center;" *ngIf="!imgurl"><img style="width: 60%;" src="assets/img/user.png" alt="Profile image" *ngIf="!imgurl"></ion-col>
+      <ion-col style="display:flex;justify-content:center;" *ngIf="imgurl"><img style="width: 60%;" [src]="imgurl.imgurl" alt="Profile image" *ngIf="imgurl"></ion-col>
       <ion-col>
         <ion-row>
           <ion-col><ion-button color="tertiary">Remove photo</ion-button></ion-col>
