@@ -6,6 +6,9 @@ import { User } from '../auth/auth.model';
 import { FollowService } from '../service/follow.service';
 import { Item } from '../service/item.model';
 import { ItemService } from '../service/item.service';
+import { get, getDatabase, onValue, ref as dref, set } from 'firebase/database';
+
+const database = getDatabase();
 
 @Component({
   selector: 'app-user',
@@ -24,6 +27,7 @@ export class UserPage implements OnInit {
   private cuid: string;
   private vendor: string;
   private isfollowing = false;
+  private imgurl;
 
   constructor(private router: Router,
               private itemService: ItemService,
@@ -51,7 +55,11 @@ export class UserPage implements OnInit {
     });
     this.vendor = routerState[0].vendor;
 
-    
+    // getting pfp Start
+    onValue(dref(database, 'userpfp/'), async (snapshot)=>{
+      this.imgurl = (await get((dref(database, 'userpfp/' + this.vendor)))).val();
+    });
+    // getting pfp End
   }
 
   followuser(){
