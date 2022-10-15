@@ -9,27 +9,38 @@
 
 <ion-content color="medium">
   <div class="scoreNo">
-    <p class="myScore">0.0 Out of 5.0</p> <!--total star divide by total user-->
-    <p class="userBased">No reviews on this user</p> <!--total user-->
+    <p class="myScore" *ngIf="calstar">{{ calstar }} Out of 5.0</p> <!--total star divide by total user-->
+    <p class="myScore" *ngIf="!calstar">0.0 Out of 5.0</p> <!--total star divide by total user-->
+    <p class="userBased" *ngIf="!calstar" >No reviews on {{ vendorname }}</p> <!--total user-->
     <!--star start here-->
     <div id="starOne">
-      <ion-img src="assets/img/zerostar.png"></ion-img><!--zero star change into colored star on score-->
-    </div> 
+      <!-- star 1 -->
+      <img src="assets/img/zerostar.png" alt="one" *ngIf="calstar < 1 || !calstar" (click)="star(1)"> <!--to change into colored star use userStar.png-->
+      <img src="assets/img/star.png" alt="one" *ngIf="calstar >= 1" (click)="star(1)">
+      </div> 
     
     <div id="starTwo">
-      <ion-img src="assets/img/zerostar.png"></ion-img>
+      <!-- star 1 -->
+      <img src="assets/img/zerostar.png" alt="one" *ngIf="calstar < 2 || !calstar" (click)="star(2)"> <!--to change into colored star use userStar.png-->
+      <img src="assets/img/star.png" alt="one" *ngIf="calstar >= 2" (click)="star(2)">
     </div>
 
     <div id="starThree">
-      <ion-img src="assets/img/zerostar.png"></ion-img>
+      <!-- star 1 -->
+      <img src="assets/img/zerostar.png" alt="one" *ngIf="calstar < 3 || !calstar" (click)="star(3)"> <!--to change into colored star use userStar.png-->
+      <img src="assets/img/star.png" alt="one" *ngIf="calstar >= 3" (click)="star(3)">
     </div>
 
     <div id="starFour">
-      <ion-img src="assets/img/zerostar.png"></ion-img>
+      <!-- star 1 -->
+      <img src="assets/img/zerostar.png" alt="one" *ngIf="calstar < 4 || !calstar" (click)="star(4)"> <!--to change into colored star use userStar.png-->
+      <img src="assets/img/star.png" alt="one" *ngIf="calstar >= 4" (click)="star(4)">
     </div>
 
     <div id="starFive">
-      <ion-img src="assets/img/zerostar.png"></ion-img> <!--important here!! user star.png for colored star-->
+      <!-- star 1 -->
+      <img src="assets/img/zerostar.png" alt="one" *ngIf="calstar < 5 || !calstar" (click)="star(5)"> <!--to change into colored star use userStar.png-->
+      <img src="assets/img/star.png" alt="one" *ngIf="calstar >= 5" (click)="star(5)">
     </div>
     <!--star end s here-->
   </div>
@@ -42,7 +53,7 @@
   <!--your comment-->
   <h2 id="titleOne">Your review</h2>
   <div class="messageBox">
-    <form action="#">
+    <form [formGroup]="cmtform" (ngSubmit)="postcmt(cmtform.value)">
       <!--top of box-->
       <div class="htop">
         <div class="topLeft">
@@ -52,19 +63,29 @@
           <div id="username">You</div> <!--username-->
           <!--rate-->
           <div class="starBox">
-            <img src="assets/img/zerostar.png" alt="one" id="uStarOne"> <!--to change into colored star use userStar.png-->
-            <img src="assets/img/zerostar.png" alt="two" id="uStarTwo">
-            <img src="assets/img/zerostar.png" alt="three" id="uStarThree">
-            <img src="assets/img/zerostar.png" alt="four" id="uStarFour">
-            <img src="assets/img/zerostar.png" alt="five" id="uStarFive">
+            <!-- star 1 -->
+            <img src="assets/img/zerostar.png" alt="one" id="uStarOne" *ngIf="starcatcher < 1" (click)="star(1)"> <!--to change into colored star use userStar.png-->
+            <img src="assets/img/star.png" alt="one" id="uStarOne" *ngIf="starcatcher >= 1" (click)="star(1)">
+            <!-- star 2 -->
+            <img src="assets/img/zerostar.png" alt="two" id="uStarTwo" *ngIf="starcatcher < 2" (click)="star(2)">
+            <img src="assets/img/star.png" alt="one" id="uStarTwo" *ngIf="starcatcher >= 2" (click)="star(2)">
+            <!-- star 3 -->
+            <img src="assets/img/zerostar.png" alt="three" id="uStarThree" *ngIf="starcatcher < 3" (click)="star(3)">
+            <img src="assets/img/star.png" alt="one" id="uStarThree" *ngIf="starcatcher >= 3" (click)="star(3)">
+            <!-- star 4 -->
+            <img src="assets/img/zerostar.png" alt="four" id="uStarFour" *ngIf="starcatcher < 4" (click)="star(4)">
+            <img src="assets/img/star.png" alt="one" id="uStarFour" *ngIf="starcatcher >= 4" (click)="star(4)">
+            <!-- star 5 --> 
+            <img src="assets/img/zerostar.png" alt="five" id="uStarFive" *ngIf="starcatcher < 5" (click)="star(5)">
+            <img src="assets/img/star.png" alt="one" id="uStarFive" *ngIf="starcatcher >= 5" (click)="star(5)">
           </div> 
         </div> <!--username & rate-->
       </div>
       <!--for comment box-->
-      <ion-textarea class="commentBox" placeholder="Add some comment here.."></ion-textarea>
+      <ion-textarea class="commentBox" placeholder="Add some comment here.." formControlName="comment"></ion-textarea>
       <div class="hbot">
-        <div class="topRight"><ion-input type="file" class="imgButton"></ion-input></div> <!--for upload button-->
-        <div class="topleft"><ion-button type="submit" class="submitBtn" color="tertiary">Submit</ion-button></div> <!--for submit button-->
+        <div class="topRight"><ion-input type="file" class="imgButton" formControlName="img" (change)="uploadImg($event)"></ion-input></div> <!--for upload button-->
+        <div class="topleft"><ion-button type="submit" class="submitBtn" color="tertiary" [disabled]="starcatcher == 0 || !imgurl || !cmtform.valid">Submit</ion-button></div> <!--for submit button-->
       </div>
     </form>
   </div>
@@ -73,34 +94,44 @@
   <!--other user comments-->
   <h2 id="titleOne">Comments</h2>
   <!--comment box-->
-  <div class="commentBoxs">
+  <div class="commentBoxs" *ngFor="let review of reviews">
     <!--user detail + star-->
-    <div class="top">
+    <div class="top" >
       <div class="tlft"> 
         <img src="assets/img/profile-round.png" alt="profile picture" class="userImg"> <!--user image-->
       </div> 
       <div class="tctr"> <!--user name including star-->
-        <div id="username">User</div> <!--other username-->
+        <div id="username">{{ review.username }}</div> <!--other username-->
           <!--rate-->
           <div class="starBox">
-            <img src="assets/img/star.png" alt="one" id="uStarOne"> <!--to change into colored star use userStar.png-->
-            <img src="assets/img/zerostar.png" alt="two" id="uStarTwo"> 
-            <img src="assets/img/zerostar.png" alt="three" id="uStarThree">
-            <img src="assets/img/zerostar.png" alt="four" id="uStarFour">
-            <img src="assets/img/zerostar.png" alt="five" id="uStarFive">
+            <!-- star 1 -->
+            <img src="assets/img/zerostar.png" alt="one" id="uStarOne" *ngIf="review.star < 1" (click)="star(1)"> <!--to change into colored star use userStar.png-->
+            <img src="assets/img/star.png" alt="one" id="uStarOne" *ngIf="review.star >= 1" (click)="star(1)">
+            <!-- star 2 -->
+            <img src="assets/img/zerostar.png" alt="two" id="uStarTwo" *ngIf="review.star < 2" (click)="star(2)">
+            <img src="assets/img/star.png" alt="one" id="uStarTwo" *ngIf="review.star >= 2" (click)="star(2)">
+            <!-- star 3 -->
+            <img src="assets/img/zerostar.png" alt="three" id="uStarThree" *ngIf="review.star < 3" (click)="star(3)">
+            <img src="assets/img/star.png" alt="one" id="uStarThree" *ngIf="review.star >= 3" (click)="star(3)">
+            <!-- star 4 -->
+            <img src="assets/img/zerostar.png" alt="four" id="uStarFour" *ngIf="review.star < 4" (click)="star(4)">
+            <img src="assets/img/star.png" alt="one" id="uStarFour" *ngIf="review.star >= 4" (click)="star(4)">
+            <!-- star 5 --> 
+            <img src="assets/img/zerostar.png" alt="five" id="uStarFive" *ngIf="review.star < 5" (click)="star(5)">
+            <img src="assets/img/star.png" alt="one" id="uStarFive" *ngIf="review.star >= 5" (click)="star(5)">
           </div> 
       </div>
     </div>
 
     <!--comments text-->
     <div class="commentText">
-      <p class="otherText">testing</p><!--comments-->
-      <ion-img src="assets/img/jeans.jpg" class="commentImg"></ion-img>
+      <p class="otherText">{{ review.comment }}</p><!--comments-->
+      <ion-img [src]="review.imgurl" class="commentImg"></ion-img>
     </div>
 
     <!--date here-->
     <div class="dateText">
-      <p class="myDate">Date here</p>
+      <p class="myDate">{{ review.date }}</p>
     </div>
   </div>
 

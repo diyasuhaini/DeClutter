@@ -28,6 +28,7 @@ export class ItemDetailsPage implements OnInit {
   private added = false;
   private itemtitle: string;
   private savedchecked = false;
+  private vendor = [];
 
   constructor(private router: Router,
               private itemService: ItemService, 
@@ -54,6 +55,10 @@ export class ItemDetailsPage implements OnInit {
       type: routerState.type
     }];
     this.itemtitle = routerState.title + routerState.vendor;
+    this.vendor = [{
+      vendor: routerState.vendor,
+      username: routerState.username
+    }];
   }
 
 
