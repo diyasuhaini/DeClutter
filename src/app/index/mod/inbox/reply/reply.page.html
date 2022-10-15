@@ -8,24 +8,33 @@
 </ion-header>
 
 <ion-content color="medium">
-  <form>
+  <form [formGroup]="replyForm" (ngSubmit)="submitReply(replyForm.value)">
     <ion-list style="background-color:#ffffff; margin:15px;">
       <ion-item color="medium">
-        <ion-text><b>To: </b>Eiji</ion-text>
+        <ion-text><b>To: </b>{{ myReport[0].username }}</ion-text>
+        <ion-input style="display:hidden;" formControlName="username">{{ myReport[0].username }}</ion-input>
       </ion-item>
       <br>
 
       <ion-item color="medium">
-        <ion-text><b>Error: </b>order</ion-text>
+        <ion-text><b>Error: </b>{{ myReport[0].error }}</ion-text>
+        <ion-input style="display:hidden;" formControlName="error">{{ myReport[0].error }}</ion-input>
       </ion-item>
       <br>
             
       <ion-label>Description:</ion-label>
       <ion-item color="medium">
-        <ion-textarea autoGrow="true" rows="200" placeholder="Enter description..."></ion-textarea>
+        <ion-textarea autoGrow="true" rows="200" placeholder="Enter reply..." formControlName="description"></ion-textarea>
       </ion-item>
       
     </ion-list>
-    <ion-button expand="block" style="margin: 0 15px;color:black;"><b>submit</b></ion-button>
+    <ion-button expand="block" style="margin: 0 15px;color:black;" type="submit" [disabled]="!replyForm.valid"><b>submit</b></ion-button>
   </form>
 </ion-content>
+
+<!-- router state username & error -->
+<!-- save form in database  -->
+<!-- save : reply.service -->
+<!-- save : reply model -->
+<!-- error msg for description -->
+<!-- getReply - display reply in customer inbox (filtered) -->

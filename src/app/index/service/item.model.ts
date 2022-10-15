@@ -58,3 +58,12 @@ export class report{
         public username: string
     ){}
 }
+
+//for reply
+export class reply{
+    constructor(
+        public description: string,
+        public error: string,
+        public username: string
+    ){}
+}
