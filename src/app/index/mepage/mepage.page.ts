@@ -6,7 +6,9 @@ import { ItemService } from '../service/item.service';
 import { Item } from '../service/item.model';
 import { Tracks } from '../service/item.model'; //new
 import { FollowService } from '../service/follow.service';
+import { get, getDatabase, onValue, ref } from 'firebase/database';
 
+const database = getDatabase();
 
 @Component({
   selector: 'app-mepage',
@@ -24,6 +26,7 @@ export class MepagePage implements OnInit {
   private itemlist: any[];
   private follower = 0;
   private following = 0;
+  private imgurl;
   segmentValue: String = "listing";
 
   //for segment change value
@@ -48,6 +51,13 @@ export class MepagePage implements OnInit {
         }
       });
     });
+
+    // getting pfp Start
+    onValue(ref(database, 'userpfp/'), async (snapshot)=>{
+      const currentid = localStorage.getItem('currentid');
+      this.imgurl = (await get((ref(database, 'userpfp/' + currentid)))).val();
+    });
+    // getting pfp End
     
   }
 

@@ -4,7 +4,11 @@ import { ItemService } from '../../service/item.service';
 import { User } from '../../auth/auth.model';
 import { FormBuilder, FormGroup, FormControl, Validators  } from '@angular/forms';
 import { UsersService } from '../../service/users.service';
+import { get, getDatabase, onValue, ref as dref, set } from 'firebase/database';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
+const storage = getStorage();
+const database = getDatabase();
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,6 +20,7 @@ export class EditProfilePage implements OnInit {
   private editProfile: FormGroup;
 
   private user: User[];
+  private imgurl;
 
   constructor(private router: Router,
               private itemService: ItemService,
@@ -23,12 +28,50 @@ export class EditProfilePage implements OnInit {
               private builder: FormBuilder) { }
 
   ngOnInit() {
-  
+    // getting pfp Start
+    onValue(dref(database, 'userpfp/'), async (snapshot)=>{
+      const currentid = localStorage.getItem('currentid');
+      this.imgurl = (await get((dref(database, 'userpfp/' + currentid)))).val();
+    });
+    // getting pfp End
   } 
 
   uploadImg(value){
 
+    const currentid = localStorage.getItem('currentid');
+    // get file name
+    var file = value.target.files[0]; // get file 
+    var filename = value.target.files[0].name; // get filename
+    var filetype = value.target.files[0].type; // get filetype
+
+    console.log("filename", filename); // check filename
+    console.log("filetype", filetype); // check filetype
+    // database variable setup
+    var uploadroute = 'userpfp/' + filename;
+    var imgurl = "https://firebasestorage.googleapis.com/v0/b/declutter-1172d.appspot.com/o/userpfp%2F"+ filename + "?alt=media";
+    
+    // file type
+    const metadata = {
+      contentType: filetype,
+    };
+    
+    // const imgref = ref(storage, uploadroute);
+    
+    // storage reference
+    const storageRef = ref(storage, uploadroute);
+
+    uploadBytes(storageRef, file, metadata).then((snapshot) => {
+      console.log('Uploaded a blob or file!');
+    });
+
+    set(dref(database, "userpfp/" + currentid), {
+      imgurl: imgurl
+    });
+    
+    
   }
+
+  
 
   updateUser(){
     this.usersService.updateAccount(this.editProfile.value).then((updated) => {

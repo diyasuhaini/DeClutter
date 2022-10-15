@@ -11,13 +11,14 @@
   <form [formGroup]="editProfile" (ngSubmit)="updateUser()"> <!--form for submit-->
   <ion-grid>
     <ion-row style="padding: 15px 0;">
-      <ion-col style="display:flex;justify-content:center;"><img style="width: 60%;" src="assets/img/user.png" alt="Profile image"></ion-col>
+      <ion-col style="display:flex;justify-content:center;" *ngIf="!imgurl.imgurl"><img style="width: 60%;" src="assets/img/user.png" alt="Profile image" *ngIf="!imgurl.imgurl"></ion-col>
+      <ion-col style="display:flex;justify-content:center;" *ngIf="imgurl.imgurl"><img style="width: 60%;" [src]="imgurl.imgurl" alt="Profile image" *ngIf="imgurl.imgurl"></ion-col>
       <ion-col>
         <ion-row>
           <ion-col><ion-button color="tertiary">Remove photo</ion-button></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col><ion-button color="tertiary">change photo</ion-button></ion-col>
+          <ion-col><ion-input type="file" (change)="uploadImg($event)"></ion-input></ion-col>
         </ion-row>
       </ion-col>
     </ion-row>
