@@ -11,7 +11,8 @@
 <ion-content color="medium">
   <!--user profile pic-->
   <div class="profilePic">
-    <ion-img src="assets/img/user.png" alt="profile picture of user"></ion-img>
+    <ion-img src="assets/img/user.png" alt="profile picture of user" *ngIf="!imgurl"></ion-img>
+    <ion-img [src]="imgurl.imgurl" alt="profile picture of user" *ngIf="imgurl"></ion-img>
   </div>
   <!--username-->
   <div class="bigName">{{ user[0].username }}</div>
@@ -38,7 +39,7 @@
       <p>Following</p>
     </div>
     <div class="right">
-      <p>{{ reviews }}</p>
+      <p>{{ reviewed }}</p>
       <p>Reviews</p>
     </div>
   </div>

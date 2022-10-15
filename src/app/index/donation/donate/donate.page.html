@@ -1,9 +1,51 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>donate</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Donation form</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="light">
+  <form> <!--donation form start here-->
+    <h2>Your Item</h2> <!--title here-->
+    <ion-card color="medium">
+      <ion-item color="medium">
+        <ion-label>Type</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="clothing">Clothings</ion-select-option>
+          <ion-select-option value="bag">Bags</ion-select-option>
+          <ion-select-option value="footwear">Footwear</ion-select-option>
+        </ion-select>
+      </ion-item>
 
+      <ion-item color="medium">
+        <ion-label>Quantity</ion-label>
+        <ion-input type="number" min="1" color="light"></ion-input>
+      </ion-item>
+
+      <ion-item color="medium">
+        <ion-label>Area</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="bm">Brunei-Muara</ion-select-option>
+          <ion-select-option value="tt">Tutong</ion-select-option>
+          <ion-select-option value="tm">Temburong</ion-select-option>
+          <ion-select-option value="kb">Kuala Belait</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item color="medium">
+        <ion-label>Street</ion-label>
+        <ion-input type="text" color="light"></ion-input>
+      </ion-item>
+
+      <ion-item color="medium">
+        <ion-label>Charges</ion-label>
+        <ion-input type="text" color="light" value="$3.00"></ion-input> <!--changed based on area & street-->
+      </ion-item>
+    </ion-card>
+
+    <ion-button color="tertiary" shape="round" routerLink="./success-donate">Submit</ion-button>
+  </form>
 </ion-content>

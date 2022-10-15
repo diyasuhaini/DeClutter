@@ -2,7 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from '../service/message.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { getDatabase, ref, onValue, refFromURL} from "firebase/database";
+import { getDatabase, ref, onValue, get} from "firebase/database";
+import { ReviewsService } from '../service/reviews.service';
 
 const database = getDatabase();
 
@@ -21,8 +22,10 @@ export class MessagePage implements OnInit {
   private message: FormGroup;
   private currentname = localStorage.getItem('currentname');
   private messages;
+  private vimg;
+  private cimg;
 
-  constructor(private router: Router, private messageService: MessageService, private builder: FormBuilder) { }
+  constructor(private router: Router, private messageService: MessageService, private builder: FormBuilder, private reviews: ReviewsService) { }
 
   ngOnInit() {
     this.message = new FormGroup({
@@ -41,6 +44,14 @@ export class MessagePage implements OnInit {
     onValue(ref(database, "message/" + this.vendorid + this.currentid), (snapshot) => {
       this.messageService.retrieveMessage(this.vendorid).then((message) => this.messages = message);
     })
+
+    onValue(ref(database, 'userpfp/'), async (snapshot)=>{
+      this.cimg = (await get((ref(database, 'userpfp/' + this.currentid)))).val();
+    });
+
+    onValue(ref(database, 'userpfp/'), async (snapshot)=>{
+      this.vimg = (await get((ref(database, 'userpfp/' + this.vendorid)))).val();
+    });
   }
 
   sendmessage(){

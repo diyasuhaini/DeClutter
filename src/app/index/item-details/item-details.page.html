@@ -34,7 +34,8 @@
   <div class="itemWrap" routerLink="../user" [state]="user">
     <!--left-->
     <div class="itemLeft">
-      <ion-img src="assets/img/profile-round.png" class="profilePic"></ion-img>
+      <ion-img src="assets/img/profile-round.png" class="profilePic" *ngIf="!imgurl"></ion-img>
+      <ion-img [src]="imgurl.imgurl" class="profilePic" *ngIf="imgurl"></ion-img>
     </div>
 
     <!--right-->

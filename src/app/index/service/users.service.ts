@@ -58,6 +58,11 @@ export class UsersService {
     return set(ref(database, 'user/' + currentid), accountBox[0]);
   }
 
+  async retrievepfp(userids){
+    const snapshot = (await get((ref(database, 'userpfp/' + userids)))).val();
+    return snapshot.imgurl
+  }
+
 }
 
 
