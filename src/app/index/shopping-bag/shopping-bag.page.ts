@@ -29,6 +29,8 @@ export class ShoppingBagPage implements OnInit {
   private number1: number = 0;
   private number2: number = 0;
   private totalcost: number = 0;
+  private selectedqty = [];
+  private check = 1;
   
 
   segmentChanged(e){
@@ -66,6 +68,7 @@ export class ShoppingBagPage implements OnInit {
         this.totalcost = 0;
         this.item.forEach((item) => {
           this.number1 += 1;
+          this.selectedqty[this.number1] = 1;
           this.totalcost += parseFloat(item.price);
           console.log(item.price);
           console.log(item.price);
@@ -138,6 +141,7 @@ export class ShoppingBagPage implements OnInit {
           this.totalcost = 0;
           this.item.forEach((item) => {
             this.number1 += 1;
+            this.selectedqty[this.number1] = 1;
             this.totalcost += parseFloat(item.price);
             console.log(item.price);
             console.log(item.price);
@@ -160,6 +164,31 @@ export class ShoppingBagPage implements OnInit {
     });
   }
 
+  add(i, qty){
+    if(this.selectedqty[i] < qty){
+      this.selectedqty[i]++;
+      console.log("this.selectedqty[i]",this.selectedqty[i]);
+      this.check++
+      console.log("this.check", this.check);
+    }
+  }
+
+  minus(i, qty){
+    if(this.selectedqty[i] > 0){
+      this.selectedqty[i]--;
+      console.log("this.selectedqty[i]",this.selectedqty[i]);
+      this.check--
+      console.log("this.check", this.check);
+    }
+  }
+
+  pushqty(){
+    localStorage.setItem("selectedqty", this.selectedqty.toString());
+  }
+
+
+
+
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();
     this.itemService.retrieveCart().then((cart) => {
@@ -172,6 +201,7 @@ export class ShoppingBagPage implements OnInit {
       this.number1 = 0;
       this.totalcost = 0;
       this.item.forEach((item) => {
+        this.selectedqty[this.number1] = 1;
         this.number1 += 1;
         this.totalcost += parseFloat(item.price);
         console.log(item.price);
@@ -191,6 +221,8 @@ export class ShoppingBagPage implements OnInit {
         this.number2 += 1;
       });
     })
+
+    console.log("this.selectedqty", this.selectedqty)
   }
 
   
