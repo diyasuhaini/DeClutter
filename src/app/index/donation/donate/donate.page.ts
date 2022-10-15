@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-donate',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonatePage implements OnInit {
 
+  //add form
+  donateForm: FormGroup;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  //submit button
+  listDonate(){
+    
   }
 
 }
