@@ -26,7 +26,7 @@
  <!-- Bag Side of things 00000000000000000000000000000000000000000000 -->
  <ion-grid *ngIf="segmentValue == 'bag'">
     <div class="scrollBox">
-      <div class="whiteBox" *ngFor="let item of item">
+      <div class="whiteBox" *ngFor="let item of item; let i = index">
         <!--item image-->
         <div class="imageBox">
           <ion-img [src]="item.img1" class="myImg"></ion-img>
@@ -42,15 +42,15 @@
         <div class="quantityBox">
           <!--button minus-->
           <div class="minusBtn">
-            <button class="myButton">-</button>
+            <button class="myButton" (click)="minus(i)">-</button>
           </div>
           <!--number here-->
           <div class="numberBtn">
-            <input type="number" value="1" class="myInputNumber"><!--quantity-->
+            <input type="number" min="0" max="{{item.quantity}}" class="myInputNumber" [(ngModel)]="selectedqty[i]" (change)="checker()"><!--quantity-->
           </div>
           <!--button add-->
           <div class="addBtn">
-            <button class="myButton">+</button>
+            <button class="myButton" (click)="add(i, item.quantity)" >+</button>
           </div>
         </div>
         <!--remove here-->
@@ -101,7 +101,7 @@
             <span class="totalcost">{{totalcost | currency:"B$"}}</span>
           </ion-col>
           <ion-col>
-            <ion-button color="tertiary" shape="round" routerLink="../item-sold" [disabled]="number1 == 0">Go to checkout</ion-button>
+            <ion-button color="tertiary" shape="round" routerLink="../item-sold" [disabled]="number1 == 0 || check == 0" (click)="pushqty()">Go to checkout</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
