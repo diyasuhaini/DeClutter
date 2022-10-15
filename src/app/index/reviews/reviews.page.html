@@ -57,7 +57,8 @@
       <!--top of box-->
       <div class="htop">
         <div class="topLeft">
-          <img src="assets/img/profile-round.png" alt="profile picture" class="userImg">
+          <img src="assets/img/profile-round.png" alt="profile picture" class="userImg" *ngIf="!imgurl22">
+          <img [src]="imgurl22.imgurl" alt="profile picture" class="userImg" *ngIf="imgurl22">
         </div> <!--profile picture-->
         <div class="topRight">
           <div id="username">You</div> <!--username-->

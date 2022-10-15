@@ -22,6 +22,7 @@ export class ReviewsPage implements OnInit {
   private cmtform: FormGroup; 
   private starcatcher;
   private imgurl;
+  private imgurl22;
   private reviews;
   private calstar;
 
@@ -116,6 +117,17 @@ export class ReviewsPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    // getting pfp Start
+    onValue(dref(database, 'userpfp/'), async (snapshot)=>{
+      const currentid = localStorage.getItem('currentid');
+      var imgurl = (await get((dref(database, 'userpfp/' + currentid)))).val();
+      console.log(imgurl);
+      if (imgurl){
+        this.imgurl22 = imgurl;
+      }
+    });
+    // getting pfp End
+
     var review2 = [];
     this.starcatcher = 0;
     this.review.retrieveReviews(this.vendorid).then((reviews) => {
