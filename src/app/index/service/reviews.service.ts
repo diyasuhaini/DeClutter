@@ -39,6 +39,7 @@ export class ReviewsService {
 
   async retrieveReviews(vendorid){
     this.currentid = localStorage.getItem('currentid');
+    console.log("this.currentid", this.currentid);
     // choose which database bucket to be reference at
     var reviewcont = [];
     const dbref = ref(database, 'reviews/' + vendorid);

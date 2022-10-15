@@ -7,6 +7,7 @@ import { Item } from '../service/item.model';
 import { Tracks } from '../service/item.model'; //new
 import { FollowService } from '../service/follow.service';
 import { get, getDatabase, onValue, ref } from 'firebase/database';
+import { ReviewsService } from '../service/reviews.service';
 
 const database = getDatabase();
 
@@ -27,6 +28,7 @@ export class MepagePage implements OnInit {
   private follower = 0;
   private following = 0;
   private imgurl;
+  private reviewed = 0;
   segmentValue: String = "listing";
 
   //for segment change value
@@ -34,7 +36,7 @@ export class MepagePage implements OnInit {
     this.segmentValue = e.detail.value;
   }
 
-  constructor(private authenticationService: AuthenticationService, private itemService: ItemService, private followService: FollowService) { }
+  constructor(private authenticationService: AuthenticationService, private itemService: ItemService, private followService: FollowService, private reviews: ReviewsService) { }
 
   ngOnInit() {
     this.item = []; //
@@ -95,6 +97,14 @@ export class MepagePage implements OnInit {
     },error => {
       console.log(error); //there is an error item.service getItemTracking
     })
+
+    this.reviews.retrieveReviews(this.currentid).then((reviews) => {
+      console.log("reviews", reviews);
+      this.reviewed = 0;
+      reviews.forEach(() => {
+        this.reviewed++
+      });
+    });
 
     // getting pfp Start
     onValue(ref(database, 'userpfp/'), async (snapshot)=>{
