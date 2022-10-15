@@ -7,6 +7,7 @@ import { FollowService } from '../service/follow.service';
 import { Item } from '../service/item.model';
 import { ItemService } from '../service/item.service';
 import { get, getDatabase, onValue, ref as dref, set } from 'firebase/database';
+import { ReviewsService } from '../service/reviews.service';
 
 const database = getDatabase();
 
@@ -28,11 +29,13 @@ export class UserPage implements OnInit {
   private vendor: string;
   private isfollowing = false;
   private imgurl;
+  private reviewed = 0;
 
   constructor(private router: Router,
               private itemService: ItemService,
               private followService: FollowService,
-              private authenticationService: AuthenticationService
+              private authenticationService: AuthenticationService,
+              private reviewer: ReviewsService
     ) { }
   
   ngOnInit() {
@@ -102,6 +105,13 @@ export class UserPage implements OnInit {
     this.followService.antiDuplicate(this.vendor).then((item) => 
       this.isfollowing = item
     );
+    this.reviewer.retrieveReviews(this.vendor).then((reviews) => {
+      console.log("reviews", reviews);
+      this.reviewed = 0;
+      reviews.forEach(() => {
+        this.reviewed++
+      });
+    });
     
   }
 
