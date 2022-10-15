@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReviewsService } from '../service/reviews.service';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
-import { getDatabase, ref as dref, onValue } from 'firebase/database';
+import { getDatabase, ref as dref, onValue, get } from 'firebase/database';
 
 // get storage from firebase bucket g://
 const storage = getStorage(); 
@@ -28,6 +28,7 @@ export class ReviewsPage implements OnInit {
   constructor(private router: Router, private builder: FormBuilder, private review: ReviewsService) { }
 
   ngOnInit() {
+    var review2 =[];
     const routerState = this.router.getCurrentNavigation().extras.state;
     this.vendorid = routerState[0].vendor;
     this.vendorname = routerState[0].username;
@@ -45,13 +46,24 @@ export class ReviewsPage implements OnInit {
      onValue(dref(database, "reviews/"), (snapshot) => {
       this.review.retrieveReviews(this.vendorid).then((reviews) => {
         console.log("reviews", reviews);
-        this.reviews = reviews;
         var calstar = 0; // total star
       var startaker = 0; // get length of review
-      reviews.forEach((review) => {
+
+      reviews.forEach(async (review) => {
+        review2.push({ 
+          comment: review.comment,
+          date: review.date,
+          imgurl: review.imgurl,
+          star: review.star,
+          userid: review.userid,
+          username: review.username,
+          pfpimg: ((await get((dref(database, 'userpfp/' + review.userid)))).val()).imgurl
+         });
         calstar += review.star;
         startaker++;
       });
+      console.log("review2", review2);
+      this.reviews = review2;
       this.calstar = calstar / startaker;
       });
      });
@@ -61,6 +73,12 @@ export class ReviewsPage implements OnInit {
     // console.log("values" , value);
     // console.log("comment" , value.comment);
     this.review.postReviews(value.comment, this.vendorid, this.imgurl, this.starcatcher).then(result => {console.log("result")});
+  }
+  
+  async pfpimage(userid){
+    console.log("userid" , userid);
+    var imgurl = (await get((dref(database, 'userpfp/' + userid)))).val();
+    return imgurl;
   }
 
   star(value){
@@ -98,16 +116,25 @@ export class ReviewsPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    var review2 = [];
     this.starcatcher = 0;
     this.review.retrieveReviews(this.vendorid).then((reviews) => {
       console.log("reviews", reviews);
-      this.reviews = reviews;
       var calstar = 0; // total star
       var startaker = 0; // get length of review
       if(reviews){
-        reviews.forEach((review) => {
+        reviews.forEach(async (review) => {
           calstar += review.star;
           startaker++;
+          review2.push({ 
+            comment: review.comment,
+            date: review.date,
+            imgurl: review.imgurl,
+            star: review.star,
+            userid: review.userid,
+            username: review.username,
+            pfpimg: ((await get((dref(database, 'userpfp/' + review.userid)))).val()).imgurl
+           });
         });
         this.calstar = calstar / startaker;
       }
