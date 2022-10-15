@@ -6,6 +6,9 @@ import { AuthenticationService } from 'src/app/authentication.service';
 import { User } from '../auth/auth.model';
 import { Item } from '../service/item.model';
 import { ItemService } from '../service/item.service';
+import { get, getDatabase, onValue, ref as dref, set } from 'firebase/database';
+
+const database = getDatabase();
 
 @Component({
   selector: 'app-item-details',
@@ -29,6 +32,7 @@ export class ItemDetailsPage implements OnInit {
   private itemtitle: string;
   private savedchecked = false;
   private vendor = [];
+  private imgurl;
 
   constructor(private router: Router,
               private itemService: ItemService, 
@@ -59,6 +63,12 @@ export class ItemDetailsPage implements OnInit {
       vendor: routerState.vendor,
       username: routerState.username
     }];
+
+    // getting pfp Start
+    onValue(dref(database, 'userpfp/'), async (snapshot)=>{
+      this.imgurl = (await get((dref(database, 'userpfp/' + routerState.vendor)))).val();
+    });
+    // getting pfp End
   }
 
 
