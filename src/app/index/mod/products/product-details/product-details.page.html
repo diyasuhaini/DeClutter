@@ -37,192 +37,50 @@
   <div>
     <ion-grid>
       <ion-row>
-        <ion-col><ion-text color="light">By Best Thrift Shop</ion-text></ion-col>
+        <ion-col><ion-text color="light">By Eiji</ion-text></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><ion-text><b>Levi’s Classic Blue Jeans</b></ion-text></ion-col>
+        <ion-col><ion-text><b>Nike KD shoes</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><h3><b>B$12.00</b></h3></ion-col>
+        <ion-col><h3><b>B$40.50</b></h3></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Brand</ion-text></ion-col>
-        <ion-col><ion-text><b>Levi’s</b></ion-text></ion-col>
+        <ion-col><ion-text><b>Nike</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Size</ion-text></ion-col>
-        <ion-col><ion-text><b>M</b></ion-text></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3"><ion-text color="light">Condition</ion-text></ion-col>
-        <ion-col><ion-text><b>Very Good</b></ion-text></ion-col>
+        <ion-col><ion-text><b>Free Size</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Colour</ion-text></ion-col>
-        <ion-col><ion-text><b>Blue</b></ion-text></ion-col>
+        <ion-col><ion-text><b>yellow</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Description</ion-text></ion-col>
-        <ion-col><ion-text><b>Worn, but still in a good condition</b></ion-text></ion-col>
+        <ion-col><ion-text><b>No defect at all, Size UK42, Good for playing basketball indoor and outdoor</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Category</ion-text></ion-col>
-        <ion-col><ion-text><b>Women</b></ion-text></ion-col>
+        <ion-col><ion-text><b>men</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Type</ion-text></ion-col>
-        <ion-col><ion-text><b>Bottoms</b></ion-text></ion-col>
+        <ion-col><ion-text><b>shoes</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="3"><ion-text color="light">Item ID</ion-text></ion-col>
-        <ion-col><ion-text><b>PDT123456789</b></ion-text></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3"><ion-text color="light">Status</ion-text></ion-col>
-        <ion-col><ion-text><b>Available</b></ion-text></ion-col><!-- or sold -->
+        <ion-col size="3"><ion-text color="light">Quantity</ion-text></ion-col>
+        <ion-col><ion-text><b>1</b></ion-text></ion-col>
       </ion-row>
     </ion-grid>
   </div>
-
-  <!-- model - change category -->
-  <ion-modal trigger="open-category" (willDismiss)="onWillDismissCategory($event)">
-    <ng-template>
-      <ion-header color="primary">
-        <ion-toolbar color="primary">
-          <ion-title class="ion-text-center" color="dark">Change Category</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding" color="medium">
-        <!-- <ion-item color="medium">
-          <ion-label position="stacked">Enter your name</ion-label>
-          <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
-        </ion-item> -->
-        <ion-list style="background-color: white;">
-          <ion-radio-group> <!-- value="women" -->
-            <ion-list-header color="medium">
-              <h3>Category</h3>
-            </ion-list-header>
-            <ion-item color="medium">
-              <ion-label>Women</ion-label>
-              <ion-radio slot="start" value="women"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Men</ion-label>
-              <ion-radio slot="start" value="men"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Kids</ion-label>
-              <ion-radio slot="start" value="kids"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Unisex</ion-label>
-              <ion-radio slot="start" value="unisex"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-          <ion-radio-group required> <!-- value="bottoms" -->
-            <ion-list-header color="medium">
-              <h3>Type</h3>
-            </ion-list-header>
-            <ion-item color="medium">
-              <ion-label>Accessories</ion-label>
-              <ion-radio slot="start" value="accessories"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Bottoms</ion-label>
-              <ion-radio slot="start" value="bottoms"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Buford</ion-label>
-              <ion-radio slot="start" value="buford"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Dresses</ion-label>
-              <ion-radio slot="start" value="dresses"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Shoes</ion-label>
-              <ion-radio slot="start" value="shoes"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Skirts</ion-label>
-              <ion-radio slot="start" value="skirts"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Socks</ion-label>
-              <ion-radio slot="start" value="socks"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Sweaters</ion-label>
-              <ion-radio slot="start" value="sweaters"></ion-radio>
-            </ion-item>
-            <ion-item color="medium">
-              <ion-label>Tops & T-Shirts</ion-label>
-              <ion-radio slot="start" value="topsAndTshirts"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-        </ion-list>
-      </ion-content>
-      <ion-footer>
-        <ion-toolbar style="height:100%; padding: 0;" color="medium">
-          <div style="display:flex;flex-wrap:wrap;height:100%;">
-            <div style="width: 50%; display:flex; height: 100%;">
-              <ion-button (click)="cancel()" style="width: 90%;margin:auto;--border-radius:20px;" color="medium">
-                <ion-text color="dark"><b>Cancel</b></ion-text>
-              </ion-button>
-            </div>
-            <div style="width: 50%; display:flex; height: 100%;">
-              <ion-button (click)="confirmCategory()" style="width: 90%;margin:auto;--border-radius:20px;" [strong]="true">
-                <ion-text color="dark"><b>Confirm</b></ion-text>
-              </ion-button>
-            </div>            
-          </div>
-        </ion-toolbar>
-      </ion-footer>
-    </ng-template>
-  </ion-modal>
-
-  <!-- popover report -->
-  <ion-popover trigger="report" triggerAction="click">
-    <ng-template>
-      <ion-content>
-        <h3>Report Product</h3>
-        <ion-list>
-          <!--router change to (click)-->
-          <ion-item routerLink="../../inbox/email">Blurry Image</ion-item>
-          <ion-item>Duplicate Item</ion-item>
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-popover>
-
-  <!-- model - report product -->
-  <ion-modal trigger="report-product" (willDismiss)="onWillDismissReport($event)">
-    <ng-template>
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="cancel()">Cancel</ion-button>
-          </ion-buttons>
-          <ion-title>Welcome</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="confirmReport()" [strong]="true">Confirm</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
-        <!-- <ion-item>
-          <ion-label position="stacked">Enter your name</ion-label>
-          <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
-        </ion-item> -->
-      </ion-content>
-    </ng-template>
-  </ion-modal>
 
 </ion-content>
 
 <ion-footer class="change-category">
   <div style="display: flex; height:100%;">
-    <ion-button style="width:90%;margin:auto; --border-radius:20px;">
+    <ion-button style="width:90%;margin:auto; --border-radius:20px;" (click)="changeCategory()">
       <ion-text color="dark" id="open-category"><b>Change Category</b></ion-text>
     </ion-button>
   </div>
