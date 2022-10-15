@@ -51,13 +51,6 @@ export class MepagePage implements OnInit {
         }
       });
     });
-
-    // getting pfp Start
-    onValue(ref(database, 'userpfp/'), async (snapshot)=>{
-      const currentid = localStorage.getItem('currentid');
-      this.imgurl = (await get((ref(database, 'userpfp/' + currentid)))).val();
-    });
-    // getting pfp End
     
   }
 
@@ -102,6 +95,17 @@ export class MepagePage implements OnInit {
     },error => {
       console.log(error); //there is an error item.service getItemTracking
     })
+
+    // getting pfp Start
+    onValue(ref(database, 'userpfp/'), async (snapshot)=>{
+      const currentid = localStorage.getItem('currentid');
+      var imgurl = (await get((ref(database, 'userpfp/' + currentid)))).val();
+      console.log(imgurl);
+      if (imgurl){
+        this.imgurl = imgurl;
+      }
+    });
+    // getting pfp End
 
   }
 
