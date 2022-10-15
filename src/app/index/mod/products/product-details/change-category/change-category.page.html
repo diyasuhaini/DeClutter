@@ -1,10 +1,91 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>change-category</ion-title>
+<ion-header color="primary">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center" color="dark">Change Category</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-  category and type in one page
-
+<ion-content class="ion-padding" color="medium">
+  <!-- <ion-item color="medium">
+    <ion-label position="stacked">Enter your name</ion-label>
+    <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
+  </ion-item> -->
+  <ion-list style="background-color: white;">
+    <ion-radio-group> <!-- value="women" -->
+      <ion-list-header color="medium">
+        <h3>Category</h3>
+      </ion-list-header>
+      <ion-item color="medium">
+        <ion-label>Women</ion-label>
+        <ion-radio slot="start" value="women"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Men</ion-label>
+        <ion-radio slot="start" value="men"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Kids</ion-label>
+        <ion-radio slot="start" value="kids"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Unisex</ion-label>
+        <ion-radio slot="start" value="unisex"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <ion-radio-group required> <!-- value="bottoms" -->
+      <ion-list-header color="medium">
+        <h3>Type</h3>
+      </ion-list-header>
+      <ion-item color="medium">
+        <ion-label>Accessories</ion-label>
+        <ion-radio slot="start" value="accessories"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Bottoms</ion-label>
+        <ion-radio slot="start" value="bottoms"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Buford</ion-label>
+        <ion-radio slot="start" value="buford"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Dresses</ion-label>
+        <ion-radio slot="start" value="dresses"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Shoes</ion-label>
+        <ion-radio slot="start" value="shoes"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Skirts</ion-label>
+        <ion-radio slot="start" value="skirts"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Socks</ion-label>
+        <ion-radio slot="start" value="socks"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Sweaters</ion-label>
+        <ion-radio slot="start" value="sweaters"></ion-radio>
+      </ion-item>
+      <ion-item color="medium">
+        <ion-label>Tops & T-Shirts</ion-label>
+        <ion-radio slot="start" value="topsAndTshirts"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
 </ion-content>
+<ion-footer>
+  <ion-toolbar style="height:100%; padding: 0;" color="medium">
+    <div style="display:flex;flex-wrap:wrap;height:100%;">
+      <div style="width: 50%; display:flex; height: 100%;">
+        <ion-button style="width: 90%;margin:auto;--border-radius:20px;" color="medium">
+          <ion-text color="dark"><b>Cancel</b></ion-text>
+        </ion-button>
+      </div>
+      <div style="width: 50%; display:flex; height: 100%;">
+        <ion-button style="width: 90%;margin:auto;--border-radius:20px;">
+          <ion-text color="dark"><b>Confirm</b></ion-text>
+        </ion-button>
+      </div>            
+    </div>
+  </ion-toolbar>
+</ion-footer>

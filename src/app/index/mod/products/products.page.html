@@ -17,7 +17,7 @@
 
   <div style="display: flex; flex-wrap: wrap;margin: 12px;">
 
-    <div style="width: 45%; margin: 2.5%;" routerLink="../products/product-details" *ngFor="let item of item">
+    <div style="width: 45%; margin: 2.5%;" routerLink="../products/product-details" *ngFor="let item of item" [state]="item">
       <ion-grid>
         <ion-row>
           <ion-col style="padding: 0;">
@@ -34,24 +34,6 @@
         </ion-row>
       </ion-grid>
     </div>
-    
-    <!-- <div style="width: 45%; margin: 2.5%;">
-      <ion-grid>
-        <ion-row>
-          <ion-col style="padding: 0;">
-            <div style="border: 1px solid black;border-radius: 15px;overflow: hidden;">
-              <ion-img src="assets/img/shoes.png"></ion-img>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col style="padding: 3px 0;"><ion-text style="font-size: 1.2rem;"><b>B$20.00</b></ion-text></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col style="padding: 0;"><ion-text color="light">Converse . US 8</ion-text></ion-col>
-        </ion-row>
-      </ion-grid>
-    </div> -->
 
   </div>
 

@@ -1,9 +1,136 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>user-profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content color="medium">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <img src="assets/img/user.png" alt="Profile image">
+        <!-- <h2 class="ion-text-center">{{ account.username }}</h2> -->
+        <h2 class="ion-text-center">Eiji</h2>
+      </ion-col>
+      <ion-col class="ion-text-end">
+        <ion-icon name="settings-outline" class="cart" routerLink="../settings"></ion-icon>
+        <ion-icon name="bag-outline" class="cart" routerLink="../shopping-bag"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-<ion-content>
+  <!--database for follower-->
+  <div class="ion-text-center ffrtab">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h3>2</h3>
+          <div>Follower</div>
+        </ion-col>
+        <ion-col>
+          <h3>1</h3>
+          <div>Following</div>
+        </ion-col>
+        <ion-col>
+          <h3>0</h3>
+          <div>Reviews</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
+  <div class="ctrcont">
+  
+    <ion-segment value="listing" class="segments" value="listing">
+      
+      <ion-segment-button value="listing">
+        <ion-label color="dark">
+          Listings 
+        </ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="sold">
+        <ion-label color="dark">
+          Sold 
+        </ion-label>
+      </ion-segment-button>
+    
+      <ion-segment-button value="bought">
+        <ion-label color="dark">
+          Bought
+        </ion-label>
+      </ion-segment-button>
+      
+      <ion-segment-button value="earn">
+        <ion-label color="dark">
+          Earns 
+        </ion-label>
+      </ion-segment-button>
+    
+    </ion-segment>
+    
+  </div>
+
+  <div class="btmcont-listing">
+    
+
+    <!-- Listing segment -------------------------------------------- -->
+    <!-- <div style="display: inline;">
+      <div class="post"> -->
+        <!--post-->
+        <!-- <div class="postImg">
+          <ion-img class="image" [src]=""></ion-img>
+        </div>
+        <div class="postContent">
+          <div class="ion-text-center" id="vendorText">Ripped Jeans</div>
+          <div class="ion-text-center">$9.99 BND</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: inline;">
+      <div class="post"> -->
+        <!--post-->
+        <!-- <div class="postImg">
+          <ion-img class="image" src="https://image.goat.com/transform/v1/attachments/product_template_pictures/images/000/015/940/original/599477_700.png.png?action=crop&width=500"></ion-img>
+        </div>
+        <div class="postContent">
+          <div class="ion-text-center" id="vendorText">Nike KD Shoes</div>
+          <div class="ion-text-center">$40.50 BND</div>
+        </div>
+      </div>
+    </div> -->
+  <!-- Listing segment -------------------------------------------- -->
+
+  <!-- sold segment -------------------------------------------- -->
+  <div style="display: inline;">
+    
+  </div>
+
+  <!-- sold segment -------------------------------------------- -->
+
+  <!-- bought segment -------------------------------------------- -->
+  <!-- <div style="display: inline;">
+    <div class="boughtPost"> -->
+      <!--left(image)-->
+      <!-- <div class="boughtLeft"> -->
+        <!-- <ion-img class="boughtImg" src="assets/img/box.png"></ion-img> just local image here -->
+      <!-- </div> -->
+      <!--center(info)-->
+      <!-- <div class="boughtCenter"> -->
+        <!-- <div class="ion-text-center" class="boughtName"></div> for track ID -->
+        <!-- <div class="ion-text-center" class="boughtBrand"></div> status of delivery -->
+      <!-- </div> -->
+      <!--right(price & button)-->
+      <!-- <div class="boughtRight">
+        <div class="ion-text-center" class="tagPrice"></div> here will be total price -->
+        <!-- <ion-button color="tertiary" class="trackBtn" routerLink="../item-tracking">Track</ion-button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- bought segment -------------------------------------------- -->
+
+  <!-- earn segment -------------------------------------------- -->
+  <div style="display: inline;">
+  
+  </div>
+  <!-- earn segment -------------------------------------------- -->
+  </div>
 </ion-content>

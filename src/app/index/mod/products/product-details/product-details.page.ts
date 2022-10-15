@@ -86,4 +86,17 @@ export class ProductDetailsPage implements OnInit {
     }];
   }
 
+  ionViewWillEnter(){
+    // make sure the user is fetched before the page is rendered
+    this.authenticationService.fetchUser().subscribe();
+    this.user = [{
+      vendor: this.item[0].vendor,
+      username: this.item[0].username,
+    }];
+  }
+
+  changeCategory() {
+    this.router.navigateByUrl('index/mod/products/product-details/change-category');
+  }
+
 }
