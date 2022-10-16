@@ -1,3 +1,16 @@
 ion-text, ion-input {
     font-size: 1.2em;
 }
+
+.inputFile{
+    display: block;
+    color: transparent;
+    width: 140px; height: 70px;
+    margin: auto;
+}
+
+.profileImage{
+    display: block;
+    width: 120px; height: 110px;
+    border-radius: 50%;
+}

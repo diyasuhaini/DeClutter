@@ -19,9 +19,9 @@ export class ListPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.reportService.getReport().then((mylist) => {
-      console.log(mylist);
-      this.reports = mylist.reverse();
+    this.reportService.getReport().then((list) => {
+      console.log(list);
+      this.reports = list.reverse();
     })
   }
 

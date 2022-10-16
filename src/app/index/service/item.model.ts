@@ -58,3 +58,16 @@ export class report{
         public username: string
     ){}
 }
+
+
+//for donation
+export class donation{
+    constructor(
+        public type: string,
+        public quantity: string,
+        public area: string,
+        public street: string,
+        public delivery: string,
+        public charges: string,
+    ){}
+}

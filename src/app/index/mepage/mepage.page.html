@@ -4,8 +4,8 @@
       <ion-col>
       </ion-col>
       <ion-col *ngFor="let account of people | slice:0:1">
-        <img src="assets/img/user.png" alt="Profile image" *ngIf="!imgurl">
-        <img [src]="imgurl.imgurl" alt="Profile image" *ngIf="imgurl">
+        <img src="assets/img/user.png" alt="Profile image" *ngIf="!imgurl" class="profileImage">
+        <img [src]="imgurl.imgurl" alt="Profile image" *ngIf="imgurl" class="profileImage">
         <!-- <h2 class="ion-text-center">{{ account.username }}</h2> -->
         <h2 class="ion-text-center">{{ currentusername }}</h2>
       </ion-col>

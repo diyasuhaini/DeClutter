@@ -10,6 +10,11 @@ ion-icon{
     margin: auto; margin-top: 10px;
 }
 
+.profilePic::part(image){
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .bigName{
     display: block;
     font-size: 20px; font-weight: bold;
@@ -85,4 +90,10 @@ ion-searchbar{
     //for text too long
     overflow: hidden; white-space: nowrap; 
     text-overflow: ellipsis;
+}
+
+.profileImage{
+    display: block;
+    width: 100px; height: 100px;
+    border-radius: 50%;
 }

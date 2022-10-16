@@ -47,7 +47,14 @@ ion-icon{
 }
 
 .profilePic{
-    max-width: 40px; margin: auto;
+    max-width: 60px; margin: auto;
+    margin-left: 20px;
+    border-radius: 50%;
+}
+
+.profilePic::part(image){
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 //title
@@ -124,3 +131,7 @@ ion-slides {
     --bullet-background: blue;
     --bullet-background-active: Blue;
  }
+
+.usernametxt{
+    margin-left: 10px;
+}
