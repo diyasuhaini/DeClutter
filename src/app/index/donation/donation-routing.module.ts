@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'donate',
     loadChildren: () => import('./donate/donate.module').then( m => m.DonatePageModule)
+  },
+  {
+    path: 'success-donate',
+    loadChildren: () => import('./success-donate/success-donate.module').then( m => m.SuccessDonatePageModule)
   }
 ];
 

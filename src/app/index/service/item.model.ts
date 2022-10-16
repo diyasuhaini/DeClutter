@@ -63,6 +63,7 @@ export class report{
 //for donation
 export class donation{
     constructor(
+        public donateid: string,
         public type: string,
         public quantity: string,
         public area: string,
