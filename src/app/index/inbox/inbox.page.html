@@ -1,9 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>inbox</ion-title>
+  <ion-toolbar color="medium" class="ion-text-center">
+    <ion-buttons slot="start" routerLink="../mepage">
+      <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title color="dark"><b>Inbox</b></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content color="medium">
+  <div color="medium">
+    <ion-searchbar color="medium"></ion-searchbar>
+  </div>
+  
+  <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
+    <ion-item color="medium" *ngFor="let account of replies" [state]="account">
+      <ion-avatar style="margin:15px; height: 50px;width:50px;"><ion-img src="assets/img/admin.png"></ion-img></ion-avatar>
+      <ion-label>
+        <ion-text><b>{{ account.username }}</b></ion-text><br>
+        <ion-text color="light" style="text-transform: uppercase;">[ {{ account.error }} ]</ion-text><br>
+        <ion-text>{{ account.description }}</ion-text>
+      </ion-label>
+    </ion-item>
+    
+  </ion-list>
 </ion-content>
+
+

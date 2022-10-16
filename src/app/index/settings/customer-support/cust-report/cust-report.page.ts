@@ -90,55 +90,55 @@ export class CustReportPage implements OnInit {
 
   }
 
-  //submit form
-  submitReport(report){
-    this.reportService.sendReport(
-      this.reportId,
-      this.currentusername,
+    //submit form
+    submitReport(report){
+      this.reportService.sendReport(
+        this.reportId,
+        this.currentusername,
       report.error,
-      this.screenshotUrl,
-      report.description
-    ).then((response) => {
+        this.screenshotUrl,
+        report.description
+      ).then((response) => {
         this.router.navigateByUrl('index/settings/customer-support');
-    }, error => {
-      // check error
-      console.log(error);
-    })
+      }, error => {
+        // check error
+        console.log(error);
+      })
     console.log("this is report id ",this.reportId);
-  }
-
-
-  //to save screenshot
-  uploadSS(value){
-    // get file name
-    var file = value.target.files[0]; // get file 
-    var filename = value.target.files[0].name; // get filename
-    var filetype = value.target.files[0].type; // get filetype
-  
-    console.log(filename); // check filename
-    console.log(filetype); // check filetype
-      
-    // database variable setup
-    var uploadroute = 'error-ss/' + filename; //changed 'item-gallery' to 'error-ss'
-    var ssUrl = "https://firebasestorage.googleapis.com/v0/b/declutter-1172d.appspot.com/o/error-ss%2F"+ filename + "?alt=media";
-      
-    // file type
-    const metadata = {
-      contentType: filetype,
-    };
-      
-    // storage reference
-    const storageRef = ref(storage, uploadroute);
-  
-    uploadBytes(storageRef, file, metadata).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
-    });
-      
-    // setting url to be pushed for mod page
-    if(value) {
-      this.screenshotUrl = ssUrl;
     }
-  }
+
+
+    //to save screenshot
+    uploadSS(value){
+      // get file name
+      var file = value.target.files[0]; // get file 
+      var filename = value.target.files[0].name; // get filename
+      var filetype = value.target.files[0].type; // get filetype
+  
+      console.log(filename); // check filename
+      console.log(filetype); // check filetype
+
+      // database variable setup
+      var uploadroute = 'error-ss/' + filename; //changed 'item-gallery' to 'error-ss'
+      var ssUrl = "https://firebasestorage.googleapis.com/v0/b/declutter-1172d.appspot.com/o/error-ss%2F"+ filename + "?alt=media";
+      
+      // file type
+      const metadata = {
+        contentType: filetype,
+      };
+      
+      // storage reference
+      const storageRef = ref(storage, uploadroute);
+  
+      uploadBytes(storageRef, file, metadata).then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+      });
+      
+      // setting url to be pushed for mod page
+      if(value) {
+        this.screenshotUrl = ssUrl;
+      }
+    }
 
   ionViewWillEnter(){
     this.authenticationService.fetchUser().subscribe();    

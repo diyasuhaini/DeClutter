@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MepagePageRoutingModule } from './mepage-routing.module';
 
 import { MepagePage } from './mepage.page';
+import { QtyFilterPipe } from './qty-filter.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { MepagePage } from './mepage.page';
     IonicModule,
     MepagePageRoutingModule
   ],
-  declarations: [MepagePage]
+  declarations: [MepagePage, QtyFilterPipe]
 })
 export class MepagePageModule {}

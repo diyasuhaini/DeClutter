@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { reply } from '../service/item.model';
+import { ReplyEmailService } from '../service/reply-email.service';
 
 @Component({
   selector: 'app-inbox',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InboxPage implements OnInit {
 
-  constructor() { }
+  private replies: reply[];
+
+  constructor(private replyService: ReplyEmailService) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter(){
+    this.replyService.getReply().then((theReply) => {
+      console.log(theReply);
+      this.replies = theReply.reverse();
+    })
   }
 
 }

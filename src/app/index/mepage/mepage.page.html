@@ -87,7 +87,16 @@
 
   <!-- sold segment -------------------------------------------- -->
   <div style="display: inline;" *ngIf="segmentValue == 'sold'">
-    
+    <div class="post" *ngFor="let item of (item | qtyFilter: 'arg' )">
+      <!--post-->
+      <div class="postImg">
+        <ion-img class="image" [src]="item.img1"></ion-img>
+      </div>
+      <div class="postContent">
+        <div class="ion-text-center" id="vendorText">{{ item.name }}</div>
+        <div class="ion-text-center">${{ item.price }} BND</div>
+      </div>
+    </div>
   </div>
 
   <!-- sold segment -------------------------------------------- -->
