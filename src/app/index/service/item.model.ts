@@ -59,7 +59,6 @@ export class report{
     ){}
 }
 
-<<<<<<< HEAD
 
 //for donation
 export class donation{
@@ -71,13 +70,13 @@ export class donation{
         public street: string,
         public delivery: string,
         public charges: string,
-=======
+    ){}
+}
 //for reply
 export class reply{
     constructor(
         public description: string,
         public error: string,
         public username: string
->>>>>>> 9b0e86c51a49e46becd1a5d66e788983c3f30d57
     ){}
 }
