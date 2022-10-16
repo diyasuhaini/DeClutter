@@ -35,7 +35,7 @@
       <ion-label>Error Screenshot:</ion-label>
       <ion-item color="medium">
         <div class="uploadFile">
-          <ion-input type="file" style="color: transparent;" id="screenshot" formControlName="screenshot" (change)="uploadSS($event)"></ion-input>
+          <ion-input type="file" style="color: transparent;" id="screenshot" formControlName="screenshot" (change)="uploadSS($event)" required></ion-input>
           <!-- <div *ngIf="screenshotUrl">Uploaded</div> -->
         </div>
       </ion-item>
@@ -43,7 +43,7 @@
             
       <ion-label>Description:</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="Describe your error" formControlName="description"></ion-input>
+        <ion-input type="text" placeholder="Describe your error" formControlName="description" required></ion-input>
       </ion-item>
       <br>
     </ion-list>

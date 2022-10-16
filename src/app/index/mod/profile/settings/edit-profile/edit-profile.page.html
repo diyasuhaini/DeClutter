@@ -1,63 +1,60 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start" routerLink="../">
+    <ion-buttons slot="start" routerLink="../../">
       <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title color="dark">Edit Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium">
+<ion-content color="medium" *ngFor="let account of user | slice:0:1">
+  <form [formGroup]="editProfile" (ngSubmit)="updateUser(editProfile.value)">
+    <ion-grid>
+      <ion-row style="padding: 15px 0;">
+        <ion-col style="display:flex;justify-content:center;" *ngIf="!imgurl"><img style="width: 60%;" src="assets/img/user.png" alt="Profile image" *ngIf="!imgurl" class="profileImage"></ion-col>
+        <ion-col style="display:flex;justify-content:center;" *ngIf="imgurl"><img style="width: 60%;" [src]="imgurl.imgurl" alt="Profile image" *ngIf="imgurl" class="profileImage"></ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-col><ion-button><b><ion-text color="dark">Remove photo</ion-text></b></ion-button></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col><ion-input type="file" (change)="uploadImg($event)" class="inputFile"></ion-input></ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <ion-grid>
-    <ion-row style="padding: 15px 0;">
-      <ion-col style="display:flex;justify-content:center;"><img style="width: 60%;" src="assets/img/user.png" alt="Profile image"></ion-col>
-      <ion-col>
-        <ion-row>
-          <ion-col><ion-button><b><ion-text color="dark">Remove photo</ion-text></b></ion-button></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col><ion-button><b><ion-text color="dark">change photo</ion-text></b></ion-button></ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-list style="background-color: #ffffff; margin: 0 15px;">
+      <ion-item color="medium">
+        <ion-label style="font-size: 1.2em;">Username</ion-label>
+        <ion-input type="text" placeholder="add your username" formControlName="username" required></ion-input>
+      </ion-item>
 
-  <ion-list style="background-color: #ffffff; margin: 0 15px;">
+      <ion-item color="medium">
+        <ion-label style="font-size: 1.2em;">Full Name</ion-label>
+        <ion-input type="text" placeholder="add your fullname" value="{{ account.fullname }}" formControlName="fullname"></ion-input>
+      </ion-item>
 
-    <ion-label style="font-size: 1.2em; margin: 0 15px;">Username</ion-label>
-    <ion-item color="medium">
-      <ion-input type="text">Moderator</ion-input>
-    </ion-item><br>
+      <ion-item color="medium">
+        <ion-label style="font-size: 1.2em;">Email</ion-label>
+        <ion-input type="text" placeholder="add your email" value="{{ account.email }}" disabled formControlName="email"></ion-input>
+      </ion-item>
 
-    <ion-label style="font-size: 1.2em; margin: 0 15px;">Full Name</ion-label>
-    <ion-item color="medium">
-      
-      <ion-input type="text" placeholder="Full Name"></ion-input>
-    </ion-item><br>
+      <ion-item color="medium">
+        <ion-label style="font-size: 1.2em;">Phone Number</ion-label>
+        <ion-input type="text" placeholder="add your phone number" value="{{ account.contact }}" formControlName="contact" required></ion-input>
+      </ion-item><br>
 
-    <ion-label style="font-size: 1.2em; margin: 0 15px;">Email</ion-label>
-    <ion-item color="medium">
-      
-      <ion-input type="text">moderator@declutter.com</ion-input>
-    </ion-item><br>
+      <ion-label style="font-size: 1.2em; margin: 0 15px;">Address 1</ion-label>
+      <ion-item color="medium">
+        <ion-input type="text" placeholder="add your address 1" value="{{ account.address1 }}" formControlName="address1" required></ion-input>
+      </ion-item><br>
 
-    <ion-label style="font-size: 1.2em; margin: 0 15px;">Phone Number</ion-label>
-    <ion-item color="medium">
-      <ion-input type="text">+6737778888</ion-input>
-    </ion-item><br>
-
-    <ion-label style="font-size: 1.2em; margin: 0 15px;">Address 1 </ion-label>
-    <ion-item color="medium">
-      <ion-input type="text">No. 2, Spg 10, Kg Subok</ion-input>
-    </ion-item><br>
-
-    <ion-label style="font-size: 1.2em; margin: 0 15px;">Address 2 </ion-label>
-    <ion-item color="medium">
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button expand="block" type="submit" style="margin: 15px;"><b><ion-text color="dark">Save Changes</ion-text></b></ion-button>
-
-
+      <ion-label style="font-size: 1.2em; margin: 0 15px;">Address 2</ion-label>
+      <ion-item color="medium">
+        <ion-input type="text" placeholder="add your address 2" value="{{ account.address2 }}" formControlName="address2"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" type="submit" style="margin: 15px;" [disabled]="!editProfile.valid" (click)="updateUser()"><b>Save Changes</b></ion-button>
+  </form>
 </ion-content>
