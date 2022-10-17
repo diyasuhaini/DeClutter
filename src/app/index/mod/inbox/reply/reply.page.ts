@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { getStorage } from 'firebase/storage';
 import { ReplyEmailService } from '../../../service/reply-email.service';
@@ -32,10 +32,10 @@ export class ReplyPage implements OnInit {
       }
     ]
   };
-  builder: any;
 
   constructor(private router: Router,
-              private replyService: ReplyEmailService) { }
+              private replyService: ReplyEmailService,
+              private builder: FormBuilder) { }
 
   ngOnInit() {
 
@@ -50,6 +50,12 @@ export class ReplyPage implements OnInit {
 
     //form validation
     this.replyForm = this.builder.group({
+      username: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      error: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
       description: new FormControl('', Validators.compose([
         Validators.required
       ]))
@@ -69,6 +75,7 @@ export class ReplyPage implements OnInit {
       // check error
       console.log(error);
     })
+    
     console.log("this is reply id ",this.replyId);
   }
 

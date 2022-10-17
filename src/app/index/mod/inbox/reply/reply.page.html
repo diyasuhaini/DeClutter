@@ -11,14 +11,14 @@
   <form [formGroup]="replyForm" (ngSubmit)="submitReply(replyForm.value)">
     <ion-list style="background-color:#ffffff; margin:15px;">
       <ion-item color="medium">
-        <ion-text><b>To: </b>{{ myReport[0].username }}</ion-text>
-        <ion-input style="display:hidden;" formControlName="username">{{ myReport[0].username }}</ion-input>
+        <ion-text><b>To: </b>{{ myReport.username }}</ion-text>
+        <ion-input style="display:hidden;" formControlName="username" value="{{ myReport.username }}">{{ myReport.username }}</ion-input>
       </ion-item>
       <br>
 
       <ion-item color="medium">
-        <ion-text><b>Error: </b>{{ myReport[0].error }}</ion-text>
-        <ion-input style="display:hidden;" formControlName="error">{{ myReport[0].error }}</ion-input>
+        <ion-text><b>Error: </b>{{ myReport.error }}</ion-text>
+        <ion-input style="display:hidden;" formControlName="error" value="{{ myReport.error }}">{{ myReport.error }}</ion-input>
       </ion-item>
       <br>
             
@@ -38,3 +38,4 @@
 <!-- save : reply model -->
 <!-- error msg for description -->
 <!-- getReply - display reply in customer inbox (filtered) -->
+<!-- reactiveformmodule in module.ts -->
