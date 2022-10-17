@@ -79,7 +79,7 @@
         
         <ion-list style=" background-color:#ffffff;">
 
-          <ion-item color="medium" *ngFor="let account of reports | slice:0:4">
+          <ion-item color="medium" *ngFor="let account of reports | slice:0:4" routerLink="../inbox/list/report-details" [state]="account">
             <ion-label>
               <ion-text><b>{{ account.username }}</b></ion-text><br>
               <ion-text color="light" style="text-transform: uppercase;">[ {{ account.error }} ]</ion-text><br>
