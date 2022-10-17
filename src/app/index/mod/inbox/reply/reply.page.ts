@@ -17,10 +17,12 @@ export class ReplyPage implements OnInit {
 
   //get from model
   private myReport: reply[];
+  private reporter;
 
   //to submit form
   replyForm: FormGroup;
   replyId: string;
+  
 
   // error msg for description
   errorMsg: String = '';
@@ -47,6 +49,7 @@ export class ReplyPage implements OnInit {
       description: routerState.description,
     }];
     console.log(this.myReport);
+    this.reporter = this.myReport;
 
     //form validation
     this.replyForm = this.builder.group({
@@ -64,6 +67,8 @@ export class ReplyPage implements OnInit {
 
   // save form in database 
   submitReply(reply){
+    reply.username = this.reporter[0].username;
+    reply.error = this.reporter[0].error;
     this.replyService.sendReply(
       this.replyId,
       reply.username,
