@@ -22,6 +22,29 @@ export class EditProfilePage implements OnInit {
   private user: User[];
   private imgurl;
 
+  //error msg
+  errorMsg: String = '';
+  error_msg = {
+    'username': [
+      { 
+        type: 'required', 
+        message: 'Username is required.' 
+      }
+    ],
+    'contact': [
+      { 
+        type: 'required', 
+        message: 'Contact number is required.' 
+      }
+    ],
+    'address1': [
+      { 
+        type: 'required', 
+        message: 'At least one address is required.' 
+      }
+    ]
+  };
+
   constructor(private router: Router,
               private itemService: ItemService,
               private usersService: UsersService,
@@ -34,6 +57,19 @@ export class EditProfilePage implements OnInit {
       this.imgurl = (await get((dref(database, 'userpfp/' + currentid)))).val();
     });
     // getting pfp End
+
+    //form validation
+    this.editProfile = this.builder.group({
+      username: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      contact: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      address1: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
+    })
   } 
 
   uploadImg(value){
