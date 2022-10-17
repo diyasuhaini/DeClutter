@@ -27,11 +27,8 @@
 
       <ion-item color="medium">
         <ion-label>Area</ion-label>
-        <ion-select interface="popover" formControlName="area">
-          <ion-select-option value="brunei-muara">Brunei-Muara</ion-select-option>
-          <ion-select-option value="tutong">Tutong</ion-select-option>
-          <ion-select-option value="temburong">Temburong</ion-select-option>
-          <ion-select-option value="kuala belait">Kuala Belait</ion-select-option>
+        <ion-select interface="popover" [(ngModel)]="places" formControlName="area" (ionChange)="triggerPlaces()">
+          <ion-select-option *ngFor="let district of options" value="{{ district }}">{{ district }}</ion-select-option>
         </ion-select>
       </ion-item>
 
@@ -42,19 +39,17 @@
 
       <ion-item color="medium">
         <ion-label>Delivery</ion-label>
-        <ion-select interface="popover" formControlName="delivery">
-          <ion-select-option value="drop-off">Drop-off</ion-select-option>
-          <ion-select-option value="pick-up">Pick-up</ion-select-option>
+        <ion-select interface="popover" [(ngModel)]="deliver" formControlName="delivery" (ionChange)="triggerDelivery()">
+          <ion-select-option *ngFor="let delivery of deliOpt" value="{{ delivery }}">{{ delivery }}</ion-select-option>
         </ion-select>
       </ion-item> 
 
       <ion-item color="medium">
         <ion-label>Charges(pick-up only)</ion-label>
-        <ion-input type="text" color="light" value="$3.00" formControlName="charges"></ion-input> <!--changed based on area & street-->
+        <ion-input type="text" color="light" [(ngModel)]="price" formControlName="charges"></ion-input> <!--changed based on area & street-->
       </ion-item>
     </ion-card>
 
     <ion-button type="submit" color="tertiary" shape="round" [disabled]="!donateForm.valid">Submit</ion-button>
   </form>
-  <ion-button routerLink="./success-donate">Testing</ion-button>
 </ion-content>
