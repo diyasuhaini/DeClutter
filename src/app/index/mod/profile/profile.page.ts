@@ -51,7 +51,7 @@ export class ProfilePage implements OnInit {
   }
 
   //get the item from database
-  ionViewWillEnter(){
+  ionViewWillEnter(){ 
     // getting pfp Start
     onValue(dref(database, 'userpfp/'), async (snapshot)=>{
       const currentid = localStorage.getItem('currentid');

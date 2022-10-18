@@ -132,6 +132,7 @@ export class ItemService {
         "color": allItem[key].color,
         "categories": allItem[key].categories,
         "quantity": allItem[key].quantity,
+        "type": allItem[key].type,
         "name": allItem[key].title
       })
     })
@@ -174,6 +175,7 @@ export class ItemService {
           "color": item[key].color,
           "categories": item[key].categories,
           "quantity": item[key].quantity,
+          "type": item[key].type,
           "name": item[key].title
         });
       }
@@ -206,6 +208,7 @@ export class ItemService {
           "color": item[key].color,
           "categories": item[key].categories,
           "quantity": item[key].quantity,
+          "type": item[key].type,
           "name": item[key].title
         });
       }

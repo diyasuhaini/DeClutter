@@ -14,7 +14,7 @@
 <ion-content color="medium">
   <!--item details picture-->
   <div class="bigPicture">
-    <ion-slides [options]="slideOpts">
+    <ion-slides [options]="slideOpts" pager="true">
       <!--for picture 1-->
       <ion-slide>
         <ion-img [src]="item[0].img1" alt="item" class="bigPic"></ion-img>
@@ -38,41 +38,41 @@
   <div>
     <ion-grid>
       <ion-row>
-        <ion-col><ion-text color="light">By Eiji</ion-text></ion-col>
+        <ion-col><ion-text color="light">By {{ item[0].username }}</ion-text></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><ion-text><b>Nike KD shoes</b></ion-text></ion-col>
+        <ion-col><ion-text><b>{{ item[0].title }}</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col><h3 style="color:green;"><b>B$40.50</b></h3></ion-col>
+        <ion-col><h3 style="color:green;"><b>${{ item[0].price }}</b></h3></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Brand</ion-text></ion-col>
-        <ion-col><ion-text><b>Nike</b></ion-text></ion-col>
+        <ion-col><ion-text><b>{{ item[0].brand }}</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Size</ion-text></ion-col>
-        <ion-col><ion-text><b>Free Size</b></ion-text></ion-col>
+        <ion-col><ion-text><b>{{ item[0].size }}</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Colour</ion-text></ion-col>
-        <ion-col><ion-text><b>yellow</b></ion-text></ion-col>
+        <ion-col><ion-text><b>{{ item[0].color }}</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Description</ion-text></ion-col>
-        <ion-col><ion-text><b>No defect at all, Size UK42, Good for playing basketball indoor and outdoor</b></ion-text></ion-col>
+        <ion-col><ion-text><b>{{ item[0].description }}</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Category</ion-text></ion-col>
-        <ion-col><ion-text><b>men</b></ion-text></ion-col>
+        <ion-col><ion-text><b>{{ item[0].categories }}</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Type</ion-text></ion-col>
-        <ion-col><ion-text><b>shoes</b></ion-text></ion-col>
+        <ion-col><ion-text><b>{{ item[0].type }}</b></ion-text></ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="3"><ion-text color="light">Quantity</ion-text></ion-col>
-        <ion-col><ion-text><b>1</b></ion-text></ion-col>
+        <ion-col><ion-text><b>{{ item[0].quantity }}</b></ion-text></ion-col>
       </ion-row>
     </ion-grid>
   </div>

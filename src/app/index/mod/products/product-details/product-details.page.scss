@@ -26,6 +26,12 @@
     margin: auto;
 }
 
+//for pager
+ion-slides {
+    --bullet-background: blue;
+    --bullet-background-active: Blue;
+ }
+
 //for content
 // .itemWrap{
 //     display: flex; flex: wrap;
