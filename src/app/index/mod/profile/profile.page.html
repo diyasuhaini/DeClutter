@@ -7,13 +7,14 @@
       <ion-row>
         <ion-col>
           <ion-avatar style="margin:10% auto 0;">
-            <ion-img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"></ion-img>
+            <img src="assets/img/user.png" alt="Profile image" *ngIf="!imgurl" class="profileImage">
+            <img [src]="imgurl.imgurl" alt="Profile image" *ngIf="imgurl" class="profileImage">
           </ion-avatar>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-text class="large-font" color="dark"><b>Moderator</b></ion-text>
+          <ion-text class="large-font" color="dark"><b>{{ currentusername }}</b></ion-text>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -29,26 +30,26 @@
   <ion-grid style="margin: 8px; letter-spacing: 1px;">
     <ion-row>
       <ion-col size="3"><ion-text color="light">Username</ion-text></ion-col>
-      <ion-col><ion-text><b>Moderator</b></ion-text></ion-col>
+      <ion-col><ion-text><b>{{ currentusername }}</b></ion-text></ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="3"><ion-text color="light">Fullname</ion-text></ion-col>
-      <ion-col><ion-text><b></b></ion-text></ion-col>
+      <ion-col><ion-text><b>{{ account.fullname }}</b></ion-text></ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="3"><ion-text color="light">Email</ion-text></ion-col>
-      <ion-col><ion-text><b>moderator@declutter.com</b></ion-text></ion-col>
+      <ion-col><ion-text><b>{{ account.email }}</b></ion-text></ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="3"><ion-text color="light">Phone No.</ion-text></ion-col>
-      <ion-col><ion-text><b>+6737778888</b></ion-text></ion-col>
+      <ion-col><ion-text><b>{{ account.contact }}</b></ion-text></ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="3"><ion-text color="light">Address 1</ion-text></ion-col>
-      <ion-col><ion-text><b>No. 2, Spg 10, Kg Subok</b></ion-text></ion-col>
+      <ion-col><ion-text><b>{{ account.address1 }}</b></ion-text></ion-col><!--No. 2, Spg 10, Kg Subok-->
     </ion-row>
     <ion-row>
-      <ion-col size="3"><ion-text color="light">Address 2</ion-text></ion-col>
+      <ion-col size="3"><ion-text color="light">{{ account.address2 }}</ion-text></ion-col>
       <ion-col><ion-text><b></b></ion-text></ion-col>
     </ion-row>
   </ion-grid>
