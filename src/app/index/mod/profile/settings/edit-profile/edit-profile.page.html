@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium" *ngFor="let account of user | slice:0:1">
+<ion-content color="medium" *ngFor="let account of user">
   <form [formGroup]="editProfile" (ngSubmit)="updateUser(editProfile.value)">
     <ion-grid>
       <ion-row style="padding: 15px 0;">

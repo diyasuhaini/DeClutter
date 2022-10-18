@@ -16,10 +16,6 @@ const database = getDatabase();
 })
 export class ReportService {
 
-  private userSub: Subscription;
-  private people: User[];
-  private currentusername: string;
-
   constructor(private authenticationService: AuthenticationService) { }
 
   //details for report

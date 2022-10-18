@@ -3,7 +3,7 @@
     <ion-buttons slot="start" routerLink="../">
       <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
     </ion-buttons>
-    <ion-title color="dark"><b>Error Inbox</b></ion-title>
+    <ion-title color="dark"><b>Feedback Inbox</b></ion-title>
     <ion-buttons slot="end">
       <ion-button color="dark"><ion-icon name="options" size="large"></ion-icon></ion-button>
     </ion-buttons>
@@ -17,11 +17,10 @@
   </div>
   
   <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
-    <ion-item color="medium" routerLink="report-details" *ngFor="let account of reports" [state]="account">
+    <ion-item color="medium" routerLink="feedback-details" *ngFor="let account of feedbacks" [state]="account">
       <ion-avatar style="margin:15px; height: 50px;width:50px;"><ion-img src="assets/img/profile-round.png"></ion-img></ion-avatar>
       <ion-label>
         <ion-text><b>{{ account.username }}</b></ion-text><br>
-        <ion-text color="light" style="text-transform: uppercase;">[ {{ account.error }} ]</ion-text><br>
         <ion-text>{{ account.description }}</ion-text>
       </ion-label>
     </ion-item>

@@ -18,7 +18,7 @@ const storage = getStorage();
 })
 export class CustReportPage implements OnInit {
 
-  //output email
+  //output username
   private userSub: Subscription;
   private people: User[];
   private currentusername: string;
@@ -59,7 +59,7 @@ export class CustReportPage implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    //output email
+    //output username
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
     });
@@ -95,7 +95,7 @@ export class CustReportPage implements OnInit {
       this.reportService.sendReport(
         this.reportId,
         this.currentusername,
-      report.error,
+        report.error,
         this.screenshotUrl,
         report.description
       ).then((response) => {

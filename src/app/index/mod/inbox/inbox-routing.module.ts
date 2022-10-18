@@ -14,6 +14,10 @@ const routes: Routes = [
   },  {
     path: 'reply',
     loadChildren: () => import('./reply/reply.module').then( m => m.ReplyPageModule)
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
   }
 
 

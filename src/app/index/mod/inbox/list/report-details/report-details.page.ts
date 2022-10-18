@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { report } from 'src/app/index/service/item.model';
-import { ReportService } from 'src/app/index/service/report.service';
 
 @Component({
   selector: 'app-report-details',
@@ -12,8 +11,7 @@ export class ReportDetailsPage implements OnInit {
 
   private myReport: report[];
   
-  constructor(private router: Router,
-              private reportService: ReportService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     const routerState = this.router.getCurrentNavigation().extras.state;
@@ -30,6 +28,5 @@ export class ReportDetailsPage implements OnInit {
   toReply() {
     console.log("clicked");
     this.router.navigateByUrl('index/mod/inbox/reply');
-    
   }
 }

@@ -59,7 +59,6 @@ export class report{
     ){}
 }
 
-
 //for donation
 export class donation{
     constructor(
@@ -72,11 +71,20 @@ export class donation{
         public charges: string,
     ){}
 }
+
 //for reply
 export class reply{
     constructor(
         public description: string,
         public error: string,
+        public username: string
+    ){}
+}
+
+//for feedback
+export class feedback{
+    constructor(
+        public description: string,
         public username: string
     ){}
 }

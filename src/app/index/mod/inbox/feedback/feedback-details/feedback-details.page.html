@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" routerLink="../">
+      <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title color="dark"><b>Feedback</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="medium">
+    <ion-list style="background-color:#ffffff; margin:15px;">
+
+      <ion-label>From:</ion-label>
+      <ion-item color="medium">
+        <ion-text>{{ myFeedback[0].username }}</ion-text>
+      </ion-item>
+      <br>
+            
+      <ion-label>Description:</ion-label>
+      <ion-item color="medium">
+        <ion-text>{{ myFeedback[0].description }}</ion-text>
+      </ion-item>
+    </ion-list>
+
+</ion-content>
