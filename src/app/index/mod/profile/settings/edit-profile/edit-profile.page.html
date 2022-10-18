@@ -52,7 +52,7 @@
 
       <ion-label style="font-size: 1.2em; margin: 0 15px;">Address 2</ion-label>
       <ion-item color="medium">
-        <ion-input type="text" placeholder="add your address 2" value="{{ account.address2 }}" formControlName="address2"></ion-input>
+        <ion-input type="text" placeholder="Optional" value="{{ account.address2 }}" formControlName="address2"></ion-input>
       </ion-item>
     </ion-list>
     <ion-button expand="block" type="submit" style="margin: 15px;" [disabled]="!editProfile.valid" (click)="updateUser()"><b>Save Changes</b></ion-button>
