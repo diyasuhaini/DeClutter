@@ -51,11 +51,11 @@ export class ProfilePage implements OnInit {
   }
 
   //get the item from database
-  ionViewWillEnter(){
+  ionViewWillEnter(){ 
     // getting pfp Start
-    onValue(ref(database, 'userpfp/'), async (snapshot)=>{
+    onValue(dref(database, 'userpfp/'), async (snapshot)=>{
       const currentid = localStorage.getItem('currentid');
-      var imgurl = (await get((ref(database, 'userpfp/' + currentid)))).val();
+      var imgurl = (await get((dref(database, 'userpfp/' + currentid)))).val();
       console.log(imgurl);
       if (imgurl){
         this.imgurl = imgurl;
