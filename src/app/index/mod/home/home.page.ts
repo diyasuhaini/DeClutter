@@ -37,6 +37,7 @@ export class HomePage implements OnInit {
       this.people.forEach((user) => {
         if(user.email.toLowerCase() == localStorage.getItem('currentemail').toLowerCase()){ //if similar to current email
           localStorage.setItem('currentid', user.id); //send new currentid to localstorage
+          localStorage.setItem('currentname', user.username); //send new current username
         }else{
           console.log("not good"); //if error
         }
