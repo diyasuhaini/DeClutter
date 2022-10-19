@@ -7,17 +7,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium">
+<ion-content color="medium" *ngFor="let account of user">
   <ion-label>SELECT DELIVERY OPTION</ion-label>
   <p>kindly wait 2-3 days of delivery service during working days. We apologies for any inconvenience caused</p>
   <ion-card color="medium">
     <ion-item color="medium">
-      <ion-input type="text" placeholder="Default Address" [disabled]="true"></ion-input>
+      <ion-input type="text" value="{{ account.address1 }}" [disabled]="true" ></ion-input>
     </ion-item>
     <ion-item color="medium">
-      <ion-input type="text" placeholder="To another address" [disabled]="false"></ion-input>
+      <ion-input type="text" placeholder="To another address" [disabled]="false" [(ngModel)]="new"></ion-input>
     </ion-item>
   </ion-card>
 
-  <ion-button shape="round" color="tertiary" routerLink="../payment">Continue</ion-button>
+  <ion-button type="submit" shape="round" color="tertiary" (click)="toPayment()">Continue</ion-button>
 </ion-content>
