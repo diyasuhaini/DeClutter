@@ -500,6 +500,60 @@ export class ItemService {
   }
 
 
+  //for quantity
+  async deductQty(){
+    var currentid = localStorage.getItem('currentid'); //get currentid from localstorage
+    const dbref = ref(database, 'shopping-bag/' + currentid); //get the referrence from item tracking table (current user only)
+    const snapshot = await get(dbref); //refer to dbref
+    var item = snapshot.val(); //get the value
+    var box = []; //empty array
+    if (item != null){ //if the data is not null
+      item.forEach((item) => {
+        box.push(item); //push the item to empty array
+      })
+      const dbref2 = ref(database, 'item/'); //refer from item
+      const snapshot2 = await get((dbref2)); //refer to dbref2
+      var item2 = snapshot2.val(); //get the value
+  
+      var box2 = []; //new empty array
+      Object.keys(item2).forEach((key) => { //match the item
+        box.forEach((item) => {
+          if (key == item) {
+            box2.push(item2[key]); //push value to new empty array
+          }
+        })
+      })
+    }
+    return box2; //completed
+  }
+
+  //update item quantity
+  async itemQtyUpdate(){
+    const dbref = ref(database, 'item/');
+    const snapshot = await get(dbref);
+    var item = snapshot.val();
+    var box = [];
+    if(item != null){
+      item.forEach((item) => {
+        box.push(item);
+      })
+      const dbref2 = ref(database, 'item/'); //refer from item
+      const snapshot2 = await get((dbref2)); //refer to dbref2
+      var item2 = snapshot2.val(); //get the value
+  
+      var box2 = []; //new empty array
+      Object.keys(item2).forEach((key) => { //match the item
+        box.forEach((item) => {
+          if (key == item) {
+            box2.push(item2[key]); //push value to new empty array
+          }
+        })
+      })
+    }
+    return box2;
+  }
+
+
   async retrieveItemTracking(items){
     var currentid = localStorage.getItem('currentid'); //only you can see
     const itemdref = ref(database, "item/"); //refer from database item
