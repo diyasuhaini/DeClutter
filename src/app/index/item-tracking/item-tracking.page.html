@@ -14,7 +14,7 @@
   <!--status-->
   <ion-card color="primary" class="header" id="myText">
     <ion-img [src]="myImage" class="headerImg"></ion-img>
-    Your order has been placed!
+    Your order has been processed!
   </ion-card>
 
   <!--here for tracking details 2-->
@@ -79,7 +79,7 @@
     <!--address details-->
     <div class="addressDetails">
       <p class="addressTitle">Delivery Address</p><!--just title-->
-      <p class="address">Address here</p><!--address here-->
+      <p class="address">{{ track[0].address}}</p><!--address here-->
     </div>
   </div>
 

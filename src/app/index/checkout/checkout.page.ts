@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators  } from '@angular/forms'; //manually imported
 import { UsersService } from '../service/users.service'; //manually imported
 import { User } from '../auth/auth.model'; //manually imported
-import { access } from 'fs';
-import { getElementRoot } from '@ionic/core/dist/types/utils/helpers';
-import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -21,7 +19,8 @@ export class CheckoutPage implements OnInit {
   //formGroup
   addressForm = FormGroup;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -49,9 +48,11 @@ export class CheckoutPage implements OnInit {
     if(this.new == null || this.new == ""){
       console.log(this.address.value);
       localStorage.setItem('address', this.address.value);
+      this.router.navigateByUrl('index/payment');
     }else{
       console.log(this.new);
       localStorage.setItem('address', this.new);
+      this.router.navigateByUrl('index/payment');
     }
   }
 

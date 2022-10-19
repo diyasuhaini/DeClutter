@@ -12,7 +12,7 @@ import { ItemService } from '../service/item.service';
 export class ItemTrackingPage implements OnInit {
   
   //first picture
-  myImage = "assets/img/box.gif";
+  myImage = "assets/img/process.gif";
   texts = document.getElementById('myText');
 
   private track: Tracks[]; //for tracking details
@@ -22,17 +22,6 @@ export class ItemTrackingPage implements OnInit {
   constructor(private router: Router, private itemService: ItemService) { }
 
   ngOnInit() {
-
-    //below is for changing image when order item
-    setTimeout(() => {
-      this.myImage = 'assets/img/process.gif';
-      this.texts.innerHTML = 'your order is being processed!';
-      setTimeout(() => {
-        this.myImage = 'assets/img/deliver.gif';
-      }, 8000);
-    }, 6000);
-
-
     //below for routerState
     const routerState = this.router.getCurrentNavigation().extras.state; //get current navigation
     //for retrieving track database
@@ -44,6 +33,7 @@ export class ItemTrackingPage implements OnInit {
       totalprice: routerState.totalprice,
       status: routerState.status,
       quantity: routerState.quantity,
+      address: routerState.address,
       items: routerState.items
     }];
 

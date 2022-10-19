@@ -448,6 +448,7 @@ export class ItemService {
 
       //get total price
       var myTotal = parseFloat(localStorage.getItem('totalPrice')) / 0.717;
+      var delivery = localStorage.getItem('address');
 
       //push to database
       var trackBox = []; //new box for track
@@ -457,6 +458,7 @@ export class ItemService {
       trackBox['eta'] = '6 days';
       trackBox['items'] = item;
       trackBox['totalprice'] = myTotal.toFixed(2);
+      trackBox['address'] = delivery;
       console.log(trackBox);
       return set(dbref, trackBox); //for transfer 
   }
