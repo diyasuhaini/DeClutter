@@ -2,9 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { User } from '../auth/auth.model';
+import { ItemSoldPageModule } from '../item-sold/item-sold.module';
 import { Item } from '../service/item.model';
 import { ItemService } from '../service/item.service';
 import { Bag, Saved } from './shopping-bag.model';
+import { get, getDatabase, ref, remove, set, update } from "firebase/database";
+import { environment } from 'src/environments/environment';
+import { initializeApp } from 'firebase/app';
+
+// initialize the application allow new database apit to be used
+initializeApp(environment.firebaseConfig);
+// connection to realtime
+const database = getDatabase();
 
 @Component({
   selector: 'app-shopping-bag',
@@ -32,6 +41,9 @@ export class ShoppingBagPage implements OnInit {
   private selectedqty = [];
   private check = 1;
   
+  //for quantity
+  private qtyCheck= [];
+  private getqty;
 
   segmentChanged(e){
     console.log(e.detail.value)
@@ -184,6 +196,7 @@ export class ShoppingBagPage implements OnInit {
 
   pushqty(){
     localStorage.setItem("selectedqty", this.selectedqty.toString());
+    
   }
 
 
@@ -222,8 +235,46 @@ export class ShoppingBagPage implements OnInit {
       });
     })
 
-    console.log("this.selectedqty", this.selectedqty)
+    console.log("this.selectedqty", this.selectedqty);
+
+
+
+    //below coding will be use in payment
+    this.itemService.deductQty().then((currentItem) => {
+      this.selectedqty.forEach((getquantity) => {
+        this.getqty = getquantity;
+      })
+
+      console.log('testing', currentItem);
+      currentItem.forEach((item) => {
+        this.qtyCheck.push({
+          'vendor': item.vendor,
+          'username': item.username,
+          'img1': item.img1,
+          'img2': item.img2,
+          'img3': item.img3,
+          'price': item.price,
+          'size': item.size,
+          'color': item.color,
+          'categories': item.categories,
+          'quantity': item.quantity - this.getqty,
+          'title': item.title,
+          'description': item.description,
+          'brand': item.brand,
+          'type': item.type
+        })
+      })
+      console.log(this.qtyCheck);
+      
+    })
+
+    this.itemService.itemQtyUpdate().then((update) => {
+      console.log(update);
+    })
+
   }
+
+  
 
   
 
