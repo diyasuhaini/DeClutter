@@ -224,21 +224,25 @@ export class ItemService {
     var lock = false; //no user
     if(item){
       if(item[currentid]){ //if user
+        console.log("item[currentid]", item[currentid]); 
         item[currentid].forEach((item1)  => { //every item from user
-          if (item1 == (title + vendor)){  //combine title with vendor
-            lock = true; //item is correct
-          }
-  
-          if(lock == false){ //else incorrect
-            item[currentid].push((title + vendor)); //push to shopping-bag
-              return set(ref(database, 'shopping-bag/'), item); //then its confirmed
+          console.log("item1", item1);
+          if (!lock){
+            if (item1 == (title + vendor)){  //combine title with vendor
+              
+            } else { //else incorrect
+              item[currentid].push((title + vendor)); //push to shopping-bag
+              lock = true;
+                return set(ref(database, 'shopping-bag/'), item); //then its confirmed
+                
+            }
           }
         });
       } else { 
           return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
       }
+      return
     }
-      return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
 
   
   }
@@ -256,14 +260,15 @@ export class ItemService {
 
     if(item[currentid]){ //if user
       item[currentid].forEach((item1)  => { //every item from user
+      if (!lock){  
         if (item1 == (title + vendor)){  //combine title with vendor
-          lock = true; //item is correct
-        }
-
-        if(lock == false){ //else incorrect
+          
+        } else { //else incorrect
           item[currentid].push((title + vendor)); //push to saved
+          lock = true;
           return set(ref(database, 'saved/'), item); //then its confirmed
         }
+      }
       });
     } else { 
         return set(ref(database, 'saved/'+ currentid), [(title + vendor)]);
