@@ -15,11 +15,11 @@
   
   <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
 
-    <ion-item color="medium">
+    <ion-item color="medium" *ngFor="let donation of donate">
       <ion-img style="margin:15px; height: 50px;width:50px;" src="assets/img/donation.png"></ion-img>
       <ion-label>
-        <ion-text color="light">No. of item: </ion-text><b>5</b><br>
-        <ion-text color="light">By: </ion-text><b>Squall</b>
+        <ion-text color="light">No. of item: </ion-text><b>{{ donation.quantity }}</b><br>
+        <ion-text color="light">By: </ion-text><b>{{ donation.username }}</b>
       </ion-label>
     </ion-item>
     
