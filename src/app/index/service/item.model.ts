@@ -64,6 +64,7 @@ export class report{
 export class donation{
     constructor(
         public donateid: string,
+        public username: string,
         public type: string,
         public quantity: string,
         public area: string,

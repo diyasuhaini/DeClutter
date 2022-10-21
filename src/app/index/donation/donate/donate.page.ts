@@ -13,6 +13,8 @@ export class DonatePage implements OnInit {
   //get current id
   private cuid;
   private currentdate;
+  private donationid;
+  private uname;
 
   //select value box
   private places;
@@ -56,15 +58,23 @@ export class DonatePage implements OnInit {
   }
 
   ionViewWillEnter(){
+    //get currentid
     this.cuid = localStorage.getItem('currentid');
+    //get today date
     this.currentdate = new Date();
+    //get donateid
+    this.donationid = this.cuid + this.currentdate
+    localStorage.setItem('donationid', this.donationid);
+    //get username
+    this.uname = localStorage.getItem('currentname');
   }
   
   //submit button
   listDonate(donate){
      this.donationService.addDonate(
       //below list of item (from model)
-      this.cuid + this.currentdate,
+      this.donationid,
+      this.uname,
       donate.type,
       donate.quantity,
       donate.area,

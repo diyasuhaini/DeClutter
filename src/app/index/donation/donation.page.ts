@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DonationService } from '../service/donation.service';
 
 @Component({
   selector: 'app-donation',
@@ -14,9 +15,24 @@ export class DonationPage implements OnInit {
     autoplay:true
    };
 
-  constructor() { }
+
+  //variable
+  private totalquantity = 0;
+
+  constructor(private donationService: DonationService) { }
 
   ngOnInit() {
+  }
+
+
+  //auto load
+  ionViewWillEnter(){
+    this.donationService.getDonate().then((item) => { //get service
+      item.forEach((key) => { //for each item
+        this.totalquantity = this.totalquantity + key.quantity; //add the quantity
+      })
+      console.log(this.totalquantity); //check console
+    })
   }
 
 }
