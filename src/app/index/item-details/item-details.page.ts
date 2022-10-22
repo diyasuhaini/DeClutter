@@ -34,6 +34,10 @@ export class ItemDetailsPage implements OnInit {
   private vendor = [];
   private imgurl;
 
+  //for availability
+  private quantity;
+  private available;
+
   constructor(private router: Router,
               private itemService: ItemService, 
               private authenticationService: AuthenticationService,
@@ -41,6 +45,7 @@ export class ItemDetailsPage implements OnInit {
 
   ngOnInit() {
     const routerState = this.router.getCurrentNavigation().extras.state;
+    this.quantity = routerState.quantity; //set the current quantity
     this.item = [{
       itemid: "",
       vendor: routerState.vendor,
@@ -152,6 +157,11 @@ export class ItemDetailsPage implements OnInit {
     this.itemService.antiDuplicateSaved(this.itemtitle).then((item) => 
       this.savedchecked = item
     );
+
+    if(this.quantity == "0"){
+      this.available = true;
+    }
+    
   }
 
 
