@@ -58,6 +58,7 @@ export class HomePage implements OnInit {
     this.authenticationService.fetchUser().subscribe();
     this.itemService.myItems().then((item) => {
       this.item = item;
+      console.log(this.item);
     }, error => {
       console.log(error);
     });

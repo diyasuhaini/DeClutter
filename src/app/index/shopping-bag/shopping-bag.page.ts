@@ -42,7 +42,7 @@ export class ShoppingBagPage implements OnInit {
   private check = 1;
   
   //for quantity
-  private qtyCheck= [];
+  private qtyCheck = [];
   private getqty;
 
   segmentChanged(e){
@@ -237,17 +237,15 @@ export class ShoppingBagPage implements OnInit {
 
     console.log("this.selectedqty", this.selectedqty);
 
-
-
-    //below coding will be use in payment
-    this.itemService.deductQty().then((currentItem) => {
-      this.selectedqty.forEach((getquantity) => {
-        this.getqty = getquantity;
+    //deduct the item quantity
+    this.itemService.deductQty().then((currentItem) => { //get the service
+      this.selectedqty.forEach((getquantity) => { //match the item
+        this.getqty = getquantity; //get the total quantity
       })
-
-      console.log('testing', currentItem);
-      currentItem.forEach((item) => {
-        this.qtyCheck.push({
+  
+      console.log('testing', currentItem); //checking
+      currentItem.forEach((item) => { //match the item
+        this.qtyCheck.push({ //push to empty array
           'vendor': item.vendor,
           'username': item.username,
           'img1': item.img1,
@@ -264,18 +262,10 @@ export class ShoppingBagPage implements OnInit {
           'type': item.type
         })
       })
-      console.log(this.qtyCheck);
-      
-    })
-
-    this.itemService.itemQtyUpdate().then((update) => {
-      console.log(update);
+      console.log(this.qtyCheck); //checking
+      localStorage.setItem('update', JSON.stringify(this.qtyCheck)); //send to localstorage in array
     })
 
   }
-
-  
-
-  
 
 }

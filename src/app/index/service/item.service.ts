@@ -97,7 +97,7 @@ export class ItemService {
           "username": item[key].username, 
           "brand": item[key].brand,
           "description": item[key].description,
-          "price": item[key].price.toFixed(2),
+          "price": item[key].price,
           "size": item[key].size,
           "color": item[key].color,
           "categories": item[key].categories,
@@ -127,7 +127,7 @@ export class ItemService {
         "username": allItem[key].username, 
         "brand": allItem[key].brand,
         "description": allItem[key].description,
-        "price": allItem[key].price.toFixed(2),
+        "price": allItem[key].price,
         "size": allItem[key].size,
         "color": allItem[key].color,
         "categories": allItem[key].categories,
@@ -170,7 +170,7 @@ export class ItemService {
           "username": item[key].username, 
           "brand": item[key].brand,
           "description": item[key].description,
-          "price": item[key].price.toFixed(2),
+          "price": item[key].price,
           "size": item[key].size,
           "color": item[key].color,
           "categories": item[key].categories,
@@ -203,7 +203,7 @@ export class ItemService {
           "username": item[key].username, 
           "brand": item[key].brand,
           "description": item[key].description,
-          "price": item[key].price.toFixed(2),
+          "price": item[key].price,
           "size": item[key].size,
           "color": item[key].color,
           "categories": item[key].categories,
@@ -550,7 +550,33 @@ export class ItemService {
         })
       })
     }
-    return box2;
+    return box;
+  }
+
+  async updateItemQty(){
+    var itemUpdate = JSON.parse(localStorage.getItem('update')); //get item from localstorage
+    var itemid; //create a string
+    itemUpdate.forEach((item) => {
+      itemid = item.title + item.vendor; //the name of item id
+      return set(ref(database, 'item/' + itemid),{
+        "title": item.title,
+        "img1": item.img1,
+        "img2": item.img2,
+        "img3": item.img3, 
+        "vendor": item.vendor,
+        "username": item.username, 
+        "brand": item.brand,
+        "description": item.description,
+        "price": item.price,
+        "size": item.size,
+        "color": item.color,
+        "categories": item.categories,
+        "quantity": item.quantity,
+        "type": item.type,
+        "name": item.title
+      });
+    })
+      
   }
 
 

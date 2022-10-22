@@ -30,6 +30,13 @@ export class SuccessPaymentPage implements OnInit {
       }); //clear current item
       console.log('working jua');
     })
+
+    //this will update the quantity of item list
+    this.itemService.updateItemQty().then((update) => {
+      console.log(update);
+    })
   }
+
+  
 
 }

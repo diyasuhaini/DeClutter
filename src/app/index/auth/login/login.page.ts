@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
         console.log(response)
         console.log(value); //show the value current user
         localStorage.setItem('currentemail',value.email);
-        if(localStorage.getItem('currentemail') == "moderator@declutter.com"){
+        if(localStorage.getItem('currentemail') == "declutter.moderator@gmail.com"){ //will change this later to latest one
           this.router.navigateByUrl('index/mod/home');
         }else{
           this.router.navigateByUrl('index/home');
