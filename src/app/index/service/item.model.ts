@@ -90,3 +90,15 @@ export class feedback{
         public username: string
     ){}
 }
+
+
+//for notifications
+export class notification{
+    constructor(
+        public notificationid: string,
+        public user: string,
+        public vendor: string,
+        public type: string,
+        public date: string
+    ){}
+}
