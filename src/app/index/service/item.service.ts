@@ -38,6 +38,7 @@ export class ItemService {
     color: string,
     categories: string,
     quantity: string,
+    orgqty: string,
     brand: string,
     type: string
     //
@@ -56,6 +57,7 @@ export class ItemService {
       color: color,
       categories: categories,
       quantity: quantity,
+      orgqty: orgqty,
       brand: brand,
       type: type
     })
@@ -600,6 +602,41 @@ export class ItemService {
     // its confirmed
     console.log("container", container); //check value
     return container; //confirmed
+  }
+
+  async getEarns(){
+    // get current user
+    var currentid = localStorage.getItem('currentid');
+    // create array variable to return multiple values
+    var item = [];
+    // setup the variable for usage
+    item[0] = 0; // total item sold
+    item[1] = 0; // total item
+    item[2] = 0; // total item
+    item[3] = 0; // total item
+    // get all items from database
+    const itemdetails = (await get(ref(database, "item/"))).val();
+    console.log("itemdetails", itemdetails);
+    Object.keys(itemdetails).forEach(key => {
+      // check each item items if the vendor is the current user
+      if(itemdetails[key].vendor == currentid){
+        // setup constansts aka never changing values
+        const cal = itemdetails[key].orgqty - itemdetails[key].quantity;
+        console.log("cal", cal);
+        const price = itemdetails[key].price;
+
+        // adds up the values for each item
+        item[0] += cal;
+        item[1] += itemdetails[key].orgqty;
+
+        // calculating the quantity sold and price
+        item[2] += (price * cal);
+        // deducting the price
+        item[3] += (((price * cal)/100)*90);
+        console.log("item", item[1]);
+      }
+    });
+    return item;
   }
 
 

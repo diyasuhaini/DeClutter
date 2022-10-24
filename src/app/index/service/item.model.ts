@@ -16,6 +16,7 @@ export class Item{
         public color: string,
         public categories: string,
         public quantity: string,
+        public orgqty: string,
         public brand: string,
         public type: string
     ){}
