@@ -29,6 +29,7 @@ export class MepagePage implements OnInit {
   private following = 0;
   private imgurl;
   private reviewed = 0;
+  private earns = {itemsold: 0, totalitem: 0, total: 0, profits: 0 };
   segmentValue: String = "listing";
 
   //for segment change value
@@ -104,6 +105,18 @@ export class MepagePage implements OnInit {
       reviews.forEach(() => {
         this.reviewed++
       });
+    });
+
+    // get earns from database for the user
+    this.itemService.getEarns().then((item) => {
+      if(item){
+        console.log("earns on ts", item);
+        // earns = {itemsold: 0, totalitem: 0, total: 0, profits: 0 };
+        this.earns.itemsold = item[0]; // itemsold
+        this.earns.totalitem = item[1]; // totalitem
+        this.earns.total = item[2]; // total
+        this.earns.profits = item[3]; // profits
+      }
     });
 
     // getting pfp Start

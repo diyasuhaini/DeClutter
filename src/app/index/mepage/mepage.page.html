@@ -125,7 +125,15 @@
 
   <!-- earn segment -------------------------------------------- -->
   <div style="display: inline;" *ngIf="segmentValue == 'earn'">
-  
+    <div *ngIf="earns.totalitem == 0"> <!-- assume there is no item listed yet -->
+      no item listed yet
+    </div>
+
+    <div *ngIf="earns.totalitem != 0">  <!-- if items is listed -->
+      <div>total item sold: {{ earns.itemsold }} / {{ earns.totalitem }}</div>
+      <div>total earns: {{ earns.total }}</div>
+      <div>total profits: {{ earns.profits }}</div>
+    </div>
   </div>
   <!-- earn segment -------------------------------------------- -->
   </div>

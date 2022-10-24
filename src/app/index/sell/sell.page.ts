@@ -171,6 +171,7 @@ export class SellPage implements OnInit {
       item.color,
       item.categories,
       item.quantity,
+      item.quantity,
       item.brand,
       item.type
     ).then((response) => {

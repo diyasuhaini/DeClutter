@@ -60,6 +60,7 @@ export class ItemDetailsPage implements OnInit {
       color: routerState.color,
       categories: routerState.categories,
       quantity: routerState.quantity,
+      orgqty: routerState.quantity,
       brand: routerState.brand,
       type: routerState.type
     }];
