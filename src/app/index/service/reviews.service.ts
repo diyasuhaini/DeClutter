@@ -48,7 +48,6 @@ export class ReviewsService {
     const snapshot = await get((dbref));
     var reviews = snapshot.val();
     
-    console.log(reviews);
     Object.keys(reviews).forEach((key) => {
       console.log(key);
       console.log(reviews[key]);

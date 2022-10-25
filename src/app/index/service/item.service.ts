@@ -574,6 +574,7 @@ export class ItemService {
         "color": item.color,
         "categories": item.categories,
         "quantity": item.quantity,
+        "orgqty": item.orgqty,
         "type": item.type,
         "name": item.title
       });

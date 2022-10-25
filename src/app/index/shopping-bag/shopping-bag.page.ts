@@ -5,6 +5,7 @@ import { User } from '../auth/auth.model';
 import { ItemSoldPageModule } from '../item-sold/item-sold.module';
 import { Item } from '../service/item.model';
 import { ItemService } from '../service/item.service';
+import { NotificationsService } from '../service/notifications.service';
 import { Bag, Saved } from './shopping-bag.model';
 import { get, getDatabase, ref, remove, set, update } from "firebase/database";
 import { environment } from 'src/environments/environment';
@@ -45,12 +46,18 @@ export class ShoppingBagPage implements OnInit {
   private qtyCheck = [];
   private getqty;
 
+
+  //for date
+  private currentdate;
+  private cuid;
+  private incNo;
+
   segmentChanged(e){
     console.log(e.detail.value)
     this.segmentValue = e.detail.value;
   }
 
-  constructor(private itemService: ItemService, private authenticationService: AuthenticationService) {  }
+  constructor(private itemService: ItemService, private authenticationService: AuthenticationService, private notificationService: NotificationsService) {  }
 
   
   ngOnInit() {
@@ -196,7 +203,6 @@ export class ShoppingBagPage implements OnInit {
 
   pushqty(){
     localStorage.setItem("selectedqty", this.selectedqty.toString());
-    
   }
 
 
@@ -223,7 +229,7 @@ export class ShoppingBagPage implements OnInit {
     });
     this.itemService.retrieveSaved().then((cart) => {
       if(cart){
-        console.log("savewd", cart);
+        console.log("saved", cart);
         this.saveditem = cart;
       } else {
         this.saveditem = [];
@@ -237,6 +243,10 @@ export class ShoppingBagPage implements OnInit {
 
     console.log("this.selectedqty", this.selectedqty);
 
+    //retrieve
+    this.currentdate = new Date();
+    this.cuid = localStorage.getItem('currentname');
+
     //deduct the item quantity
     this.itemService.deductQty().then((currentItem) => { //get the service
       this.selectedqty.forEach((getquantity) => { //match the item
@@ -244,6 +254,15 @@ export class ShoppingBagPage implements OnInit {
       })
   
       console.log('testing', currentItem); //checking
+      var box = [];
+      //increment number
+      if(currentItem.length == null){ //if no value
+        this.incNo = 10; //add value (start with 101)
+      }else{ //if value existed
+        Object.keys(currentItem.length).forEach(index => box.push(currentItem.length[index])); // for each by getting its index then pushing
+        this.incNo = box.length + 10; // container length plus 101 aka the starting point
+      }
+
       currentItem.forEach((item) => { //match the item
         this.qtyCheck.push({ //push to empty array
           'vendor': item.vendor,
@@ -255,16 +274,31 @@ export class ShoppingBagPage implements OnInit {
           'size': item.size,
           'color': item.color,
           'categories': item.categories,
+          'orgqty': item.quantity,
           'quantity': item.quantity - this.getqty,
           'title': item.title,
           'description': item.description,
           'brand': item.brand,
           'type': item.type
         })
+
+        this.notificationService.addNotification(
+          item.vendor + item.title,
+          this.cuid,
+          item.username,
+          "purchased",
+          item.title,
+          this.currentdate,
+        )
+
       })
       console.log(this.qtyCheck); //checking
       localStorage.setItem('update', JSON.stringify(this.qtyCheck)); //send to localstorage in array
     })
+
+
+
+    
 
   }
 

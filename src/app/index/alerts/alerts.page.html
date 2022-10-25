@@ -5,13 +5,13 @@
 </ion-header>
 
 <ion-content color="medium">
-  <div class="wrap">
+  <div class="wrap" *ngFor="let alert of notify">
     <div class="pic">
       <img src="assets/img/shopIcon.png" alt="shopping bag image" class="myImg">
     </div>
     <div class="texts">
-      <p class="mainText">prelaugh just followed you</p>
-      <p class="smallText">3 days ago</p>
+      <p class="mainText">{{ alert.user }} just {{ alert.type }} your item {{ alert.item }}</p>
+      <p class="smallText">{{ alert.date }}</p>
     </div>
   </div>
 </ion-content>

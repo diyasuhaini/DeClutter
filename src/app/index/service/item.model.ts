@@ -100,6 +100,7 @@ export class notification{
         public user: string,
         public vendor: string,
         public type: string,
+        public item: string,
         public date: string
     ){}
 }
