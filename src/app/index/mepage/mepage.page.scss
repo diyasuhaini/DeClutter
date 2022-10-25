@@ -82,7 +82,7 @@ ion-label{
 }
 
 ion-header, ion-toolbar{
-    height: 9vh;
+    height: 7.5vh;
 }
 
 .btmlabel{
@@ -197,4 +197,73 @@ ion-toggle {
     width: 160px; height: 120px;
     margin: auto; margin-top: 30px;
     border-radius: 50%;
+}
+
+//for earning
+.earnBox{
+    display: flex;
+    flex: wrap;
+    margin: auto; margin-top: 20px;
+    width: 90%;  height: 11vh;
+    border: 1px solid rgb(5, 66, 5);
+    border-radius: 10px;
+}
+
+.myGif{
+    flex: 30%;
+    max-width: 130px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.myGif::part(image){
+    border-radius: 10px 0px 0px 10px;
+}
+
+.texts{
+    flex: 70%;
+    width: 63%; height: 100%;
+    background-color: rgb(192, 241, 225);
+    border-radius: 0px 10px 10px 0px;
+}
+
+.titleTxt{
+    display: block;
+    font-size: 20px; font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center; line-height: 50px;
+}
+
+.subTxt{
+    font-size: 24px; font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center; color: green;
+}
+
+//earn box 2
+.earnBox2{
+    display: inline-block;
+    margin-left: 30px; margin-top: 30px;
+    width: 40%; height: 220px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #dcfff3;
+}
+
+.myImgGif{
+    display: block;
+    width: 162px; height: 120px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.titleTxt2{
+    display: block;
+    font-size: 14px; font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center; line-height: 50px;
+}
+
+.subTxt2{
+    font-size: 24px; font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center; color: rgb(2, 145, 202);
 }

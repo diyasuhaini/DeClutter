@@ -129,11 +129,26 @@
       no item listed yet
     </div>
 
-    <div *ngIf="earns.totalitem != 0">  <!-- if items is listed -->
-      <div>total item sold: {{ earns.itemsold }} / {{ earns.totalitem }}</div>
-      <div>total earns: {{ earns.total }}</div>
-      <div>total profits: {{ earns.profits }}</div>
+    <div class="earnBox2" *ngIf="earns.totalitem != 0">
+      <img src="assets/img/item.gif" alt="item gif" class="myImgGif">
+      <div class="titleTxt2">Total Item Sold :</div>
+      <div class="subTxt2">{{ earns.itemsold }} / {{ earns.totalitem }}</div>
     </div>
+
+    <div class="earnBox2" style="margin-left: 25px" *ngIf="earns.totalitem != 0">
+      <img src="assets/img/money.gif" alt="money gif" class="myImgGif">
+      <div class="titleTxt2">Total Earnings :</div>
+      <div class="subTxt2">B{{ earns.total | currency }}</div>
+    </div>
+    
+    <div class="earnBox" *ngIf="earns.totalitem != 0">
+      <img src="assets/img/earn.gif" alt="earning gif" class="myGif">
+      <div class="texts">
+        <div class="titleTxt">Total Profit :</div>
+        <div class="subTxt">B{{ earns.profits | currency }}</div>
+      </div>
+    </div>
+
   </div>
   <!-- earn segment -------------------------------------------- -->
   </div>

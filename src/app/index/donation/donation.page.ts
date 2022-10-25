@@ -28,6 +28,7 @@ export class DonationPage implements OnInit {
   //auto load
   ionViewWillEnter(){
     this.donationService.getDonate().then((item) => { //get service
+      this.totalquantity = 0;
       item.forEach((key) => { //for each item
         this.totalquantity = this.totalquantity + key.quantity; //add the quantity
       })
