@@ -281,6 +281,7 @@ export class ShoppingBagPage implements OnInit {
           "purchased",
           item.title,
           this.currentdate,
+          "assets/img/shopIcon.png"
         )
 
       })

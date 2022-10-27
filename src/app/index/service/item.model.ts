@@ -101,6 +101,7 @@ export class notification{
         public vendor: string,
         public type: string,
         public item: string,
-        public date: string
+        public date: string,
+        public img: string,
     ){}
 }
