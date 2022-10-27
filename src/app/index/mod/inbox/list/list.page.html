@@ -32,11 +32,11 @@
 <ion-content color="medium">
 
   <div color="medium">
-    <ion-searchbar color="medium" [(ngModel)]="searchreports"></ion-searchbar>
+    <ion-searchbar color="medium" [(ngModel)]="searchreports"></ion-searchbar> <!---->
   </div>
   
   <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
-    <ion-item color="medium" routerLink="report-details" *ngFor="let account of ((reports|filterReport:searchreports)|filterError:errors)" [state]="account">
+    <ion-item color="medium" routerLink="report-details"  *ngFor="let account of ((reports|filterReport:searchreports)|filterError:errors)" [state]="account"> <!--  -->
       <ion-avatar style="margin:15px; height: 50px;width:50px;"><ion-img src="assets/img/profile-round.png"></ion-img></ion-avatar>
       <ion-label>
         <ion-text><b>{{ account.username }}</b></ion-text><br>

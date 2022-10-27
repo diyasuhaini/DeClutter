@@ -31,10 +31,13 @@ export class ListPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.reportService.getReport().then((list) => {
+    this.reportService.retrieveReport().then((list) => {
       console.log(list);
-      this.reports = list.reverse();
+      this.reports = list;
     })
   }
+
+
+  
 
 }

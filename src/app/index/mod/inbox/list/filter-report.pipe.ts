@@ -4,6 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filterReport'
 })
 export class FilterReportPipe implements PipeTransform {
+  private testing = [];
 
   transform(value: Array<any>, ...args: any): any {
     
@@ -13,9 +14,9 @@ export class FilterReportPipe implements PipeTransform {
     //   return value.filter((reports)=>{
     //     return reports.error.toLowerCase().indexOf(args[0].toLowerCase()) >= 0
     //   })
-    } else {
+    }else{
       return value.filter((reports)=>{
-        return reports.error.toLowerCase().indexOf(args[0].toLowerCase()) >= 0
+        return reports.username.toLowerCase().indexOf(args[0].toLowerCase()) >= 0
       })
     }
   }

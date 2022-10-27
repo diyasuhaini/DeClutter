@@ -20,10 +20,9 @@ export class HomePage implements OnInit {
               private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-    this.reportService.getReport().then((list) => {
+    this.reportService.retrieveReport().then((list) => {
       console.log(list);
-      this.reports = list.reverse();
-      console.log(this.reports);
+      this.reports = list;
     })
 
 

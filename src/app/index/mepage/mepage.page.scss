@@ -241,9 +241,8 @@ ion-toggle {
 
 //earn box 2
 .earnBox2{
-    display: inline-block;
-    margin-left: 30px; margin-top: 30px;
-    width: 40%; height: 220px;
+    display: block; margin: auto;
+    width: 85%; height: 220px;
     border: 1px solid black;
     border-radius: 10px;
     background-color: #dcfff3;
@@ -266,4 +265,16 @@ ion-toggle {
     font-size: 24px; font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center; color: rgb(2, 145, 202);
+}
+
+
+//earnflex
+.earnFlex{
+    display: flex; flex: wrap;
+    width: 95%; height: 240px;
+    margin: auto; margin-top: 20px;
+}
+
+.earnLeft, .earnRight{
+    flex: 50%;
 }
