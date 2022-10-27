@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ReportService } from 'src/app/index/service/report.service';
 import { report } from '../../../service/item.model'; //manually imported
 
@@ -10,12 +11,23 @@ import { report } from '../../../service/item.model'; //manually imported
 })
 export class ListPage implements OnInit {
 
+  private errors: String = "all";
+  private errorForm: FormGroup;
+
   private reports: report[];
 
   constructor(private reportService: ReportService) { }
 
   ngOnInit() {
-    
+    this.reports = [];
+    this.errorForm = new FormGroup({
+      error: new FormControl()
+    });
+  }
+
+  // filter error inbox list
+  filterError(){
+    this.errors = this.errorForm.value.error;
   }
 
   ionViewWillEnter(){

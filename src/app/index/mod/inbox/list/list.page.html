@@ -5,25 +5,25 @@
     </ion-buttons>
     <ion-title color="dark"><b>Error Inbox</b></ion-title>
     <ion-buttons slot="end">
-      <ion-button color="dark"><ion-icon name="options" size="large"></ion-icon></ion-button>
+      <ion-button color="dark" id="filterList"><ion-icon name="options" size="large"></ion-icon></ion-button>
     </ion-buttons>
 
-    <!-- model for filter -->
-    <ion-model>
+    <ion-popover trigger="filterList" triggerAction="click">
       <ng-template>
-        <ion-content>
-          <ion-form>
-
-            <ion-toolbar></ion-toolbar>
-
-            <ion-list>
-              <ion-item></ion-item>
-            </ion-list>
-            
-          </ion-form>
+        <ion-content class="ion-padding">
+          <form [formGroup]="filterError" (ngSubmit)="filterError()">
+            <div style="border:1px solid white; border-radius: 5px;">
+              <ion-select interface="pop-over" placeholder="Select error" color="light" formControlName="error">
+                <ion-select-option value="bug">Bug</ion-select-option>
+                <ion-select-option value="payment">Payment</ion-select-option>
+                <ion-select-option value="order">Order</ion-select-option>
+              </ion-select>
+            </div>
+            <ion-button color="none" type="submit" expand="block" style=" border-radius: 5px;color:#F2BE8D; border:1px solid #F2BE8D;">Filter</ion-button>
+          </form>
         </ion-content>
       </ng-template>
-    </ion-model>
+    </ion-popover>
 
   </ion-toolbar>
 </ion-header>
@@ -36,7 +36,7 @@
   </div>
   
   <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
-    <ion-item color="medium" routerLink="report-details" *ngFor="let account of (reports|filterReport:searchreports)" [state]="account">
+    <ion-item color="medium" routerLink="report-details" *ngFor="let account of ((reports|filterReport:searchreports)|filterError:errors)" [state]="account">
       <ion-avatar style="margin:15px; height: 50px;width:50px;"><ion-img src="assets/img/profile-round.png"></ion-img></ion-avatar>
       <ion-label>
         <ion-text><b>{{ account.username }}</b></ion-text><br>
