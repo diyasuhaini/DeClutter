@@ -379,13 +379,14 @@ export class ItemService {
     var currentid = localStorage.getItem('currentid');
     const dbref = ref(database, 'shopping-bag/' + currentid);
     const snapshot = await get((dbref));
-    console.log(snapshot.val());
     var cont = [];
-    snapshot.val().forEach((item) => {
-      if(item != itemid){
-        cont.push(item);
-      }
-    })
+    if(snapshot.val()){
+      snapshot.val().forEach((item) => {
+        if(item != itemid){
+          cont.push(item);
+        }
+      })
+    }
     return set(dbref, cont);
   }
 
