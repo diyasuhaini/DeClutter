@@ -8,6 +8,7 @@ import { Item } from '../service/item.model';
 import { ItemService } from '../service/item.service';
 import { get, getDatabase, onValue, ref as dref, set } from 'firebase/database';
 import { ReviewsService } from '../service/reviews.service';
+import { NotificationsService } from '../service/notifications.service';
 
 const database = getDatabase();
 
@@ -31,11 +32,14 @@ export class UserPage implements OnInit {
   private imgurl;
   private reviewed = 0;
 
+  private time;
+
   constructor(private router: Router,
               private itemService: ItemService,
               private followService: FollowService,
               private authenticationService: AuthenticationService,
-              private reviewer: ReviewsService
+              private reviewer: ReviewsService,
+              private notificationService: NotificationsService
     ) { }
   
   ngOnInit() {
@@ -63,6 +67,9 @@ export class UserPage implements OnInit {
       this.imgurl = (await get((dref(database, 'userpfp/' + this.vendor)))).val();
     });
     // getting pfp End
+
+    //for time
+    this.time = new Date();
   }
 
   followuser(){
@@ -79,7 +86,15 @@ export class UserPage implements OnInit {
       console.log(error);
     })
 
-    
+    this.notificationService.addNotification(
+      this.cuid + 'following',
+      localStorage.getItem('currentname'),
+      this.user[0].username,
+      "followed",
+      "you",
+      this.time,
+      "assets/img/follow.png"
+    )
   }
 
   ionViewWillEnter(){

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { ReviewsService } from '../service/reviews.service';
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { getDatabase, ref as dref, onValue, get } from 'firebase/database';
+import { NotificationsService } from '../service/notifications.service';
 
 // get storage from firebase bucket g://
 const storage = getStorage(); 
@@ -26,7 +27,12 @@ export class ReviewsPage implements OnInit {
   private reviews;
   private calstar;
 
-  constructor(private router: Router, private builder: FormBuilder, private review: ReviewsService) { }
+  private time;
+
+  constructor(private router: Router, 
+              private builder: FormBuilder, 
+              private review: ReviewsService,
+              private notificationService: NotificationsService) { }
 
   ngOnInit() {
     var review2 =[];
@@ -49,6 +55,8 @@ export class ReviewsPage implements OnInit {
         console.log("reviews", reviews);
         var calstar = 0; // total star
       var startaker = 0; // get length of review
+      
+      this.time = new Date();
 
       reviews.forEach(async (review) => {
         review2.push({ 
@@ -62,6 +70,8 @@ export class ReviewsPage implements OnInit {
          });
         calstar += review.star;
         startaker++;
+        //for notification
+        
       });
       console.log("review2", review2);
       this.reviews = review2;
@@ -74,6 +84,16 @@ export class ReviewsPage implements OnInit {
     // console.log("values" , value);
     // console.log("comment" , value.comment);
     this.review.postReviews(value.comment, this.vendorid, this.imgurl, this.starcatcher).then(result => {console.log("result")});
+
+    this.notificationService.addNotification(
+      this.vendorid + this.starcatcher,
+      localStorage.getItem('currentname'),
+      this.vendorname,
+      "reviewed",
+      "you",
+      this.time,
+      "assets/img/rate.png"
+    )
   }
   
   async pfpimage(userid){
@@ -153,5 +173,7 @@ export class ReviewsPage implements OnInit {
 
     });
   }
+
+
 
 }

@@ -254,14 +254,6 @@ export class ShoppingBagPage implements OnInit {
       })
   
       console.log('testing', currentItem); //checking
-      var box = [];
-      //increment number
-      if(currentItem.length == null){ //if no value
-        this.incNo = 10; //add value (start with 101)
-      }else{ //if value existed
-        Object.keys(currentItem.length).forEach(index => box.push(currentItem.length[index])); // for each by getting its index then pushing
-        this.incNo = box.length + 10; // container length plus 101 aka the starting point
-      }
 
       currentItem.forEach((item) => { //match the item
         this.qtyCheck.push({ //push to empty array
@@ -289,6 +281,7 @@ export class ShoppingBagPage implements OnInit {
           "purchased",
           item.title,
           this.currentdate,
+          "assets/img/shopIcon.png"
         )
 
       })

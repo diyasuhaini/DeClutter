@@ -41,7 +41,9 @@ export class ReportService {
       Object.keys(getLength.val()).forEach(index => reportCont.push(getLength.val()[index])); // for each by getting its index then pushing
       rptId = reportCont.length + 1001; // container length plus 1001 aka the starting point
     }
-    const dbref2 = ref(database, 'report/' + currentid + '/' + currentid + '&' + rptId); //get the referrence (new)
+
+    var today = new Date();
+    const dbref2 = ref(database, 'report/' + currentid + '&' + today); //get the referrence (new)
 
     //create database in firebase
     return set(dbref2, {
@@ -87,6 +89,19 @@ export class ReportService {
       })
     }
     return newBox;
+  }
+
+  async retrieveReport(){
+    const dbref = ref(database, 'report/'); //get info from this database
+    const snapshot = await get((dbref)); //retrieve its value
+    var item = snapshot.val(); //get the value in other format
+    var box = []; //an empty array
+    if(item != null){
+      Object.keys(item).forEach((newItem)=>{
+        box.push(item[newItem]);
+      })
+    }
+    return box; //completed
   }
 
 

@@ -23,7 +23,6 @@ export class AlertsPage implements OnInit {
           this.notify.push(keys);
         }
       })
-      
       console.log(this.notify);
     })
   }
