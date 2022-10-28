@@ -23,8 +23,8 @@ export class ForgotPasswordPage implements OnInit {
 
   resetPass(value){
     console.log("lesgoooo 1");
-    const auth = getAuth();
-    sendPasswordResetEmail(auth, value.email)
+    const auth = getAuth(); // connect to firebase auth api
+    sendPasswordResetEmail(auth, value.email) // send password reset email
       .then(() => {
         // Password reset email sent!
         // ..

@@ -19,33 +19,28 @@ export class VerificationPage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    var user = auth.currentUser;
-    if (user) {
+    var user = auth.currentUser; // fetch current login user
+    if (user) { // if user is logged in 
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       // ...
-    } else {
+    } else { // if not
       // No user is signed in.
-      this.router.navigate(['index/auth']);
+      this.router.navigate(['index/auth']); // go back to login page
     }
 
   }
 
   sendEmail(){
-    sendEmailVerification(auth.currentUser)
+    sendEmailVerification(auth.currentUser) // send email verification
       .then(() => {
         // Email verification sent!
         // ...
       });
   }
 
-  checkUser(){
-    var user = auth.currentUser;
-    console.log(user.emailVerified);
-  }
-
   continue(){
-    this.router.navigate(['index/']);
+    this.router.navigate(['index/']); // go to login
   }
 
 }

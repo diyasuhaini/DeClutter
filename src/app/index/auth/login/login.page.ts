@@ -65,10 +65,10 @@ export class LoginPage implements OnInit {
         }else{
           const auth = getAuth();
           const user = auth.currentUser;
-          if(!user.emailVerified){
-            this.router.navigateByUrl('index/auth/verification');
+          if(!user.emailVerified){ // if user email is not verified
+            this.router.navigateByUrl('index/auth/verification'); // go to verification
           } 
-          if(user.emailVerified){
+          if(user.emailVerified){ // if user email is already verified
             this.router.navigateByUrl('index/home');
           }
         }
