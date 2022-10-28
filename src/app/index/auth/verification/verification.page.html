@@ -11,18 +11,12 @@
   <form action="">
     <ion-card color="medium">
       <!--first input-->
-      <p>we have send you OTP via Email for</p>
-      <p>verification</p>
-      <ion-label>Enter the OTP</ion-label>
-      <ion-item color="medium">
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <br><!--break line-->
-      <p>Didn't receive it? &nbsp;<a href="#">Resend OTP</a></p>
+      <p>we have send you Email for verification</p> 
+      <ion-button color="tertiary" shape="round" (click)="sendEmail()">send email</ion-button>
     </ion-card>
     <!--for blank space-->
     <div id="spaces"></div>
     <!--submit button here-->
-    <ion-button color="tertiary" shape="round" routerLink="verified">Continue</ion-button>
+    <ion-button color="tertiary" shape="round" (click)="continue()">Continue</ion-button>
   </form>
 </ion-content>

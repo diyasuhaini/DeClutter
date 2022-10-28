@@ -8,6 +8,7 @@ import { Tracks } from '../service/item.model'; //new
 import { FollowService } from '../service/follow.service';
 import { get, getDatabase, onValue, ref } from 'firebase/database';
 import { ReviewsService } from '../service/reviews.service';
+import { getAuth } from 'firebase/auth';
 
 const database = getDatabase();
 
@@ -40,6 +41,9 @@ export class MepagePage implements OnInit {
   constructor(private authenticationService: AuthenticationService, private itemService: ItemService, private followService: FollowService, private reviews: ReviewsService) { }
 
   ngOnInit() {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    console.log("user.emailVerified",user.emailVerified);
     this.item = []; //
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;

@@ -26,7 +26,8 @@ export class NotificationsService {
     vendor: string,
     type: string,
     item: string,
-    date: string
+    date: string,
+    img: string
   ){
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -40,7 +41,8 @@ export class NotificationsService {
       vendor: vendor,
       type: type, //purchased, reviewed, message, or followed
       item: item,
-      date: finaldate
+      date: finaldate,
+      img: img
     })
   }
 

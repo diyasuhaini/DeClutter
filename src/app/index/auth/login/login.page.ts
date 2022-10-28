@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { getAuth } from 'firebase/auth';
 import { AuthenticationService } from 'src/app/authentication.service';
 
 @Component({
@@ -62,7 +63,14 @@ export class LoginPage implements OnInit {
         if(localStorage.getItem('currentemail') == "declutter.moderator@gmail.com"){ //will change this later to latest one
           this.router.navigateByUrl('index/mod/home');
         }else{
-          this.router.navigateByUrl('index/home');
+          const auth = getAuth();
+          const user = auth.currentUser;
+          if(!user.emailVerified){ // if user email is not verified
+            this.router.navigateByUrl('index/auth/verification'); // go to verification
+          } 
+          if(user.emailVerified){ // if user email is already verified
+            this.router.navigateByUrl('index/home');
+          }
         }
         
       }, error => {

@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium">
+<ion-content color="medium" *ngIf="verified">
     <div id="verification">
       <b>Verification is successful!</b> <br>
       <img src="\assets\icon\check.png" alt="">
@@ -12,6 +12,6 @@
     <!--for blank space-->
     <div id="spaces"></div>
     <!--submit button here-->
-    <ion-button color="tertiary" shape="round">Continue</ion-button>
+    <ion-button color="tertiary" shape="round" (click)="continue()">Continue</ion-button>
 </ion-content>
  
