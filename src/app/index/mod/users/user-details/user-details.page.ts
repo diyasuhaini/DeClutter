@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Database, get, getDatabase, onValue, ref as dref } from 'firebase/database';
+import { getStorage } from 'firebase/storage';
+import { Subscription } from 'rxjs';
+import { User } from '../../../auth/auth.model';
+import { UsersService } from '../../../service/users.service';
+import { AuthenticationService } from 'src/app/authentication.service';
+
+const storage = getStorage();
+const database = getDatabase();
 
 @Component({
   selector: 'app-user-details',
@@ -8,9 +17,27 @@ import { Router } from '@angular/router';
 })
 export class UserDetailsPage implements OnInit {
 
-  constructor(private router: Router) { }
+  private userSub: Subscription;
+  private people: User[];
+
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
+    const routerState = this.router.getCurrentNavigation().extras.state;
+
+    //find if routerState user same as in database, display value
+    this.userSub = this.authenticationService.$users.subscribe(users => {
+      this.people = users;
+      this.people.forEach((user) => {
+        if(user.username.toLowerCase() == routerState.username) {
+          console.log(user);
+        }
+      })
+    });
+  }
+
+  ionViewWillEnter() {
+    this.authenticationService.fetchUser().subscribe();
   }
 
   toProfile() {
@@ -18,4 +45,8 @@ export class UserDetailsPage implements OnInit {
     this.router.navigateByUrl('index/mod/users/user-details/user-profile');
   }
 
+
+
 }
+
+
