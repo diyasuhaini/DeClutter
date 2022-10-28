@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from '../auth/auth.model';
 import { AuthenticationService } from 'src/app/authentication.service';
+import { getAuth } from 'firebase/auth';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +33,9 @@ export class HomePage implements OnInit {
   constructor(private itemService: ItemService, private router: Router, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    console.log("user.emailVerified",user.emailVerified);
     this.item = [];
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
