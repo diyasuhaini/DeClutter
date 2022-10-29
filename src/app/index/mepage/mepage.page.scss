@@ -105,9 +105,11 @@ ion-toggle {
 }
 
 .image{
-    width: 120px; height: 100px;
+    display: block;
+    width: 120px; height: 110px;
     margin-top: 5px; 
     border: 1px solid #FAECDF; border-radius: 10px;
+    margin: auto; margin-top: 3px;
 }
 
 .image::part(image){
@@ -126,13 +128,15 @@ ion-toggle {
 .post{
     display: flex;
     flex: wrap;
-    width: 95%; height: 15vh;
+    width: 90%; height: 13vh;
     margin: auto; margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 20px; border: 1px solid rgb(255, 206, 166);
+    border-radius: 10px;
 }
 
 .postImg{
     flex: 40%; height: 100%;
+    margin: auto;
 }
 
 .postContent{
@@ -277,4 +281,9 @@ ion-toggle {
 
 .earnLeft, .earnRight{
     flex: 50%;
+}
+
+
+.noList{
+    text-align: center; margin-top: 30px;
 }
