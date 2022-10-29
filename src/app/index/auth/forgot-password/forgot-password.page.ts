@@ -12,6 +12,7 @@ export class ForgotPasswordPage implements OnInit {
 
   private resetForm: FormGroup;
   private check: boolean = false;
+  private disappear: boolean = false;
 
   constructor(private builder: FormBuilder) { }
 
@@ -30,6 +31,9 @@ export class ForgotPasswordPage implements OnInit {
         // ..
         console.log("lesgoooo 2");
         this.check = true;
+        if(this.check = true){
+          this.disappear = true;
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
