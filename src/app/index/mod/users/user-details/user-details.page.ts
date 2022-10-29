@@ -24,14 +24,23 @@ export class UserDetailsPage implements OnInit {
 
   ngOnInit() {
     const routerState = this.router.getCurrentNavigation().extras.state;
+    // this.people = [{
+    //   contact: routerState.contact,
+    //   email: routerState.email,
+    //   username: routerState.username
+    // }];
 
     //find if routerState user same as in database, display value
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
+      console.log(this.people);
       this.people.forEach((user) => {
-        if(user.username.toLowerCase() == routerState.username) {
-          console.log(user);
-        }
+        // if(user.username[0].toLowerCase() == routerState.username) {
+        //   console.log(user);
+        // }else {
+        //   console.log("no user");
+        // }
+        // console.log(user);
       })
     });
   }

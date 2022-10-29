@@ -76,15 +76,14 @@
       </ion-row>
     </ion-grid>
   </div>
+  <ion-footer class="change-category" style="position:absolute; bottom:0;">
+    <div style="display: flex; height:100%;">
+      <ion-button style="width:90%;margin:auto; --border-radius:20px;" routerLink="../product-details/change-category" [state]="item[0]">
+        <ion-text color="dark" id="open-category"><b>Change Category</b></ion-text>
+      </ion-button>
+    </div>
+  </ion-footer>
 
 </ion-content>
 
-<ion-footer class="change-category">
-  <div style="display: flex; height:100%;">
-    <ion-button style="width:90%;margin:auto; --border-radius:20px;" (click)="changeCategory()">
-      <ion-text color="dark" id="open-category"><b>Change Category</b></ion-text>
-    </ion-button>
-  </div>
-  
 
-</ion-footer>
