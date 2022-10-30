@@ -17,7 +17,7 @@
 
   <ion-list style="background-color:#ffffff;">
 
-    <ion-item color="medium" routerLink="../orders/order-details" *ngFor="let track of trackOrder"  [state]="track">
+    <ion-item color="medium" routerLink="../orders/order-details" *ngFor="let track of userOrders" [state]="track">
       <ion-grid>
         <ion-row>
           <ion-col style="padding: 0;" size="3">
@@ -27,14 +27,14 @@
           </ion-col>
           <ion-col style="padding: 0;">
             <ion-row>
-              <ion-col size="8"><ion-text color="light">{{ track.orderid }}</ion-text></ion-col>
-              <ion-col size="4" style="text-align: right;"><ion-text><b>{{ track.totalprice | currency }}</b></ion-text></ion-col>
+              <ion-col size="8" style="display:none;"><ion-text><b>{{ track.username }}</b></ion-text></ion-col>
+              <ion-col size="8"><ion-text><b>{{ track.username }}</b></ion-text></ion-col>
             </ion-row>
             <ion-row>
-              <ion-col size="6"><ion-text><b>{{ track.status }}</b></ion-text></ion-col>
+              <ion-col size="10"><ion-text color="light">{{ track.email }}</ion-text></ion-col>
             </ion-row>
             <ion-row>
-              <ion-col size="4" style="text-align: right;"><ion-text color="light">{{ track.eta }}</ion-text></ion-col>
+              <ion-col size="10"><ion-text color="light">{{ track.contact }}</ion-text></ion-col>
             </ion-row>
           </ion-col>
         </ion-row>

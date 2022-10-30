@@ -27,73 +27,35 @@ export class OrdersPage implements OnInit {
               private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    
     this.userSub = this.authenticationService.$users.subscribe(users => {
       this.people = users;
     });
-  }
-
-  //auto get the item from database
-  ionViewWillEnter(){
 
     //subcribes user
     this.authenticationService.fetchUser().subscribe();
 
     //get from tracks database
     this.orderService.getTracking().then((tracks) => { //refer from item.service getItemTracking
-      this.tracks = tracks; //get the value
-      console.log(this.tracks);
       tracks.forEach((userOrders) => {
-        console.log(userOrders);
         this.people.forEach((people) => {
           if(people.id == userOrders){
             this.userOrders.push({
               'id': people.id,
+              'username': people.username,
+              'contact': people.contact,
+              'email': people.email
             });
           }
         })
       });
       console.log(this.userOrders);
-    },error => {
-      console.log(error); //there is an error item.service getItemTracking
     })
+  }
 
-
-    //get tracks for more details
-    this.orderService.getTrackingdetails().then((details) => {
-      this.eachOrder = details;
-      this.userOrders.forEach((items) => {
-        console.log(items);
-        console.log(this.eachOrder[0])
-        this.trackOrder.push(items);
-        
-      })
-      
-      
-    })
-    console.log(this.trackOrder);
-    console.log(this.eachOrder);
+  //auto get the item from database
+  ionViewWillEnter(){
+    
   }
 
 }
-
-// private itemTracking = track[];
-// array1 = [ ];
-// array2 = [ ];
-
-
-// test(val:string){
-//   this.chemicals.forEach(data => {
-//     return array1 = this.itemtracking."retrieve the data from each array"
-//     push array1 into array2;
-//   });
-// }
-
-// this.address1= 
-
-//   {name:'', flat:'', locality:'', nickName:'' }
-
-
-
-//   this.address.push(this.address1);
-
-//   console.log(this.address);
