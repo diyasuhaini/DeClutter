@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { get, getDatabase, ref } from 'firebase/database';
+import { get, getDatabase, ref, set } from 'firebase/database';
 import { environment } from 'src/environments/environment';
 
 // initialize the application allow new database apit to be used
@@ -55,7 +55,20 @@ export class OrderService {
         box.push(newItem); //convert 2d array into normal array
       })
     }
+    console.log(box);
     return box;
+  }
+
+  async approveTracking(order, id){
+    const dbref = ref(database, 'item-tracking/' + id); //get the referrence from item tracking table (current user only)
+    const snapshot = (await get((dbref))).val(); //refer back from user
+    console.log("snapshot", snapshot);
+    Object.keys(snapshot).forEach((key) => {
+      console.log("key", key);
+      if(snapshot[key].orderid == order){
+        return set(ref(database, 'item-tracking/' + id + "/" + key + "/status"), "completed");
+      }
+    })
   }
 
 }

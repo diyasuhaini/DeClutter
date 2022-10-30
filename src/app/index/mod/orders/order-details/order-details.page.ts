@@ -31,6 +31,15 @@ export class OrderDetailsPage implements OnInit {
     })
     
   }
+  
+  approveOrder(order){
+    this.orderService.approveTracking(order, this.track[0].id).then(() =>{
+      this.orderService.getTrackingdetails().then((details) => {
+        console.log(details);
+        this.trackdetail = details;
+      })
+    });
+  }
 
   ionViewWillEnter(){
     this.orderService.getTrackingdetails().then((details) => {
