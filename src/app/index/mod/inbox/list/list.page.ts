@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ReportService } from 'src/app/index/service/report.service';
 import { report } from '../../../service/item.model'; //manually imported
 
-
 @Component({
   selector: 'app-list',
   templateUrl: './list.page.html',
@@ -13,13 +12,14 @@ export class ListPage implements OnInit {
 
   private errors: String = "all";
   private errorForm: FormGroup;
+  private reports = [];
 
-  private reports: report[];
 
   constructor(private reportService: ReportService) { }
 
   ngOnInit() {
-    this.reports = [];
+
+    //form control
     this.errorForm = new FormGroup({
       error: new FormControl()
     });
@@ -32,9 +32,10 @@ export class ListPage implements OnInit {
 
   ionViewWillEnter(){
     this.reportService.retrieveReport().then((list) => {
-      console.log(list);
       this.reports = list;
+      console.log(this.reports);
     })
+
   }
 
 

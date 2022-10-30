@@ -15,7 +15,7 @@
   
   <ion-list style="letter-spacing: 1px;background-color:#ffffff;">
 
-    <ion-item color="medium" routerLink="../users/user-details" *ngFor="let accounts of people" [state]="account">
+    <ion-item color="medium" routerLink="../users/user-details" *ngFor="let accounts of newPeople" [state]="account">
       <ion-avatar style="margin:15px; height: 50px;width:50px;">
         <img [src]="accounts.imgurl">
       </ion-avatar>
