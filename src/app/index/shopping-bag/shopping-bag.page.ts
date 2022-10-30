@@ -203,6 +203,47 @@ export class ShoppingBagPage implements OnInit {
 
   pushqty(){
     localStorage.setItem("selectedqty", this.selectedqty.toString());
+    //deduct the item quantity
+    this.itemService.deductQty().then((currentItem) => { //get the service
+      this.selectedqty.forEach((getquantity) => { //match the item
+        this.getqty = getquantity; //get the total quantity
+      })
+  
+      console.log('testing', currentItem); //checking
+
+      currentItem.forEach((item) => { //match the item
+        this.qtyCheck.push({ //push to empty array
+          'vendor': item.vendor,
+          'username': item.username,
+          'img1': item.img1,
+          'img2': item.img2,
+          'img3': item.img3,
+          'price': item.price,
+          'size': item.size,
+          'color': item.color,
+          'categories': item.categories,
+          'orgqty': item.quantity,
+          'quantity': item.quantity - this.getqty,
+          'title': item.title,
+          'description': item.description,
+          'brand': item.brand,
+          'type': item.type
+        })
+
+        this.notificationService.addNotification(
+          item.vendor + item.title,
+          this.cuid,
+          item.username,
+          "purchased",
+          item.title,
+          this.currentdate,
+          "assets/img/shopIcon.png"
+        )
+
+      })
+      console.log(this.qtyCheck); //checking
+      localStorage.setItem('update', JSON.stringify(this.qtyCheck)); //send to localstorage in array
+    })
   }
 
 
@@ -247,52 +288,7 @@ export class ShoppingBagPage implements OnInit {
     this.currentdate = new Date();
     this.cuid = localStorage.getItem('currentname');
 
-    //deduct the item quantity
-    this.itemService.deductQty().then((currentItem) => { //get the service
-      this.selectedqty.forEach((getquantity) => { //match the item
-        this.getqty = getquantity; //get the total quantity
-      })
-  
-      console.log('testing', currentItem); //checking
-
-      currentItem.forEach((item) => { //match the item
-        this.qtyCheck.push({ //push to empty array
-          'vendor': item.vendor,
-          'username': item.username,
-          'img1': item.img1,
-          'img2': item.img2,
-          'img3': item.img3,
-          'price': item.price,
-          'size': item.size,
-          'color': item.color,
-          'categories': item.categories,
-          'orgqty': item.quantity,
-          'quantity': item.quantity - this.getqty,
-          'title': item.title,
-          'description': item.description,
-          'brand': item.brand,
-          'type': item.type
-        })
-
-        this.notificationService.addNotification(
-          item.vendor + item.title,
-          this.cuid,
-          item.username,
-          "purchased",
-          item.title,
-          this.currentdate,
-          "assets/img/shopIcon.png"
-        )
-
-      })
-      console.log(this.qtyCheck); //checking
-      localStorage.setItem('update', JSON.stringify(this.qtyCheck)); //send to localstorage in array
-    })
-
-
-
     
-
   }
 
 }
