@@ -224,6 +224,9 @@ export class ItemService {
     const snapshot = await get((dbref)); //get all data from ref
     var item = snapshot.val(); //retrieve value
     var lock = false; //no user
+    if(!item){
+      return set(ref(database, 'shopping-bag/'+ currentid), [(title + vendor)]);
+    }
     if(item){
       if(item[currentid]){ //if user
         console.log("item[currentid]", item[currentid]); 
