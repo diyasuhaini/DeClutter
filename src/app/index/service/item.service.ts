@@ -645,53 +645,10 @@ export class ItemService {
   }
 
   //for Moderator: change product type and catogory
-  async updateItemCateType(value){
-    //below is for pushing new to current data
-    var newCateType = []; //created an empty array
-    newCateType.push({
-      vendor: value.vendor,
-      username: value.username,
-      type: value.type,
-      title: value.title,
-      size: value.size,
-      quantity: value.quantity,
-      price: value.price,
-      orgqty: value.orgqty,
-      img1: value.img1,
-      img2: value.img2,
-      img3: value.img3,
-      description: value.description,
-      color: value.color,
-      categories: value.categories,
-      brand: value.brand
-    })
-
-    console.log("newCateType", newCateType[0]);
-
-    // var itemUpdate = JSON.parse(localStorage.getItem('changed')); //get item from localstorage
-    // var itemid; //create a string
-    // itemUpdate.forEach((item) => {
-    //   itemid = item.title + item.vendor; //the name of item id
-    //   return set(ref(database, 'item/' + itemid),{
-    //     "title": item.title,
-    //     "img1": item.img1,
-    //     "img2": item.img2,
-    //     "img3": item.img3, 
-    //     "vendor": item.vendor,
-    //     "username": item.username, 
-    //     "brand": item.brand,
-    //     "description": item.description,
-    //     "price": item.price,
-    //     "size": item.size,
-    //     "color": item.color,
-    //     "categories": item.categories,
-    //     "quantity": item.quantity,
-    //     "orgqty": item.orgqty,
-    //     "type": item.type,
-    //     "name": item.title
-    //   });
-    // })
-      
+  async updateItemCateType(value, vendor, title){
+    return set(ref(database, 'item/' + title + vendor + "/categories"), value.categories).then(() => {
+      return set(ref(database, 'item/' + title + vendor + "/type"), value.type)
+    });
   }
 
 

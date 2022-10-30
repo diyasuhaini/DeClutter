@@ -92,10 +92,10 @@ export class ChangeCategoryPage implements OnInit {
 
   CateAndType() {
     //change type and category in database 
-    this.itemService.updateItemCateType(this.changeForm.value).then((changed) => {
+    this.itemService.updateItemCateType(this.changeForm.value, this.item[0].vendor, this.item[0].title).then((changed) => {
       console.log("changed", changed);
     }).then((response) => {
-      this.router.navigateByUrl('index/mod/products/product-details'); //after successful, redirect to product details page
+      this.router.navigateByUrl('index/mod/products'); //after successful, redirect to product details page
     }, error => {
      console.log(error); //if error
     })
