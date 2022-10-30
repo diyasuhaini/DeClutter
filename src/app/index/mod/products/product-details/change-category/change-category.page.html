@@ -3,89 +3,103 @@
     <ion-title class="ion-text-center" color="dark">Change Category</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding" color="medium">
-  <!-- <ion-item color="medium">
-    <ion-label position="stacked">Enter your name</ion-label>
-    <ion-input type="text" placeholder="Your name" [(ngModel)]="name"></ion-input>
-  </ion-item> -->
-  <ion-list style="background-color: white;">
-    <ion-radio-group> <!-- value="women" -->
-      <ion-list-header color="medium">
-        <h3>Category</h3>
-      </ion-list-header>
-      <ion-item color="medium">
-        <ion-label>Women</ion-label>
-        <ion-radio slot="start" value="women"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Men</ion-label>
-        <ion-radio slot="start" value="men"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Kids</ion-label>
-        <ion-radio slot="start" value="kids"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Unisex</ion-label>
-        <ion-radio slot="start" value="unisex"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
-    <ion-radio-group required> <!-- value="bottoms" -->
-      <ion-list-header color="medium">
-        <h3>Type</h3>
-      </ion-list-header>
-      <ion-item color="medium">
-        <ion-label>Accessories</ion-label>
-        <ion-radio slot="start" value="accessories"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Bottoms</ion-label>
-        <ion-radio slot="start" value="bottoms"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Buford</ion-label>
-        <ion-radio slot="start" value="buford"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Dresses</ion-label>
-        <ion-radio slot="start" value="dresses"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Shoes</ion-label>
-        <ion-radio slot="start" value="shoes"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Skirts</ion-label>
-        <ion-radio slot="start" value="skirts"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Socks</ion-label>
-        <ion-radio slot="start" value="socks"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Sweaters</ion-label>
-        <ion-radio slot="start" value="sweaters"></ion-radio>
-      </ion-item>
-      <ion-item color="medium">
-        <ion-label>Tops & T-Shirts</ion-label>
-        <ion-radio slot="start" value="topsAndTshirts"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
-  </ion-list>
+<ion-content color="medium" style="overflow:hidden;">
+  <form [formGroup]="changeForm" (ngSubmit)="CateAndType(changeForm.value)">
+    <ion-list style="background-color: white;">
+      <ion-radio-group value="{{ item[0].categories }}" formControlName="categories" required>
+        <ion-list-header color="medium">
+          <h3>Category</h3>
+        </ion-list-header>
+        <ion-item color="medium">
+          <ion-label>Women</ion-label>
+          <ion-radio slot="start" value="women"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Men</ion-label>
+          <ion-radio slot="start" value="men"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Kids</ion-label>
+          <ion-radio slot="start" value="kids"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Unisex</ion-label>
+          <ion-radio slot="start" value="unisex"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-radio-group value="{{ item[0].type }}" formControlName="type" required>
+        <ion-list-header color="medium">
+          <h3>Type</h3>
+        </ion-list-header>
+        <ion-item color="medium">
+          <ion-label>Accessories</ion-label>
+          <ion-radio slot="start" value="accessories"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Bottoms</ion-label>
+          <ion-radio slot="start" value="bottoms"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Buford</ion-label>
+          <ion-radio slot="start" value="buford"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Dresses</ion-label>
+          <ion-radio slot="start" value="dresses"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Shoes</ion-label>
+          <ion-radio slot="start" value="shoes"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Skirts</ion-label>
+          <ion-radio slot="start" value="skirts"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Socks</ion-label>
+          <ion-radio slot="start" value="socks"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Sweaters</ion-label>
+          <ion-radio slot="start" value="sweaters"></ion-radio>
+        </ion-item>
+        <ion-item color="medium">
+          <ion-label>Tops & T-Shirts</ion-label>
+          <ion-radio slot="start" value="topsAndTshirts"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <!-- <div style="display:hidden;">
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].vendor }}" formControlName="vendor"></ion-input>
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].username }}" formControlName="username"></ion-input>
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].title }}" formControlName="title"></ion-input>
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].size }}" formControlName="size"></ion-input>
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].quantity }}" formControlName="quantity"></ion-input>
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].price }}" formControlName="price"></ion-input>
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].orgqty }}" formControlName="orgqty"></ion-input>
+      <ion-input type="image" style="display:hidden;" value="{{ item[0].img1 }}" formControlName="img1"></ion-input>
+      <ion-input type="image" style="display:hidden;" value="{{ item[0].img2 }}" formControlName="img2"></ion-input>
+      <ion-input type="image" style="display:hidden;" value="{{ item[0].img3 }}" formControlName="img3"></ion-input>
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].description }}" formControlName="description"></ion-input>
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].color }}" formControlName="color"></ion-input>
+      <ion-input type="text" style="display:hidden;" value="{{ item[0].brand }}" formControlName="brand"></ion-input>
+    </div> -->
+    <ion-footer style="position: absolute;bottom:0;">
+      <ion-toolbar style="height:100%; padding: 0;" color="medium">
+        <div style="display:flex;height:100%;">
+          <div style="width: 50%; display:flex; height: 100%;">
+            <ion-button style="width: 90%;margin:auto;--border-radius:20px;" color="medium" routerLink="../">
+              <ion-text color="dark"><b>Cancel</b></ion-text>
+            </ion-button>
+          </div>
+          <div style="width: 50%; display:flex; height: 100%;">
+            <ion-button type="submit" style="width: 90%;margin:auto;--border-radius:20px;">
+              <ion-text color="dark"><b>Confirm</b></ion-text>
+            </ion-button>
+          </div>            
+        </div>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
+  
 </ion-content>
-<ion-footer>
-  <ion-toolbar style="height:100%; padding: 0;" color="medium">
-    <div style="display:flex;flex-wrap:wrap;height:100%;">
-      <div style="width: 50%; display:flex; height: 100%;">
-        <ion-button style="width: 90%;margin:auto;--border-radius:20px;" color="medium">
-          <ion-text color="dark"><b>Cancel</b></ion-text>
-        </ion-button>
-      </div>
-      <div style="width: 50%; display:flex; height: 100%;">
-        <ion-button style="width: 90%;margin:auto;--border-radius:20px;">
-          <ion-text color="dark"><b>Confirm</b></ion-text>
-        </ion-button>
-      </div>            
-    </div>
-  </ion-toolbar>
-</ion-footer>

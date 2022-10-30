@@ -66,8 +66,5 @@ export class ProductDetailsPage implements OnInit {
     }];
   }
 
-  changeCategory() {
-    this.router.navigateByUrl('index/mod/products/product-details/change-category');
-  }
 
 }
