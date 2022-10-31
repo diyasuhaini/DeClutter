@@ -3,6 +3,7 @@
     <ion-buttons slot="start" routerLink="../">
       <ion-button color="dark"><ion-icon name="arrow-back" size="large"></ion-icon></ion-button>
     </ion-buttons>
+    <ion-title color="dark"><b>Order Details</b></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -30,7 +31,7 @@
           </ion-row>
         </ion-col>
       </ion-row>
-  <ion-button color="primary" expand="block" style="margin:15px;"  *ngIf="details.status == 'pending'" (click)="approveOrder(details.orderid)"><ion-text color="dark"><b>Approve Order</b></ion-text></ion-button>
+  <ion-button color="primary" expand="block" style="margin:15px;"  *ngIf="details.status == 'pending'" (click)="approveOrder(details.orderid)"><ion-text color="dark"><b>Order Completed</b></ion-text></ion-button>
       
     </ion-card-content>
   </ion-card>
